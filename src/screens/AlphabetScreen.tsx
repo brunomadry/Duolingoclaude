@@ -3,7 +3,7 @@ import '../styles/alphabet.css';
 import { navigate } from '../app/router.ts';
 import { ReportDialog } from '../app/ReportDialog.tsx';
 import { loadLearning, type LearningSnapshot } from '../data/learning.ts';
-import { completedPrefix, dueKana, kanaUpTo } from '../lesson/context.ts';
+import { completedPrefix, dueReviews, kanaUpTo } from '../lesson/context.ts';
 import { kanaGroups } from '../lesson/kana.ts';
 import type { KanaGroup } from '../shared/content-schema.ts';
 import type { ProfileRecord } from '../shared/api.ts';
@@ -92,7 +92,7 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
     (sum, g) => sum + g.chars.filter((c) => learned.has(c.char)).length,
     0,
   );
-  const due = snap ? dueKana(snap.cards, Date.now()).dueTotal : 0;
+  const due = snap ? dueReviews(snap.cards, Date.now(), { filter: 'kana' }).dueTotal : 0;
 
   const cell = (c: KanaChar | null, group: KanaGroup, key: string) =>
     c ? (
@@ -169,11 +169,11 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
           <button
             class="btn btn--primary btn--block"
             disabled={learned.size < 4}
-            onClick={() => navigate('/cwicz')}
+            onClick={() => navigate('/cwicz/kana')}
           >
             Ćwicz rozpoznawanie i pisanie
           </button>
-          <button class="btn btn--block" disabled={!due} onClick={() => navigate('/powtorki')}>
+          <button class="btn btn--block" disabled={!due} onClick={() => navigate('/powtorki/kana')}>
             Powtórki ({due})
           </button>
           {learned.size < 4 && (

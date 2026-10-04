@@ -1,0 +1,190 @@
+/* Vocabulary: Japanese text with romaji, word cards, example sentences, the Słówka tab. */
+
+.jptext {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.jptext__line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.jptext__ja {
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+.jptext--md .jptext__ja {
+  font-size: var(--fs-lg);
+}
+.jptext--lg .jptext__ja {
+  font-size: var(--fs-xl);
+}
+.jptext--xl .jptext__ja {
+  font-size: 48px;
+  line-height: 1.15;
+}
+.jptext__romaji {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+}
+.jptext__reveal {
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.word-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-align: left;
+}
+.word-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.word-card__kanji,
+.example__written {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.word-card__kanji .jp,
+.example__written .jp {
+  color: var(--text);
+  font-size: var(--fs-md);
+}
+.word-card__sense {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+.word-card__senses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding-left: 1.4em;
+  font-size: var(--fs-md);
+}
+.word-card__senses li:first-child {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+.word-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+.example__label {
+  margin: 0;
+}
+.example__pl {
+  font-size: var(--fs-md);
+}
+.example__source {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.intro__word {
+  padding: var(--space-5) var(--space-4);
+}
+
+.vocab-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.word-row {
+  min-height: 56px;
+  color: var(--text);
+  font-size: var(--fs-md);
+}
+.word-row__ja {
+  display: flex;
+  flex-direction: column;
+  min-width: 5.5em;
+  max-width: 45%;
+}
+.word-row__kana {
+  font-size: var(--fs-lg);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.word-row__kanji {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.word-row__pl {
+  min-width: 0;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.word-row__badge {
+  flex: none;
+}
+
+/* Word exercises in the lesson player. */
+.exercise__kana--word {
+  font-size: 56px;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.exercise__meaning {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  line-height: 1.25;
+  text-align: center;
+}
+.exercise__preview {
+  min-height: 1.5em;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  text-align: center;
+}
+.option--text {
+  font-size: var(--fs-md);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.option--text.jp {
+  font-size: var(--fs-lg);
+}

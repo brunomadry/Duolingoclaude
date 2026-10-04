@@ -3,15 +3,19 @@ import {
   PRACTICE_CAP,
   QUIZ_LENGTH,
   TEST_LENGTH,
+  WORD_PRACTICE_CAP,
   buildLessonPlan,
   charFromCardId,
   gradesFromResults,
+  isKanaExercise,
   kanaCardId,
   scoreOf,
   type Exercise,
+  type KanaExercise,
   type KanaItem,
   type PlanInput,
 } from './engine.ts';
+import type { WordItem } from './vocab.ts';
 
 const H = (char: string, romaji: string): KanaItem => ({ char, romaji, script: 'hiragana' });
 const K = (char: string, romaji: string): KanaItem => ({ char, romaji, script: 'katakana' });
@@ -39,6 +43,11 @@ function input(over: Partial<PlanInput> = {}): PlanInput {
   };
 }
 
+const kana = (e: Exercise): KanaExercise => {
+  if (!isKanaExercise(e)) throw new Error(`word exercise ${e.id}`);
+  return e;
+};
+
 const exercisesOf = (plan: ReturnType<typeof buildLessonPlan>): Exercise[] =>
   plan.steps.flatMap((s) => ('exercises' in s ? s.exercises : 'quiz' in s ? s.quiz : []));
 
@@ -63,10 +72,10 @@ describe('buildLessonPlan: kana lesson', () => {
   it('practises every new character, recognition first in intro order', () => {
     const practice = buildLessonPlan(input()).steps.find((s) => s.kind === 'practice');
     if (practice?.kind !== 'practice') throw new Error('no practice');
-    expect(practice.exercises.slice(0, L1.length).map((e) => e.item.char)).toEqual(
+    expect(practice.exercises.slice(0, L1.length).map((e) => kana(e).item.char)).toEqual(
       L1.map((i) => i.char),
     );
-    expect(new Set(practice.exercises.map((e) => e.item.char))).toEqual(
+    expect(new Set(practice.exercises.map((e) => kana(e).item.char))).toEqual(
       new Set(L1.map((i) => i.char)),
     );
     expect(practice.exercises.length).toBeLessThanOrEqual(PRACTICE_CAP);
@@ -84,7 +93,7 @@ describe('buildLessonPlan: kana lesson', () => {
       expect(new Set(e.options).size).toBe(e.options.length);
       expect(e.options.length).toBeGreaterThanOrEqual(2);
       expect(e.options.length).toBeLessThanOrEqual(4);
-      if (e.item.char === 'じ' && e.kind !== 'kana-to-romaji')
+      if (kana(e).item.char === 'じ' && e.kind !== 'kana-to-romaji')
         expect(e.options).not.toContain('ぢ');
     }
   });
@@ -96,9 +105,9 @@ describe('buildLessonPlan: kana lesson', () => {
     for (let seed = 0; seed < 20; seed++) {
       const plan = buildLessonPlan(input({ lessonItems: [wo, uo, ...others], seed }));
       for (const e of exercisesOf(plan)) {
-        if (e.item.char === 'ヲ')
+        if (kana(e).item.char === 'ヲ')
           expect(e.options).not.toContain(e.kind === 'kana-to-romaji' ? 'wo' : 'ウォ');
-        if (e.item.char === 'ウォ')
+        if (kana(e).item.char === 'ウォ')
           expect(e.options).not.toContain(e.kind === 'kana-to-romaji' ? 'o' : 'ヲ');
       }
     }
@@ -114,7 +123,7 @@ describe('buildLessonPlan: kana lesson', () => {
     if (practice?.kind !== 'practice') throw new Error('no practice');
     const rest = practice.exercises.slice(L1.length);
     for (let i = 1; i < rest.length; i++)
-      expect(rest[i]!.item.char).not.toBe(rest[i - 1]!.item.char);
+      expect(kana(rest[i]!).item.char).not.toBe(kana(rest[i - 1]!).item.char);
   });
 
   it('never builds a multiple choice with a single option', () => {
@@ -144,7 +153,7 @@ describe('buildLessonPlan: kana lesson', () => {
     const summary = buildLessonPlan(input()).steps.at(-1);
     if (summary?.kind !== 'summary') throw new Error('no summary');
     expect(summary.quiz).toHaveLength(QUIZ_LENGTH);
-    for (const q of summary.quiz) expect(L1.map((i) => i.char)).toContain(q.item.char);
+    for (const q of summary.quiz) expect(L1.map((i) => i.char)).toContain(kana(q).item.char);
   });
 
   it('gives every exercise a unique id', () => {
@@ -181,7 +190,7 @@ describe('buildLessonPlan: tests and review lessons', () => {
         coveredItems: covered,
       }),
     );
-    const scripts = new Set(exercisesOf(plan).map((e) => e.item.script));
+    const scripts = new Set(exercisesOf(plan).map((e) => kana(e).item.script));
     expect(scripts).toEqual(new Set(['hiragana', 'katakana']));
   });
 });
@@ -211,5 +220,102 @@ describe('grading', () => {
         { cardId: 'b', correct: false },
       ]),
     ).toBe(0.5);
+  });
+});
+
+const W = (id: string, kana: string, pl: string[], lesson = 4): WordItem => ({
+  id,
+  kana,
+  romaji: id,
+  pl,
+  pos: ['n'],
+  lesson,
+});
+
+const WORDS = [
+  W('inu', 'いぬ', ['pies']),
+  W('neko', 'ねこ', ['kot']),
+  W('sakana', 'さかな', ['ryba']),
+  W('hashi-bridge', 'はし', ['most']),
+  W('hashi-chopsticks', 'はし', ['pałeczki (do jedzenia)']),
+];
+
+describe('buildLessonPlan: words', () => {
+  const withWords = (over: Partial<PlanInput> = {}) =>
+    buildLessonPlan(input({ lessonWords: WORDS, ...over }));
+
+  it('adds a "words" step after the new kana and practises them', () => {
+    const plan = withWords();
+    expect(plan.steps.map((s) => s.kind)).toEqual(['new', 'words', 'practice', 'summary']);
+    const practice = plan.steps.find((s) => s.kind === 'practice');
+    if (practice?.kind !== 'practice') throw new Error('no practice');
+    const wordExercises = practice.exercises.filter((e) => !isKanaExercise(e));
+    expect(wordExercises.length).toBeGreaterThan(0);
+    expect(wordExercises.length).toBeLessThanOrEqual(WORD_PRACTICE_CAP);
+    for (const w of WORDS) expect(wordExercises.map((e) => e.cardId)).toContain(`vocab:${w.id}`);
+  });
+
+  it('never offers a homograph or a synonym as a wrong answer', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const plan = withWords({
+        seed,
+        spareWords: [W('kawa', 'かわ', ['rzeka']), W('wanko', 'わんこ', ['Pies'])],
+      });
+      for (const e of exercisesOf(plan)) {
+        if (isKanaExercise(e) || e.kind === 'type-word') continue;
+        expect(e.options).toContain(e.answer);
+        expect(new Set(e.options).size).toBe(e.options.length);
+        if (e.word.kana === 'はし' && e.kind === 'word-to-meaning') {
+          // Both はし words are correct for the kana alone: only one of them may be offered.
+          expect(e.options.filter((o) => o === 'most' || o.startsWith('pałeczki'))).toHaveLength(1);
+        }
+        if (e.word.id === 'inu' && e.kind !== 'word-to-meaning')
+          // わんこ also means "pies": it would be a second correct answer.
+          expect(e.options).not.toContain('わんこ');
+      }
+    }
+  });
+
+  it('words-only lessons skip the kana steps; quizzes mix both when there are both', () => {
+    const wordsOnly = withWords({ lessonItems: [] });
+    expect(wordsOnly.steps.map((s) => s.kind)).toEqual(['words', 'practice', 'summary']);
+    const summary = withWords().steps.at(-1);
+    if (summary?.kind !== 'summary') throw new Error('no summary');
+    expect(summary.quiz.filter((e) => isKanaExercise(e))).toHaveLength(QUIZ_LENGTH / 2);
+    expect(summary.quiz.filter((e) => !isKanaExercise(e))).toHaveLength(QUIZ_LENGTH / 2);
+  });
+
+  it('reviews due words next to due kana', () => {
+    const plan = buildLessonPlan(
+      input({
+        lesson: { n: 0, kind: 'review', title: 'R', newItem: { type: 'none' } },
+        lessonItems: [],
+        dueReviews: [H('あ', 'a'), H('い', 'i')],
+        dueWords: WORDS.slice(0, 3),
+        knownWords: WORDS,
+        dueTotal: 5,
+      }),
+    );
+    const review = plan.steps[0];
+    if (review?.kind !== 'review') throw new Error('no review');
+    expect(review.exercises.map((e) => e.cardId).sort()).toEqual(
+      ['kana:あ', 'kana:い', 'vocab:inu', 'vocab:neko', 'vocab:sakana'].sort(),
+    );
+  });
+
+  it('tests and review lessons cover words too', () => {
+    const test = buildLessonPlan(
+      input({
+        lesson: { n: 7, kind: 'test', title: 'Test', newItem: { type: 'none' } },
+        lessonItems: [],
+        coveredItems: L1,
+        coveredWords: WORDS,
+      }),
+    );
+    const step = test.steps[0];
+    if (step?.kind !== 'practice') throw new Error('no test');
+    expect(step.exercises.some((e) => !isKanaExercise(e))).toBe(true);
+    expect(step.exercises.some((e) => isKanaExercise(e))).toBe(true);
+    expect(step.exercises.length).toBeLessThanOrEqual(TEST_LENGTH);
   });
 });

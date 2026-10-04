@@ -1,7 +1,8 @@
 import { useState } from 'preact/hooks';
 import { Avatar } from '../mascot/Mascot.tsx';
 import type { ProfileRecord } from '../shared/api.ts';
-import { GrammarScreen, VocabScreen } from '../screens/Placeholders.tsx';
+import { GrammarScreen } from '../screens/Placeholders.tsx';
+import { VocabScreen } from '../screens/VocabScreen.tsx';
 import { AlphabetScreen } from '../screens/AlphabetScreen.tsx';
 import { LicensesScreen } from '../screens/LicensesScreen.tsx';
 import { ProfileEditor } from '../screens/ProfileEditor.tsx';
@@ -37,7 +38,7 @@ export function Shell({ profile }: { profile: ProfileRecord }) {
   const routes: Record<string, Route> = {
     '/': home,
     '/alfabet': { title: 'Alfabet', tab: true, render: () => <AlphabetScreen profile={profile} /> },
-    '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen /> },
+    '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen profile={profile} /> },
     '/gramatyka': { title: 'Gramatyka', tab: true, render: () => <GrammarScreen /> },
     '/zrodla': { title: 'Źródła i licencje', tab: false, render: () => <LicensesScreen /> },
     '/pieczatki': {
@@ -52,8 +53,19 @@ export function Shell({ profile }: { profile: ProfileRecord }) {
   if (lessonMatch) {
     return <LessonPlayer key={path} profile={profile} mode="lesson" n={Number(lessonMatch[1])} />;
   }
-  if (path === '/powtorki') return <LessonPlayer key={path} profile={profile} mode="reviews" />;
-  if (path === '/cwicz') return <LessonPlayer key={path} profile={profile} mode="extra" />;
+  const sessionMatch = /^\/(powtorki|cwicz)(?:\/(kana|slowka))?$/.exec(path);
+  if (sessionMatch) {
+    return (
+      <LessonPlayer
+        key={path}
+        profile={profile}
+        mode={sessionMatch[1] === 'powtorki' ? 'reviews' : 'extra'}
+        filter={
+          sessionMatch[2] === 'kana' ? 'kana' : sessionMatch[2] === 'slowka' ? 'words' : 'all'
+        }
+      />
+    );
+  }
 
   if (path === '/profil') {
     return <ProfileEditor profile={profile} onDone={() => goBack()} onCancel={() => goBack()} />;

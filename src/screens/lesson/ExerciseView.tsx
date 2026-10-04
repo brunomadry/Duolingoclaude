@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import type { Exercise } from '../../lesson/engine.ts';
+import { isKanaExercise, type Exercise, type KanaExercise } from '../../lesson/engine.ts';
+import { romajiToKana } from '../../lesson/kana-input.ts';
 import { isRomajiAnswerCorrect } from '../../lesson/romaji.ts';
+import { isKatakanaWord, isWordAnswerCorrect } from '../../lesson/vocab.ts';
 import { speak } from '../../lib/speech.ts';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
 
 interface ExerciseViewProps {
   exercise: Exercise;
-  /** Speak the correct kana after answering (profile "sound" setting). */
+  /** Speak the correct kana or word after answering (profile "sound" setting). */
   sound: boolean;
   onAnswered: (correct: boolean) => void;
   onNext: () => void;
@@ -19,6 +21,10 @@ const PROMPTS: Record<Exercise['kind'], string> = {
   'romaji-to-kana': 'Który znak to…',
   'audio-to-kana': 'Który znak słyszysz?',
   'type-romaji': 'Wpisz czytanie w romaji',
+  'word-to-meaning': 'Co to znaczy?',
+  'meaning-to-word': 'Jak to jest po japońsku?',
+  'audio-to-word': 'Które słowo słyszysz?',
+  'type-word': 'Napisz po japońsku (w romaji)',
 };
 
 /** Lower case without spaces or apostrophes. Hyphens stay: "ka-" is a long vowel (カー). */
@@ -29,11 +35,18 @@ export function normalizeRomaji(input: string): string {
     .replace(/[\s'’]+/g, '');
 }
 
-export function isTypedAnswerCorrect(exercise: Exercise, input: string): boolean {
+export function isTypedAnswerCorrect(exercise: KanaExercise, input: string): boolean {
   const typed = normalizeRomaji(input);
   if (!typed) return false;
   const accepted = [exercise.item.romaji, ...(exercise.item.alt ?? [])].map(normalizeRomaji);
   return accepted.includes(typed) || isRomajiAnswerCorrect(input, exercise.item.char);
+}
+
+/** What the learner sees as the answer once the exercise is checked. */
+function solutionOf(exercise: Exercise): { ja: string; romaji: string; meaning?: string } {
+  if (isKanaExercise(exercise)) return { ja: exercise.item.char, romaji: exercise.item.romaji };
+  const w = exercise.word;
+  return { ja: w.kana, romaji: w.romaji, meaning: w.pl[0] ?? '' };
 }
 
 export function ExerciseView({
@@ -49,15 +62,17 @@ export function ExerciseView({
   const nextRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const promptRef = useRef<HTMLParagraphElement>(null);
+  const typing = exercise.kind === 'type-romaji' || exercise.kind === 'type-word';
+  const solution = solutionOf(exercise);
 
   useEffect(() => {
     setPicked(null);
     setTyped('');
     setResult(null);
     // Move focus to the new question so VoiceOver does not fall back to the top of the page.
-    if (exercise.kind === 'type-romaji') inputRef.current?.focus({ preventScroll: true });
+    if (typing) inputRef.current?.focus({ preventScroll: true });
     else promptRef.current?.focus({ preventScroll: true });
-  }, [exercise.id, exercise.kind]);
+  }, [exercise.id, typing]);
 
   useEffect(() => {
     if (result !== null) nextRef.current?.focus({ preventScroll: true });
@@ -67,7 +82,7 @@ export function ExerciseView({
     setResult(correct);
     onAnswered(correct);
     // Runs inside the tap handler, so iOS allows speech here.
-    if (sound) speak(exercise.item.char);
+    if (sound) speak(solution.ja);
   };
 
   const choose = (option: string) => {
@@ -79,11 +94,30 @@ export function ExerciseView({
   const check = (e: Event) => {
     e.preventDefault();
     if (result !== null || !normalizeRomaji(typed)) return;
-    finish(isTypedAnswerCorrect(exercise, typed));
+    finish(
+      isKanaExercise(exercise)
+        ? isTypedAnswerCorrect(exercise, typed)
+        : isWordAnswerCorrect(exercise.word, typed),
+    );
   };
 
-  const kanaPrompt = exercise.kind === 'kana-to-romaji' || exercise.kind === 'type-romaji';
-  const optionsAreKana = exercise.kind === 'romaji-to-kana' || exercise.kind === 'audio-to-kana';
+  // Which stage the question shows, and whether the options are Japanese.
+  const showJa =
+    exercise.kind === 'kana-to-romaji' ||
+    exercise.kind === 'type-romaji' ||
+    exercise.kind === 'word-to-meaning';
+  const showMeaning = exercise.kind === 'meaning-to-word' || exercise.kind === 'type-word';
+  const audio = exercise.kind === 'audio-to-kana' || exercise.kind === 'audio-to-word';
+  const optionsAreJa =
+    exercise.kind === 'romaji-to-kana' ||
+    exercise.kind === 'audio-to-kana' ||
+    exercise.kind === 'meaning-to-word' ||
+    exercise.kind === 'audio-to-word';
+  const isWord = !isKanaExercise(exercise);
+  const preview =
+    exercise.kind === 'type-word' && normalizeRomaji(typed)
+      ? romajiToKana(typed, { katakana: isKatakanaWord(exercise.word) })
+      : '';
 
   return (
     <div class="exercise">
@@ -92,24 +126,38 @@ export function ExerciseView({
       </p>
 
       <div class="exercise__stage">
-        {kanaPrompt && (
-          <span class="exercise__kana jp" lang="ja" id={`q-${exercise.id}`}>
-            {exercise.item.char}
+        {showJa && (
+          <span
+            class={`exercise__kana jp${isWord ? ' exercise__kana--word' : ''}`}
+            lang="ja"
+            id={`q-${exercise.id}`}
+          >
+            {solution.ja}
           </span>
         )}
         {exercise.kind === 'romaji-to-kana' && (
           <span class="exercise__romaji">{exercise.item.romaji}</span>
         )}
-        {exercise.kind === 'audio-to-kana' && (
-          <SpeakButton text={exercise.item.char} size={88} label="Posłuchaj dźwięku" hideText />
+        {showMeaning && solution.meaning && (
+          <span class="exercise__meaning" id={`q-${exercise.id}`}>
+            {solution.meaning}
+          </span>
         )}
-        {result !== null && kanaPrompt && <SpeakButton text={exercise.item.char} />}
+        {audio && (
+          <SpeakButton
+            text={solution.ja}
+            size={88}
+            label={isWord ? 'Posłuchaj słowa' : 'Posłuchaj dźwięku'}
+            hideText
+          />
+        )}
+        {result !== null && showJa && <SpeakButton text={solution.ja} />}
       </div>
 
-      {exercise.kind === 'type-romaji' ? (
+      {typing ? (
         <form class="exercise__type" onSubmit={check}>
           <label class="visually-hidden" for={`answer-${exercise.id}`}>
-            Czytanie w romaji
+            {isWord ? 'Słowo w romaji' : 'Czytanie w romaji'}
           </label>
           <input
             ref={inputRef}
@@ -126,6 +174,11 @@ export function ExerciseView({
             readOnly={result !== null}
             aria-describedby={`q-${exercise.id}`}
           />
+          {preview && result === null && (
+            <p class="exercise__preview jp" lang="ja" aria-hidden="true">
+              {preview}
+            </p>
+          )}
           {result === null && (
             <button
               class="btn btn--primary btn--block"
@@ -147,11 +200,12 @@ export function ExerciseView({
                   : o === picked
                     ? ' is-wrong'
                     : ' is-dim';
+            const kanaOption = optionsAreJa && !isWord;
             return (
               <button
                 key={o}
-                class={`option${optionsAreKana ? ' option--kana jp' : ''}${state}`}
-                lang={optionsAreKana ? 'ja' : undefined}
+                class={`option${kanaOption ? ' option--kana' : ''}${optionsAreJa ? ' jp' : ''}${isWord ? ' option--text' : ''}${state}`}
+                lang={optionsAreJa ? 'ja' : undefined}
                 onClick={() => choose(o)}
                 aria-disabled={result !== null}
               >
@@ -167,13 +221,14 @@ export function ExerciseView({
           <p class="feedback__title" id={`fb-title-${exercise.id}`}>
             {result ? 'Dobrze!' : 'Prawie.'}
           </p>
-          {!result && (
+          {(!result || isWord) && (
             <p id={`fb-answer-${exercise.id}`}>
-              Poprawnie:{' '}
+              {result ? '' : 'Poprawnie: '}
               <span class="jp" lang="ja">
-                {exercise.item.char}
+                {solution.ja}
               </span>{' '}
-              = <strong>{exercise.item.romaji}</strong>
+              = <strong>{solution.romaji}</strong>
+              {solution.meaning && <> · {solution.meaning}</>}
             </p>
           )}
           <button
@@ -183,7 +238,7 @@ export function ExerciseView({
             disabled={busy}
             aria-busy={busy}
             aria-describedby={
-              result
+              result && !isWord
                 ? `fb-title-${exercise.id}`
                 : `fb-title-${exercise.id} fb-answer-${exercise.id}`
             }

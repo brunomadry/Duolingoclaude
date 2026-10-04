@@ -1,5 +1,5 @@
 /**
- * Glue between content (curriculum + kana), the learner's progress and the pure
+ * Glue between content (curriculum, kana, vocabulary), the learner's progress and the pure
  * lesson engine: works out what is known, what is due and builds the plan.
  */
 import curriculumData from '../../content/curriculum.json';
@@ -10,6 +10,7 @@ import { buildReviewQueue } from '../srs/queue.ts';
 import { buildLessonPlan, charFromCardId, type KanaItem, type LessonPlan } from './engine.ts';
 import { groupById } from './kana.ts';
 import { seedFrom } from './rng.ts';
+import { wordIdFromCardId, wordsUpTo, type VocabIndex, type WordItem } from './vocab.ts';
 import { KANA_PHASE_END } from '../shared/constants.ts';
 
 export const curriculum = curriculumData as Curriculum;
@@ -61,26 +62,54 @@ export function completedPrefix(lessons: readonly LessonProgressRecord[]): numbe
   return n;
 }
 
+export type ReviewFilter = 'all' | 'kana' | 'words';
+
 export interface DueInfo {
   items: KanaItem[];
+  /** Due word ids (map them with the vocabulary index). */
+  wordIds: string[];
   dueTotal: number;
 }
 
-/** Due kana reviews, capped by the SRS queue so the review step never snowballs. */
-export function dueKana(
+/** Due kana and word reviews, capped by the SRS queue so the review step never snowballs. */
+export function dueReviews(
   cards: ReadonlyMap<string, CardRecord>,
   now: number,
-  max?: number,
+  opts: { max?: number; filter?: ReviewFilter } = {},
 ): DueInfo {
+  const filter = opts.filter ?? 'all';
   const all = [...cards.values()]
-    .filter((c) => !c.deleted && charFromCardId(c.cardId))
+    .filter(
+      (c) =>
+        !c.deleted &&
+        ((filter !== 'kana' && wordIdFromCardId(c.cardId)) ||
+          (filter !== 'words' && charFromCardId(c.cardId))),
+    )
     .map((c) => ({ cardId: c.cardId, state: c.data as SrsState }));
-  const { queue, dueTotal } = buildReviewQueue(all, now, max === undefined ? undefined : { max });
+  const { queue, dueTotal } = buildReviewQueue(
+    all,
+    now,
+    opts.max === undefined ? undefined : { max: opts.max },
+  );
   const known = new Map(kanaUpTo(100).map((i) => [i.char, i]));
   const items = queue
     .map((q) => known.get(charFromCardId(q.cardId) ?? ''))
     .filter((i): i is KanaItem => i !== undefined);
-  return { items, dueTotal };
+  const wordIds = queue
+    .map((q) => wordIdFromCardId(q.cardId))
+    .filter((id): id is string => id !== null);
+  return { items, wordIds, dueTotal };
+}
+
+export function wordsOf(vocab: VocabIndex, ids: readonly string[]): WordItem[] {
+  return ids.map((id) => vocab.byId.get(id)).filter((w): w is WordItem => w !== undefined);
+}
+
+/** Words written only with kana known by the end of lesson n (all words after the writing phase). */
+export function readableWords(vocab: VocabIndex, n: number): WordItem[] {
+  if (n > KANA_PHASE_END) return vocab.words;
+  const known = new Set(['ー', ...kanaUpTo(n).flatMap((i) => [...i.char])]);
+  return vocab.words.filter((w) => [...w.kana].every((ch) => known.has(ch)));
 }
 
 export interface PlanContext {
@@ -92,17 +121,23 @@ export interface PlanContext {
   attempt?: number;
 }
 
-export function planLesson(lesson: Lesson, ctx: PlanContext): LessonPlan {
-  const due = dueKana(ctx.cards, ctx.now);
+export function planLesson(lesson: Lesson, ctx: PlanContext, vocab: VocabIndex): LessonPlan {
+  const due = dueReviews(ctx.cards, ctx.now);
   const covers = lesson.kind === 'test' ? lesson.covers : undefined;
+  const coveredLessons = covers
+    ? curriculum.lessons.filter((l) => l.n >= covers[0] && l.n <= covers[1])
+    : [];
   const covered = covers
     ? itemsOfGroups(
-        curriculum.lessons
-          .filter((l) => l.n >= covers[0] && l.n <= covers[1])
-          .flatMap((l) => (l.newItem.type === 'kana' ? l.newItem.groups : [])),
+        coveredLessons.flatMap((l) => (l.newItem.type === 'kana' ? l.newItem.groups : [])),
       )
     : lesson.kind === 'review'
       ? kanaUpTo(lesson.n)
+      : [];
+  const coveredWords = covers
+    ? coveredLessons.flatMap((l) => vocab.byLesson.get(l.n) ?? [])
+    : lesson.kind === 'review'
+      ? wordsUpTo(vocab, lesson.n - 1)
       : [];
   return buildLessonPlan({
     lesson,
@@ -113,5 +148,10 @@ export function planLesson(lesson: Lesson, ctx: PlanContext): LessonPlan {
     dueTotal: due.dueTotal,
     speech: ctx.speech,
     seed: seedFrom(`${lesson.n}:${ctx.attempt ?? 0}`),
+    lessonWords: vocab.byLesson.get(lesson.n) ?? [],
+    coveredWords,
+    knownWords: wordsUpTo(vocab, lesson.n - 1),
+    dueWords: wordsOf(vocab, due.wordIds),
+    spareWords: readableWords(vocab, lesson.n),
   });
 }

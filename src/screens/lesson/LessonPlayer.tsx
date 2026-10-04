@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import '../../styles/lesson.css';
+import '../../styles/vocab.css';
 import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
 import { applyGrades, loadLearning, recordCompletion, seedCards } from '../../data/learning.ts';
+import { loadVocab } from '../../data/vocab-data.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
@@ -15,13 +17,18 @@ import {
 import {
   COMING_SOON_TEXT,
   completedPrefix,
-  dueKana,
+  dueReviews,
   kanaUpTo,
   lessonByN,
   lessonSupported,
   planLesson,
+  readableWords,
+  wordsOf,
+  type ReviewFilter,
 } from '../../lesson/context.ts';
 import { seedFrom } from '../../lesson/rng.ts';
+import { romajiDisplay } from '../../lesson/romaji.ts';
+import { vocabCardId, wordsUpTo, type VocabIndex } from '../../lesson/vocab.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
 import { VOICE_GRACE_MS, getSpeechStatus, subscribeSpeech } from '../../lib/speech.ts';
@@ -32,6 +39,7 @@ import { Modal } from '../../ui/Modal.tsx';
 import { Celebration } from './Celebration.tsx';
 import { ExerciseView } from './ExerciseView.tsx';
 import { KanaIntro } from './KanaIntro.tsx';
+import { WordIntro } from './WordIntro.tsx';
 
 export type PlayerMode = 'lesson' | 'reviews' | 'extra';
 
@@ -39,11 +47,14 @@ interface LessonPlayerProps {
   profile: ProfileRecord;
   mode: PlayerMode;
   n?: number;
+  /** Reviews and extra practice: kana, words or both. */
+  filter?: ReviewFilter;
 }
 
 const STEP_LABELS: Record<Step['kind'], string> = {
   review: 'Powtórka',
   new: 'Nowa rzecz',
+  words: 'Nowe słówka',
   practice: 'Ćwiczenie',
   summary: 'Podsumowanie',
 };
@@ -102,8 +113,11 @@ function speechAvailable(): Promise<boolean> {
   });
 }
 const MIN_KANA_FOR_EXTRA = 4;
+const MIN_WORDS_FOR_EXTRA = 4;
+const VOCAB_FAILED_TEXT =
+  'Nie udało się wczytać słówek. Sprawdź połączenie z internetem i spróbuj jeszcze raz.';
 
-export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
+export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerProps) {
   const [plan, setPlan] = useState<LessonPlan | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
   const [stepIndex, setStepIndex] = useState(0);
@@ -125,13 +139,18 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const [snapshot, voice] = await Promise.all([
+      const [snapshot, voice, loaded] = await Promise.all([
         loadLearning(database(), profile.id),
         speechAvailable(),
+        loadVocab().catch(() => null),
       ]);
+      if (cancelled) return;
+      if (!loaded) return setProblem(VOCAB_FAILED_TEXT);
+      const vocab: VocabIndex = loaded;
       // Listening exercises need a voice and the profile's sound switched on.
       const speech = voice && profile.settings.sound;
       const now = Date.now();
+      const done = completedPrefix(snapshot.lessons);
       let next: LessonPlan;
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
@@ -146,30 +165,42 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
         if (!replay && !(unlock.nextN === lesson.n && unlock.nextUnlocked)) {
           return setProblem('Ta lekcja jeszcze się nie odblokowała.');
         }
-        next = planLesson(lesson, {
-          lessons: snapshot.lessons,
-          cards: snapshot.cards,
-          now,
-          speech,
-          attempt: replay ? now : 0,
-        });
+        next = planLesson(
+          lesson,
+          {
+            lessons: snapshot.lessons,
+            cards: snapshot.cards,
+            now,
+            speech,
+            attempt: replay ? now : 0,
+          },
+          vocab,
+        );
       } else if (mode === 'reviews') {
-        const due = dueKana(snapshot.cards, now);
-        if (!due.items.length) return setProblem('Brak powtórek na teraz. Wróć później.');
+        const due = dueReviews(snapshot.cards, now, { filter });
+        const dueWords = wordsOf(vocab, due.wordIds);
+        if (!due.items.length && !dueWords.length)
+          return setProblem('Brak powtórek na teraz. Wróć później.');
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Powtórki', newItem: { type: 'none' } },
           lessonItems: [],
           coveredItems: [],
-          knownItems: kanaUpTo(completedPrefix(snapshot.lessons)),
+          knownItems: kanaUpTo(done),
           dueReviews: due.items,
           dueTotal: due.dueTotal,
           speech,
           seed: seedFrom(`reviews:${now}`),
+          dueWords,
+          knownWords: wordsUpTo(vocab, done),
+          spareWords: readableWords(vocab, done),
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
-        const known = kanaUpTo(completedPrefix(snapshot.lessons));
-        if (known.length < MIN_KANA_FOR_EXTRA)
+        const known = filter === 'words' ? [] : kanaUpTo(done);
+        const knownWords = filter === 'kana' ? [] : wordsUpTo(vocab, done);
+        if (filter === 'words' && knownWords.length < MIN_WORDS_FOR_EXTRA)
+          return setProblem('Ćwiczenia ze słówkami odblokują się, gdy poznasz kilka słówek.');
+        if (filter !== 'words' && known.length < MIN_KANA_FOR_EXTRA)
           return setProblem('Dodatkowe ćwiczenia odblokują się po pierwszej lekcji.');
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Ćwicz dodatkowo', newItem: { type: 'none' } },
@@ -180,6 +211,9 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
           dueTotal: 0,
           speech,
           seed: seedFrom(`extra:${now}`),
+          coveredWords: knownWords,
+          knownWords,
+          spareWords: readableWords(vocab, done),
         });
         next = {
           ...next,
@@ -250,7 +284,8 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     const db = database();
     // Backstop: a lesson with nothing of its own to do is never recorded as completed.
     const ownWork = plan.steps.some(
-      (s) => s.kind === 'new' || (s.kind === 'practice' && s.exercises.length > 0),
+      (s) =>
+        s.kind === 'new' || s.kind === 'words' || (s.kind === 'practice' && s.exercises.length > 0),
     );
     if (!ownWork) {
       setProblem(COMING_SOON_TEXT);
@@ -296,6 +331,14 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
           Date.now(),
         );
       }
+      if (step.kind === 'words' && mode === 'lesson') {
+        await seedCards(
+          database(),
+          profile.id,
+          step.words.map((w) => vocabCardId(w.id)),
+          Date.now(),
+        );
+      }
       if ((step.kind === 'review' || step.kind === 'practice') && mode !== 'extra') {
         await applyGrades(
           database(),
@@ -336,7 +379,7 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
 
   const stepProgress = useMemo(() => {
     if (!step) return 0;
-    if (step.kind === 'new') return 0;
+    if (step.kind === 'new' || step.kind === 'words') return 0;
     return queue.length ? position / queue.length : 0;
   }, [step, queue.length, position]);
 
@@ -432,6 +475,12 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
         )}
         {step.kind === 'new' ? (
           <KanaIntro items={step.items} groupIds={step.groupIds} onDone={() => void nextStep()} />
+        ) : step.kind === 'words' ? (
+          <WordIntro
+            words={step.words}
+            display={romajiDisplay(profile.settings.romaji, plan.n)}
+            onDone={() => void nextStep()}
+          />
         ) : current ? (
           <ExerciseView
             key={current.id}

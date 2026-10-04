@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { navigate } from '../app/router.ts';
 import { loadLearning, type LearningSnapshot } from '../data/learning.ts';
-import { COMING_SOON_TEXT, curriculum, dueKana, lessonSupported } from '../lesson/context.ts';
+import { COMING_SOON_TEXT, curriculum, dueReviews, lessonSupported } from '../lesson/context.ts';
 import { describeNextUnlock, localDaysBetween } from '../lesson/schedule.ts';
 import { computeUnlock } from '../lesson/unlock.ts';
 import { Mascot } from '../mascot/Mascot.tsx';
@@ -48,7 +48,7 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
     now,
   });
   const next = unlock.nextN ? curriculum.lessons[unlock.nextN - 1] : undefined;
-  const due = dueKana(snap.cards, now);
+  const due = dueReviews(snap.cards, now);
   const doneToday = snap.lessons.some((l) => localDaysBetween(l.completedAt, now, tz) === 0);
   const recent = [...snap.lessons].sort((a, b) => b.completedAt - a.completedAt).slice(0, 5);
   const pose: Pose = !next
