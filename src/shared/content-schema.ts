@@ -144,6 +144,8 @@ export const Sentence = z
   .object({
     id: z.number().int(),
     ja: z.string().min(1),
+    /** Furigana notation from OpenJLPT: "{会|あ}いましょう". */
+    furigana: z.string().optional(),
     /** Kana-only reading for learners before kanji. */
     kana: z.string().optional(),
     en: z.string().min(1),
@@ -162,6 +164,23 @@ export type Sentence = z.infer<typeof Sentence>;
 export const SentenceFile = z
   .object({ version: z.literal(1), sentences: z.array(Sentence) })
   .strict();
+
+/* ------------------------------------------------------------------- kanji */
+
+export const KanjiEntry = z
+  .object({
+    char: z.string().length(1),
+    strokes: z.number().int().positive(),
+    on: z.array(z.string()),
+    kun: z.array(z.string()),
+    en: z.array(z.string()).min(1),
+    /** Example words from OpenJLPT (written forms). */
+    words: z.array(z.string()),
+  })
+  .strict();
+export type KanjiEntry = z.infer<typeof KanjiEntry>;
+
+export const KanjiFile = z.object({ version: z.literal(1), kanji: z.array(KanjiEntry) }).strict();
 
 /* ----------------------------------------------------------------- grammar */
 

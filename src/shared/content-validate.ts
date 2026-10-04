@@ -11,6 +11,7 @@ import {
   GlossFile,
   GrammarFile,
   KanaFile,
+  KanjiFile,
   SentenceFile,
   SourcesFile,
   StrokesFile,
@@ -27,6 +28,7 @@ export interface RawContent {
   sentences?: unknown;
   grammar?: unknown;
   strokes?: unknown;
+  kanji?: unknown;
 }
 
 export interface ValidationReport {
@@ -69,6 +71,7 @@ export function validateContent(raw: RawContent): ValidationReport {
     raw.grammar === undefined ? undefined : parse(GrammarFile, raw.grammar, 'grammar.json', errors);
   const strokes =
     raw.strokes === undefined ? undefined : parse(StrokesFile, raw.strokes, 'strokes.json', errors);
+  if (raw.kanji !== undefined) parse(KanjiFile, raw.kanji, 'kanji.json', errors);
 
   if (!curriculum) return { errors, warnings };
   errors.push(...curriculumStructureErrors(curriculum).map((e) => `curriculum.json: ${e}`));
