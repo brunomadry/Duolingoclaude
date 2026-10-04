@@ -11,7 +11,12 @@ import { Hanko } from '../ui/Hanko.tsx';
 import { Modal } from '../ui/Modal.tsx';
 
 function formatDate(ms: number, timeZone: string): string {
-  return new Date(ms).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', timeZone });
+  return new Date(ms).toLocaleDateString('pl-PL', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone,
+  });
 }
 
 /** Stamp collection: one hanko per completed lesson, empty slots for the rest. */
@@ -29,8 +34,8 @@ export function StampsScreen({ profile }: { profile: ProfileRecord }) {
   return (
     <div class="stack">
       <p class="muted">
-        Pieczątki: <strong style={{ color: 'var(--text)' }}>{done.size}</strong> z {TOTAL_LESSONS}. Każda ukończona
-        lekcja zostawia tu swoją hanko.
+        Pieczątki: <strong style={{ color: 'var(--text)' }}>{done.size}</strong> z {TOTAL_LESSONS}.
+        Każda ukończona lekcja zostawia tu swoją hanko.
       </p>
       <ol class="stamp-grid" aria-label="Kolekcja pieczątek">
         {Array.from({ length: TOTAL_LESSONS }, (_, i) => i + 1).map((n) => {
@@ -39,7 +44,10 @@ export function StampsScreen({ profile }: { profile: ProfileRecord }) {
           return (
             <li key={n}>
               {record ? (
-                <button onClick={() => setSelected(record)} aria-label={`Lekcja ${n}, ukończona. Szczegóły`}>
+                <button
+                  onClick={() => setSelected(record)}
+                  aria-label={`Lekcja ${n}, ukończona. Szczegóły`}
+                >
                   <Hanko n={n} size={60} test={test} label="" />
                 </button>
               ) : (

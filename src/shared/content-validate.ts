@@ -87,7 +87,8 @@ export function validateContent(raw: RawContent): ValidationReport {
         if (g.kind !== 'basic' && g.kind !== 'dakuten') continue;
         for (const c of g.chars) {
           for (const ch of [...c.char]) {
-            if (!strokes.chars[ch]) errors.push(`strokes.json: missing stroke data for "${ch}" (group ${g.id})`);
+            if (!strokes.chars[ch])
+              errors.push(`strokes.json: missing stroke data for "${ch}" (group ${g.id})`);
           }
         }
       }

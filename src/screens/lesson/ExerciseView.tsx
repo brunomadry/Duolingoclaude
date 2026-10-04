@@ -19,8 +19,12 @@ const PROMPTS: Record<Exercise['kind'], string> = {
   'type-romaji': 'Wpisz czytanie w romaji',
 };
 
+/** Lower case without spaces or apostrophes. Hyphens stay: "ka-" is a long vowel (カー). */
 export function normalizeRomaji(input: string): string {
-  return input.trim().toLowerCase().replace(/[\s'’-]+/g, '');
+  return input
+    .trim()
+    .toLowerCase()
+    .replace(/[\s'’]+/g, '');
 }
 
 export function isTypedAnswerCorrect(exercise: Exercise, input: string): boolean {
@@ -80,7 +84,9 @@ export function ExerciseView({ exercise, sound, onAnswered, onNext }: ExerciseVi
             {exercise.item.char}
           </span>
         )}
-        {exercise.kind === 'romaji-to-kana' && <span class="exercise__romaji">{exercise.item.romaji}</span>}
+        {exercise.kind === 'romaji-to-kana' && (
+          <span class="exercise__romaji">{exercise.item.romaji}</span>
+        )}
         {exercise.kind === 'audio-to-kana' && (
           <SpeakButton text={exercise.item.char} size={88} label="Posłuchaj dźwięku" />
         )}
@@ -107,7 +113,11 @@ export function ExerciseView({ exercise, sound, onAnswered, onNext }: ExerciseVi
             readOnly={result !== null}
           />
           {result === null && (
-            <button class="btn btn--primary btn--block" type="submit" disabled={!normalizeRomaji(typed)}>
+            <button
+              class="btn btn--primary btn--block"
+              type="submit"
+              disabled={!normalizeRomaji(typed)}
+            >
               Sprawdź
             </button>
           )}

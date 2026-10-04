@@ -24,7 +24,8 @@
     "db:migrate:local": "wrangler d1 migrations apply aka-nihongo --local",
     "db:migrate:remote": "wrangler d1 migrations apply aka-nihongo --remote",
     "deploy": "npm run check && wrangler deploy",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run contrast && npm run validate:content && npm run build"
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run contrast && npm run validate:content && npm run build",
+    "strokes": "node scripts/fetch-kanjivg.ts"
   },
   "dependencies": {
     "hono": "^4.13.13",

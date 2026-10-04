@@ -40,7 +40,11 @@ export function Shell({ profile }: { profile: ProfileRecord }) {
     '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen /> },
     '/gramatyka': { title: 'Gramatyka', tab: true, render: () => <GrammarScreen /> },
     '/zrodla': { title: 'Źródła i licencje', tab: false, render: () => <LicensesScreen /> },
-    '/pieczatki': { title: 'Pieczątki', tab: false, render: () => <StampsScreen profile={profile} /> },
+    '/pieczatki': {
+      title: 'Pieczątki',
+      tab: false,
+      render: () => <StampsScreen profile={profile} />,
+    },
   };
 
   // Full-screen flows without the tab bar.

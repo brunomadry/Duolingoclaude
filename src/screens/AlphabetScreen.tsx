@@ -13,6 +13,7 @@ import { Modal } from '../ui/Modal.tsx';
 import { Segmented } from '../ui/Segmented.tsx';
 import { SpeakButton } from '../ui/SpeakButton.tsx';
 import { StrokeOrder } from '../ui/StrokeOrder.tsx';
+import { MixedText } from '../ui/MixedText.tsx';
 
 type Script = 'hiragana' | 'katakana';
 type View = 'chart' | 'practice';
@@ -27,7 +28,11 @@ const SECTIONS: { title: string; kinds: KanaGroup['kind'][]; columns: 3 | 5 }[] 
   { title: 'Podstawowe', kinds: ['basic'], columns: 5 },
   { title: 'Z kreskami (dakuten)', kinds: ['dakuten'], columns: 5 },
   { title: 'Połączenia (yōon)', kinds: ['yoon'], columns: 3 },
-  { title: 'Małe っ, długie samogłoski i dźwięki obce', kinds: ['small-tsu', 'long-vowel', 'extended'], columns: 3 },
+  {
+    title: 'Małe っ, długie samogłoski i dźwięki obce',
+    kinds: ['small-tsu', 'long-vowel', 'extended'],
+    columns: 3,
+  },
 ];
 
 /**
@@ -83,7 +88,10 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
   );
   const groups = kanaGroups().filter((g) => g.script === script);
   const total = groups.reduce((sum, g) => sum + g.chars.length, 0);
-  const known = groups.reduce((sum, g) => sum + g.chars.filter((c) => learned.has(c.char)).length, 0);
+  const known = groups.reduce(
+    (sum, g) => sum + g.chars.filter((c) => learned.has(c.char)).length,
+    0,
+  );
   const due = snap ? dueKana(snap.cards, Date.now()).dueTotal : 0;
 
   const cell = (c: KanaChar | null, group: KanaGroup, key: string) =>
@@ -141,8 +149,8 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
               <h2 class="kana-section__title">{section.title}</h2>
               <div class={`kana-grid kana-grid--${section.columns}`}>
                 {sectionGroups.flatMap((g) =>
-                  (section.columns === 5 ? gojuonRows(g.chars) : chunk(g.chars, 3)).flatMap((row, r) =>
-                    row.map((c, i) => cell(c, g, `${g.id}-${r}-${i}`)),
+                  (section.columns === 5 ? gojuonRows(g.chars) : chunk(g.chars, 3)).flatMap(
+                    (row, r) => row.map((c, i) => cell(c, g, `${g.id}-${r}-${i}`)),
                   ),
                 )}
               </div>
@@ -155,16 +163,22 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
             Ćwiczenia z kany
           </h2>
           <p class="muted">
-            Dodatkowe ćwiczenia ze wszystkich poznanych znaków. Nie wpływają na odblokowanie lekcji, więc
-            ćwicz, ile chcesz.
+            Dodatkowe ćwiczenia ze wszystkich poznanych znaków. Nie wpływają na odblokowanie lekcji,
+            więc ćwicz, ile chcesz.
           </p>
-          <button class="btn btn--primary btn--block" disabled={learned.size < 4} onClick={() => navigate('/cwicz')}>
+          <button
+            class="btn btn--primary btn--block"
+            disabled={learned.size < 4}
+            onClick={() => navigate('/cwicz')}
+          >
             Ćwicz rozpoznawanie i pisanie
           </button>
           <button class="btn btn--block" disabled={!due} onClick={() => navigate('/powtorki')}>
             Powtórki ({due})
           </button>
-          {learned.size < 4 && <p class="setting__hint">Ćwiczenia odblokują się po pierwszej lekcji.</p>}
+          {learned.size < 4 && (
+            <p class="setting__hint">Ćwiczenia odblokują się po pierwszej lekcji.</p>
+          )}
         </section>
       )}
 
@@ -188,10 +202,20 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
               <SpeakButton text={selected.char.char} />
             </div>
             {selected.char.alt?.length ? (
-              <p class="setting__hint">Przy wpisywaniu zaliczamy też: {selected.char.alt.join(', ')}</p>
+              <p class="setting__hint">
+                Przy wpisywaniu zaliczamy też: {selected.char.alt.join(', ')}
+              </p>
             ) : null}
-            {selected.char.mnemonic && <p>{selected.char.mnemonic.pl}</p>}
-            {selected.group.note && <p class="muted">{selected.group.note.pl}</p>}
+            {selected.char.mnemonic && (
+              <p>
+                <MixedText text={selected.char.mnemonic.pl} />
+              </p>
+            )}
+            {selected.group.note && (
+              <p class="muted">
+                <MixedText text={selected.group.note.pl} />
+              </p>
+            )}
             {!learned.has(selected.char.char) && (
               <p class="setting__hint">Ten znak pojawi się w jednej z kolejnych lekcji.</p>
             )}

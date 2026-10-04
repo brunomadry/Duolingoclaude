@@ -29,13 +29,27 @@ export interface Box {
 export const DEFAULT_BOX: Box = { x: 0, y: 0, width: 109, height: 109 };
 
 export function parseViewBox(viewBox: string): Box {
-  const n = viewBox.trim().split(/[\s,]+/).map(Number);
+  const n = viewBox
+    .trim()
+    .split(/[\s,]+/)
+    .map(Number);
   const [x = NaN, y = NaN, width = NaN, height = NaN] = n;
   if (n.length !== 4 || !n.every(Number.isFinite) || width <= 0 || height <= 0) return DEFAULT_BOX;
   return { x, y, width, height };
 }
 
-const PARAMS: Record<string, number> = { M: 2, L: 2, H: 1, V: 1, C: 6, S: 4, Q: 4, T: 2, A: 7, Z: 0 };
+const PARAMS: Record<string, number> = {
+  M: 2,
+  L: 2,
+  H: 1,
+  V: 1,
+  C: 6,
+  S: 4,
+  Q: 4,
+  T: 2,
+  A: 7,
+  Z: 0,
+};
 const TOKEN = /[MLHVCSQTAZ]|[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/gi;
 const EPS = 1e-6;
 
@@ -44,7 +58,9 @@ const dist = (a: Point, b: Point) => Math.hypot(b.x - a.x, b.y - a.y);
 /** Bezier length estimate: the mean of the chord and the control polygon. */
 function curveLength(points: Point[]): number {
   let polygon = 0;
-  for (let i = 1; i < points.length; i++) polygon += dist(points[i - 1] as Point, points[i] as Point);
+  for (let i = 1; i < points.length; i++) {
+    polygon += dist(points[i - 1] as Point, points[i] as Point);
+  }
   const first = points[0] as Point;
   const last = points[points.length - 1] as Point;
   return (polygon + dist(first, last)) / 2;
@@ -76,7 +92,8 @@ export function strokeGeometry(d: string): StrokeGeometry | null {
         direction = { x: (to.x - from.x) / len, y: (to.y - from.y) / len };
       }
     }
-    length += points.length > 2 ? curveLength(points) : dist(points[0] as Point, points[1] as Point);
+    length +=
+      points.length > 2 ? curveLength(points) : dist(points[0] as Point, points[1] as Point);
   };
 
   while (i < tokens.length) {
@@ -119,7 +136,9 @@ export function strokeGeometry(d: string): StrokeGeometry | null {
       case 'A': {
         const end = upper === 'A' ? pt(5) : pt(0);
         if (upper === 'T') {
-          const c: Point = lastQuad ? { x: 2 * cur.x - lastQuad.x, y: 2 * cur.y - lastQuad.y } : cur;
+          const c: Point = lastQuad
+            ? { x: 2 * cur.x - lastQuad.x, y: 2 * cur.y - lastQuad.y }
+            : cur;
           segment([cur, c, end]);
           nextQuad = c;
         } else {

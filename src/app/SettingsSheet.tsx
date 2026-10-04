@@ -25,6 +25,8 @@ import {
   UploadIcon,
 } from '../ui/icons.tsx';
 import { ReportDialog } from './ReportDialog.tsx';
+import { useSpeechStatus } from '../ui/SpeakButton.tsx';
+import { JAPANESE_VOICE_HELP } from '../lib/speech.ts';
 
 interface SettingsSheetProps {
   open: boolean;
@@ -56,6 +58,7 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
   const [reporting, setReporting] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const s = profile.settings;
+  const speech = useSpeechStatus();
 
   const set = (patch: Partial<ProfileSettings>) =>
     void updateProfile(profile.id, { settings: patch });
@@ -179,6 +182,11 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
               onChange={(e) => set({ sound: e.currentTarget.checked })}
             />
           </label>
+          {(speech === 'no-voice' || speech === 'unsupported') && (
+            <p class="setting" role="note">
+              <span class="setting__hint">{JAPANESE_VOICE_HELP}</span>
+            </p>
+          )}
         </div>
 
         <h3 class="section-label">Dane i pomoc</h3>

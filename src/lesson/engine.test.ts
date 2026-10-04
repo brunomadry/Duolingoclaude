@@ -22,7 +22,12 @@ const L1 = [...VOWELS, ...KA];
 
 function input(over: Partial<PlanInput> = {}): PlanInput {
   return {
-    lesson: { n: 1, kind: 'kana', title: 'Hiragana', newItem: { type: 'kana', script: 'hiragana', groups: ['h-a', 'h-ka'] } },
+    lesson: {
+      n: 1,
+      kind: 'kana',
+      title: 'Hiragana',
+      newItem: { type: 'kana', script: 'hiragana', groups: ['h-a', 'h-ka'] },
+    },
     lessonItems: L1,
     coveredItems: [],
     knownItems: [],
@@ -58,8 +63,12 @@ describe('buildLessonPlan: kana lesson', () => {
   it('practises every new character, recognition first in intro order', () => {
     const practice = buildLessonPlan(input()).steps.find((s) => s.kind === 'practice');
     if (practice?.kind !== 'practice') throw new Error('no practice');
-    expect(practice.exercises.slice(0, L1.length).map((e) => e.item.char)).toEqual(L1.map((i) => i.char));
-    expect(new Set(practice.exercises.map((e) => e.item.char))).toEqual(new Set(L1.map((i) => i.char)));
+    expect(practice.exercises.slice(0, L1.length).map((e) => e.item.char)).toEqual(
+      L1.map((i) => i.char),
+    );
+    expect(new Set(practice.exercises.map((e) => e.item.char))).toEqual(
+      new Set(L1.map((i) => i.char)),
+    );
     expect(practice.exercises.length).toBeLessThanOrEqual(PRACTICE_CAP);
   });
 
@@ -75,7 +84,23 @@ describe('buildLessonPlan: kana lesson', () => {
       expect(new Set(e.options).size).toBe(e.options.length);
       expect(e.options.length).toBeGreaterThanOrEqual(2);
       expect(e.options.length).toBeLessThanOrEqual(4);
-      if (e.item.char === 'じ' && e.kind !== 'kana-to-romaji') expect(e.options).not.toContain('ぢ');
+      if (e.item.char === 'じ' && e.kind !== 'kana-to-romaji')
+        expect(e.options).not.toContain('ぢ');
+    }
+  });
+
+  it('never offers a distractor that is also a correct reading (ヲ o/wo vs ウォ wo)', () => {
+    const wo: KanaItem = { char: 'ヲ', romaji: 'o', alt: ['wo'], script: 'katakana' };
+    const uo: KanaItem = { char: 'ウォ', romaji: 'wo', script: 'katakana' };
+    const others = [K('カ', 'ka'), K('キ', 'ki'), K('ク', 'ku'), K('ケ', 'ke')];
+    for (let seed = 0; seed < 20; seed++) {
+      const plan = buildLessonPlan(input({ lessonItems: [wo, uo, ...others], seed }));
+      for (const e of exercisesOf(plan)) {
+        if (e.item.char === 'ヲ')
+          expect(e.options).not.toContain(e.kind === 'kana-to-romaji' ? 'wo' : 'ウォ');
+        if (e.item.char === 'ウォ')
+          expect(e.options).not.toContain(e.kind === 'kana-to-romaji' ? 'o' : 'ヲ');
+      }
     }
   });
 
@@ -88,12 +113,15 @@ describe('buildLessonPlan: kana lesson', () => {
     const practice = buildLessonPlan(input()).steps.find((s) => s.kind === 'practice');
     if (practice?.kind !== 'practice') throw new Error('no practice');
     const rest = practice.exercises.slice(L1.length);
-    for (let i = 1; i < rest.length; i++) expect(rest[i]!.item.char).not.toBe(rest[i - 1]!.item.char);
+    for (let i = 1; i < rest.length; i++)
+      expect(rest[i]!.item.char).not.toBe(rest[i - 1]!.item.char);
   });
 
   it('caps large groups but still covers every item once', () => {
     const many = Array.from({ length: 33 }, (_, i) => H(`x${i}`, `r${i}`));
-    const practice = buildLessonPlan(input({ lessonItems: many })).steps.find((s) => s.kind === 'practice');
+    const practice = buildLessonPlan(input({ lessonItems: many })).steps.find(
+      (s) => s.kind === 'practice',
+    );
     if (practice?.kind !== 'practice') throw new Error('no practice');
     expect(practice.exercises.length).toBe(PRACTICE_CAP);
   });
@@ -106,7 +134,9 @@ describe('buildLessonPlan: kana lesson', () => {
   });
 
   it('gives every exercise a unique id', () => {
-    const ids = exercisesOf(buildLessonPlan(input({ dueReviews: VOWELS, dueTotal: 5 }))).map((e) => e.id);
+    const ids = exercisesOf(buildLessonPlan(input({ dueReviews: VOWELS, dueTotal: 5 }))).map(
+      (e) => e.id,
+    );
     expect(new Set(ids).size).toBe(ids.length);
   });
 });
@@ -115,7 +145,11 @@ describe('buildLessonPlan: tests and review lessons', () => {
   it('a test lesson has no new step and a fixed number of questions', () => {
     const covered = [...L1, ...Array.from({ length: 30 }, (_, i) => H(`y${i}`, `s${i}`))];
     const plan = buildLessonPlan(
-      input({ lesson: { n: 7, kind: 'test', title: 'Test', newItem: { type: 'none' } }, lessonItems: [], coveredItems: covered }),
+      input({
+        lesson: { n: 7, kind: 'test', title: 'Test', newItem: { type: 'none' } },
+        lessonItems: [],
+        coveredItems: covered,
+      }),
     );
     expect(plan.steps.map((s) => s.kind)).toEqual(['practice', 'summary']);
     const test = plan.steps[0];
@@ -127,7 +161,11 @@ describe('buildLessonPlan: tests and review lessons', () => {
   it('a review lesson mixes both alphabets', () => {
     const covered = [...L1, K('ア', 'a'), K('イ', 'i'), K('ウ', 'u'), K('エ', 'e'), K('オ', 'o')];
     const plan = buildLessonPlan(
-      input({ lesson: { n: 16, kind: 'review', title: 'Mix', newItem: { type: 'none' } }, lessonItems: [], coveredItems: covered }),
+      input({
+        lesson: { n: 16, kind: 'review', title: 'Mix', newItem: { type: 'none' } },
+        lessonItems: [],
+        coveredItems: covered,
+      }),
     );
     const scripts = new Set(exercisesOf(plan).map((e) => e.item.script));
     expect(scripts).toEqual(new Set(['hiragana', 'katakana']));
@@ -153,6 +191,11 @@ describe('grading', () => {
 
   it('scores the share of correct answers', () => {
     expect(scoreOf([])).toBe(1);
-    expect(scoreOf([{ cardId: 'a', correct: true }, { cardId: 'b', correct: false }])).toBe(0.5);
+    expect(
+      scoreOf([
+        { cardId: 'a', correct: true },
+        { cardId: 'b', correct: false },
+      ]),
+    ).toBe(0.5);
   });
 });

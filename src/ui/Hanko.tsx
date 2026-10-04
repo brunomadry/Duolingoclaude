@@ -23,12 +23,40 @@ function tilt(n: number): number {
   return ((n * 37) % 17) - 8;
 }
 
-export function Hanko({ n, size = 72, test = false, stamp = false, empty = false, label }: HankoProps) {
+export function Hanko({
+  n,
+  size = 72,
+  test = false,
+  stamp = false,
+  empty = false,
+  label,
+}: HankoProps) {
   if (empty) {
     return (
-      <svg class="hanko hanko--empty" width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="4 6" />
-        <text x="50" y="57" text-anchor="middle" font-size="22" fill="var(--text-muted)" font-family="var(--font-ui)">
+      <svg
+        class="hanko hanko--empty"
+        width={size}
+        height={size}
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          r="42"
+          fill="none"
+          stroke="var(--border-strong)"
+          stroke-width="2"
+          stroke-dasharray="4 6"
+        />
+        <text
+          x="50"
+          y="57"
+          text-anchor="middle"
+          font-size="22"
+          fill="var(--text-muted)"
+          font-family="var(--font-ui)"
+        >
           {n}
         </text>
       </svg>
@@ -50,8 +78,20 @@ export function Hanko({ n, size = 72, test = false, stamp = false, empty = false
     >
       <defs>
         <filter id={filterId} x="-10%" y="-10%" width="120%" height="120%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={n} result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.9"
+            numOctaves="2"
+            seed={n}
+            result="noise"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="2.2"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
         </filter>
       </defs>
       <g filter={`url(#${filterId})`} fill={SHU} stroke={SHU}>

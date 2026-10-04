@@ -3,12 +3,19 @@ import '../../styles/lesson.css';
 import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
 import { applyGrades, loadLearning, recordCompletion } from '../../data/learning.ts';
-import { buildLessonPlan, gradesFromResults, type AnswerResult, type Exercise, type LessonPlan, type Step } from '../../lesson/engine.ts';
+import {
+  buildLessonPlan,
+  gradesFromResults,
+  type AnswerResult,
+  type Exercise,
+  type LessonPlan,
+  type Step,
+} from '../../lesson/engine.ts';
 import { completedPrefix, dueKana, kanaUpTo, lessonByN, planLesson } from '../../lesson/context.ts';
 import { seedFrom } from '../../lesson/rng.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
-import { getSpeechStatus } from '../../lib/speech.ts';
+import { VOICE_GRACE_MS, getSpeechStatus, subscribeSpeech } from '../../lib/speech.ts';
 import { Mascot } from '../../mascot/Mascot.tsx';
 import { database, notifyLocalChange } from '../../state/app.ts';
 import { CloseIcon } from '../../ui/icons.tsx';
@@ -33,10 +40,36 @@ const STEP_LABELS: Record<Step['kind'], string> = {
 };
 
 type Finish =
-  | { kind: 'lesson'; n: number; test: boolean; correct: number; total: number; nextInfo: string; firstTime: boolean }
+  | {
+      kind: 'lesson';
+      n: number;
+      test: boolean;
+      correct: number;
+      total: number;
+      nextInfo: string;
+      firstTime: boolean;
+    }
   | { kind: 'simple'; title: string; text: string };
 
 const EXTRA_LENGTH = 12;
+
+/** Resolves once voices have loaded (or clearly will not), so plans know about listening. */
+function speechAvailable(): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (getSpeechStatus() !== 'loading') return resolve(getSpeechStatus() === 'ready');
+    let unsubscribe: () => void = () => undefined;
+    const timer = setTimeout(() => {
+      unsubscribe();
+      resolve(getSpeechStatus() === 'ready');
+    }, VOICE_GRACE_MS);
+    unsubscribe = subscribeSpeech((status) => {
+      if (status === 'loading') return;
+      clearTimeout(timer);
+      unsubscribe();
+      resolve(status === 'ready');
+    });
+  });
+}
 const MIN_KANA_FOR_EXTRA = 4;
 
 export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
@@ -56,10 +89,12 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const snapshot = await loadLearning(database(), profile.id);
+      const [snapshot, speech] = await Promise.all([
+        loadLearning(database(), profile.id),
+        speechAvailable(),
+      ]);
       const now = Date.now();
-      const speech = getSpeechStatus() === 'ready';
-      let next: LessonPlan | null = null;
+      let next: LessonPlan;
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
         const unlock = computeUnlock({
@@ -95,7 +130,8 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
         const known = kanaUpTo(completedPrefix(snapshot.lessons));
-        if (known.length < MIN_KANA_FOR_EXTRA) return setProblem('Dodatkowe ćwiczenia odblokują się po pierwszej lekcji.');
+        if (known.length < MIN_KANA_FOR_EXTRA)
+          return setProblem('Dodatkowe ćwiczenia odblokują się po pierwszej lekcji.');
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Ćwicz dodatkowo', newItem: { type: 'none' } },
           lessonItems: [],
@@ -110,7 +146,9 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
           ...next,
           steps: next.steps
             .filter((s) => s.kind === 'practice')
-            .map((s) => (s.kind === 'practice' ? { ...s, exercises: s.exercises.slice(0, EXTRA_LENGTH) } : s)),
+            .map((s) =>
+              s.kind === 'practice' ? { ...s, exercises: s.exercises.slice(0, EXTRA_LENGTH) } : s,
+            ),
         };
       }
       if (!cancelled) setPlan(next);
@@ -129,7 +167,13 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     stepResults.current = [];
     requeued.current = new Set();
     setPosition(0);
-    setQueue(step.kind === 'review' || step.kind === 'practice' ? step.exercises : step.kind === 'summary' ? step.quiz : []);
+    setQueue(
+      step.kind === 'review' || step.kind === 'practice'
+        ? step.exercises
+        : step.kind === 'summary'
+          ? step.quiz
+          : [],
+    );
   }, [step]);
 
   const exit = () => navigate('/', { replace: true });
@@ -140,17 +184,31 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     const correct = firsts.filter(Boolean).length;
     const total = firsts.length;
     if (mode === 'extra') {
-      setFinish({ kind: 'simple', title: 'Dobra robota', text: `Poprawne odpowiedzi: ${correct} z ${total}. Te ćwiczenia nie wpływają na lekcje.` });
+      setFinish({
+        kind: 'simple',
+        title: 'Dobra robota',
+        text: `Poprawne odpowiedzi: ${correct} z ${total}. Te ćwiczenia nie wpływają na lekcje.`,
+      });
       return;
     }
     if (mode === 'reviews') {
-      setFinish({ kind: 'simple', title: 'Powtórki zrobione', text: `Poprawne odpowiedzi: ${correct} z ${total}. Pamięć odświeżona!` });
+      setFinish({
+        kind: 'simple',
+        title: 'Powtórki zrobione',
+        text: `Poprawne odpowiedzi: ${correct} z ${total}. Pamięć odświeżona!`,
+      });
       return;
     }
     if (!lesson) return;
     const now = Date.now();
     const db = database();
-    const outcome = await recordCompletion(db, profile.id, lesson.n, total ? correct / total : 1, now);
+    const outcome = await recordCompletion(
+      db,
+      profile.id,
+      lesson.n,
+      total ? correct / total : 1,
+      now,
+    );
     notifyLocalChange();
     const after = await loadLearning(db, profile.id);
     const unlock = computeUnlock({
@@ -258,7 +316,11 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   return (
     <main class="player">
       <header class="player__header">
-        <button class="icon-button" onClick={() => setConfirmExit(true)} aria-label="Zakończ lekcję">
+        <button
+          class="icon-button"
+          onClick={() => setConfirmExit(true)}
+          aria-label="Zakończ lekcję"
+        >
           <CloseIcon />
         </button>
         <ol class="player__steps" aria-label="Kroki lekcji">
@@ -269,9 +331,13 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
               aria-current={i === stepIndex ? 'step' : undefined}
             >
               <span class="player__step-bar">
-                {i === stepIndex && <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />}
+                {i === stepIndex && (
+                  <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />
+                )}
               </span>
-              <span class="player__step-label">{s.kind === 'practice' && s.mode === 'test' ? 'Test' : STEP_LABELS[s.kind]}</span>
+              <span class="player__step-label">
+                {s.kind === 'practice' && s.mode === 'test' ? 'Test' : STEP_LABELS[s.kind]}
+              </span>
             </li>
           ))}
         </ol>
@@ -283,7 +349,8 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
         </h1>
         {step.kind === 'review' && position === 0 && step.dueTotal > step.exercises.length && (
           <p class="muted player__hint">
-            Dziś {step.exercises.length} z {step.dueTotal} zaległych powtórek. Reszta poczeka, bez stresu.
+            Dziś {step.exercises.length} z {step.dueTotal} zaległych powtórek. Reszta poczeka, bez
+            stresu.
           </p>
         )}
         {step.kind === 'new' ? (
@@ -306,7 +373,12 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
         )}
       </div>
 
-      <Modal open={confirmExit} onClose={() => setConfirmExit(false)} title="Przerwać lekcję?" variant="dialog">
+      <Modal
+        open={confirmExit}
+        onClose={() => setConfirmExit(false)}
+        title="Przerwać lekcję?"
+        variant="dialog"
+      >
         <div class="stack">
           <p>Ukończone kroki zostaną w powtórkach, ale lekcja nie będzie zaliczona.</p>
           <button class="btn btn--primary btn--block" onClick={() => setConfirmExit(false)}>

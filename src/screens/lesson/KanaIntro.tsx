@@ -3,6 +3,7 @@ import type { KanaItem } from '../../lesson/engine.ts';
 import { findKana, groupById } from '../../lesson/kana.ts';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
 import { StrokeOrder } from '../../ui/StrokeOrder.tsx';
+import { MixedText } from '../../ui/MixedText.tsx';
 
 interface KanaIntroProps {
   items: readonly KanaItem[];
@@ -34,7 +35,7 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
   return (
     <div class="intro">
       <p class="exercise__prompt" aria-live="polite">
-        {showNotes ? 'Zanim zaczniemy' : `Znak ${(notes.length ? page : page + 1)} z ${items.length}`}
+        {showNotes ? 'Zanim zaczniemy' : `Znak ${notes.length ? page : page + 1} z ${items.length}`}
       </p>
 
       {showNotes ? (
@@ -42,7 +43,9 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
           {notes.map((n) => (
             <div key={n.label} class="stack" style={{ gap: 'var(--space-2)' }}>
               <h3 class="lesson-card__eyebrow">{n.label}</h3>
-              <p>{n.text}</p>
+              <p>
+                <MixedText text={n.text} />
+              </p>
             </div>
           ))}
         </div>
@@ -60,9 +63,17 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
               <span class="intro__romaji">{item.romaji}</span>
               <SpeakButton text={item.char} />
             </div>
-            {details?.mnemonic && <p class="intro__mnemonic">{details.mnemonic.pl}</p>}
+            {details?.mnemonic && (
+              <p class="intro__mnemonic">
+                <MixedText text={details.mnemonic.pl} />
+              </p>
+            )}
             {single && (
-              <button class="btn btn--ghost" onClick={() => setStrokes(!strokes)} aria-pressed={strokes}>
+              <button
+                class="btn btn--ghost"
+                onClick={() => setStrokes(!strokes)}
+                aria-pressed={strokes}
+              >
                 {strokes ? 'Pokaż znak' : 'Kolejność kresek'}
               </button>
             )}

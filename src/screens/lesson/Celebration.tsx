@@ -21,9 +21,16 @@ export function Petals() {
           width={p.size}
           height={p.size}
           viewBox="0 0 20 20"
-          style={{ left: `${p.left}%`, animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s` }}
+          style={{
+            left: `${p.left}%`,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.dur}s`,
+          }}
         >
-          <path d="M10 1 C 15 5, 17 11, 10 19 C 3 11, 5 5, 10 1 Z M10 1 L 9 4 L 11 4 Z" fill="#f4b6c2" />
+          <path
+            d="M10 1 C 15 5, 17 11, 10 19 C 3 11, 5 5, 10 1 Z M10 1 L 9 4 L 11 4 Z"
+            fill="#f4b6c2"
+          />
         </svg>
       ))}
     </div>
@@ -42,14 +49,25 @@ interface CelebrationProps {
   onStamps: () => void;
 }
 
-export function Celebration({ n, test, correct, total, nextInfo, firstTime, onDone, onStamps }: CelebrationProps) {
+export function Celebration({
+  n,
+  test,
+  correct,
+  total,
+  nextInfo,
+  firstTime,
+  onDone,
+  onStamps,
+}: CelebrationProps) {
   return (
     <div class="celebration">
       {firstTime && <Petals />}
       <div class="celebration__seal">
         <Hanko n={n} size={150} test={test} stamp={firstTime} />
       </div>
-      <h2 class="display celebration__title">{test ? `Test ${n} zaliczony` : `Lekcja ${n} ukończona`}</h2>
+      <h2 class="display celebration__title">
+        {test ? `Test ${n} zaliczony` : `Lekcja ${n} ukończona`}
+      </h2>
       {total > 0 && (
         <p class="muted">
           Poprawne odpowiedzi: {correct} z {total}

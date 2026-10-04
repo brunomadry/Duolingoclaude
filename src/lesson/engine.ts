@@ -90,9 +90,22 @@ function buildOptions(
   rng: Rng,
 ): string[] {
   const answer = field === 'romaji' ? item.romaji : item.char;
-  const candidates = pool.filter((p) => p.char !== item.char && p.romaji !== item.romaji);
+  // A distractor must not also be a correct reading: ヲ (o, also "wo") next to ウォ (wo).
+  const candidates = pool.filter(
+    (p) =>
+      p.char !== item.char &&
+      p.romaji !== item.romaji &&
+      !(p.alt ?? []).includes(item.romaji) &&
+      !(item.alt ?? []).includes(p.romaji),
+  );
   const sameScript = candidates.filter((p) => p.script === item.script);
-  const ordered = [...shuffle(sameScript, rng), ...shuffle(candidates.filter((p) => p.script !== item.script), rng)];
+  const ordered = [
+    ...shuffle(sameScript, rng),
+    ...shuffle(
+      candidates.filter((p) => p.script !== item.script),
+      rng,
+    ),
+  ];
   const values: string[] = [];
   for (const c of ordered) {
     const v = field === 'romaji' ? c.romaji : c.char;
@@ -153,7 +166,9 @@ function mixedExercises(
     picked.push(...shuffle(items, rng).slice(0, count - picked.length));
   }
   return spreadOut(
-    picked.map((item, i) => makeExercise(kinds[i % kinds.length] as ExerciseKind, item, pool, rng, `${prefix}${i}`)),
+    picked.map((item, i) =>
+      makeExercise(kinds[i % kinds.length] as ExerciseKind, item, pool, rng, `${prefix}${i}`),
+    ),
   );
 }
 
@@ -167,7 +182,13 @@ function practiceForNewItems(
   const round1 = items.map((item, i) => makeExercise('kana-to-romaji', item, pool, rng, `p1-${i}`));
   // Round 2: the other direction (listening when a voice exists).
   const round2 = shuffle(items, rng).map((item, i) =>
-    makeExercise(speech && i % 2 === 0 ? 'audio-to-kana' : 'romaji-to-kana', item, pool, rng, `p2-${i}`),
+    makeExercise(
+      speech && i % 2 === 0 ? 'audio-to-kana' : 'romaji-to-kana',
+      item,
+      pool,
+      rng,
+      `p2-${i}`,
+    ),
   );
   // Round 3: production for every other character.
   const round3 = shuffle(items, rng)
@@ -217,7 +238,14 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
     steps.push({
       kind: 'practice',
       mode: 'test',
-      exercises: mixedExercises(covered, Math.min(TEST_LENGTH, Math.max(covered.length, 8)), pool, input.speech, rng, 't'),
+      exercises: mixedExercises(
+        covered,
+        Math.min(TEST_LENGTH, Math.max(covered.length, 8)),
+        pool,
+        input.speech,
+        rng,
+        't',
+      ),
     });
     steps.push({ kind: 'summary', quiz: [] });
     return { n: lesson.n, title: lesson.title, steps };
@@ -245,11 +273,20 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
     steps.push({
       kind: 'practice',
       mode: 'practice',
-      exercises: mixedExercises(covered, Math.min(REVIEW_LESSON_LENGTH, Math.max(covered.length, 4)), pool, input.speech, rng, 'm'),
+      exercises: mixedExercises(
+        covered,
+        Math.min(REVIEW_LESSON_LENGTH, Math.max(covered.length, 4)),
+        pool,
+        input.speech,
+        rng,
+        'm',
+      ),
     });
     steps.push({
       kind: 'summary',
-      quiz: sample(covered, QUIZ_LENGTH, rng).map((item, i) => makeExercise('kana-to-romaji', item, pool, rng, `q${i}`)),
+      quiz: sample(covered, QUIZ_LENGTH, rng).map((item, i) =>
+        makeExercise('kana-to-romaji', item, pool, rng, `q${i}`),
+      ),
     });
   }
   return { n: lesson.n, title: lesson.title, steps };

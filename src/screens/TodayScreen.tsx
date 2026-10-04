@@ -41,12 +41,23 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
 
   if (!snap) return <div aria-busy="true" />;
 
-  const unlock = computeUnlock({ completions: snap.lessons, pace: profile.settings.pace, timeZone: tz, now });
+  const unlock = computeUnlock({
+    completions: snap.lessons,
+    pace: profile.settings.pace,
+    timeZone: tz,
+    now,
+  });
   const next = unlock.nextN ? curriculum.lessons[unlock.nextN - 1] : undefined;
   const due = dueKana(snap.cards, now);
   const doneToday = snap.lessons.some((l) => localDaysBetween(l.completedAt, now, tz) === 0);
   const recent = [...snap.lessons].sort((a, b) => b.completedAt - a.completedAt).slice(0, 5);
-  const pose: Pose = !next ? 'celebrating' : doneToday ? 'happy' : unlock.nextUnlocked ? 'idle' : 'sleepy';
+  const pose: Pose = !next
+    ? 'celebrating'
+    : doneToday
+      ? 'happy'
+      : unlock.nextUnlocked
+        ? 'idle'
+        : 'sleepy';
   const lessonLabel = unlock.nextN ?? TOTAL_LESSONS;
 
   return (
@@ -87,7 +98,10 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
           </h3>
           <p class="muted">{next.summary}</p>
           {unlock.nextUnlocked ? (
-            <button class="btn btn--primary btn--block" onClick={() => navigate(`/lekcja/${next.n}`)}>
+            <button
+              class="btn btn--primary btn--block"
+              onClick={() => navigate(`/lekcja/${next.n}`)}
+            >
               {doneToday ? 'Jeszcze jedna? Zaczynamy' : 'Zaczynamy'}
             </button>
           ) : (
@@ -97,7 +111,9 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
       ) : (
         <section class="card stack" style={{ textAlign: 'center' }}>
           <h3 class="lesson-card__title">Kurs ukończony</h3>
-          <p class="muted">Wszystkie lekcje za Tobą. Powtórki nadal czekają, żeby wiedza została.</p>
+          <p class="muted">
+            Wszystkie lekcje za Tobą. Powtórki nadal czekają, żeby wiedza została.
+          </p>
         </section>
       )}
 
@@ -116,7 +132,12 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
             : 'Na razie nic do powtórki. Pamięć ma się dobrze.'}
         </p>
         <div class="row">
-          <button class="btn grow" style={{ flex: 1 }} disabled={!due.dueTotal} onClick={() => navigate('/powtorki')}>
+          <button
+            class="btn grow"
+            style={{ flex: 1 }}
+            disabled={!due.dueTotal}
+            onClick={() => navigate('/powtorki')}
+          >
             Powtórz teraz
           </button>
           <button
@@ -142,7 +163,12 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
         {recent.length ? (
           <div class="row" style={{ flexWrap: 'wrap' }}>
             {recent.map((l) => (
-              <Hanko key={l.n} n={l.n} size={52} test={curriculum.lessons[l.n - 1]?.kind === 'test'} />
+              <Hanko
+                key={l.n}
+                n={l.n}
+                size={52}
+                test={curriculum.lessons[l.n - 1]?.kind === 'test'}
+              />
             ))}
           </div>
         ) : (

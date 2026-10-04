@@ -123,7 +123,10 @@ export function parseKanjiVgSvg(svg: string, char: string): ParsedGlyph {
 }
 
 /** Builds the file with keys sorted by code point, so reruns produce stable diffs. */
-export function buildStrokesFile(viewBox: string, chars: ReadonlyMap<string, string[]>): StrokesFile {
+export function buildStrokesFile(
+  viewBox: string,
+  chars: ReadonlyMap<string, string[]>,
+): StrokesFile {
   const sorted: StrokesFile['chars'] = {};
   for (const ch of [...chars.keys()].sort(byCodePoint)) {
     const strokes = chars.get(ch);
@@ -182,7 +185,9 @@ async function readExisting(): Promise<StrokesFile | undefined> {
   if (!existsSync(OUT_URL)) return undefined;
   const parsed = StrokesFile.safeParse(JSON.parse(await readFile(OUT_URL, 'utf8')));
   if (!parsed.success) {
-    throw new Error(`content/strokes.json is invalid, fix or delete it first:\n${parsed.error.message}`);
+    throw new Error(
+      `content/strokes.json is invalid, fix or delete it first:\n${parsed.error.message}`,
+    );
   }
   return parsed.data;
 }
@@ -231,7 +236,9 @@ async function main(): Promise<void> {
     if (vb !== viewBox) throw new Error(`KanjiVG viewBox changed: "${vb}" vs "${viewBox}"`);
   }
 
-  const merged = new Map<string, string[]>(Object.entries(existing?.chars ?? {}).map(([c, v]) => [c, v.strokes]));
+  const merged = new Map<string, string[]>(
+    Object.entries(existing?.chars ?? {}).map(([c, v]) => [c, v.strokes]),
+  );
   for (const [c, strokes] of fetched) merged.set(c, strokes);
   const file = StrokesFile.parse(buildStrokesFile(viewBox, merged));
   const text = await formatJson(file);
@@ -243,7 +250,9 @@ async function main(): Promise<void> {
   const kept = missing.filter((c) => merged.has(c));
   console.log(`Fetched ${fetched.size} of ${list.length} character(s); viewBox "${viewBox}".`);
   if (missing.length) {
-    console.log(`Not in KanjiVG (404, skipped): ${missing.map((c) => `${c} ${codePointLabel(c)}`).join(', ')}`);
+    console.log(
+      `Not in KanjiVG (404, skipped): ${missing.map((c) => `${c} ${codePointLabel(c)}`).join(', ')}`,
+    );
   }
   if (kept.length) console.warn(`Kept previous data for: ${kept.join(' ')}`);
   const kb = (Buffer.byteLength(text) / 1024).toFixed(1);

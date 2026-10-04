@@ -19,7 +19,8 @@ export function localDaysBetween(from: number, to: number, timeZone: string): nu
 }
 
 export function describeNextUnlock(u: UnlockView, now: number, timeZone: string): string {
-  if (u.nextN === null) return `To była ostatnia lekcja. Cały kurs (${TOTAL_LESSONS} lekcji) za Tobą!`;
+  if (u.nextN === null)
+    return `To była ostatnia lekcja. Cały kurs (${TOTAL_LESSONS} lekcji) za Tobą!`;
   if (u.nextUnlocked || u.unlocksAt === null) return `Lekcja ${u.nextN} już czeka.`;
   const days = localDaysBetween(now, u.unlocksAt, timeZone);
   const when = days <= 1 ? 'jutro' : days === 2 ? 'pojutrze' : `za ${days} dni`;

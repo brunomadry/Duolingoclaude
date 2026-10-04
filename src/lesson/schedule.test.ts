@@ -14,15 +14,27 @@ describe('describeNextUnlock', () => {
   });
 
   it('says tomorrow, the day after, or in N days', () => {
-    expect(describeNextUnlock({ nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_5TH }, NOW, TZ)).toMatch(/jutro/);
-    expect(describeNextUnlock({ nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_6TH }, NOW, TZ)).toMatch(/pojutrze/);
     expect(
-      describeNextUnlock({ nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_6TH + 86_400_000 }, NOW, TZ),
+      describeNextUnlock({ nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_5TH }, NOW, TZ),
+    ).toMatch(/jutro/);
+    expect(
+      describeNextUnlock({ nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_6TH }, NOW, TZ),
+    ).toMatch(/pojutrze/);
+    expect(
+      describeNextUnlock(
+        { nextN: 5, nextUnlocked: false, unlocksAt: MIDNIGHT_6TH + 86_400_000 },
+        NOW,
+        TZ,
+      ),
     ).toMatch(/za 3 dni/);
   });
 
   it('handles unlocked and finished states', () => {
-    expect(describeNextUnlock({ nextN: 3, nextUnlocked: true, unlocksAt: null }, NOW, TZ)).toBe('Lekcja 3 już czeka.');
-    expect(describeNextUnlock({ nextN: null, nextUnlocked: false, unlocksAt: null }, NOW, TZ)).toMatch(/ostatnia/);
+    expect(describeNextUnlock({ nextN: 3, nextUnlocked: true, unlocksAt: null }, NOW, TZ)).toBe(
+      'Lekcja 3 już czeka.',
+    );
+    expect(
+      describeNextUnlock({ nextN: null, nextUnlocked: false, unlocksAt: null }, NOW, TZ),
+    ).toMatch(/ostatnia/);
   });
 });

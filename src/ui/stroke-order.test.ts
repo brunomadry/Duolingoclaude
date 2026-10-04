@@ -118,11 +118,10 @@ describe('strokeGeometry', () => {
   });
 
   it('roughly matches the true length of a real KanjiVG stroke', () => {
-    // Sampled length of あ stroke 1, computed by flattening the curves.
+    // 35.52 is the length of A_S1 measured by flattening both cubics into 2000 segments.
     const g = strokeGeometry(A_S1)!;
     expect(g.start).toEqual({ x: 31.01, y: 33 });
-    expect(g.length).toBeGreaterThan(40);
-    expect(g.length).toBeLessThan(45);
+    expect(Math.abs(g.length - 35.52) / 35.52).toBeLessThan(0.02);
   });
 
   it('returns null for paths without a leading moveto', () => {

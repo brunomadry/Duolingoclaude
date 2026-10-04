@@ -55,7 +55,11 @@ export interface DueInfo {
 }
 
 /** Due kana reviews, capped by the SRS queue so the review step never snowballs. */
-export function dueKana(cards: ReadonlyMap<string, CardRecord>, now: number, max?: number): DueInfo {
+export function dueKana(
+  cards: ReadonlyMap<string, CardRecord>,
+  now: number,
+  max?: number,
+): DueInfo {
   const all = [...cards.values()]
     .filter((c) => !c.deleted && charFromCardId(c.cardId))
     .map((c) => ({ cardId: c.cardId, state: c.data as SrsState }));
