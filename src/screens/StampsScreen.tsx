@@ -35,7 +35,7 @@ export function StampsScreen({ profile }: { profile: ProfileRecord }) {
     <div class="stack">
       <p class="muted">
         Pieczątki: <strong style={{ color: 'var(--text)' }}>{done.size}</strong> z {TOTAL_LESSONS}.
-        Każda ukończona lekcja zostawia tu swoją hanko.
+        Każda ukończona lekcja zostawia tu swoje hanko.
       </p>
       <ol class="stamp-grid" aria-label="Kolekcja pieczątek">
         {Array.from({ length: TOTAL_LESSONS }, (_, i) => i + 1).map((n) => {

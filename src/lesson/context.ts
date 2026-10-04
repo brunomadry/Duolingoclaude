@@ -10,12 +10,24 @@ import { buildReviewQueue } from '../srs/queue.ts';
 import { buildLessonPlan, charFromCardId, type KanaItem, type LessonPlan } from './engine.ts';
 import { groupById } from './kana.ts';
 import { seedFrom } from './rng.ts';
+import { KANA_PHASE_END } from '../shared/constants.ts';
 
 export const curriculum = curriculumData as Curriculum;
 
 export function lessonByN(n: number): Lesson | undefined {
   return curriculum.lessons[n - 1];
 }
+
+/**
+ * Lessons the engine can teach today. Later phases extend this as vocabulary, grammar and
+ * kanji content arrives; until then those lessons stay closed instead of being completable
+ * as empty shells (their completion would be permanent).
+ */
+export function lessonSupported(lesson: Pick<Lesson, 'n'>): boolean {
+  return lesson.n <= KANA_PHASE_END;
+}
+
+export const COMING_SOON_TEXT = 'Ta lekcja pojawi się w jednej z kolejnych aktualizacji aplikacji.';
 
 export function itemsOfGroups(groupIds: readonly string[]): KanaItem[] {
   const out: KanaItem[] = [];

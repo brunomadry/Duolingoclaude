@@ -56,7 +56,7 @@ export interface PlanInput {
   /** Due reviews, already capped by the SRS queue. */
   dueReviews: readonly KanaItem[];
   dueTotal: number;
-  /** Whether a Japanese voice is available (enables listening exercises). */
+  /** A Japanese voice exists and sound is on (enables listening exercises). */
   speech: boolean;
   seed: number;
 }
@@ -123,15 +123,12 @@ function makeExercise(
   id: string,
 ): Exercise {
   const base = { id, kind, cardId: kanaCardId(item.char), item };
-  switch (kind) {
-    case 'kana-to-romaji':
-      return { ...base, options: buildOptions(item, pool, 'romaji', rng), answer: item.romaji };
-    case 'romaji-to-kana':
-    case 'audio-to-kana':
-      return { ...base, options: buildOptions(item, pool, 'char', rng), answer: item.char };
-    case 'type-romaji':
-      return { ...base, options: [], answer: item.romaji };
-  }
+  const typed: Exercise = { ...base, kind: 'type-romaji', options: [], answer: item.romaji };
+  if (kind === 'type-romaji') return typed;
+  const options = buildOptions(item, pool, kind === 'kana-to-romaji' ? 'romaji' : 'char', rng);
+  // A choice with only the right answer is no question: fall back to typing.
+  if (options.length < 2) return typed;
+  return { ...base, options, answer: kind === 'kana-to-romaji' ? item.romaji : item.char };
 }
 
 /** Reorders so the same character never appears twice in a row when avoidable. */
@@ -220,7 +217,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
   const { lesson } = input;
   const lessonItems = uniqueByChar(input.lessonItems);
   const covered = uniqueByChar(input.coveredItems);
-  const pool = uniqueByChar([...lessonItems, ...covered, ...input.knownItems]);
+  const pool = uniqueByChar([...lessonItems, ...covered, ...input.knownItems, ...input.dueReviews]);
   const steps: Step[] = [];
 
   if (input.dueReviews.length) {
@@ -247,7 +244,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
         't',
       ),
     });
-    steps.push({ kind: 'summary', quiz: [] });
+    // A test is its own summary: no empty quiz step after it.
     return { n: lesson.n, title: lesson.title, steps };
   }
 

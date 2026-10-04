@@ -4,7 +4,7 @@
  */
 import type { CardRecord, LessonProgressRecord } from '../shared/api.ts';
 import type { Grade, SrsState } from '../srs/types.ts';
-import { reviewCard } from '../srs/index.ts';
+import { initCard, reviewCard } from '../srs/index.ts';
 import type { Database } from './db.ts';
 import { getCards, getLessons, putCards, putLesson } from './repo.ts';
 
@@ -40,6 +40,31 @@ export async function applyGrades(
     updates.push({ profileId, cardId, data: { ...state }, updatedAt: now, deleted: false });
   }
   await putCards(db, updates);
+}
+
+/**
+ * Gives every introduced item a card (due now) unless it already has one, so items the
+ * capped practice step could not cover still reach the review queue.
+ */
+export async function seedCards(
+  db: Database,
+  profileId: string,
+  cardIds: readonly string[],
+  now: number,
+): Promise<number> {
+  const existing = new Set((await getCards(db, profileId)).map((c) => c.cardId));
+  const fresh = [...new Set(cardIds)].filter((id) => !existing.has(id));
+  await putCards(
+    db,
+    fresh.map((cardId) => ({
+      profileId,
+      cardId,
+      data: { ...initCard(now) },
+      updatedAt: now,
+      deleted: false,
+    })),
+  );
+  return fresh.length;
 }
 
 /**

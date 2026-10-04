@@ -100,7 +100,12 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
             </p>
             <button
               class="btn btn--ghost"
-              style={{ padding: 0, minHeight: 32 }}
+              style={{
+                padding: 0,
+                minHeight: 'var(--tap)',
+                justifyContent: 'flex-start',
+                textAlign: 'left',
+              }}
               onClick={() => void syncNow()}
             >
               <span

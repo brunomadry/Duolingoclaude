@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { KanaItem } from '../../lesson/engine.ts';
 import { findKana, groupById } from '../../lesson/kana.ts';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
@@ -20,6 +20,12 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
   const pages = notes.length ? 1 + items.length : items.length;
   const [page, setPage] = useState(0);
   const [strokes, setStrokes] = useState(false);
+  const headingRef = useRef<HTMLParagraphElement>(null);
+
+  // Each new page starts at its heading for VoiceOver.
+  useEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+  }, [page]);
 
   const go = (next: number) => {
     setStrokes(false);
@@ -34,7 +40,7 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
 
   return (
     <div class="intro">
-      <p class="exercise__prompt" aria-live="polite">
+      <p ref={headingRef} class="exercise__prompt" tabIndex={-1}>
         {showNotes ? 'Zanim zaczniemy' : `Znak ${notes.length ? page : page + 1} z ${items.length}`}
       </p>
 

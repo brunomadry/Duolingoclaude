@@ -100,7 +100,7 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
         key={key}
         class={`kana-cell ${learned.has(c.char) ? 'kana-cell--learned' : 'kana-cell--new'}`}
         onClick={() => setSelected({ char: c, group })}
-        aria-label={`${c.char}, ${c.romaji}${learned.has(c.char) ? '' : ', jeszcze nie poznany'}`}
+        aria-label={`${c.char}, ${c.romaji}${learned.has(c.char) ? '' : ', jeszcze niepoznany'}`}
       >
         <span class="kana-cell__char" lang="ja" aria-hidden="true">
           {c.char}
@@ -137,7 +137,7 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
         <span>
           Poznane znaki: {known} z {total}
         </span>
-        <span>Dotknij znak</span>
+        <span>Dotknij znaku</span>
       </div>
 
       {view === 'chart' ? (

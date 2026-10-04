@@ -48,12 +48,15 @@ export function ExerciseView({
   const [result, setResult] = useState<boolean | null>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const promptRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     setPicked(null);
     setTyped('');
     setResult(null);
+    // Move focus to the new question so VoiceOver does not fall back to the top of the page.
     if (exercise.kind === 'type-romaji') inputRef.current?.focus({ preventScroll: true });
+    else promptRef.current?.focus({ preventScroll: true });
   }, [exercise.id, exercise.kind]);
 
   useEffect(() => {
@@ -84,11 +87,13 @@ export function ExerciseView({
 
   return (
     <div class="exercise">
-      <p class="exercise__prompt">{PROMPTS[exercise.kind]}</p>
+      <p ref={promptRef} class="exercise__prompt" tabIndex={-1}>
+        {PROMPTS[exercise.kind]}
+      </p>
 
       <div class="exercise__stage">
         {kanaPrompt && (
-          <span class="exercise__kana jp" lang="ja">
+          <span class="exercise__kana jp" lang="ja" id={`q-${exercise.id}`}>
             {exercise.item.char}
           </span>
         )}
@@ -96,7 +101,7 @@ export function ExerciseView({
           <span class="exercise__romaji">{exercise.item.romaji}</span>
         )}
         {exercise.kind === 'audio-to-kana' && (
-          <SpeakButton text={exercise.item.char} size={88} label="Posłuchaj dźwięku" />
+          <SpeakButton text={exercise.item.char} size={88} label="Posłuchaj dźwięku" hideText />
         )}
         {result !== null && kanaPrompt && <SpeakButton text={exercise.item.char} />}
       </div>
@@ -117,8 +122,9 @@ export function ExerciseView({
             autoCorrect="off"
             spellcheck={false}
             enterKeyHint="done"
-            placeholder="np. ka"
+            placeholder="wpisz romaji"
             readOnly={result !== null}
+            aria-describedby={`q-${exercise.id}`}
           />
           {result === null && (
             <button
@@ -158,9 +164,11 @@ export function ExerciseView({
 
       {result !== null && (
         <div class={`feedback ${result ? 'feedback--ok' : 'feedback--miss'}`} role="status">
-          <p class="feedback__title">{result ? 'Dobrze!' : 'Prawie.'}</p>
+          <p class="feedback__title" id={`fb-title-${exercise.id}`}>
+            {result ? 'Dobrze!' : 'Prawie.'}
+          </p>
           {!result && (
-            <p>
+            <p id={`fb-answer-${exercise.id}`}>
               Poprawnie:{' '}
               <span class="jp" lang="ja">
                 {exercise.item.char}
@@ -174,6 +182,11 @@ export function ExerciseView({
             onClick={onNext}
             disabled={busy}
             aria-busy={busy}
+            aria-describedby={
+              result
+                ? `fb-title-${exercise.id}`
+                : `fb-title-${exercise.id} fb-answer-${exercise.id}`
+            }
           >
             Dalej
           </button>

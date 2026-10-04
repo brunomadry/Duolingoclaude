@@ -2,16 +2,25 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import '../../styles/lesson.css';
 import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
-import { applyGrades, loadLearning, recordCompletion } from '../../data/learning.ts';
+import { applyGrades, loadLearning, recordCompletion, seedCards } from '../../data/learning.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
+  kanaCardId,
   type AnswerResult,
   type Exercise,
   type LessonPlan,
   type Step,
 } from '../../lesson/engine.ts';
-import { completedPrefix, dueKana, kanaUpTo, lessonByN, planLesson } from '../../lesson/context.ts';
+import {
+  COMING_SOON_TEXT,
+  completedPrefix,
+  dueKana,
+  kanaUpTo,
+  lessonByN,
+  lessonSupported,
+  planLesson,
+} from '../../lesson/context.ts';
 import { seedFrom } from '../../lesson/rng.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
@@ -53,6 +62,28 @@ type Finish =
 
 const EXTRA_LENGTH = 12;
 
+const EXIT_COPY: Record<PlayerMode, { title: string; text: string; stay: string; leave: string }> =
+  {
+    lesson: {
+      title: 'Przerwać lekcję?',
+      text: 'Ukończone kroki zostaną w powtórkach, ale lekcja nie będzie zaliczona.',
+      stay: 'Wracam do lekcji',
+      leave: 'Przerwij',
+    },
+    reviews: {
+      title: 'Przerwać powtórki?',
+      text: 'Odpowiedzi z tej sesji nie zostaną zapisane. Powtórki poczekają.',
+      stay: 'Wracam do powtórek',
+      leave: 'Przerwij',
+    },
+    extra: {
+      title: 'Zakończyć ćwiczenia?',
+      text: 'Dodatkowe ćwiczenia niczego nie zapisują, więc możesz wyjść w każdej chwili.',
+      stay: 'Ćwiczę dalej',
+      leave: 'Zakończ',
+    },
+  };
+
 /** Resolves once voices have loaded (or clearly will not), so plans know about listening. */
 function speechAvailable(): Promise<boolean> {
   return new Promise((resolve) => {
@@ -82,7 +113,8 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   const [finish, setFinish] = useState<Finish | null>(null);
   const [confirmExit, setConfirmExit] = useState(false);
   const stepResults = useRef<AnswerResult[]>([]);
-  const firstAttempts = useRef(new Map<string, boolean>());
+  /** First attempt per exercise; review answers do not count towards the lesson score. */
+  const firstAttempts = useRef(new Map<string, { correct: boolean; review: boolean }>());
   /** Set while a step is being saved, so a double tap cannot apply grades twice. */
   const advancing = useRef(false);
   const [saving, setSaving] = useState(false);
@@ -93,14 +125,17 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const [snapshot, speech] = await Promise.all([
+      const [snapshot, voice] = await Promise.all([
         loadLearning(database(), profile.id),
         speechAvailable(),
       ]);
+      // Listening exercises need a voice and the profile's sound switched on.
+      const speech = voice && profile.settings.sound;
       const now = Date.now();
       let next: LessonPlan;
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
+        if (!lessonSupported(lesson)) return setProblem(COMING_SOON_TEXT);
         const unlock = computeUnlock({
           completions: snapshot.lessons,
           pace: profile.settings.pace,
@@ -189,9 +224,11 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
 
   const completeLesson = async () => {
     if (!plan) return;
-    const firsts = [...firstAttempts.current.values()];
-    const correct = firsts.filter(Boolean).length;
-    const total = firsts.length;
+    const all = [...firstAttempts.current.values()];
+    // Reviews and extra practice report everything; lessons and tests score their own work.
+    const scored = mode === 'lesson' ? all.filter((a) => !a.review) : all;
+    const correct = scored.filter((a) => a.correct).length;
+    const total = scored.length;
     if (mode === 'extra') {
       setFinish({
         kind: 'simple',
@@ -211,6 +248,14 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     if (!lesson) return;
     const now = Date.now();
     const db = database();
+    // Backstop: a lesson with nothing of its own to do is never recorded as completed.
+    const ownWork = plan.steps.some(
+      (s) => s.kind === 'new' || (s.kind === 'practice' && s.exercises.length > 0),
+    );
+    if (!ownWork) {
+      setProblem(COMING_SOON_TEXT);
+      return;
+    }
     const outcome = await recordCompletion(
       db,
       profile.id,
@@ -242,6 +287,15 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     advancing.current = true;
     setSaving(true);
     try {
+      if (step.kind === 'new' && mode === 'lesson') {
+        // Every introduced kana gets a card, even ones the capped practice cannot cover.
+        await seedCards(
+          database(),
+          profile.id,
+          step.items.map((i) => kanaCardId(i.char)),
+          Date.now(),
+        );
+      }
       if ((step.kind === 'review' || step.kind === 'practice') && mode !== 'extra') {
         await applyGrades(
           database(),
@@ -265,7 +319,9 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     if (!current) return;
     stepResults.current.push({ cardId: current.cardId, correct });
     const baseId = current.id.replace(/-again$/, '');
-    if (!firstAttempts.current.has(baseId)) firstAttempts.current.set(baseId, correct);
+    if (!firstAttempts.current.has(baseId)) {
+      firstAttempts.current.set(baseId, { correct, review: step?.kind === 'review' });
+    }
     // A miss comes back once at the end of the step (not in the final quiz).
     if (!correct && step?.kind !== 'summary' && !requeued.current.has(baseId)) {
       requeued.current.add(baseId);
@@ -299,7 +355,7 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   if (finish) {
     return (
       <main class="player">
-        <div class="player__body">
+        <div class="player__body player__body--bare">
           {finish.kind === 'lesson' ? (
             <Celebration
               n={finish.n}
@@ -398,16 +454,16 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
       <Modal
         open={confirmExit}
         onClose={() => setConfirmExit(false)}
-        title="Przerwać lekcję?"
+        title={EXIT_COPY[mode].title}
         variant="dialog"
       >
         <div class="stack">
-          <p>Ukończone kroki zostaną w powtórkach, ale lekcja nie będzie zaliczona.</p>
+          <p>{EXIT_COPY[mode].text}</p>
           <button class="btn btn--primary btn--block" onClick={() => setConfirmExit(false)}>
-            Wracam do lekcji
+            {EXIT_COPY[mode].stay}
           </button>
           <button class="btn btn--block" onClick={exit}>
-            Przerwij
+            {EXIT_COPY[mode].leave}
           </button>
         </div>
       </Modal>

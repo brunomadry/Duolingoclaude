@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { navigate } from '../app/router.ts';
 import { loadLearning, type LearningSnapshot } from '../data/learning.ts';
-import { curriculum, dueKana } from '../lesson/context.ts';
+import { COMING_SOON_TEXT, curriculum, dueKana, lessonSupported } from '../lesson/context.ts';
 import { describeNextUnlock, localDaysBetween } from '../lesson/schedule.ts';
 import { computeUnlock } from '../lesson/unlock.ts';
 import { Mascot } from '../mascot/Mascot.tsx';
@@ -91,13 +91,19 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
         <section class="card card--elevated stack waves" aria-labelledby="next-lesson">
           <span class="lesson-card__eyebrow">
             {next.kind === 'test' ? 'Test' : 'Lekcja'} {next.n}
-            {unlock.nextUnlocked ? '' : ' · jeszcze zamknięta'}
+            {unlock.nextUnlocked
+              ? ''
+              : next.kind === 'test'
+                ? ' · jeszcze zamknięty'
+                : ' · jeszcze zamknięta'}
           </span>
           <h3 id="next-lesson" class="lesson-card__title">
             {next.title}
           </h3>
           <p class="muted">{next.summary}</p>
-          {unlock.nextUnlocked ? (
+          {!lessonSupported(next) ? (
+            <p class="setting__hint">{COMING_SOON_TEXT}</p>
+          ) : unlock.nextUnlocked ? (
             <button
               class="btn btn--primary btn--block"
               onClick={() => navigate(`/lekcja/${next.n}`)}
@@ -170,7 +176,7 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
             ))}
           </div>
         ) : (
-          <p class="setting__hint">Pierwsza hanko pojawi się po pierwszej lekcji.</p>
+          <p class="setting__hint">Pierwsze hanko pojawi się po pierwszej lekcji.</p>
         )}
         <button class="btn btn--ghost" onClick={() => navigate('/pieczatki')}>
           Zobacz kolekcję

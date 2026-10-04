@@ -130,6 +130,8 @@ describe('isRomajiAnswerCorrect', () => {
     ['   ', 'か'],
     ['ga', 'か'],
     ['ka', 'カー'],
+    ['ka-', 'か'],
+    ['ko-hi-', 'こひ'],
     ['ki', 'きゃ'],
     ['kiya', 'きゃ'],
     ['tsu', 'す'],

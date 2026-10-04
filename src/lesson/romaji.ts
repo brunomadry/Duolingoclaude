@@ -280,6 +280,8 @@ function normalizeAnswer(input: string): string[] {
     .replace(/[^\p{L}\p{N}\p{Pd}]/gu, '');
   const plain = text.replace(DASHES, '');
   const long = text.replace(/([aeiou])[\p{Pd}ー]/gu, '$1$1').replace(DASHES, '');
+  // A hyphen at the very end can only be a long-vowel mark ("ka-" is カー, never か).
+  if (/[aeiou][\p{Pd}ー]$/u.test(text)) return [long].filter((form) => form.length > 0);
   return [...new Set([plain, long])].filter((form) => form.length > 0);
 }
 

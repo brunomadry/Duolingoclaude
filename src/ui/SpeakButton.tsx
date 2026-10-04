@@ -57,6 +57,8 @@ export interface SpeakButtonProps {
   onUnavailable?: (problem: SpeechProblem) => void;
   /** Extra class names for the button. */
   class?: string;
+  /** Name the button with the label only (listening exercises must not reveal the answer). */
+  hideText?: boolean;
 }
 
 const TAP = 44;
@@ -68,6 +70,7 @@ export function SpeakButton({
   rate,
   onUnavailable,
   class: className,
+  hideText = false,
 }: SpeakButtonProps) {
   const [speaking, setSpeaking] = useState(false);
   const [problem, setProblem] = useState<{ kind: SpeechProblem; attempt: number } | null>(null);
@@ -136,10 +139,16 @@ export function SpeakButton({
         <SpeakerIcon size={Math.round(px * 0.55)} />
         {/* Name from content (not aria-label) so VoiceOver reads the kana with a Japanese voice. */}
         <span class="visually-hidden">
-          {label}:{' '}
-          <span lang="ja" class="jp">
-            {text}
-          </span>
+          {hideText ? (
+            label
+          ) : (
+            <>
+              {label}:{' '}
+              <span lang="ja" class="jp">
+                {text}
+              </span>
+            </>
+          )}
         </span>
       </button>
       {problem && (

@@ -90,3 +90,15 @@ One line per decision, newest at the bottom of each section. The brief (the orig
 - **Hanko** shows the lesson number in Japanese numerals with 課, a deterministic tilt per lesson and a light ink-grain SVG filter; tests get a double ring. Sakura petals appear only on a first completion and never under reduced motion.
 - **Words in kana lessons (from L4)** arrive with the vocabulary pipeline in Phase 3; kana lessons in Phase 2 teach characters only.
 - **Concurrency note for builders**: the build container has 4 CPUs, so multi-agent workflows run two agents at a time.
+
+### Phase 2 adversarial review (18 confirmed findings, all fixed)
+
+- **Every introduced kana gets an SRS card** when the "new" step ends (`seedCards`), because the practice step is capped at 18 exercises: large groups (yōon, extended katakana) would otherwise leave up to 99 of 276 kana out of reviews forever. The capped review queue feeds them in gradually.
+- **Lessons the engine cannot teach yet stay closed** (`lessonSupported`): from L17 on, until vocabulary and grammar content exist, Dziś says "Ta lekcja pojawi się w jednej z kolejnych aktualizacji" instead of letting the learner complete an empty lesson (completions are permanent). The player also refuses to record a lesson with no work of its own.
+- **Tests end after their questions** (no empty summary step); the lesson score ignores answers from the review step.
+- **Listening exercises only when sound is on** and a Japanese voice exists; a multiple choice that would have fewer than two options becomes a typing exercise.
+- **Unlock timer starts from the latest completion in 1..n**, so a stray later record cannot open two lessons on one day.
+- **A trailing hyphen in a typed answer is always a long vowel** ("ka-" is カー, never か).
+- **VoiceOver**: focus moves to each new question, page or celebration title; the result is announced with the "Dalej" button; the listening button is named without the kana; options and placeholders never leak answers.
+- **Copy and layout**: Polish fixes ("Pierwsze hanko", "Dotknij znaku", "jeszcze niepoznany", "Test 7 · jeszcze zamknięty"), mode-specific exit dialogs, safe-area padding on finish screens, all tap targets at least 44 px.
+- **Clock skew**: the Worker answers far-future timestamps with `clock_skew`; the client keeps those changes queued and the settings sheet explains how to fix the phone clock.

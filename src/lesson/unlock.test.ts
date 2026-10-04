@@ -387,3 +387,17 @@ describe('independence from the machine time zone', () => {
     }
   });
 });
+
+describe('computeUnlock: stray records', () => {
+  it('starts the timer from the latest completion in the run, so a gap lesson does not open two lessons in one day', () => {
+    const tz = 'Europe/Warsaw';
+    const day = (d: number, h: number) => Date.UTC(2026, 4, d, h - 2); // May 2026, CEST
+    const completions = [1, 2, 3].map((n) => ({ n, completedAt: day(n, 10) }));
+    completions.push({ n: 5, completedAt: day(4, 10) }); // stray record ahead of lesson 4
+    completions.push({ n: 4, completedAt: day(10, 9) }); // the learner fills the gap today
+    const later = computeUnlock({ completions, pace: 'daily', timeZone: tz, now: day(10, 18) });
+    expect(later.nextN).toBe(6);
+    expect(later.nextUnlocked).toBe(false);
+    expect(later.unlocksAt).toBe(Date.UTC(2026, 4, 10, 22));
+  });
+});

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'preact/hooks';
 import { Mascot } from '../../mascot/Mascot.tsx';
 import { Hanko } from '../../ui/Hanko.tsx';
 
@@ -59,13 +60,15 @@ export function Celebration({
   onDone,
   onStamps,
 }: CelebrationProps) {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => titleRef.current?.focus({ preventScroll: true }), []);
   return (
     <div class="celebration">
       {firstTime && <Petals />}
       <div class="celebration__seal">
         <Hanko n={n} size={150} test={test} stamp={firstTime} />
       </div>
-      <h2 class="display celebration__title">
+      <h2 ref={titleRef} class="display celebration__title" tabIndex={-1}>
         {test ? `Test ${n} zaliczony` : `Lekcja ${n} ukończona`}
       </h2>
       {total > 0 && (

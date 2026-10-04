@@ -117,7 +117,21 @@ describe('buildLessonPlan: kana lesson', () => {
       expect(rest[i]!.item.char).not.toBe(rest[i - 1]!.item.char);
   });
 
-  it('caps large groups but still covers every item once', () => {
+  it('never builds a multiple choice with a single option', () => {
+    const plan = buildLessonPlan(
+      input({
+        lesson: { n: 0, kind: 'review', title: 'R', newItem: { type: 'none' } },
+        lessonItems: [],
+        dueReviews: [H('あ', 'a')],
+        dueTotal: 1,
+      }),
+    );
+    for (const e of exercisesOf(plan)) {
+      if (e.kind !== 'type-romaji') expect(e.options.length).toBeGreaterThanOrEqual(2);
+    }
+  });
+
+  it('caps large groups (items left out are seeded as cards by the player)', () => {
     const many = Array.from({ length: 33 }, (_, i) => H(`x${i}`, `r${i}`));
     const practice = buildLessonPlan(input({ lessonItems: many })).steps.find(
       (s) => s.kind === 'practice',
@@ -151,7 +165,7 @@ describe('buildLessonPlan: tests and review lessons', () => {
         coveredItems: covered,
       }),
     );
-    expect(plan.steps.map((s) => s.kind)).toEqual(['practice', 'summary']);
+    expect(plan.steps.map((s) => s.kind)).toEqual(['practice']);
     const test = plan.steps[0];
     if (test?.kind !== 'practice') throw new Error('no test');
     expect(test.mode).toBe('test');

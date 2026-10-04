@@ -84,6 +84,11 @@
     calc(var(--safe-bottom) + var(--space-6)) calc(var(--safe-left) + var(--space-4));
 }
 
+.player__body--bare {
+  /* No header above: keep the content clear of the status bar and Dynamic Island. */
+  padding-top: calc(var(--safe-top) + var(--space-4));
+}
+
 .player__hint {
   margin-bottom: var(--space-3);
   font-size: var(--fs-sm);

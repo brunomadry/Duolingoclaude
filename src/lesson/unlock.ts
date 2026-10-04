@@ -65,7 +65,13 @@ export function computeUnlock(input: UnlockInput): UnlockState {
   if (done >= total) return { completedCount, nextN: null, nextUnlocked: false, unlocksAt: null };
 
   const nextN = done + 1;
-  const previous = latest.get(done);
+  // The timer runs from the most recent completion within 1..done: a stray later record
+  // (lesson 5 done before 4) must not let 4 and then 6 open on the same day.
+  let previous: number | undefined;
+  for (let n = 1; n <= done; n++) {
+    const at = latest.get(n);
+    if (at !== undefined && (previous === undefined || at > previous)) previous = at;
+  }
   if (previous === undefined) return { completedCount, nextN, nextUnlocked: true, unlocksAt: null };
 
   // Anything but 'relaxed' (including a corrupted value) counts as daily.
