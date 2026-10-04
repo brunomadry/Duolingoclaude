@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { GRAMMAR_WORDS, createLexicon, tokenize, type LexEntry } from '../shared/jp-words.ts';
+import { GRAMMAR_WORDS, createLexicon, tokenize, type LexEntry } from './jp-words.ts';
 import {
   FORM_GATES,
   GRAMMAR_KEY_GATES,

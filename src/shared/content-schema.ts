@@ -165,6 +165,30 @@ export const SentenceFile = z
   .object({ version: z.literal(1), sentences: z.array(Sentence) })
   .strict();
 
+/* ---------------------------------------------------------------- examples */
+
+/** One example sentence shown with a word in its lesson (validated against what is taught). */
+export const Example = z
+  .object({
+    wordId: id,
+    /** Lesson where the sentence is shown; it may only use what that lesson has taught. */
+    lesson: z.number().int().min(1).max(TOTAL_LESSONS),
+    /** As naturally written (kanji and kana). */
+    ja: z.string().min(1),
+    /** Kana-only reading, shown until the kanji are taught (required when ja has kanji). */
+    kana: z.string().optional(),
+    pl: z.string().min(1),
+    source: z.enum(['tatoeba', 'original']),
+    tatoebaId: z.number().int().optional(),
+    /** Surfaces allowed although unknown to the matcher (names); keep rare. */
+    allowUnknown: z.array(z.string()).optional(),
+    reviewed: z.boolean(),
+  })
+  .strict();
+export type Example = z.infer<typeof Example>;
+
+export const ExampleFile = z.object({ version: z.literal(1), examples: z.array(Example) }).strict();
+
 /* ------------------------------------------------------------------- kanji */
 
 export const KanjiEntry = z

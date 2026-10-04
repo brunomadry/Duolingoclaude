@@ -8,7 +8,7 @@
  * Pure: the curriculum and the word-to-lesson map are passed in, so this runs in the
  * browser, the Worker and Node scripts alike.
  */
-import type { InflectionForm, Token } from '../shared/jp-words.ts';
+import type { InflectionForm, Token } from './jp-words.ts';
 
 /** Grammar id (content/curriculum.json newItem.grammarId) per GRAMMAR_WORDS key. */
 export const GRAMMAR_KEY_GATES: Readonly<Record<string, string | null>> = {

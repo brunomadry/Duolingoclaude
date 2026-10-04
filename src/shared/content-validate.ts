@@ -7,10 +7,13 @@
  */
 import type { z } from 'zod';
 import { KANA_PHASE_END, MAX_WORDS_PER_LESSON } from './constants.ts';
+import { checkTokens, createGates } from './grammar-gates.ts';
+import { createLexicon, tokenize } from './jp-words.ts';
 import {
   Curriculum,
   GlossFile,
   GrammarFile,
+  ExampleFile,
   KanaFile,
   KanjiFile,
   SentenceFile,
@@ -30,6 +33,7 @@ export interface RawContent {
   grammar?: unknown;
   strokes?: unknown;
   kanji?: unknown;
+  examples?: unknown;
 }
 
 export interface ValidationReport {
@@ -73,6 +77,10 @@ export function validateContent(raw: RawContent): ValidationReport {
   const strokes =
     raw.strokes === undefined ? undefined : parse(StrokesFile, raw.strokes, 'strokes.json', errors);
   if (raw.kanji !== undefined) parse(KanjiFile, raw.kanji, 'kanji.json', errors);
+  const examples =
+    raw.examples === undefined
+      ? undefined
+      : parse(ExampleFile, raw.examples, 'examples.json', errors);
 
   if (!curriculum) return { errors, warnings };
   errors.push(...curriculumStructureErrors(curriculum).map((e) => `curriculum.json: ${e}`));
@@ -193,38 +201,57 @@ export function validateContent(raw: RawContent): ValidationReport {
     }
   }
 
-  // Sentences attached to a word may only use words taught up to that word's lesson.
+  // The Tatoeba corpus is raw material: only check that referenced ids exist.
   if (sentences) {
-    const sentenceById = new Map(sentences.sentences.map((s) => [s.id, s]));
+    const sentenceIds = new Set(sentences.sentences.map((s) => s.id));
     for (const word of vocab.words) {
-      const lesson = lessonOfWord.get(word.id);
-      if (lesson === undefined) continue;
       for (const sid of word.sentences ?? []) {
-        const s = sentenceById.get(sid);
-        if (!s) {
+        if (!sentenceIds.has(sid))
           errors.push(`vocab.json: word "${word.id}" references missing sentence ${sid}`);
-          continue;
-        }
-        if (!s.pl)
-          errors.push(
-            `sentences.json: sentence ${sid} (lesson ${lesson}) has no Polish translation`,
-          );
-        const allowed = new Set(s.allowUnknown ?? []);
-        for (const used of s.words) {
-          const taughtIn = lessonOfWord.get(used);
-          if (allowed.has(used)) continue;
-          if (taughtIn === undefined || taughtIn > lesson) {
-            errors.push(
-              `sentences.json: sentence ${sid} (shown in lesson ${lesson}) uses "${used}" which is ${
-                taughtIn === undefined ? 'never taught' : `taught later (lesson ${taughtIn})`
-              }`,
-            );
-          }
-        }
       }
     }
-  } else if ([...vocabById.values()].some((w) => w.sentences?.length)) {
-    errors.push('sentences.json missing but vocab.json references sentences');
+  }
+
+  // Lesson examples: every word taught after the writing phase needs one, and each must only
+  // use words and grammar its lesson has taught (checked with the real word matcher).
+  if (!examples) {
+    if ([...lessonOfWord.values()].some((n) => n > KANA_PHASE_END)) {
+      warnings.push('examples.json missing: lesson example sentences not checked');
+    }
+    return { errors, warnings };
+  }
+  const lexicon = createLexicon(vocab.words.map((w) => ({ ...w, pos: w.pos ?? [] })));
+  const gates = createGates(curriculum);
+  const posOfWord = new Map(vocab.words.map((w) => [w.id, w.pos ?? []]));
+  const exampled = new Set<string>();
+  examples.examples.forEach((ex, i) => {
+    const where = `examples.json #${i} (${ex.wordId}, lesson ${ex.lesson})`;
+    const taughtIn = lessonOfWord.get(ex.wordId);
+    if (taughtIn === undefined) {
+      errors.push(`${where}: word is not taught in any lesson`);
+      return;
+    }
+    if (ex.lesson < taughtIn)
+      errors.push(`${where}: shown before the word is taught (lesson ${taughtIn})`);
+    if (ex.lesson === taughtIn) exampled.add(ex.wordId);
+    if (/[\u3400-\u9fff々]/.test(ex.ja) && !ex.kana)
+      errors.push(`${where}: has kanji but no kana reading`);
+    if (ex.kana && /[\u3400-\u9fffa-zA-Z]/.test(ex.kana))
+      errors.push(`${where}: kana reading contains kanji or Latin letters`);
+    const result = checkTokens(tokenize(ex.ja, lexicon), {
+      lessonN: ex.lesson,
+      gates,
+      lessonOfWord,
+      posOfWord,
+      allowSurfaces: new Set(ex.allowUnknown ?? []),
+    });
+    for (const p of result.problems) errors.push(`${where}: ${p} in "${ex.ja}"`);
+    if (result.ok && !result.wordIds.includes(ex.wordId))
+      errors.push(`${where}: the sentence does not use the word ("${ex.ja}")`);
+  });
+  for (const [w, n] of lessonOfWord) {
+    if (n > KANA_PHASE_END && !exampled.has(w))
+      errors.push(`examples.json: word "${w}" (lesson ${n}) has no example sentence`);
   }
 
   return { errors, warnings };

@@ -73,74 +73,83 @@ describe('cross references', () => {
   const vocab = {
     version: 1,
     words: [
-      { id: 'neko', kana: 'ねこ', romaji: 'neko', en: ['cat'], sentences: [1] },
-      { id: 'inu', kana: 'いぬ', romaji: 'inu', en: ['dog'], sentences: [2] },
+      { id: 'neko', kana: 'ねこ', romaji: 'neko', en: ['cat'], pos: ['n'] },
+      { id: 'inu', kana: 'いぬ', romaji: 'inu', en: ['dog'], pos: ['n'] },
     ],
   };
   const glosses = {
     version: 1,
     glosses: { neko: { pl: ['kot'], reviewed: false }, inu: { pl: ['pies'], reviewed: false } },
   };
-  const sentences = {
-    version: 1,
-    sentences: [
-      {
-        id: 1,
-        ja: 'ねこです。',
-        en: 'It is a cat.',
-        pl: 'To kot.',
-        words: ['neko'],
-        source: 'original',
-      },
-      {
-        id: 2,
-        ja: 'いぬとねこ。',
-        en: 'A dog and a cat.',
-        pl: 'Pies i kot.',
-        words: ['inu', 'neko'],
-        source: 'original',
-      },
-    ],
-  };
+  const example = (wordId: string, lesson: number, ja: string) => ({
+    wordId,
+    lesson,
+    ja,
+    pl: 'Zdanie.',
+    source: 'original',
+    reviewed: false,
+  });
 
-  function withWords(neko: number, inu: number): RawContent & { curriculum: CurriculumJson } {
+  function withWords(neko: number, inu: number, examples?: unknown[]) {
     const raw = base();
     raw.curriculum.lessons[neko - 1]!.words = ['neko'];
     raw.curriculum.lessons[inu - 1]!.words = ['inu'];
-    return { ...raw, vocab, glosses, sentences };
+    return {
+      ...raw,
+      vocab,
+      glosses,
+      ...(examples ? { examples: { version: 1, examples } } : {}),
+    };
   }
 
-  it('accepts sentences that only use already taught words', () => {
-    expect(validateContent(withWords(4, 5)).errors).toEqual([]);
+  it('needs no example sentences for words of the writing phase', () => {
+    expect(validateContent(withWords(4, 5, [])).errors).toEqual([]);
   });
 
-  it('flags a sentence that uses a word taught in a later lesson', () => {
-    const errors = validateContent(withWords(6, 5)).errors.join('\n');
-    expect(errors).toMatch(/uses "neko" which is taught later \(lesson 6\)/);
+  it('accepts examples that only use taught words and grammar', () => {
+    const raw = withWords(18, 20, [
+      example('neko', 18, 'ねこです。'),
+      example('inu', 20, 'いぬです。'),
+    ]);
+    expect(validateContent(raw).errors).toEqual([]);
   });
 
-  it('honours flagged exceptions', () => {
-    const raw = withWords(6, 5);
-    const s = structuredClone(sentences);
-    (s.sentences[1] as { allowUnknown?: string[] }).allowUnknown = ['neko'];
-    expect(validateContent({ ...raw, sentences: s }).errors).toEqual([]);
+  it('requires an example for every word after the writing phase', () => {
+    const errors = validateContent(withWords(18, 20, [example('neko', 18, 'ねこです。')])).errors;
+    expect(errors.join('\n')).toMatch(/"inu" \(lesson 20\) has no example sentence/);
   });
 
-  it('flags a missing word, a missing gloss and a missing translation', () => {
-    const raw = withWords(4, 5);
+  it('flags words taught later and grammar not taught yet', () => {
+    const errors = validateContent(
+      withWords(20, 18, [
+        example('neko', 20, 'ねこです。'),
+        example('inu', 18, 'いぬとねこです。'),
+      ]),
+    ).errors.join('\n');
+    expect(errors).toMatch(/word "ねこ" taught in lesson 20/);
+    expect(errors).toMatch(/grammar "と" \(to\) taught in lesson 26/);
+  });
+
+  it('flags an example that does not use its word', () => {
+    const raw = withWords(18, 20, [
+      example('neko', 18, 'ねこです。'),
+      example('inu', 20, 'ねこです。'),
+    ]);
+    expect(validateContent(raw).errors.join('\n')).toMatch(/does not use the word/);
+  });
+
+  it('flags a missing word and a missing gloss', () => {
+    const raw = withWords(4, 5, []);
     raw.curriculum.lessons[7]!.words = ['sakana'];
     const g = structuredClone(glosses) as { version: 1; glosses: Record<string, unknown> };
     delete g.glosses.inu;
-    const s = structuredClone(sentences) as { version: 1; sentences: { pl?: string }[] };
-    delete s.sentences[0]!.pl;
-    const errors = validateContent({ ...raw, glosses: g, sentences: s }).errors.join('\n');
+    const errors = validateContent({ ...raw, glosses: g }).errors.join('\n');
     expect(errors).toMatch(/missing word "sakana"/);
     expect(errors).toMatch(/"inu" \(lesson 5\) has no Polish gloss/);
-    expect(errors).toMatch(/sentence 1 \(lesson 4\) has no Polish translation/);
   });
 
   it('flags a word introduced twice', () => {
-    const raw = withWords(4, 5);
+    const raw = withWords(4, 5, []);
     raw.curriculum.lessons[8]!.words = ['neko'];
     expect(validateContent(raw).errors.join('\n')).toMatch(/introduced twice/);
   });
