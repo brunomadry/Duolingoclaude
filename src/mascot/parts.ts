@@ -10,6 +10,8 @@
  * near (100, 80). Avatars crop the same drawing to the head and shoulders.
  */
 
+import type { AvatarId } from '../shared/avatars.ts';
+
 export const MASCOT_COLORS = {
   fur: '#c65a2e',
   furLight: '#dc7c46',
@@ -339,17 +341,7 @@ export function composePose(pose: Pose, acc: Accessory = 'none'): string {
 
 /* -------------------------------------------------------------- avatars */
 
-export const AVATAR_IDS = [
-  'plain',
-  'scarf',
-  'hat',
-  'glasses',
-  'leaf',
-  'headband',
-  'sakura',
-  'sleepy',
-] as const;
-export type AvatarId = (typeof AVATAR_IDS)[number];
+export { AVATAR_IDS, isAvatarId, type AvatarId } from '../shared/avatars.ts';
 
 interface AvatarSpec {
   label: string;
@@ -401,10 +393,6 @@ export const AVATARS: Record<AvatarId, AvatarSpec> = {
     backdrop: '#262d40',
   },
 };
-
-export function isAvatarId(v: unknown): v is AvatarId {
-  return typeof v === 'string' && (AVATAR_IDS as readonly string[]).includes(v);
-}
 
 /** Head-and-shoulders avatar, cropped with HEAD_VIEWBOX. */
 export function composeAvatar(id: AvatarId): string {

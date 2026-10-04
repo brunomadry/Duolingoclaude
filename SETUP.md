@@ -7,10 +7,12 @@ Everything here runs on free tiers. You need a free Cloudflare account and Node.
 ```bash
 npm install
 cp .dev.vars.example .dev.vars        # then edit the values (never commit .dev.vars)
-npm run db:migrate:local              # creates the local D1 database (from Phase 1 on)
+npm run db:migrate:local              # creates the local D1 database
 npm run dev:api                       # terminal 1: Worker + D1 on http://127.0.0.1:8787
 npm run dev                           # terminal 2: Vite on http://localhost:5173 (proxies /api)
 ```
+
+To try the production build (service worker, offline) locally: `npm run preview`, then open http://127.0.0.1:8787.
 
 Generate a cookie secret for `.dev.vars` with:
 
@@ -53,4 +55,10 @@ Wrangler prints a URL like `https://aka-nihongo.<your-subdomain>.workers.dev`. O
 
 ## 4. Changing the access code
 
-`npx wrangler secret put APP_ACCESS_CODE` with a new value. Existing devices keep working until you also rotate `COOKIE_SECRET`, which signs everyone out.
+`npx wrangler secret put APP_ACCESS_CODE` with a new value. This signs every device out (the cookie is bound to the code), so both phones type the new code once. Rotating `COOKIE_SECRET` does the same.
+
+## 5. Good to know
+
+- A daily cron (03:17 UTC) hard deletes profiles that were deleted more than 30 days ago. It is configured in `wrangler.jsonc` and needs nothing from you.
+- Local data lives in each phone's IndexedDB and is synced to D1 in the background. Export a JSON backup from the profile sheet whenever you like.
+- On the free plan, D1 and Workers limits are far above what two people use.

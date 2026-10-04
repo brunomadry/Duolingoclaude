@@ -4,6 +4,8 @@
   "main": "worker/index.ts",
   "compatibility_date": "2026-09-01",
   "observability": { "enabled": true },
+  // Daily cleanup of profiles soft-deleted more than 30 days ago.
+  "triggers": { "crons": ["17 3 * * *"] },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

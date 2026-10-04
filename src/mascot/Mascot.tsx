@@ -46,9 +46,11 @@ interface AvatarProps {
   id: AvatarId;
   size?: number;
   label?: string;
+  /** Hide from VoiceOver when the surrounding control already names it. */
+  decorative?: boolean;
 }
 
-export function Avatar({ id, size = 64, label }: AvatarProps) {
+export function Avatar({ id, size = 64, label, decorative = false }: AvatarProps) {
   const markup = useMemo(() => composeAvatar(id), [id]);
   return (
     <svg
@@ -56,8 +58,9 @@ export function Avatar({ id, size = 64, label }: AvatarProps) {
       viewBox={HEAD_VIEWBOX}
       width={size}
       height={size}
-      role="img"
-      aria-label={label ?? `Awatar: ${AVATARS[id].label}`}
+      role={decorative ? undefined : 'img'}
+      aria-hidden={decorative ? 'true' : undefined}
+      aria-label={decorative ? undefined : (label ?? `Awatar: ${AVATARS[id].label}`)}
       dangerouslySetInnerHTML={{ __html: markup }}
     />
   );

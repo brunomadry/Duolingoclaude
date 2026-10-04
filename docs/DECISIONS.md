@@ -46,3 +46,25 @@ One line per decision, newest at the bottom of each section. The brief (the orig
 - **Curriculum vs report**: the brief's "every 7th lesson is a test" wins, so tests sit at L7, L14, ... L98. Hiragana dakuten is L6, yoon/small っ moves to L8, katakana extended sounds to L15, and L16 becomes a mixed reading review instead of a separate test.
 - **Phase B** has 19 grammar points, each followed by a practice lesson (new structure, then practice + chat), skipping test slots. **Phase C** has 14 plain-form/N5 topics with the same pattern, plus kanji lessons; N5 kanji (about 2 to 3 per lesson) are attached in Phase 6 through the optional `kanji` field.
 - **Content arrives phase by phase**: the validator skips cross-checks for files that do not exist yet (with a warning) and enforces every reference once a file exists.
+
+## Phase 1: access, profiles, sync, PWA
+
+- **Access cookie** `aka_access` = `v1.<issuedAt>.<HMAC>`; the HMAC (keyed by `COOKIE_SECRET`) also covers a fingerprint of `APP_ACCESS_CODE`, so rotating either secret signs every device out. HttpOnly, SameSite=Strict, Secure on HTTPS, 400 days (the browser cap).
+- **Constant-time code check**: both codes are reduced to HMACs first, then compared byte by byte, so neither length nor prefix leaks through timing. `crypto.subtle.timingSafeEqual` is Workers-only, so a tiny portable version keeps it testable in Node.
+- **Rate limits live in D1** (fixed windows, one UPSERT per hit): unlock 10 per 15 min per IP and 60 globally, sync 240 per hour per profile, reports 30 per hour per IP. No KV binding needed for two users.
+- **Mutations must be `application/json`** on top of SameSite=Strict, which blocks simple cross-site form posts.
+- **Client-chosen UUIDs** for profiles and reports: profiles can be created offline and every POST is an idempotent upsert.
+- **Two clocks**: `updatedAt` (client) decides last-write-wins per record; `synced_at` (server) drives `?since=` pulls. Pulls report `serverTime` 5 s in the past so a write committing during a pull is fetched again; merging is idempotent, so the overlap costs nothing.
+- **Ties**: the server keeps the first arrival and clients prefer the server copy on equal `updatedAt`, so all devices converge. Client stamps are monotonic per session, so one device never produces a tie with itself.
+- **Timestamps more than 24 h in the future are rejected**, so a broken phone clock cannot win every conflict forever.
+- **Deletion is a tombstone**: a soft-deleted profile never resurrects, other devices drop it on their next pull, and a daily cron (03:17 UTC) hard deletes it with its cards and progress after 30 days.
+- **Outbox keeps only the newest entry per record key**: records are whole-record LWW, so older queued versions are useless.
+- **Profile picker on every launch** (as the brief says), with the last used profile outlined in gold. A brand new device waits for the first sync before offering "create your first profile", so a second phone never duplicates a profile.
+- **Max 6 profile cards and 24-character names**: two users, room for guests, layout stays a clean 2-column grid.
+- **zod/mini for API schemas** (named imports, tree-shakable): the Worker validates every body with them; the client only loads them lazily for backup import (27 KB chunk instead of 381 KB). Classic `zod` stays in scripts for content validation.
+- **D1 in tests = node:sqlite shim** (`tests/d1-shim.ts`): runs the real SQL (upserts, RETURNING, batches) without Miniflare or `@cloudflare/vitest-pool-workers`. A two-device end-to-end test syncs two IndexedDB databases (fake-indexeddb) through the real Worker.
+- **Service worker via injectManifest** (`src/sw.ts`): precaches shell, CSS, JS (content JSON is bundled into it), icons and mascot; SPA navigations get the cached shell; `/api` is never cached; an offline page covers the "first visit while offline" case; updates wait for the "Nowa wersja, odśwież" tap.
+- **iOS splash screens**: portrait only, iPhones from SE to 17 Pro Max, sumi background, not precached (iOS reads them at launch).
+- **Status bar**: `black-translucent` gives the dark theme an edge-to-edge look; iOS reads it once at launch and always draws white text, so the light theme draws a thin ink band under the status bar in standalone mode. Verify on a device (QA checklist).
+- **Native `<dialog>`** for the settings sheet and confirmations: focus trap, Escape and inert background for free on iOS 15.4+.
+- **Export** uses the Web Share API with a file when available (iOS share sheet, "Zapisz w Plikach"), otherwise a download link. **Import** merges into the same live profile (newer record wins) or becomes a new profile with a fresh id, so it never collides with a server tombstone.

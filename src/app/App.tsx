@@ -1,68 +1,85 @@
-import { useState } from 'preact/hooks';
-import { APP_NAME } from '../shared/constants.ts';
-import { Avatar, Mascot } from '../mascot/Mascot.tsx';
-import { AVATAR_IDS, AVATARS, POSES } from '../mascot/parts.ts';
-import { applyTheme, normalizeTheme, type Theme } from '../theme/theme.ts';
+import { useErrorBoundary } from 'preact/hooks';
+import { Mascot } from '../mascot/Mascot.tsx';
+import { AccessScreen } from '../screens/AccessScreen.tsx';
+import { ProfilePicker } from '../screens/ProfilePicker.tsx';
+import { activeProfile, appState } from '../state/app.ts';
+import { useStore } from '../state/store.ts';
+import { useToasts } from '../ui/toast.tsx';
+import { applyUpdate } from './pwa.ts';
+import { Shell } from './Shell.tsx';
 
-/**
- * Phase 0 style guide: proves tokens, both themes, typography and the mascot.
- * Replaced by the real shell in Phase 1.
- */
-export function App() {
-  const [theme, setTheme] = useState<Theme>(() =>
-    normalizeTheme(document.documentElement.dataset.theme),
+function OfflineBanner() {
+  const { online, phase } = useStore(appState);
+  if (online || phase === 'booting') return null;
+  return (
+    <div class="offline-banner" role="status">
+      Offline. Lekcje i powtórki działają, synchronizacja poczeka na sieć.
+    </div>
   );
+}
 
-  const toggle = () => {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    setTheme(next);
-  };
+function Toasts() {
+  const toasts = useToasts();
+  const { updateAvailable } = useStore(appState);
+  return (
+    <div class="toast-region" aria-live="polite">
+      {updateAvailable && (
+        <div class="toast" role="status">
+          <span class="grow">Nowa wersja aplikacji.</span>
+          <button class="btn btn--primary" onClick={applyUpdate}>
+            Odśwież
+          </button>
+        </div>
+      )}
+      {toasts.map((t) => (
+        <div class="toast" key={t.id}>
+          <span class="grow">{t.text}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Broken({ text }: { text: string }) {
+  return (
+    <main class="screen centered-screen" style={{ textAlign: 'center' }}>
+      <Mascot pose="sleepy" size={150} />
+      <h1 class="display" style={{ fontSize: 'var(--fs-lg)' }}>
+        Coś poszło nie tak
+      </h1>
+      <p class="muted">{text}</p>
+      <button class="btn btn--primary" onClick={() => location.reload()}>
+        Spróbuj ponownie
+      </button>
+    </main>
+  );
+}
+
+export function App() {
+  const state = useStore(appState);
+  const [error] = useErrorBoundary((e: unknown) => console.error(e));
+
+  if (error) {
+    return <Broken text="Aplikacja napotkała błąd. Twoje dane są bezpieczne na telefonie." />;
+  }
+
+  let screen;
+  if (state.phase === 'booting') screen = null;
+  else if (state.phase === 'broken') {
+    screen = (
+      <Broken text="Ta przeglądarka nie pozwala zapisywać danych (może tryb prywatny?). Otwórz aplikację normalnie z ekranu początkowego." />
+    );
+  } else if (state.phase === 'locked') screen = <AccessScreen />;
+  else {
+    const profile = activeProfile();
+    screen = profile ? <Shell profile={profile} key={profile.id} /> : <ProfilePicker />;
+  }
 
   return (
-    <main class="screen stack waves">
-      <header class="row" style={{ justifyContent: 'space-between' }}>
-        <h1 class="display" style={{ fontSize: 'var(--fs-xl)' }}>
-          {APP_NAME}
-        </h1>
-        <button class="btn" onClick={toggle} aria-pressed={theme === 'light'}>
-          {theme === 'dark' ? 'Jasny motyw' : 'Ciemny motyw'}
-        </button>
-      </header>
-
-      <section class="card stack" aria-labelledby="poses">
-        <h2 id="poses">Maskotka</h2>
-        <div class="row" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-          {POSES.map((p) => (
-            <Mascot key={p} pose={p} size={120} />
-          ))}
-        </div>
-      </section>
-
-      <section class="card stack" aria-labelledby="avatars">
-        <h2 id="avatars">Awatary</h2>
-        <div class="row" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-          {AVATAR_IDS.map((id) => (
-            <figure key={id} style={{ margin: 0, textAlign: 'center' }}>
-              <Avatar id={id} size={72} />
-              <figcaption class="muted" style={{ fontSize: 'var(--fs-xs)' }}>
-                {AVATARS[id].label}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section class="card stack" aria-labelledby="type">
-        <h2 id="type">Typografia</h2>
-        <p class="jp" style={{ fontSize: 'var(--fs-kana)', lineHeight: 1 }}>
-          あア
-        </p>
-        <p>Zażółć gęślą jaźń. ZAŻÓŁĆ GĘŚLĄ JAŹŃ.</p>
-        <p class="muted">Tekst pomocniczy w kolorze stonowanym.</p>
-        <p style={{ color: 'var(--accent-text)' }}>Akcent: vermilion shu.</p>
-        <button class="btn btn--primary btn--block">Zaczynamy lekcję</button>
-      </section>
-    </main>
+    <>
+      <OfflineBanner />
+      {screen}
+      <Toasts />
+    </>
   );
 }

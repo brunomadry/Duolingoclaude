@@ -6,12 +6,12 @@
   },
   "include": [
     "scripts",
-    "tests",
     "src/**/*.test.ts",
-    "worker/**/*.test.ts",
     "vite.config.ts",
     "vitest.config.ts",
     "eslint.config.js",
-    "pwa-assets.config.ts"
-  ]
+    "pwa-assets.config.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": ["tests/d1-shim.ts", "tests/**/*.e2e.test.ts"]
 }

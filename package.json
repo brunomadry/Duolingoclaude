@@ -11,7 +11,7 @@
     "dev:api": "wrangler dev --port 8787",
     "build": "vite build",
     "preview": "npm run build && wrangler dev --port 8787",
-    "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.node.json",
+    "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.sw.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.worker-test.json && tsc -p tsconfig.node.json",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -50,6 +50,9 @@
     "vite": "^8.3.2",
     "vite-plugin-pwa": "^2.0.0",
     "vitest": "^5.0.3",
+    "workbox-core": "^7.4.1",
+    "workbox-precaching": "^7.4.1",
+    "workbox-routing": "^7.4.1",
     "workbox-window": "^7.4.1",
     "wrangler": "^4.147.0"
   }

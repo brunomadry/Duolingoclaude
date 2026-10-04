@@ -262,3 +262,22 @@ svg {
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------- iOS status bar (light) */
+
+/*
+ * The Home Screen app uses status-bar-style black-translucent (white status text,
+ * content under the bar), which iOS reads once at launch. In the light theme we
+ * draw a thin ink band behind the status bar so the clock stays readable.
+ */
+@media (display-mode: standalone) {
+  :root[data-theme='light'] body::before {
+    content: '';
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--safe-top);
+    background: #1b1517;
+    z-index: 100;
+    pointer-events: none;
+  }
+}

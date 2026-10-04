@@ -37,4 +37,5 @@ docs/           decisions and research
 
 ## Status
 
-Phase 0 (foundations) done. See the phase list in the original brief; progress is tracked in commit messages.
+- Phase 0 (foundations): done.
+- Phase 1 (shell and profiles): done. Access code, profiles, 4-tab shell, settings sheet, offline-first sync, PWA. Lessons start in Phase 2.
