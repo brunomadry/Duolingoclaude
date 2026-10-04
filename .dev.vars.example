@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local development. Never commit .dev.vars.
+APP_ACCESS_CODE=change-me-local
+COOKIE_SECRET=replace-with-64-random-hex-chars
+GROQ_API_KEY=
+GEMINI_API_KEY=

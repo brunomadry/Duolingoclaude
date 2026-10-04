@@ -1,0 +1,8 @@
+dist/
+dev-dist/
+.wrangler/
+node_modules/
+package-lock.json
+docs/japonski-research.md
+public/
+src/assets/mascot/*.svg

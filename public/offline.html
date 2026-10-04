@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f0d0e" />
+    <title>Aka Nihongo · offline</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: #0f0d0e;
+        color: #f2ebe3;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      main {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 24px;
+        text-align: center;
+      }
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 28px;
+      }
+      p {
+        color: #a89c95;
+        max-width: 30ch;
+        line-height: 1.5;
+      }
+      button {
+        min-height: 44px;
+        padding: 0 24px;
+        border: 0;
+        border-radius: 999px;
+        background: #be3820;
+        color: #f2ebe3;
+        font: inherit;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="/pwa-192x192.png" alt="" />
+      <h1>Brak połączenia</h1>
+      <p>Aplikacja nie zdążyła się jeszcze zapisać na tym urządzeniu. Połącz się z internetem i spróbuj ponownie.</p>
+      <button onclick="location.reload()">Spróbuj ponownie</button>
+    </main>
+  </body>
+</html>

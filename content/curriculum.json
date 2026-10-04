@@ -1,0 +1,1212 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "n": 1,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: あ i か",
+      "summary": "Pięć samogłosek i rząd K.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-a", "h-ka"]
+      },
+      "words": []
+    },
+    {
+      "n": 2,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: さ i た",
+      "summary": "Rzędy S i T, w tym し, ち i つ.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-sa", "h-ta"]
+      },
+      "words": []
+    },
+    {
+      "n": 3,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: な i は",
+      "summary": "Rzędy N i H, w tym ふ.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-na", "h-ha"]
+      },
+      "words": []
+    },
+    {
+      "n": 4,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: ま i や",
+      "summary": "Rzędy M i Y oraz pierwsze słowa.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-ma", "h-ya"]
+      },
+      "words": []
+    },
+    {
+      "n": 5,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: ら, わ i ん",
+      "summary": "Ostatnie rzędy podstawowej hiragany.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-ra", "h-wa"]
+      },
+      "words": []
+    },
+    {
+      "n": 6,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: znaki z kreskami",
+      "summary": "が, ざ, だ, ば i ぱ: dźwięczne wersje znanych znaków.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-dakuten", "h-handakuten"]
+      },
+      "words": []
+    },
+    {
+      "n": 7,
+      "phase": "A",
+      "kind": "test",
+      "title": "Test: lekcje 1 do 6",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [1, 6]
+    },
+    {
+      "n": 8,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Hiragana: połączenia i małe っ",
+      "summary": "きゃ, しゅ, ちょ, podwojone spółgłoski i długie samogłoski.",
+      "newItem": {
+        "type": "kana",
+        "script": "hiragana",
+        "groups": ["h-yoon", "h-small-tsu"]
+      },
+      "words": []
+    },
+    {
+      "n": 9,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: ア i カ",
+      "summary": "Te same dźwięki, nowe kształty.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-a", "k-ka"]
+      },
+      "words": []
+    },
+    {
+      "n": 10,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: サ i タ",
+      "summary": "Uwaga na シ i ツ.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-sa", "k-ta"]
+      },
+      "words": []
+    },
+    {
+      "n": 11,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: ナ i ハ",
+      "summary": "Rzędy N i H w katakanie.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-na", "k-ha"]
+      },
+      "words": []
+    },
+    {
+      "n": 12,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: マ, ヤ i ラ",
+      "summary": "Trzy rzędy naraz, bo dźwięki już znasz.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-ma", "k-ya", "k-ra"]
+      },
+      "words": []
+    },
+    {
+      "n": 13,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: ワ, ン i kreski",
+      "summary": "Koniec tabeli i dźwięczne wersje.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-wa", "k-dakuten", "k-handakuten"]
+      },
+      "words": []
+    },
+    {
+      "n": 14,
+      "phase": "A",
+      "kind": "test",
+      "title": "Test: lekcje 8 do 13",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [8, 13]
+    },
+    {
+      "n": 15,
+      "phase": "A",
+      "kind": "kana",
+      "title": "Katakana: połączenia i ー",
+      "summary": "キャ, ッ, długa kreska ー i dźwięki obce jak ティ czy ファ.",
+      "newItem": {
+        "type": "kana",
+        "script": "katakana",
+        "groups": ["k-yoon", "k-small-tsu", "k-long-vowel", "k-extended"]
+      },
+      "words": []
+    },
+    {
+      "n": 16,
+      "phase": "A",
+      "kind": "review",
+      "title": "Hiragana i katakana razem",
+      "summary": "Czytanie słów pisanych oboma alfabetami.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 17,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "X は Y です",
+      "summary": "Przedstawianie się i mówienie, kim lub czym coś jest.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "wa-desu"
+      },
+      "words": []
+    },
+    {
+      "n": 18,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: X は Y です",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 19,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Pytania z か",
+      "summary": "Pytanie przez dodanie か i przeczenie じゃないです.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "ka-question"
+      },
+      "words": []
+    },
+    {
+      "n": 20,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Pytania z か",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 21,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 15 do 20",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [15, 20]
+    },
+    {
+      "n": 22,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "これ, それ, あれ",
+      "summary": "To, tamto i tamto daleko.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "kore-sore-are"
+      },
+      "words": []
+    },
+    {
+      "n": 23,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: これ, それ, あれ",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 24,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "この, その, あの i ここ",
+      "summary": "Wskazywanie rzeczy i miejsc.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "kono-sono-ano"
+      },
+      "words": []
+    },
+    {
+      "n": 25,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: この, その, あの i ここ",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 26,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Partykuły の i も",
+      "summary": "Czyje coś jest, i „też”.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "no-mo"
+      },
+      "words": []
+    },
+    {
+      "n": 27,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Partykuły の i も",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 28,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 22 do 27",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [22, 27]
+    },
+    {
+      "n": 29,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Czasowniki ます i partykuła を",
+      "summary": "Pierwsze czasowniki i dopełnienie.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "masu-wo"
+      },
+      "words": []
+    },
+    {
+      "n": 30,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Czasowniki ます i partykuła を",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 31,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Partykuły に i へ",
+      "summary": "Kiedy i dokąd.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "ni-he"
+      },
+      "words": []
+    },
+    {
+      "n": 32,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Partykuły に i へ",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 33,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Partykuła で",
+      "summary": "Gdzie coś się dzieje i czym.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "de-place-means"
+      },
+      "words": []
+    },
+    {
+      "n": 34,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Partykuła で",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 35,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 29 do 34",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [29, 34]
+    },
+    {
+      "n": 36,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "ません, ました, ませんでした",
+      "summary": "Przeczenie i czas przeszły.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "masen-mashita"
+      },
+      "words": []
+    },
+    {
+      "n": 37,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: ません, ました, ませんでした",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 38,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Przymiotniki na い",
+      "summary": "Opisywanie rzeczy: たかい, おいしい.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "i-adjectives"
+      },
+      "words": []
+    },
+    {
+      "n": 39,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Przymiotniki na い",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 40,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Przymiotniki na な",
+      "summary": "しずか, げんき i inne.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "na-adjectives"
+      },
+      "words": []
+    },
+    {
+      "n": 41,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Przymiotniki na な",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 42,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 36 do 41",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [36, 41]
+    },
+    {
+      "n": 43,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "あります i います",
+      "summary": "Istnienie: jest coś, jest ktoś.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "arimasu-imasu"
+      },
+      "words": []
+    },
+    {
+      "n": 44,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: あります i います",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 45,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Liczby i godziny",
+      "summary": "Liczenie, godziny i minuty.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "numbers-time"
+      },
+      "words": []
+    },
+    {
+      "n": 46,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Liczby i godziny",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 47,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Liczniki i daty",
+      "summary": "～つ, ～にん, ～まい oraz dni miesiąca.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "counters"
+      },
+      "words": []
+    },
+    {
+      "n": 48,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Liczniki i daty",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 49,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 43 do 48",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [43, 48]
+    },
+    {
+      "n": 50,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Forma て",
+      "summary": "Jak zbudować formę て czasownika.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "te-form"
+      },
+      "words": []
+    },
+    {
+      "n": 51,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma て",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 52,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Prośby z ～てください",
+      "summary": "Grzeczne proszenie o coś.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "te-kudasai"
+      },
+      "words": []
+    },
+    {
+      "n": 53,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Prośby z ～てください",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 54,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "～たい i ～ましょう",
+      "summary": "Chcę coś zrobić i zróbmy to.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "tai-mashou"
+      },
+      "words": []
+    },
+    {
+      "n": 55,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: ～たい i ～ましょう",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 56,
+      "phase": "B",
+      "kind": "test",
+      "title": "Test: lekcje 50 do 55",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [50, 55]
+    },
+    {
+      "n": 57,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "Porównania",
+      "summary": "より, のほうが i いちばん.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "yori-hou"
+      },
+      "words": []
+    },
+    {
+      "n": 58,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: Porównania",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 59,
+      "phase": "B",
+      "kind": "grammar",
+      "title": "から i でも",
+      "summary": "Bo, więc i ale.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "kara-demo"
+      },
+      "words": []
+    },
+    {
+      "n": 60,
+      "phase": "B",
+      "kind": "practice",
+      "title": "Ćwiczenia: から i でも",
+      "summary": "Utrwalenie i rozmowa na znanych słowach.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": []
+    },
+    {
+      "n": 61,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Forma prosta: だ",
+      "summary": "Jak だ zastępuje です w luźnej mowie.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "plain-da"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 62,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma prosta: だ",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 63,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 57 do 62",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [57, 62]
+    },
+    {
+      "n": 64,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Forma słownikowa",
+      "summary": "Grupy czasowników i forma prosta teraźniejsza.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "plain-dictionary"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 65,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma słownikowa",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 66,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Forma ない",
+      "summary": "Proste przeczenie czasowników.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "plain-nai"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 67,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma ない",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 68,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Forma た",
+      "summary": "Prosty czas przeszły.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "plain-ta"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 69,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma た",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 70,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 64 do 69",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [64, 69]
+    },
+    {
+      "n": 71,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Forma なかった",
+      "summary": "Prosty czas przeszły przeczący.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "plain-nakatta"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 72,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Forma なかった",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 73,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "～ている",
+      "summary": "Trwające czynności i stany.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "te-iru"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 74,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: ～ている",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 75,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Przymiotniki w formie prostej",
+      "summary": "かった, くない i luźne przymiotniki.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "adjectives-plain"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 76,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Przymiotniki w formie prostej",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 77,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 71 do 76",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [71, 76]
+    },
+    {
+      "n": 78,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "Rozmowa nieformalna",
+      "summary": "Pytania bez か i luźne końcówki.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "casual-speech"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 79,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: Rozmowa nieformalna",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 80,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "～がほしい",
+      "summary": "Chcę mieć coś.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "hoshii"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 81,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: ～がほしい",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 82,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "まえに i あとで",
+      "summary": "Przed i po.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "mae-ato"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 83,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: まえに i あとで",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 84,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 78 do 83",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [78, 83]
+    },
+    {
+      "n": 85,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "～てから",
+      "summary": "Najpierw jedno, potem drugie.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "te-kara"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 86,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: ～てから",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 87,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "でしょう",
+      "summary": "Przypuszczenia i łagodne pytania.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "deshou"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 88,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: でしょう",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 89,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "もう i まだ",
+      "summary": "Już i jeszcze.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "mou-mada"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 90,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: もう i まだ",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 91,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 85 do 90",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [85, 90]
+    },
+    {
+      "n": 92,
+      "phase": "C",
+      "kind": "grammar",
+      "title": "～なる",
+      "summary": "Stawać się: ～くなる, ～になる.",
+      "newItem": {
+        "type": "grammar",
+        "grammarId": "naru"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 93,
+      "phase": "C",
+      "kind": "practice",
+      "title": "Ćwiczenia: ～なる",
+      "summary": "Utrwalenie, kanji w słowach i rozmowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 94,
+      "phase": "C",
+      "kind": "kanji",
+      "title": "Kanji w słowach",
+      "summary": "Nowe znaki kanji poznawane przez znane słowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 95,
+      "phase": "C",
+      "kind": "kanji",
+      "title": "Kanji w słowach",
+      "summary": "Nowe znaki kanji poznawane przez znane słowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 96,
+      "phase": "C",
+      "kind": "kanji",
+      "title": "Kanji w słowach",
+      "summary": "Nowe znaki kanji poznawane przez znane słowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 97,
+      "phase": "C",
+      "kind": "kanji",
+      "title": "Kanji w słowach",
+      "summary": "Nowe znaki kanji poznawane przez znane słowa.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 98,
+      "phase": "C",
+      "kind": "test",
+      "title": "Test: lekcje 92 do 97",
+      "summary": "Sprawdzian bez stresu. Wynik niczego nie blokuje.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "covers": [92, 97]
+    },
+    {
+      "n": 99,
+      "phase": "C",
+      "kind": "review",
+      "title": "Powtórka całego N5",
+      "summary": "Cały materiał N5 w jednym miejscu.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    },
+    {
+      "n": 100,
+      "phase": "C",
+      "kind": "review",
+      "title": "Sprawdzian końcowy N5",
+      "summary": "Podsumowanie całego kursu.",
+      "newItem": {
+        "type": "none"
+      },
+      "words": [],
+      "kanji": []
+    }
+  ]
+}
