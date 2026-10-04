@@ -10,8 +10,13 @@
  *     check at the word's lesson, shortest first.
  *   node scripts/examples-tool.ts lesson <n>
  *     Shows what lesson <n> teaches and which of its words still lack an example.
+ *   node scripts/examples-tool.ts validate <part.json> <fromLesson> <toLesson>
+ *     Validates one parts file (content/examples/part-K.json) with the same rules as
+ *     scripts/validate-content.ts, and lists words of lessons <from>..<to> without an example.
  */
 import { existsSync, readFileSync } from 'node:fs';
+import { KANA_PHASE_END } from '../src/shared/constants.ts';
+import { ExampleFile } from '../src/shared/content-schema.ts';
 import { createLexicon, tokenize, type LexEntry } from '../src/shared/jp-words.ts';
 import {
   checkTokens,
@@ -49,13 +54,52 @@ const lessonOfWord = new Map<string, number>();
 for (const l of curriculum.lessons) for (const w of l.words) lessonOfWord.set(w, l.n);
 const posOfWord = new Map(vocab.map((w) => [w.id, w.pos]));
 
-export function contextFor(lessonN: number): CheckContext {
-  return { lessonN, gates, lessonOfWord, posOfWord };
+export function contextFor(lessonN: number, allowSurfaces?: ReadonlySet<string>): CheckContext {
+  return { lessonN, gates, lessonOfWord, posOfWord, allowSurfaces };
 }
 
-export function checkSentence(lessonN: number, text: string) {
+export function checkSentence(lessonN: number, text: string, allow?: ReadonlySet<string>) {
   const tokens = tokenize(text, lexicon);
-  return { tokens, ...checkTokens(tokens, contextFor(lessonN)) };
+  return { tokens, ...checkTokens(tokens, contextFor(lessonN, allow)) };
+}
+
+const HAS_KANJI = /[\u3400-\u9fff々]/;
+
+function validatePart(path: string, from: number, to: number): string[] {
+  const parsed = ExampleFile.safeParse(JSON.parse(readFileSync(path, 'utf8')));
+  if (!parsed.success) return parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`);
+  const problems: string[] = [];
+  const seen = new Set<string>();
+  parsed.data.examples.forEach((ex, i) => {
+    const where = `#${i} ${ex.wordId} (L${ex.lesson})`;
+    const taughtIn = lessonOfWord.get(ex.wordId);
+    if (taughtIn === undefined) {
+      problems.push(`${where}: word is not taught in any lesson`);
+      return;
+    }
+    if (ex.lesson !== taughtIn) problems.push(`${where}: the word is taught in lesson ${taughtIn}`);
+    if (ex.lesson < from || ex.lesson > to) problems.push(`${where}: outside L${from}-L${to}`);
+    if (seen.has(ex.wordId)) problems.push(`${where}: second example for the word`);
+    seen.add(ex.wordId);
+    if (ex.source === 'tatoeba' && ex.tatoebaId === undefined)
+      problems.push(`${where}: Tatoeba sentence without tatoebaId`);
+    if (HAS_KANJI.test(ex.ja) && !ex.kana) problems.push(`${where}: has kanji but no kana`);
+    if (ex.kana && /[\u3400-\u9fffa-zA-Z]/.test(ex.kana))
+      problems.push(`${where}: kana reading contains kanji or Latin letters`);
+    const allow = new Set(ex.allowUnknown ?? []);
+    const r = checkSentence(ex.lesson, ex.ja, allow);
+    for (const p of r.problems) problems.push(`${where}: ${p} in "${ex.ja}"`);
+    if (r.ok && !r.wordIds.includes(ex.wordId))
+      problems.push(`${where}: the sentence does not use the word ("${ex.ja}")`);
+    if (ex.kana)
+      for (const p of readingProblems(r.tokens, tokenize(ex.kana, lexicon), allow))
+        problems.push(`${where}: ${p} ("${ex.ja}" / "${ex.kana}")`);
+  });
+  for (const l of curriculum.lessons) {
+    if (l.n < from || l.n > to || l.n <= KANA_PHASE_END) continue;
+    for (const w of l.words) if (!seen.has(w)) problems.push(`L${l.n}: no example for "${w}"`);
+  }
+  return problems;
 }
 
 function show(tokens: ReturnType<typeof tokenize>): string {
@@ -119,8 +163,12 @@ if (cmd === 'check' && a && b) {
     const v = vocab.find((x) => x.id === w);
     console.log(`  ${done.has(w) ? 'ok ' : '...'} ${w}\t${v?.kanji ?? ''} ${v?.kana ?? ''}`);
   }
+} else if (cmd === 'validate' && a && b && c) {
+  const problems = validatePart(a, Number(b), Number(c));
+  console.log(problems.length ? problems.join('\n') : `${a}: OK for L${b}-L${c}`);
+  process.exitCode = problems.length ? 1 : 0;
 } else {
   console.log(
-    'usage: check <lesson> "<sentence>" ["<kana>"] | candidates <wordId> [limit] | lesson <n>',
+    'usage: check <lesson> "<sentence>" ["<kana>"] | candidates <wordId> [limit] | lesson <n> | validate <part.json> <from> <to>',
   );
 }
