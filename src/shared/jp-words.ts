@@ -21,8 +21,10 @@
  *      ません ませんでした ましょう ましょうか, stem + たい たくない たかった
  *      たくなかった たくて, て/で, た/だ, たら, たり, ない なかった なく なくて
  *      ないで, volitional (よう/おう), ながら, なさい, and the bare masu stem
- *      (only accepted directly before に, as in 見に行く, and only when no
- *      other word has the same surface: 休み is the noun).
+ *      (only accepted directly before に or 方, as in 見に行く and 読み方, or
+ *      after お, and only when no other word has the same surface: 休み is
+ *      the noun). ください is listed by its masu stem, so it also gets
+ *      くださいます ました ません ませんでした.
  *      Irregulars: する, 来る/くる (きて, こない, こよう), 行く (いって),
  *      ある (ない, なかった).
  *    - i-adjectives: dictionary form, く くない かった くなかった くて くなくて
@@ -32,9 +34,11 @@
  *    - everything else (nouns, na-adjectives, adverbs, ...): the bare form;
  *      な, に, です, だ and friends are separate grammar tokens.
  *    Kana spellings of words that have a kanji spelling are "weak": a single
- *    kana (て for 手, は for 歯) is not generated at all, and a weak word loses
+ *    kana (て for 手, は for 歯) is not generated at all, a weak word loses
  *    to a grammar word with the same surface (くらい is the particle, not 暗い;
- *    さん after a name is the suffix, not 三).
+ *    さん after a name is the suffix, not 三), and a weak inflection is
+ *    dropped when a kana dictionary word has the same surface (すみません is
+ *    not also 住む). Otherwise every candidate id is kept (きて: 着る, 来る).
  *
  * 2. `tokenize()` is a longest-match segmenter run as a small dynamic
  *    programme, so a greedy choice that would strand the rest of the sentence
@@ -42,28 +46,48 @@
  *    Parses are compared by:
  *      a. fewest rule violations (see `violations` in `tokenize`),
  *      b. fewest characters left unknown,
- *      c. fewest "noun directly followed by a content word" joins (prefers
- *         あれ / は / なに over あれ / はな / に),
+ *      c. fewest joins: a noun or an unknown katakana/kanji word directly
+ *         followed by a content word other than する/できる/ください (prefers
+ *         あれ / は / なに over あれ / はな / に, and サイズ / は / いくつ over
+ *         サイズ / はい / くつ), an unknown hiragana word directly followed by
+ *         a noun (つもり / な / ん / です, not つもり / なん / です), and a
+ *         particle or the copula opening a clause that is grammar only (a
+ *         lone ね or ですね),
  *      d. longest first token (classic left-to-right longest match),
  *      e. kind at equal length: number > vocabulary word > grammar word >
  *         weak vocabulary word (a counter beats a word right after a number).
  *    Rules (each broken rule is one violation):
- *    - particles and the copula cannot open a clause (but may follow 」) or
- *      follow は/が/を/も/や; が/を/に/へ/で/と and the copula cannot follow
- *      に/へ/で/と; nothing but a particle may follow the copula;
- *    - honorific お/ご must be followed by a vocabulary word, a bare masu
- *      stem by に, a name suffix (さん) by nothing but a word or unknown run;
- *    - a token cannot start with a small kana or ー, and を is never unknown;
- *    - a weak hiragana word, or one starting with い (いて, いた), cannot
- *      follow an unknown kanji: it is okurigana of the unknown word (生きて);
- *    - a particle between two unknown hiragana runs belongs to the word
- *      (しっかり, not しっ + か + り), except は/を/へ/の;
+ *    - particles and the copula cannot open a clause (but may follow 」 or the
+ *      placeholder ～, as in ～ね) or follow は/が/を/も/や; が/を/に/へ/で/と
+ *      and the copula cannot follow に/へ/で/と;
+ *    - honorific お/ご must be followed by a vocabulary word (お + masu stem
+ *      is a noun: お待ちください), a bare masu stem by に or 方 (見に行く,
+ *      読み方), a name suffix (さん) by nothing but a word or unknown run;
+ *    - a token cannot start with a small kana, ー or an iteration mark
+ *      (々, ゝ), and を is never unknown;
+ *    - no verb or adjective may follow plain だ directly (いただきます is not
+ *      いた + だ + きます), and no verb may follow the linker な (出られなかった
+ *      is not 出られ + な + かった);
+ *    - a hiragana word other than する/できる/ください cannot follow an
+ *      unknown kanji: it is okurigana of the unknown word (生きて, not
+ *      生 + きて), while 生産する gives 生産 + する;
+ *    - a particle or the copula between two unknown hiragana runs belongs to
+ *      the word (しっかり, not しっ + か + り; しだい, not し + だ + い), except
+ *      は/を/へ/の; the particle rules above still apply after it;
  *    - a katakana or kanji run is covered by known tokens or split only at
- *      known words of at least 3 katakana / 2 kanji (or a kanji word with
- *      okurigana ending the run), so ペンキ stays whole instead of ペン + キ
- *      and 日本語 instead of 日 + 本 + 語, while 再来年引退 gives 再来年 + 引退.
+ *      numbers, counters after a number, and known words of at least
+ *      3 katakana / 2 kanji, so ペンキ stays whole
+ *      instead of ペン + キ and 日本語 instead of 日 + 本 + 語, while
+ *      再来年引退 gives 再来年 + 引退 and テレビゲーム gives テレビ + ゲーム;
+ *    - two one-kanji nouns cannot touch inside a kanji run: 中国人 and 外人
+ *      are unknown compounds, not 中 + 国 + 人 or 外 + 人.
  *    Kana-only conjunctions and expressions that are also grammar (でも, では)
- *    are read as vocabulary only at the start of a clause.
+ *    and interjections that start with a particle (はい) are read as
+ *    vocabulary only at the start of a clause. Spaces are transparent
+ *    (learners may type わたし は がくせい です).
+ *    Verbs the vocabulary does not know still get their polite endings as
+ *    grammar (分け<?> + ました, 行け<?> + ません), so the ending is never read
+ *    as ま + した (下, する) or ま + せん (千).
  *
  * Numbers (ASCII and full-width digits, kanji numerals 〇一二三四五六七八九十百
  * 千万 when they are not part of a longer word such as 一つ or 八百屋),
@@ -144,6 +168,7 @@ export type GrammarRole =
   | 'copula'
   | 'ending'
   | 'polite'
+  | 'verb'
   | 'prefix'
   | 'suffix'
   | 'noun'
@@ -152,12 +177,17 @@ export type GrammarRole =
 
 /**
  * Where a grammar word may appear, judged by the token before it:
- * - number: after a number (３, 三, 何, なん, いち) - counters;
+ * - number: after a number (３, 三, いち, 何, なん; not なに) - counters;
  * - predicate: after a verb or adjective form or the copula;
  * - predicate-or-na: as above, or after the particle な;
- * - content: after a word or an unknown word (not after a particle).
+ * - content: after a word or an unknown word (not after a particle);
+ * - unknown: after an unknown run ending in hiragana or kanji, i.e. the stem
+ *   of a verb the vocabulary does not know (分け|ました, 行け|ません);
+ * - te: right after a te-form, judged by the text (the character before,
+ *   skipping spaces, is て or で).
  */
-export type GrammarContext = 'number' | 'predicate' | 'predicate-or-na' | 'content';
+export type GrammarContext =
+  'number' | 'predicate' | 'predicate-or-na' | 'content' | 'unknown' | 'te';
 
 export interface GrammarWord {
   /** Stable key, used to gate grammar by lesson. */
@@ -196,11 +226,18 @@ function counter(key: string, surfaces: readonly string[], en: string): GrammarW
  *              shika しか, kurai くらい, gurai ぐらい, goro ごろ/頃,
  *              nado など, kedo けど, keredo けれど/けれども, demo でも,
  *              node ので, n ん (explanatory, before です/だ).
- * Endings:     yone よね.
+ * Endings:     yone よね; masu ます, mashita ました, masen ません,
+ *              masen-deshita ませんでした, mashou ましょう (only after an
+ *              unknown verb stem: known verbs carry these forms themselves,
+ *              so 分けました is 分け + ました, not 分けま + した).
  * Copula:      desu, deshita, deshou, da, datta, darou, dewa-arimasen,
  *              ja-arimasen, dewa-arimasen-deshita, ja-arimasen-deshita,
- *              dewa-nai, ja-nai, dewa-nakatta, ja-nakatta.
+ *              dewa-nai, ja-nai, dewa-nakatta, ja-nakatta, dewa-naku
+ *              (ではなく/でなく), ja-naku.
  * Polite:      gozaimasu ございます/ございました.
+ * Verbs:       ikenai いけない/いけません ("must not", てはいけません),
+ *              shimau しまう/しまった/しまいました ... (only after a te-form,
+ *              てしまう; elsewhere しまった is 閉まる).
  * Prefixes:    o-prefix お, go-prefix ご (only before a vocabulary word).
  * Suffixes:    san さん, chan ちゃん, kun くん, sama さま/様, tachi たち/達.
  * Nouns:       toki とき/時, koto こと/事, hou ほう (comparisons),
@@ -247,6 +284,14 @@ export const GRAMMAR_WORDS: readonly GrammarWord[] = [
   }),
   // Sentence endings
   gw('ending', 'yone', ['よね'], 'sentence-final よ + ね'),
+  // Polite verb endings after a verb stem that is not in the vocabulary
+  gw('ending', 'masu', ['ます'], 'polite verb ending', { after: 'unknown' }),
+  gw('ending', 'mashita', ['ました'], 'polite verb ending, past', { after: 'unknown' }),
+  gw('ending', 'masen', ['ません'], 'polite negative verb ending', { after: 'unknown' }),
+  gw('ending', 'masen-deshita', ['ませんでした'], 'polite negative past verb ending', {
+    after: 'unknown',
+  }),
+  gw('ending', 'mashou', ['ましょう'], 'polite volitional verb ending', { after: 'unknown' }),
   // Copula
   gw('copula', 'desu', ['です'], 'polite copula'),
   gw('copula', 'deshita', ['でした'], 'polite copula, past'),
@@ -262,8 +307,42 @@ export const GRAMMAR_WORDS: readonly GrammarWord[] = [
   gw('copula', 'ja-nai', ['じゃない'], 'plain negative copula (spoken)'),
   gw('copula', 'dewa-nakatta', ['ではなかった'], 'plain negative copula, past'),
   gw('copula', 'ja-nakatta', ['じゃなかった'], 'plain negative past (spoken)'),
+  gw('copula', 'dewa-naku', ['ではなく', 'でなく'], '"not ..., but" (だけでなく)'),
+  gw('copula', 'ja-naku', ['じゃなく'], '"not ..., but" (spoken)'),
   // Polite verb forms that are not vocabulary entries
-  gw('polite', 'gozaimasu', ['ございます', 'ございました'], 'polite "to be" (ありがとうございます)'),
+  gw(
+    'polite',
+    'gozaimasu',
+    ['ございます', 'ございました'],
+    'polite "to be" (ありがとうございます)',
+  ),
+  // Auxiliary verbs that are not vocabulary entries
+  gw(
+    'verb',
+    'ikenai',
+    ['いけない', 'いけません', 'いけなかった', 'いけませんでした'],
+    '"must not" (～てはいけません); not 池 + ない',
+  ),
+  gw(
+    'verb',
+    'shimau',
+    [
+      'しまう',
+      'しまった',
+      'しまって',
+      'しまったら',
+      'しまいます',
+      'しまいました',
+      'しまいません',
+      'しまいませんでした',
+      'しまいましょう',
+      'しまわない',
+      'しまわなかった',
+      'しまおう',
+    ],
+    '"end up doing", "finish" after a te-form (～てしまう); not 閉まる',
+    { after: 'te' },
+  ),
   // Honorific prefixes
   gw('prefix', 'o-prefix', ['お'], 'honorific お before a word'),
   gw('prefix', 'go-prefix', ['ご'], 'honorific ご before a word'),
@@ -309,8 +388,8 @@ export const GRAMMAR_WORDS: readonly GrammarWord[] = [
 /**
  * Extra spellings for vocabulary entries, keyed by the entry's main written
  * form (`kanji`, or `kana` for kana-only entries). Covers common kanji for
- * words the vocabulary lists in kana, modern okurigana, ご飯 for 御飯, and the
- * everyday readings わたし (私) and なに (何).
+ * words the vocabulary lists in kana (色々 with the iteration mark), modern
+ * okurigana, ご飯 for 御飯, and the everyday readings わたし (私) and なに (何).
  */
 export const SPELLING_VARIANTS: Readonly<Record<string, readonly string[]>> = {
   ください: ['下さい'],
@@ -324,6 +403,7 @@ export const SPELLING_VARIANTS: Readonly<Record<string, readonly string[]>> = {
   たくさん: ['沢山'],
   たぶん: ['多分'],
   ちょうど: ['丁度'],
+  いろいろ: ['色々'],
   みんな: ['皆'],
   ほか: ['他'],
   いす: ['椅子'],
@@ -521,8 +601,30 @@ function adjectiveForms(s: string, ix: boolean): RawForm[] | null {
   return out;
 }
 
+/**
+ * Entries the vocabulary lists by their masu stem: ください is the stem of
+ * くださる, so くださいます / くださいませんか are its polite forms.
+ */
+const MASU_STEM_SPELLINGS = new Set(['ください', '下さい']);
+
 function formsOfSpelling(s: string, pos: readonly string[]): RawForm[] {
   const bare: RawForm = { surface: s, base: s, form: 'dict', verbal: false, predicate: false };
+  if (MASU_STEM_SPELLINGS.has(s)) {
+    const polite = (surface: string, form: InflectionForm): RawForm => ({
+      surface,
+      base: s,
+      form,
+      verbal: true,
+      predicate: true,
+    });
+    return [
+      bare,
+      polite(`${s}ます`, 'masu'),
+      polite(`${s}ました`, 'mashita'),
+      polite(`${s}ません`, 'masen'),
+      polite(`${s}ませんでした`, 'masen-deshita'),
+    ];
+  }
   const cls = verbClass(pos);
   if (cls !== null) return verbForms(s, cls) ?? [bare];
   if (pos.includes('adj-ix')) return adjectiveForms(s, true) ?? [bare];
@@ -567,6 +669,10 @@ export interface LexReading {
   form: InflectionForm;
   /** Kana spelling of a word normally written with kanji. */
   weak: boolean;
+  /** Verb or adjective form (including the dictionary form). */
+  verbal: boolean;
+  /** I-adjective form (高い, 高かった). */
+  adjective: boolean;
   /** Finite verb or adjective form. */
   predicate: boolean;
   /** Bare masu stem, only valid before に. */
@@ -575,9 +681,15 @@ export interface LexReading {
   nominal: boolean;
   /** Number word or 何: counters may follow. */
   numeric: boolean;
+  /** Number word (pos num): may follow a noun directly (これ一つ). */
+  numberWord: boolean;
   /** The entry itself is a particle (より, など). */
   particle: boolean;
-  /** Read as this word only at the start of a clause (でも, では). */
+  /**
+   * Read as this word only at the start of a clause: kana conjunctions that
+   * are also particles (でも, では) and interjections that start with a
+   * particle (はい: 語にはいくつか is に + は + いくつ + か).
+   */
   clauseInitial: boolean;
 }
 
@@ -625,7 +737,8 @@ function splitsIntoGrammar(s: string, grammar: ReadonlySet<string>): boolean {
 
 /**
  * Precomputes every surface form of the given entries plus the grammar words.
- * Fast enough to build per request in a Worker (about 700 entries in a few ms).
+ * Fast enough to build per request in a Worker: the 674 N5 entries take about
+ * 20 ms (roughly 8,000 surfaces). Build it once per isolate where possible.
  */
 export function createLexicon(entries: readonly LexEntry[]): Lexicon {
   const words = new Map<string, LexReading[]>();
@@ -637,9 +750,14 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
       const list = grammar.get(s);
       if (list === undefined) grammar.set(s, [g]);
       else list.push(g);
-      if (g.role !== 'prefix' && g.role !== 'counter' && g.before === undefined) {
-        plainGrammar.add(s);
-      }
+      const plain =
+        g.role !== 'prefix' &&
+        g.role !== 'counter' &&
+        g.role !== 'verb' &&
+        g.after !== 'unknown' &&
+        g.after !== 'te' &&
+        g.before === undefined;
+      if (plain) plainGrammar.add(s);
     }
   }
 
@@ -648,9 +766,13 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
     const hasKanji = entry.kanji !== undefined && entry.kanji.length > 0;
     const nounLike =
       (pos.includes('n') || pos.includes('pn') || pos.includes('adj-na')) && !pos.includes('adv');
-    const numericEntry = pos.includes('num') || NUMERIC_KANJI.has(entry.kanji ?? '');
+    const numberWord = pos.includes('num');
+    const numericEntry = numberWord || NUMERIC_KANJI.has(entry.kanji ?? '');
     const particle = pos.includes('prt');
-    const conjLike = pos.includes('conj') || pos.includes('exp') || pos.includes('int');
+    const interjection = pos.includes('int');
+    const conjLike = pos.includes('conj') || pos.includes('exp') || interjection;
+    const adjectiveEntry =
+      verbClass(pos) === null && (pos.includes('adj-i') || pos.includes('adj-ix'));
     for (const spelling of spellingsOf(entry)) {
       const weak = hasKanji && KANA_ONLY.test(spelling);
       for (const f of formsOfSpelling(spelling, pos)) {
@@ -661,14 +783,19 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
           base: f.base,
           form: f.form,
           weak,
+          verbal: f.verbal,
+          adjective: adjectiveEntry && f.verbal,
           predicate: f.predicate,
           stem: f.form === 'stem',
           nominal: nounLike && !f.verbal,
-          numeric: numericEntry && !f.verbal,
+          // Counters follow なん (なんじ, なんにん), never なに.
+          numeric: numericEntry && !f.verbal && f.surface !== 'なに',
+          numberWord: numberWord && !f.verbal,
           particle,
           clauseInitial:
             conjLike && !f.verbal && KANA_ONLY.test(f.surface)
-              ? splitsIntoGrammar(f.surface, plainGrammar)
+              ? splitsIntoGrammar(f.surface, plainGrammar) ||
+                (interjection && plainGrammar.has(f.surface.charAt(0)))
               : false,
         };
         const list = words.get(f.surface);
@@ -684,8 +811,13 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
       surfaces.set(surface, { words: list, grammar: grammar.get(surface) ?? [] });
       continue;
     }
-    // A bare stem only counts when nothing else has the same surface (休み is the noun).
-    const strong = list.some((r) => !r.stem) ? list.filter((r) => !r.stem) : list;
+    // A bare stem only counts when nothing else has the same surface (休み is the noun),
+    // and a kana inflection of a kanji word yields to a kana dictionary word
+    // (すみません is not 住む).
+    let strong = list.some((r) => !r.stem) ? list.filter((r) => !r.stem) : list;
+    if (strong.some((r) => !r.weak && r.form === 'dict')) {
+      strong = strong.filter((r) => !(r.weak && r.form !== 'dict'));
+    }
     strong.sort(
       (x, y) => Number(x.form !== 'dict') - Number(y.form !== 'dict') || x.order - y.order,
     );
@@ -730,8 +862,13 @@ const C_OTHER = 7;
 const C_CONT = 8;
 
 const KANJI_NUMERALS = '〇一二三四五六七八九十百千万';
-const SMALL_KANA = 'ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿｧｨｩｪｫｬｭｮｯ';
+const SMALL_KANA =
+  'ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿｧｨｩｪｫｬｭｮｯ';
 const LONG_MARKS = 'ーｰ';
+/** Iteration marks repeat the character before them, so no token starts with one. */
+const ITERATION_MARKS = '々ゝゞヽヾ';
+/** Wave dash and tildes stand for an omitted word in fragments (～ね, ～は～です). */
+const PLACEHOLDERS = '〜～~';
 const NUMBER_SEPARATORS = '.,．，';
 const PUNCT_RE = /[\p{P}\p{S}]/u;
 const SPACE_RE = /\s/u;
@@ -786,10 +923,28 @@ const S_NA = 9; // after な
 const S_UNK = 10; // after an unknown run ending in katakana or another script
 const S_UNK_HIRA = 11; // after an unknown run ending in hiragana
 const S_UNK_KANJI = 12; // after an unknown run ending in kanji
-const S_GRAM_UNK = 13; // after grammar words that follow an unknown hiragana run
+const S_GRAM_UNK = 13; // after particles that follow an unknown hiragana run
 const S_PREFIX = 14; // after お/ご (a word must follow)
-const S_STEM = 15; // after a bare masu stem (に must follow)
-const STATES = 16;
+const S_STEM = 15; // after a bare masu stem (に or 方 must follow)
+const S_DA = 16; // after plain だ (no verb may follow directly: いただく is not いた + だ + く)
+// S_CASE, S_OBLIQUE and S_NA after an unknown hiragana run: they keep both the
+// particle rules and the S_GRAM_UNK rule (か<?>に|を is wrong twice).
+const S_CASE_UNK = 17;
+const S_OBLIQUE_UNK = 18;
+const S_NA_UNK = 19;
+// After a one-kanji noun: another one-kanji noun cannot follow inside the same
+// kanji run, so unknown compounds (中国人, 外人, 年上) are not read as 中 + 国 + 人.
+const S_NOMINAL_K1 = 20;
+const STATES = 21;
+
+const isNominalState = (s: number): boolean => s === S_NOMINAL || s === S_NOMINAL_K1;
+const isCaseState = (s: number): boolean => s === S_CASE || s === S_CASE_UNK;
+const isObliqueState = (s: number): boolean => s === S_OBLIQUE || s === S_OBLIQUE_UNK;
+/** After an unknown run of any script (an unknown token continues it). */
+const isUnknownState = (s: number): boolean => s === S_UNK || s === S_UNK_HIRA || s === S_UNK_KANJI;
+/** After particles that follow an unknown hiragana run (no unknown hiragana may follow). */
+const isParticleAfterUnknownState = (s: number): boolean =>
+  s === S_GRAM_UNK || s === S_CASE_UNK || s === S_OBLIQUE_UNK || s === S_NA_UNK;
 
 const CASE_KEYS = new Set(['wa', 'ga', 'wo', 'mo', 'ya']);
 const OBLIQUE_KEYS = new Set(['ni', 'e', 'de', 'to']);
@@ -815,10 +970,22 @@ const R_OTHER = 4;
 const R_UNKNOWN_RUN = 5;
 const R_UNKNOWN = 6;
 
+/** Verbs that attach directly to a noun written in kanji (生産する, 読書できない, 一つください). */
+const AFTER_NOUN_BASES = new Set(['する', 'できる', 'ください']);
+/** Last kana of a masu stem (i and e rows): 分け|ます, 行き|ます, but not ます|ます. */
+const STEM_FINAL_KANA = 'いきぎしじちぢにひびぴみりえけげせぜてでねへべぺめれ';
+/** Words that may follow a bare masu stem besides に: 読み方, 使いかた. */
+const STEM_FOLLOWERS = new Set(['方', 'かた']);
 /** Closing brackets and quotes: a particle may follow them (「…」と言った). */
 const CLOSING_RE = /[\p{Pe}\p{Pf}]/u;
 /** Shortest katakana word that may split a katakana run (テレビ|ゲーム but not ペン|キ). */
 const MIN_KATAKANA_ANCHOR = 3;
+/**
+ * How many anchors an unknown piece of a katakana or kanji run may reach past
+ * before it must run to the end of the run; keeps long runs of known words
+ * (テレビテレビ…) linear instead of quadratic.
+ */
+const MAX_RUN_PIECES = 8;
 
 interface Step {
   len: number;
@@ -829,20 +996,33 @@ interface Step {
   /** Vocabulary readings valid at this position (kind 'word'). */
   words: readonly LexReading[];
   /**
-   * Grammar words with this surface whose `before` condition holds; on a word
-   * step, the grammar words sharing its surface (reported as `Token.grammar`).
+   * Grammar words with this surface whose text conditions (`before`, te-form,
+   * verb stem) hold; on a word step, the grammar words sharing its surface
+   * (reported as `Token.grammar`).
    */
   grammar: readonly GrammarWord[];
   /** Word step with a content reading (not a particle such as より, not a number word). */
   content: boolean;
   /** Word or unknown step that starts with hiragana. */
   hiragana: boolean;
-  /** Word step that would be okurigana after an unknown kanji (weak kana, or いて/いた ...). */
+  /** Hiragana word that would be okurigana after an unknown kanji (not する, できる, ください). */
   okurigana: boolean;
   /** Unknown step covering a whole piece of a katakana or kanji run. */
   run: boolean;
   /** Unknown step over a character that is always a particle (を). */
   particleChar: boolean;
+  /** Whitespace: keeps the parser state (わたし は がくせい です). */
+  space: boolean;
+  /** Word step whose readings are all verb or adjective forms. */
+  verb: boolean;
+  /** Word step whose readings are all verb forms (no adjectives). */
+  verbOnly: boolean;
+  /** Word step that may follow a bare masu stem (方 in 読み方). */
+  stemFollower: boolean;
+  /** Word step whose readings are all nouns, pronouns or na-adjectives. */
+  nominal: boolean;
+  /** Word step that attaches to a noun without a particle (勉強できる, 一つください). */
+  nounVerb: boolean;
 }
 
 function afterOk(after: GrammarContext | undefined, state: number): boolean {
@@ -852,19 +1032,40 @@ function afterOk(after: GrammarContext | undefined, state: number): boolean {
     case 'number':
       return state === S_NUMBER;
     case 'predicate':
-      return state === S_PRED || state === S_COPULA;
+      return state === S_PRED || state === S_COPULA || state === S_DA;
     case 'predicate-or-na':
-      return state === S_PRED || state === S_COPULA || state === S_NA;
+      return (
+        state === S_PRED ||
+        state === S_COPULA ||
+        state === S_DA ||
+        state === S_NA ||
+        state === S_NA_UNK
+      );
     case 'content':
       return (
-        state === S_NOMINAL ||
+        isNominalState(state) ||
         state === S_WORD ||
         state === S_PRED ||
         state === S_UNK ||
         state === S_UNK_HIRA ||
         state === S_UNK_KANJI
       );
+    case 'unknown':
+      return state === S_UNK_HIRA || state === S_UNK_KANJI;
+    case 'te':
+      // Judged by the text when the step is built (see `teFormBefore` in tokenize).
+      return true;
   }
+}
+
+/** State after a step taken in state `s` (grammar steps are handled separately). */
+function stepState(step: Step, s: number): number {
+  if (step.space) return s;
+  // A noun right after a number is a quantity (２時間かかります), not a topic.
+  if (s === S_NUMBER && isNominalState(step.next)) return S_WORD;
+  // お + masu stem is an honorific noun (お待ちください), no に needed.
+  if (s === S_PREFIX && step.next === S_STEM) return S_NOMINAL;
+  return step.next;
 }
 
 /** Picks the grammar reading for a state: a context-specific word beats a general one. */
@@ -888,16 +1089,21 @@ function wordState(words: readonly LexReading[]): number {
 
 function grammarState(g: GrammarWord, state: number): number {
   if (g.role === 'prefix') return S_PREFIX;
-  if ((state === S_UNK_HIRA || state === S_GRAM_UNK) && !WORD_EDGE_KEYS.has(g.key)) {
-    return S_GRAM_UNK;
-  }
+  // Verb forms: ございます, いけません, しまった, and ました after an unknown stem.
+  if (g.role === 'polite' || g.role === 'verb' || g.after === 'unknown') return S_PRED;
+  if (g.role === 'noun' || g.role === 'suffix') return S_NOMINAL;
+  // A quantity (３日, 二人) works like an adverb: ３日かかった.
+  if (g.role === 'adverb' || g.role === 'counter') return S_WORD;
+  // A particle or the copula right after an unknown hiragana run may be part
+  // of that word (しっかり, しだい, くださって).
+  const inWord =
+    (state === S_UNK_HIRA || isParticleAfterUnknownState(state)) && !WORD_EDGE_KEYS.has(g.key);
+  if (g.key === 'na') return inWord ? S_NA_UNK : S_NA;
+  if (CASE_KEYS.has(g.key)) return inWord ? S_CASE_UNK : S_CASE;
+  if (OBLIQUE_KEYS.has(g.key)) return inWord ? S_OBLIQUE_UNK : S_OBLIQUE;
+  if (inWord) return S_GRAM_UNK;
+  if (g.key === 'da') return S_DA;
   if (g.role === 'copula') return S_COPULA;
-  if (g.role === 'polite') return S_PRED;
-  if (g.role === 'noun' || g.role === 'suffix' || g.role === 'counter') return S_NOMINAL;
-  if (g.role === 'adverb') return S_WORD;
-  if (g.key === 'na') return S_NA;
-  if (CASE_KEYS.has(g.key)) return S_CASE;
-  if (OBLIQUE_KEYS.has(g.key)) return S_OBLIQUE;
   return S_GRAM;
 }
 
@@ -914,6 +1120,12 @@ function makeStep(len: number, kind: TokenKind, rank: number, next: number): Ste
     okurigana: false,
     run: false,
     particleChar: false,
+    space: false,
+    verb: false,
+    verbOnly: false,
+    stemFollower: false,
+    nominal: false,
+    nounVerb: false,
   };
 }
 
@@ -930,29 +1142,32 @@ interface Scratch {
 }
 
 let scratchBuffers: Scratch | undefined;
+/** Largest table kept between calls (about 3,000 characters of text). */
+const SCRATCH_CACHE_CELLS = 1 << 16;
+
+function newScratch(cap: number): Scratch {
+  return {
+    viol: new Int32Array(cap),
+    unk: new Int32Array(cap),
+    join: new Int32Array(cap),
+    len: new Int32Array(cap),
+    rank: new Int32Array(cap),
+    next: new Int32Array(cap),
+    reachable: new Uint8Array(cap),
+    step: new Array<Step | undefined>(cap).fill(undefined),
+    grammar: new Array<GrammarWord | null>(cap).fill(null),
+  };
+}
 
 /**
- * DP tables reused between calls (tokenize is synchronous, so sharing is safe);
- * only `reachable` needs clearing because every other cell that is read was
- * written earlier in the same call.
+ * DP tables, reused between calls for ordinary text (tokenize is synchronous,
+ * so sharing is safe). Only `reachable` needs clearing because every other
+ * cell that is read was written earlier in the same call.
  */
 function scratch(size: number): Scratch {
-  if (scratchBuffers === undefined || scratchBuffers.viol.length < size) {
-    const cap = Math.max(size, 1024);
-    scratchBuffers = {
-      viol: new Int32Array(cap),
-      unk: new Int32Array(cap),
-      join: new Int32Array(cap),
-      len: new Int32Array(cap),
-      rank: new Int32Array(cap),
-      next: new Int32Array(cap),
-      reachable: new Uint8Array(cap),
-      step: new Array<Step | undefined>(cap).fill(undefined),
-      grammar: new Array<GrammarWord | null>(cap).fill(null),
-    };
-  } else {
-    scratchBuffers.reachable.fill(0, 0, size);
-  }
+  if (size > SCRATCH_CACHE_CELLS) return newScratch(size);
+  if (scratchBuffers === undefined) scratchBuffers = newScratch(SCRATCH_CACHE_CELLS);
+  else scratchBuffers.reachable.fill(0, 0, size);
   return scratchBuffers;
 }
 
@@ -969,7 +1184,7 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
   const dependent = new Uint8Array(n);
   const numeral = new Uint8Array(n);
   const closing = new Uint8Array(n);
-  for (let i = 0; i < n; ) {
+  for (let i = 0; i < n;) {
     const cp = text.codePointAt(i) ?? 0;
     const width = cp > 0xffff ? 2 : 1;
     const ch = text.slice(i, i + width);
@@ -979,9 +1194,9 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
       const afterKana = prev === C_HIRA || prev === C_KATA;
       c = afterKana ? prev : C_PUNCT;
       if (afterKana) dependent[i] = 1;
-    } else if (SMALL_KANA.includes(ch)) {
+    } else if (SMALL_KANA.includes(ch) || ITERATION_MARKS.includes(ch)) {
       dependent[i] = 1;
-    } else if (c === C_PUNCT && CLOSING_RE.test(ch)) {
+    } else if (c === C_PUNCT && (CLOSING_RE.test(ch) || PLACEHOLDERS.includes(ch))) {
       closing[i] = 1;
     }
     if (KANJI_NUMERALS.includes(ch)) numeral[i] = 1;
@@ -991,16 +1206,25 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
   }
   const classAt = (i: number): number => cls[i] ?? C_OTHER;
   const widthAt = (i: number): number => (i + 1 < n && classAt(i + 1) === C_CONT ? 2 : 1);
+  /**
+   * Start of the text or right after punctuation other than a closing bracket
+   * or a placeholder (～); spaces are skipped.
+   */
   const clauseStart = (i: number): boolean => {
-    if (i === 0) return true;
     let j = i - 1;
-    while (j > 0 && classAt(j) === C_CONT) j--;
-    const p = classAt(j);
-    return (p === C_SPACE || p === C_PUNCT) && closing[j] !== 1;
+    while (j >= 0 && (classAt(j) === C_CONT || classAt(j) === C_SPACE)) j--;
+    return j < 0 || (classAt(j) === C_PUNCT && closing[j] !== 1);
   };
 
-  /** End of the number starting at i (digits, kanji numerals, 3.5, 1,000). */
+  /**
+   * End of the number starting at i (digits, kanji numerals, 3.5, 1,000).
+   * Every position of a number has the same end, so it is computed once per
+   * number (a long run of kanji numerals stays linear).
+   */
+  const numberEnds = new Int32Array(n);
   const numberEnd = (i: number): number => {
+    const known = i > 0 ? (numberEnds[i - 1] ?? 0) : 0;
+    if (known > i) return (numberEnds[i] = known);
     let j = i + 1;
     for (;;) {
       if (j < n && (classAt(j) === C_DIGIT || numeral[j] === 1)) {
@@ -1013,14 +1237,33 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
       ) {
         j += 2;
       } else {
-        return j;
+        return (numberEnds[i] = j);
       }
     }
+  };
+  /** The text before i, skipping spaces, ends in て or で (a te-form: 食べて|しまった). */
+  const teFormBefore = (i: number): boolean => {
+    let j = i - 1;
+    while (j >= 0 && classAt(j) === C_SPACE) j--;
+    const ch = text.charAt(j);
+    return ch === 'て' || ch === 'で';
+  };
+  /** A known word or a kanji number ends here in kanji (filled in by pass 1). */
+  const kanjiWordEndsAt = new Uint8Array(n + 1);
+  /**
+   * The text before i could end the stem of an unknown verb: an i/e-row kana
+   * (分け|ました) or a kanji that does not end a known word (居|ます, not 本|ます).
+   */
+  const stemBefore = (i: number): boolean => {
+    const j = i > 1 && classAt(i - 1) === C_CONT ? i - 2 : i - 1;
+    if (j < 0) return false;
+    if (classAt(j) === C_KANJI) return kanjiWordEndsAt[i] !== 1;
+    return STEM_FINAL_KANA.includes(text.charAt(j));
   };
 
   // End of the katakana or kanji run containing each position (0 elsewhere).
   const runEnd = new Int32Array(n);
-  for (let i = 0; i < n; ) {
+  for (let i = 0; i < n;) {
     const c = classAt(i);
     let j = i + widthAt(i);
     if (c === C_KATA || c === C_KANJI) {
@@ -1029,14 +1272,16 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
     }
     i = j;
   }
-  // Known words may split a katakana or kanji run; an unknown piece of a run
-  // must run from a run start or anchor end to a run end or anchor start.
+  // Known words, numbers and counters may split a katakana or kanji run; an
+  // unknown piece of a run must go from a run start or anchor end to a run end
+  // or anchor start.
   const anchorStart = new Uint8Array(n + 1);
   const anchorEnd = new Uint8Array(n + 1);
+  const numberEndsAt = new Uint8Array(n + 1);
 
   // Pass 1: steps that do not depend on the parser state, except unknown runs.
   const steps: Step[][] = new Array<Step[]>(n);
-  for (let i = 0; i < n; ) {
+  for (let i = 0; i < n;) {
     const c = classAt(i);
     const width = widthAt(i);
     const list: Step[] = [];
@@ -1051,19 +1296,28 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
         while (j < n && classAt(j) === C_PUNCT && text.startsWith(ch, j)) j += width;
       } else {
         j = numberEnd(i);
+        numberEndsAt[j] = 1;
       }
       const kind: TokenKind = c === C_DIGIT ? 'number' : c === C_LATIN ? 'latin' : 'punct';
       const next = c === C_DIGIT ? S_NUMBER : c === C_LATIN ? S_WORD : S_START;
-      list.push(makeStep(j - i, kind, kind === 'number' ? R_NUMBER : R_OTHER, next));
+      const step = makeStep(j - i, kind, kind === 'number' ? R_NUMBER : R_OTHER, next);
+      step.space = c === C_SPACE;
+      list.push(step);
       for (let k = i + 1; k < j; k++) steps[k] = [];
       i = j;
       continue;
     }
-    if (numeral[i] === 1) list.push(makeStep(numberEnd(i) - i, 'number', R_NUMBER, S_NUMBER));
+    if (numeral[i] === 1) {
+      const j = numberEnd(i);
+      list.push(makeStep(j - i, 'number', R_NUMBER, S_NUMBER));
+      anchorStart[i] = 1;
+      anchorEnd[j] = 1;
+      numberEndsAt[j] = 1;
+      kanjiWordEndsAt[j] = 1;
+    }
 
     // Vocabulary and grammar surfaces starting here.
     const atClauseStart = clauseStart(i);
-    const end = runEnd[i] ?? 0;
     let node: TrieNode | undefined = lexicon.trie;
     for (let k = i; k < n; k++) {
       node = node.next?.get(text.charCodeAt(k));
@@ -1071,16 +1325,34 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
       const info = node.info;
       if (info === undefined) continue;
       const len = k + 1 - i;
+      // Grammar words whose text conditions hold here (also reported on a
+      // word step with the same surface as its `Token.grammar` alternative).
+      const grammar = info.grammar.filter(
+        (g) =>
+          (g.before === undefined || g.before.some((b) => text.startsWith(b, i + len))) &&
+          (g.after !== 'te' || teFormBefore(i)) &&
+          (g.after !== 'unknown' || stemBefore(i)),
+      );
       const words = atClauseStart ? info.words : info.words.filter((r) => !r.clauseInitial);
       if (words.length > 0) {
         const weak = words.every((r) => r.weak);
-        const step = makeStep(len, 'word', weak ? R_WEAK_WORD : R_WORD, wordState(words));
+        let next = wordState(words);
+        if (next === S_NOMINAL && len === 1 && c === C_KANJI) next = S_NOMINAL_K1;
+        const step = makeStep(len, 'word', weak ? R_WEAK_WORD : R_WORD, next);
         step.words = words;
-        step.grammar = info.grammar;
-        step.content = words.some((r) => !r.particle && !r.numeric);
+        step.grammar = grammar;
+        step.content = words.some((r) => !r.particle && !r.numberWord);
+        step.verb = words.every((r) => r.verbal);
+        step.verbOnly = words.every((r) => r.verbal && !r.adjective);
         step.hiragana = c === C_HIRA;
-        step.okurigana = step.hiragana && (weak || text.charAt(i) === 'い');
+        step.nominal = words.every((r) => r.nominal);
+        step.nounVerb = words.every((r) => AFTER_NOUN_BASES.has(r.base));
+        step.okurigana = step.hiragana && !step.nounVerb;
+        step.stemFollower = len <= 2 && STEM_FOLLOWERS.has(text.slice(i, i + len));
         list.push(step);
+        if (step.next === S_NUMBER) numberEndsAt[i + len] = 1;
+        const last = classAt(k) === C_CONT ? classAt(k - 1) : classAt(k);
+        if (last === C_KANJI) kanjiWordEndsAt[i + len] = 1;
         if (c === C_KANJI || c === C_KATA) {
           let same = i;
           while (same < i + len && classAt(same) === c) same++;
@@ -1088,17 +1360,15 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
           const minAnchor = c === C_KANJI ? 2 : MIN_KATAKANA_ANCHOR;
           if (scriptLen >= minAnchor) anchorStart[i] = 1;
           if (scriptLen >= minAnchor && same === i + len) anchorEnd[i + len] = 1;
-          // A word with okurigana that ends the run (休|んだ in 間休んだ).
-          if (same === end && i + len > end) anchorStart[i] = 1;
         }
       }
-      const grammar = info.grammar.filter(
-        (g) => g.before === undefined || g.before.some((b) => text.startsWith(b, i + len)),
-      );
       if (grammar.length > 0) {
         const step = makeStep(len, 'grammar', R_GRAMMAR, S_GRAM);
         step.grammar = grammar;
         list.push(step);
+        if (numberEndsAt[i] === 1 && grammar.some((g) => g.role === 'counter')) {
+          anchorEnd[i + len] = 1;
+        }
       }
     }
     if (width === 2) steps[i + 1] = [];
@@ -1116,17 +1386,43 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
     const unknownState = c === C_KANJI ? S_UNK_KANJI : c === C_HIRA ? S_UNK_HIRA : S_UNK;
     const end = runEnd[i] ?? 0;
     if (end > 0 && (i === 0 || classAt(i - 1) !== c || anchorEnd[i] === 1)) {
-      for (let r = i + 1; r <= end; r++) {
-        if (r < end && (anchorStart[r] !== 1 || classAt(r) === C_CONT)) continue;
+      const piece = (r: number): void => {
         const step = makeStep(r - i, 'unknown', R_UNKNOWN_RUN, unknownState);
         step.run = true;
         list.push(step);
+      };
+      let pieces = 0;
+      for (let r = i + 1; r < end && pieces < MAX_RUN_PIECES; r++) {
+        if (anchorStart[r] !== 1 || classAt(r) === C_CONT) continue;
+        piece(r);
+        pieces++;
       }
+      piece(end);
     }
     const single = makeStep(widthAt(i), 'unknown', R_UNKNOWN, unknownState);
     single.hiragana = c === C_HIRA;
     single.particleChar = text.charAt(i) === 'を';
     list.push(single);
+  }
+
+  // fragment[i]: the rest of the clause from i can be read as grammar only
+  // (ね, ですね): a particle or the copula opening it is then only a soft
+  // penalty, so a lone ね is the particle rather than unknown, while くらいへや
+  // is still 暗い + 部屋.
+  const fragment = new Uint8Array(n + 1);
+  fragment[n] = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    const c = classAt(i);
+    if (c === C_PUNCT || c === C_SPACE) {
+      fragment[i] = 1;
+      continue;
+    }
+    for (const step of steps[i] ?? []) {
+      if (step.kind === 'grammar' && fragment[i + step.len] === 1) {
+        fragment[i] = 1;
+        break;
+      }
+    }
   }
 
   // Dynamic programme from the end: best parse of text[i..] given the state before i.
@@ -1155,7 +1451,7 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
     for (let s = 0; s < STATES; s++) {
       if (reachable[i * STATES + s] !== 1) continue;
       for (const step of list) {
-        let next = step.next;
+        let next = stepState(step, s);
         if (step.kind === 'grammar') {
           const g = chooseGrammar(step.grammar, s);
           if (g === null) continue;
@@ -1172,31 +1468,44 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
     const c = classAt(i);
     const isDependent = dependent[i] === 1;
     const atClauseStart = clauseStart(i);
+    const isFragment = fragment[i] === 1;
     for (let s = 0; s < STATES; s++) {
       const at = i * STATES + s;
       if (reachable[at] !== 1) continue;
       let found = false;
       for (const step of list) {
         let grammar: GrammarWord | null = null;
-        let next = step.next;
+        let next = stepState(step, s);
         let violations = 0;
         let unknown = 0;
         let joins = 0;
         let rank = step.rank;
         if (step.kind === 'word') {
           if (s === S_UNK_KANJI && step.okurigana) violations++;
-          if (s === S_COPULA) violations++;
-          if (s === S_NOMINAL && step.content) joins++;
+          // No verb or adjective right after plain だ (いた|だ|きます), no verb
+          // right after the linker な (出られ|な|かった).
+          if (s === S_DA && step.verb) violations++;
+          if ((s === S_NA || s === S_NA_UNK) && step.verbOnly) violations++;
+          if (s === S_NOMINAL_K1 && step.next === S_NOMINAL_K1 && classAt(i - 1) === C_KANJI) {
+            violations++;
+          }
+          // Two nouns without a particle between them; an unknown katakana or
+          // kanji word counts as a noun, an unknown hiragana word (often a verb
+          // stem: 終わり|かかって) only before a noun (つもり|な|ん, not つもり|なん).
+          const afterNoun = isNominalState(s) || s === S_UNK || s === S_UNK_KANJI;
+          if (afterNoun && step.content && !step.nounVerb) joins++;
+          else if (s === S_UNK_HIRA && step.nominal) joins++;
         } else if (step.kind === 'grammar') {
           grammar = chooseGrammar(step.grammar, s);
           if (grammar === null) continue;
           next = grammarState(grammar, s);
           if (s === S_NUMBER && grammar.role === 'counter') rank = R_NUMBER;
-          if (RESTRICTED_ROLES.has(grammar.role) && (atClauseStart || s === S_CASE)) {
-            violations++;
+          if (RESTRICTED_ROLES.has(grammar.role)) {
+            if (isCaseState(s) || (atClauseStart && !isFragment)) violations++;
+            else if (atClauseStart) joins++;
           }
           if (
-            s === S_OBLIQUE &&
+            isObliqueState(s) &&
             (grammar.role === 'copula' || AFTER_OBLIQUE_BLOCKED.has(grammar.key))
           ) {
             violations++;
@@ -1206,14 +1515,15 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
           unknown = step.len;
           if (!step.run && (c === C_KANJI || c === C_KATA)) violations++;
           // A particle between two unknown hiragana runs is part of one word (しっかり).
-          if (s === S_GRAM_UNK && step.hiragana) violations++;
+          if (isParticleAfterUnknownState(s) && step.hiragana) violations++;
           if (step.particleChar) violations++;
         }
-        const continuesUnknown =
-          step.kind === 'unknown' && (s === S_UNK || s === S_UNK_HIRA || s === S_UNK_KANJI);
+        const continuesUnknown = step.kind === 'unknown' && isUnknownState(s);
         if (isDependent && !continuesUnknown) violations++;
         if (s === S_PREFIX && step.kind !== 'word') violations++;
-        if (s === S_STEM && grammar?.key !== 'ni') violations++;
+        if (s === S_STEM && grammar?.key !== 'ni' && !step.space && !step.stemFollower) {
+          violations++;
+        }
 
         const to = (i + step.len) * STATES + next;
         violations += bestViol[to] ?? 0;
@@ -1245,7 +1555,7 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
   // Walk the best path and build tokens, merging adjacent unknown steps.
   const tokens: Token[] = [];
   let state = S_START;
-  for (let i = 0; i < n; ) {
+  for (let i = 0; i < n;) {
     const at = i * STATES + state;
     const step = bestStep[at];
     if (step === undefined) break; // unreachable: every position has an unknown step

@@ -2503,9 +2503,9 @@
       "sourceId": "e1978f90df"
     },
     {
-      "id": "konnichiha",
+      "id": "konnichiwa",
       "kana": "こんにちは",
-      "romaji": "konnichiha",
+      "romaji": "konnichiwa",
       "en": ["hello", "good day (daytime greeting, id)"],
       "pos": ["int"],
       "sentences": [217287, 217298],
@@ -2522,9 +2522,9 @@
       "sourceId": "eb1c9a5df9"
     },
     {
-      "id": "konbanha",
+      "id": "konbanwa",
       "kana": "こんばんは",
-      "romaji": "konbanha",
+      "romaji": "konbanwa",
       "en": ["good evening"],
       "pos": ["int"],
       "sentences": [347753, 426900],
@@ -3393,9 +3393,9 @@
       "sourceId": "799b7cabe0"
     },
     {
-      "id": "soredeha",
+      "id": "soredewa",
       "kana": "それでは",
-      "romaji": "soredeha",
+      "romaji": "soredewa",
       "en": ["in that situation"],
       "pos": ["exp"],
       "sentences": [205771, 205760],
@@ -3935,9 +3935,9 @@
       "sourceId": "90e9410bff"
     },
     {
-      "id": "deha",
+      "id": "dewa",
       "kana": "では",
-      "romaji": "deha",
+      "romaji": "dewa",
       "en": ["with that..."],
       "pos": ["exp"],
       "sentences": [202137, 187507],

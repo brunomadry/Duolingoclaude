@@ -69,6 +69,21 @@ export function furiganaToKana(furigana: string): string {
   return furigana.replace(/\{([^|}]*)\|([^}]*)\}/g, '$2');
 }
 
+/**
+ * Lexicalised words whose は is the particle (read wa). kanaToRomaji cannot know that from
+ * kana alone, so these are fixed here (Modified Hepburn).
+ */
+export const LEXICAL_ROMAJI: Readonly<Record<string, string>> = {
+  こんにちは: 'konnichiwa',
+  こんばんは: 'konbanwa',
+  では: 'dewa',
+  それでは: 'soredewa',
+};
+
+export function romajiOf(reading: string): string {
+  return LEXICAL_ROMAJI[reading] ?? kanaToRomaji(reading);
+}
+
 const STOP_WORDS = new Set(['a', 'an', 'the', 'to', 'of', 'or', 'something', 'someone', 'from']);
 
 /** Up to two meaningful words of an English gloss: "to put on from the shoulders" -> "put-on". */
@@ -82,7 +97,7 @@ export function meaningSlug(meaning: string): string {
 
 /** Readable, stable ids: romaji, plus a short meaning when two words share romaji. */
 export function assignIds(words: readonly { reading: string; meanings: string[] }[]): string[] {
-  const bases = words.map((w) => slug(kanaToRomaji(w.reading)) || 'word');
+  const bases = words.map((w) => slug(romajiOf(w.reading)) || 'word');
   const counts = new Map<string, number>();
   for (const b of bases) counts.set(b, (counts.get(b) ?? 0) + 1);
   const used = new Set<string>();
@@ -134,7 +149,7 @@ async function main(): Promise<void> {
       id: ids[i],
       kana: w.reading,
       ...(w.word !== w.reading ? { kanji: w.word } : {}),
-      romaji: kanaToRomaji(w.reading),
+      romaji: romajiOf(w.reading),
       en: w.meanings,
       pos: w.pos,
       sentences: examples.map((e) => e.tatoeba_id),
