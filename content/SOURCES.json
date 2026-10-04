@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "openjlpt",
+      "name": "OpenJLPT",
+      "url": "https://github.com/evanclan/OpenJLPT",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Contains data from OpenJLPT (CC BY-SA 4.0), which uses JMdict and KANJIDIC2 (EDRDG), Jonathan Waller's JLPT lists, and Tatoeba.",
+      "usedFor": "N5 vocabulary, kanji and English glosses (source of the Polish glosses).",
+      "usedForPl": "Słówka i kanji N5 oraz angielskie znaczenia, z których powstały polskie.",
+      "verified": true
+    },
+    {
+      "id": "jmdict-kanjidic",
+      "name": "JMdict / KANJIDIC2 (EDRDG)",
+      "url": "https://www.edrdg.org/",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://www.edrdg.org/edrdg/licence.html",
+      "attribution": "JMdict and KANJIDIC2 are the property of the Electronic Dictionary Research and Development Group, used in conformance with the Group's licence (via OpenJLPT).",
+      "usedFor": "Readings, meanings and kanji data, through OpenJLPT.",
+      "usedForPl": "Czytania, znaczenia i dane o kanji (przez OpenJLPT).",
+      "verified": true
+    },
+    {
+      "id": "waller-jlpt",
+      "name": "Jonathan Waller's JLPT Resources",
+      "url": "https://www.tanos.co.uk/jlpt/",
+      "license": "CC BY",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "JLPT level assignments by Jonathan Waller (tanos.co.uk), via OpenJLPT.",
+      "usedFor": "Unofficial N5 level lists, through OpenJLPT.",
+      "usedForPl": "Nieoficjalne listy poziomu N5 (przez OpenJLPT).",
+      "verified": true
+    },
+    {
+      "id": "tatoeba",
+      "name": "Tatoeba",
+      "url": "https://tatoeba.org",
+      "license": "CC BY 2.0 FR",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "attribution": "Example sentences from Tatoeba (tatoeba.org), each linked by its sentence id to its contributors at https://tatoeba.org/sentences/show/<id>.",
+      "usedFor": "Example sentences (Japanese and English). No Tatoeba audio is used.",
+      "usedForPl": "Zdania przykładowe. Nie używamy nagrań z Tatoeby.",
+      "verified": true
+    },
+    {
+      "id": "kanjivg",
+      "name": "KanjiVG",
+      "url": "https://kanjivg.tagaini.net/",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "attribution": "Stroke order data from KanjiVG by Ulrich Apel and contributors (CC BY-SA 3.0).",
+      "usedFor": "Stroke order animations for kana and N5 kanji.",
+      "usedForPl": "Animacje kolejności kresek dla kany i kanji N5.",
+      "verified": true
+    },
+    {
+      "id": "tae-kim",
+      "name": "Tae Kim's Guide to Learning Japanese",
+      "url": "https://guidetojapanese.org/learn/",
+      "license": "CC BY-NC-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "attribution": "Grammar topic order cross-checked against Tae Kim's Guide. No text was copied.",
+      "usedFor": "Topic order reference only. All grammar notes are original.",
+      "usedForPl": "Tylko kolejność tematów. Notki gramatyczne są napisane od zera.",
+      "verified": false
+    },
+    {
+      "id": "aka-nihongo",
+      "name": "Aka Nihongo (this app)",
+      "url": "https://github.com/brunomadry/Duolingoclaude",
+      "license": "CC BY-SA 4.0 (Polish glosses); original notes and mnemonics by the project",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Polish glosses are a translation of OpenJLPT's English glosses and are shared under CC BY-SA 4.0.",
+      "usedFor": "Polish glosses, grammar notes, kana mnemonics, mascot.",
+      "usedForPl": "Polskie znaczenia, notki gramatyczne, skojarzenia do kany i maskotka.",
+      "verified": true
+    }
+  ]
+}
