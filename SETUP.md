@@ -28,30 +28,34 @@ npm run check    # typecheck, lint, format, tests, contrast, content validation,
 
 ## 2. Cloudflare (one time)
 
-Claude cannot log in for you. Run these yourself, in this order:
+Run these on your own computer (a browser is needed for the login), in this order:
 
 ```bash
 npx wrangler login                       # opens the browser, pick your account
 npx wrangler d1 create aka-nihongo       # prints a database_id
 ```
 
-Paste the printed `database_id` into `wrangler.jsonc` (replace the zeros), commit that change (the id is not a secret), then:
+Paste the printed `database_id` into `wrangler.jsonc` (replace the zeros) and commit that change (the id is not a secret). Then create the tables and do the first deploy:
 
 ```bash
 npm run db:migrate:remote                # creates the tables in the real D1 database
+npm run deploy                           # full check, build, deploy Worker + static assets
+```
+
+Now set the secrets. Each `wrangler secret put` asks for the value interactively (so it never lands in your shell history) and deploys a new version right away, which is why the Worker has to exist first:
+
+```bash
 npx wrangler secret put APP_ACCESS_CODE  # the shared code you will type on each phone
 npx wrangler secret put COOKIE_SECRET    # paste a fresh 64 hex char value (see above)
 npx wrangler secret put GROQ_API_KEY     # optional until Phase 5 (console.groq.com, free)
 npx wrangler secret put GEMINI_API_KEY   # optional until Phase 5 (aistudio.google.com, free)
 ```
 
-## 3. Deploy
+Until both `APP_ACCESS_CODE` and `COOKIE_SECRET` are set, the access screen answers "Serwer nie odpowiada".
 
-```bash
-npm run deploy     # runs the full check, builds dist/ and deploys the Worker + static assets
-```
+## 3. Install on the iPhone
 
-Wrangler prints a URL like `https://aka-nihongo.<your-subdomain>.workers.dev`. Open it on the iPhone in Safari, enter the access code, then Share, "Do ekranu początkowego" (Add to Home Screen).
+Wrangler printed a URL like `https://aka-nihongo.<your-subdomain>.workers.dev`. Open it on the iPhone in Safari, enter the access code, then Share, "Do ekranu początkowego" (Add to Home Screen). Later updates are just `npm run deploy`; the app shows "Nowa wersja aplikacji" with an "Odśwież" button.
 
 ## 4. Changing the access code
 

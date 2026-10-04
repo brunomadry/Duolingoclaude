@@ -68,3 +68,9 @@ One line per decision, newest at the bottom of each section. The brief (the orig
 - **Status bar**: `black-translucent` gives the dark theme an edge-to-edge look; iOS reads it once at launch and always draws white text, so the light theme draws a thin ink band under the status bar in standalone mode. Verify on a device (QA checklist).
 - **Native `<dialog>`** for the settings sheet and confirmations: focus trap, Escape and inert background for free on iOS 15.4+.
 - **Export** uses the Web Share API with a file when available (iOS share sheet, "Zapisz w Plikach"), otherwise a download link. **Import** merges into the same live profile (newer record wins) or becomes a new profile with a fresh id, so it never collides with a server tombstone.
+
+## Cloudflare setup (agent tooling)
+
+- Installed the official Cloudflare plugin for Claude Code (`claude plugin marketplace add cloudflare/skills`, `claude plugin install cloudflare@cloudflare`), following https://developers.cloudflare.com/agent-setup/prompt.md (read from its source in `cloudflare/cloudflare-docs`, because the docs host is blocked from the build sandbox).
+- Applied its Workers guidance: `compatibility_date` set to the current date, Workers Logs plus sampled Traces enabled (`observability.traces` must be enabled explicitly), and SETUP now deploys before `wrangler secret put`, since each secret put deploys a new version immediately.
+- Still open: the guidance prefers `wrangler types` over a hand-written `Env`. We keep `worker/env.ts` for now (small, also documents secrets); revisit when bindings grow (Phase 5 adds AI keys).

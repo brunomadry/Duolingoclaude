@@ -2,8 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "aka-nihongo",
   "main": "worker/index.ts",
-  "compatibility_date": "2026-09-01",
-  "observability": { "enabled": true },
+  "compatibility_date": "2026-10-04",
+  // Logs for everything; traces sampled (Cloudflare's recommended production setup).
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 0.1 },
+  },
   // Daily cleanup of profiles soft-deleted more than 30 days ago.
   "triggers": { "crons": ["17 3 * * *"] },
   "assets": {
