@@ -13,9 +13,10 @@
  * pass and then reviewed entry by entry (see docs/DECISIONS.md); run the spot check after
  * any regeneration: node scripts/gloss-spot-check.ts
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 import { createLlm, LlmError } from '../src/shared/llm.ts';
+import { writeJson } from './write-formatted.ts';
 
 interface Word {
   id: string;
@@ -120,7 +121,7 @@ for (const w of vocab) {
   const g = glosses[w.id];
   if (g) ordered[w.id] = g;
 }
-writeFileSync(outUrl, `${JSON.stringify({ version: 1, glosses: ordered }, null, 2)}\n`);
+await writeJson(outUrl, { version: 1, glosses: ordered });
 const missing = vocab.filter((w) => !ordered[w.id]).map((w) => w.id);
 console.log(
   `Wrote ${Object.keys(ordered).length} glosses.${missing.length ? ` Missing: ${missing.join(', ')}` : ''}`,

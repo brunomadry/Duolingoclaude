@@ -2,7 +2,8 @@
  * Writes docs/glosses-spot-check.md: 30 random (but reproducible) vocabulary entries with
  * their Polish glosses, for a human to eyeball. Usage: node scripts/gloss-spot-check.ts [seed]
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import { writeFormatted } from './write-formatted.ts';
 
 const content = new URL('../content/', import.meta.url);
 const vocab = JSON.parse(readFileSync(new URL('vocab.json', content), 'utf8')) as {
@@ -42,5 +43,5 @@ i mają flagę \`reviewed: false\`. Zaznacz [x] przy poprawnych, a błędy zgło
 | --- | --- | --- | --- | --- | --- | --- |
 ${rows.join('\n')}
 `;
-writeFileSync(new URL('../docs/glosses-spot-check.md', import.meta.url), doc);
+await writeFormatted(new URL('../docs/glosses-spot-check.md', import.meta.url), doc);
 console.log('Wrote docs/glosses-spot-check.md');

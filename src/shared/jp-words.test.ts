@@ -324,7 +324,7 @@ describe('verb conjugation', () => {
   });
 
   it('mixed okurigana and extra spellings', () => {
-    expectForms('owaru', '終る', { 終ります: 'masu' });
+    expectForms('owaru', '終る', { 終ります: 'masu', 終らない: 'nai' });
     expectForms('owaru', '終わる', { 終わります: 'masu', 終わった: 'ta' });
     expectForms('dekiru', '出来る', { 出来ます: 'masu' });
     expect(show('ご飯を食べて下さい')).toEqual([
@@ -420,12 +420,12 @@ describe('copula and particles', () => {
       '見ました[miru]',
     ]);
     expect(show('私も学生です')).toEqual([
-      '私[watakushi]',
+      '私[watakushi|watashi]',
       'も{mo}',
       '学生[gakusei]',
       'です{desu}',
     ]);
-    expect(show('私の本')).toEqual(['私[watakushi]', 'の{no}', '本[hon]']);
+    expect(show('私の本')).toEqual(['私[watakushi|watashi]', 'の{no}', '本[hon]']);
     expect(show('駅から学校まで')).toEqual(['駅[eki]', 'から{kara}', '学校[gakkou]', 'まで{made}']);
     expect(show('学校には')).toEqual(['学校[gakkou]', 'に{ni}', 'は{wa}']);
   });
@@ -552,7 +552,7 @@ describe('real sentences', () => {
       '。<punct>',
     ]);
     expect(show(sentence(152747, '私は毎朝８時に学校へ出かける。'))).toEqual([
-      '私[watakushi]',
+      '私[watakushi|watashi]',
       'は{wa}',
       '毎朝[maiasa]',
       '８<number>',
@@ -605,7 +605,7 @@ describe('real sentences', () => {
       '。<punct>',
     ]);
     expect(show(sentence(162088, '私は１９５０年１月８日に東京で生まれました。'))).toEqual([
-      '私[watakushi]',
+      '私[watakushi|watashi]',
       'は{wa}',
       '１９５０<number>',
       '年{nen}',
@@ -623,7 +623,7 @@ describe('real sentences', () => {
 
   it('kana-only learner text', () => {
     expect(show('わたしはがくせいです')).toEqual([
-      'わたし[watakushi]',
+      'わたし[watashi]',
       'は{wa}',
       'がくせい[gakusei]',
       'です{desu}',
@@ -653,7 +653,7 @@ describe('real sentences', () => {
       'ね{ne}',
     ]);
     expect(show('わたし は がくせい です')).toEqual([
-      'わたし[watakushi]',
+      'わたし[watashi]',
       ' <punct>',
       'は{wa}',
       ' <punct>',
@@ -711,8 +711,8 @@ describe('unknown runs', () => {
       'スコット<unknown>',
       'さん{san}',
     ]);
-    expect(show('日本語を勉強します')).toEqual([
-      '日本語<unknown>',
+    expect(show('フランス語を勉強します')).toEqual([
+      'フランス語<unknown>',
       'を{wo}',
       '勉強します[benkyou]',
     ]);
@@ -746,12 +746,17 @@ describe('unknown runs', () => {
   });
 
   it('unknownTokens and usedWordIds', () => {
-    const tokens = tok('マイクは日本語の本を読みます。');
+    const tokens = tok('マイクはフランス語の本を読みます。');
     expect(unknownTokens(tokens).map((t) => [t.surface, t.start, t.end])).toEqual([
       ['マイク', 0, 3],
-      ['日本語', 4, 7],
+      ['フランス語', 4, 9],
     ]);
-    expect(usedWordIds(tok('私は私の本を読みます'))).toEqual(['watakushi', 'hon', 'yomu']);
+    expect(usedWordIds(tok('私は私の本を読みます'))).toEqual([
+      'watakushi',
+      'watashi',
+      'hon',
+      'yomu',
+    ]);
     expect(usedWordIds(tok('きて'))).toEqual(['kiru-put-on', 'kuru']);
   });
 
@@ -1091,7 +1096,7 @@ describe('regressions from the adversarial review', () => {
       ['学生'.repeat(6000), 6000],
       ['一'.repeat(20000), 1],
       ['あ'.repeat(5000), 1],
-      ['は'.repeat(5000), 5000],
+      ['を'.repeat(5000), 5000],
       ['の'.repeat(5000), 5000],
     ];
     for (const [text, count] of cases) {

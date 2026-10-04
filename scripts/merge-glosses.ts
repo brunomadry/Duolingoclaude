@@ -2,7 +2,8 @@
  * Merges content/glosses/part-*.json into content/glosses.pl.json (sorted by vocabulary
  * order) and reports missing or unknown ids. Usage: node scripts/merge-glosses.ts
  */
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { writeJson } from './write-formatted.ts';
 
 interface Gloss {
   pl: string[];
@@ -39,10 +40,7 @@ for (const id of ids) {
     glosses[id] = { pl: g.pl.map((s) => s.trim()).filter(Boolean), reviewed: g.reviewed === true };
 }
 
-writeFileSync(
-  new URL('glosses.pl.json', content),
-  `${JSON.stringify({ version: 1, glosses }, null, 2)}\n`,
-);
+await writeJson(new URL('glosses.pl.json', content), { version: 1, glosses });
 console.log(`${Object.keys(glosses).length} glosses from ${parts.length} part(s).`);
 if (unknown.length) console.warn(`ids not in vocab.json: ${unknown.join(', ')}`);
 if (missing.length) {

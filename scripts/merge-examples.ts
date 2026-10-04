@@ -2,7 +2,8 @@
  * Merges content/examples/part-*.json into content/examples.json, ordered by lesson and by
  * the word order inside each lesson. Usage: node scripts/merge-examples.ts
  */
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { writeJson } from './write-formatted.ts';
 
 interface ExampleJson {
   wordId: string;
@@ -28,8 +29,5 @@ for (const file of parts) {
   all.push(...data.examples);
 }
 all.sort((a, b) => a.lesson - b.lesson || (order.get(a.wordId) ?? 0) - (order.get(b.wordId) ?? 0));
-writeFileSync(
-  new URL('examples.json', content),
-  `${JSON.stringify({ version: 1, examples: all }, null, 2)}\n`,
-);
+await writeJson(new URL('examples.json', content), { version: 1, examples: all });
 console.log(`${all.length} examples from ${parts.length} part(s).`);

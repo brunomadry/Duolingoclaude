@@ -60,7 +60,7 @@ describe('gate tables', () => {
 
 describe('checkTokens', () => {
   const words = {
-    watakushi: 17,
+    watashi: 17,
     gakusei: 17,
     pan: 30,
     taberu: 30,
@@ -98,7 +98,7 @@ describe('checkTokens', () => {
   });
 
   it('reports the used vocabulary ids', () => {
-    expect(check('わたしは学生です。', 20, words).wordIds).toEqual(['watakushi', 'gakusei']);
+    expect(check('わたしは学生です。', 20, words).wordIds).toEqual(['watashi', 'gakusei']);
   });
 
   it('allows flagged surfaces such as names', () => {

@@ -421,8 +421,8 @@ export const SPELLING_VARIANTS: Readonly<Record<string, readonly string[]>> = {
   あびる: ['浴びる'],
   さようなら: ['さよなら'],
   じゃ: ['じゃあ'],
-  終る: ['終わる'],
-  曲る: ['曲がる'],
+  終わる: ['終る'],
+  曲がる: ['曲る'],
   御飯: ['ご飯'],
   晩御飯: ['晩ご飯'],
   昼御飯: ['昼ご飯'],
@@ -430,7 +430,6 @@ export const SPELLING_VARIANTS: Readonly<Record<string, readonly string[]>> = {
   子供: ['子ども'],
   入口: ['入り口'],
   伯母さん: ['叔母さん'],
-  私: ['わたし'],
   何: ['なに'],
 };
 

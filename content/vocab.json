@@ -209,11 +209,11 @@
       "sourceId": "34e6f7d220"
     },
     {
-      "id": "atsui-kind",
+      "id": "atsui-thick",
       "kana": "あつい",
       "kanji": "厚い",
       "romaji": "atsui",
-      "en": ["kind", "deep", "thick"],
+      "en": ["thick"],
       "pos": ["adj-i"],
       "sentences": [205578, 85389],
       "sourceId": "9949d87445"
@@ -406,8 +406,15 @@
       "romaji": "are",
       "en": ["that"],
       "pos": ["pn"],
-      "sentences": [],
       "sourceId": "d727a76b22"
+    },
+    {
+      "id": "anna",
+      "kana": "あんな",
+      "romaji": "anna",
+      "en": ["that kind of", "like that"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1000590"
     },
     {
       "id": "ii",
@@ -424,7 +431,6 @@
       "romaji": "iie",
       "en": ["no"],
       "pos": ["int"],
-      "sentences": [],
       "sourceId": "6d4596ae46"
     },
     {
@@ -518,7 +524,7 @@
       "kana": "いそがしい",
       "kanji": "忙しい",
       "romaji": "isogashii",
-      "en": ["busy", "irritated"],
+      "en": ["busy"],
       "pos": ["adj-i"],
       "sentences": [82529, 223466],
       "sourceId": "cd1bcc2b1b"
@@ -557,7 +563,7 @@
       "kana": "いちにち",
       "kanji": "一日",
       "romaji": "ichinichi",
-      "en": ["one day", "first of month"],
+      "en": ["one day", "all day"],
       "pos": ["n"],
       "sentences": [190280, 190284],
       "sourceId": "1cfccd0cdd"
@@ -1322,7 +1328,7 @@
     {
       "id": "owaru",
       "kana": "おわる",
-      "kanji": "終る",
+      "kanji": "終わる",
       "romaji": "owaru",
       "en": ["to finish"],
       "pos": ["v5r", "vi"],
@@ -1438,6 +1444,15 @@
       "pos": ["v5r", "vi"],
       "sentences": [75070, 84696],
       "sourceId": "1d22f1d023"
+    },
+    {
+      "id": "kao",
+      "kana": "かお",
+      "kanji": "顔",
+      "romaji": "kao",
+      "en": ["face", "(facial) expression"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1217730"
     },
     {
       "id": "kakaru",
@@ -1589,7 +1604,7 @@
       "id": "kaban",
       "kana": "かばん",
       "romaji": "kaban",
-      "en": ["bag", "basket"],
+      "en": ["bag"],
       "pos": ["n"],
       "sentences": [218609, 223898],
       "sourceId": "6e6a06687d"
@@ -2298,7 +2313,6 @@
       "romaji": "koko",
       "en": ["here"],
       "pos": ["pn"],
-      "sentences": [],
       "sourceId": "05123676c2"
     },
     {
@@ -2384,7 +2398,6 @@
       "romaji": "koppu",
       "en": ["a glass"],
       "pos": ["n"],
-      "sentences": [],
       "sourceId": "2da7034c1e"
     },
     {
@@ -3196,8 +3209,8 @@
       "id": "sekken",
       "kana": "せっけん",
       "romaji": "sekken",
-      "en": ["economy"],
-      "pos": ["n", "vs", "vt", "vi"],
+      "en": ["soap"],
+      "pos": ["n"],
       "sentences": [214032, 10899704],
       "sourceId": "b48d0c99d4"
     },
@@ -3352,7 +3365,6 @@
       "romaji": "sono",
       "en": ["that"],
       "pos": ["adj-pn"],
-      "sentences": [],
       "sourceId": "cb1c02a574"
     },
     {
@@ -3400,6 +3412,14 @@
       "pos": ["exp"],
       "sentences": [205771, 205760],
       "sourceId": "46c1721526"
+    },
+    {
+      "id": "sonna",
+      "kana": "そんな",
+      "romaji": "sonna",
+      "en": ["such", "that kind of"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1007130"
     },
     {
       "id": "daigaku",
@@ -3703,6 +3723,15 @@
       "pos": ["n"],
       "sentences": [220672, 202836],
       "sourceId": "ffa3dda331"
+    },
+    {
+      "id": "chichi",
+      "kana": "ちち",
+      "kanji": "父",
+      "romaji": "chichi",
+      "en": ["(humble) father"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1497610"
     },
     {
       "id": "chairo",
@@ -4054,7 +4083,6 @@
       "romaji": "dou",
       "en": ["how", "in what way"],
       "pos": ["adv"],
-      "sentences": [],
       "sourceId": "d0fb41651f"
     },
     {
@@ -4323,8 +4351,15 @@
       "romaji": "dore",
       "en": ["which (of three or more)"],
       "pos": ["pn"],
-      "sentences": [],
       "sourceId": "b21477c7db"
+    },
+    {
+      "id": "donna",
+      "kana": "どんな",
+      "romaji": "donna",
+      "en": ["what kind of"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1009330"
     },
     {
       "id": "naifu",
@@ -4543,6 +4578,33 @@
       "sourceId": "d8c3a3f0d0"
     },
     {
+      "id": "nihon",
+      "kana": "にほん",
+      "kanji": "日本",
+      "romaji": "nihon",
+      "en": ["Japan"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1582710"
+    },
+    {
+      "id": "nihongo",
+      "kana": "にほんご",
+      "kanji": "日本語",
+      "romaji": "nihongo",
+      "en": ["Japanese (language)"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1464530"
+    },
+    {
+      "id": "nihonjin",
+      "kana": "にほんじん",
+      "kanji": "日本人",
+      "romaji": "nihonjin",
+      "en": ["Japanese person"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1464700"
+    },
+    {
       "id": "nimotsu",
       "kana": "にもつ",
       "kanji": "荷物",
@@ -4584,9 +4646,8 @@
     {
       "id": "nurui",
       "kana": "ぬるい",
-      "kanji": "温い",
       "romaji": "nurui",
-      "en": ["luke warm"],
+      "en": ["lukewarm"],
       "pos": ["adj-i"],
       "sentences": [223801, 196881],
       "sourceId": "2f01adebd7"
@@ -4913,6 +4974,15 @@
       "sourceId": "9d5bde24ec"
     },
     {
+      "id": "haha",
+      "kana": "はは",
+      "kanji": "母",
+      "romaji": "haha",
+      "en": ["(humble) mother"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1514990"
+    },
+    {
       "id": "hayai-early",
       "kana": "はやい",
       "kanji": "早い",
@@ -4998,7 +5068,6 @@
       "romaji": "pan",
       "en": ["bread"],
       "pos": ["n"],
-      "sentences": [],
       "sourceId": "098e9e7e67"
     },
     {
@@ -5035,7 +5104,7 @@
       "kana": "はんぶん",
       "kanji": "半分",
       "romaji": "hanbun",
-      "en": ["half minute"],
+      "en": ["half"],
       "pos": ["adv", "n"],
       "sentences": [225320, 204534],
       "sourceId": "a1cda8cb11"
@@ -5244,7 +5313,6 @@
       "romaji": "fooku",
       "en": ["fork"],
       "pos": ["n"],
-      "sentences": [],
       "sourceId": "71e2aefb9d"
     },
     {
@@ -5350,6 +5418,7 @@
     {
       "id": "furo",
       "kana": "ふろ",
+      "kanji": "風呂",
       "romaji": "furo",
       "en": ["bath"],
       "pos": ["n"],
@@ -5463,6 +5532,32 @@
       "sourceId": "cfc75623ae"
     },
     {
+      "id": "poorando",
+      "kana": "ポーランド",
+      "romaji": "poorando",
+      "en": ["Poland"],
+      "pos": ["n"],
+      "sourceId": "course:poland"
+    },
+    {
+      "id": "poorandogo",
+      "kana": "ポーランドご",
+      "kanji": "ポーランド語",
+      "romaji": "poorandogo",
+      "en": ["Polish (language)"],
+      "pos": ["n"],
+      "sourceId": "course:polish-language"
+    },
+    {
+      "id": "poorandojin",
+      "kana": "ポーランドじん",
+      "kanji": "ポーランド人",
+      "romaji": "poorandojin",
+      "en": ["Polish person"],
+      "pos": ["n"],
+      "sourceId": "course:polish-person"
+    },
+    {
       "id": "boorupen",
       "kana": "ボールペン",
       "romaji": "boorupen",
@@ -5503,7 +5598,7 @@
       "id": "posuto",
       "kana": "ポスト",
       "romaji": "posuto",
-      "en": ["post"],
+      "en": ["postbox", "mailbox"],
       "pos": ["n"],
       "sentences": [196278, 219866],
       "sourceId": "2dbe65ee1d"
@@ -5638,7 +5733,7 @@
     {
       "id": "magaru",
       "kana": "まがる",
-      "kanji": "曲る",
+      "kanji": "曲がる",
       "romaji": "magaru",
       "en": ["to turn", "to bend"],
       "pos": ["v5r", "vi"],
@@ -6258,7 +6353,7 @@
       "kana": "よっか",
       "kanji": "四日",
       "romaji": "yokka",
-      "en": ["four days", "fouth day of the month"],
+      "en": ["four days", "fourth day of the month"],
       "pos": ["n"],
       "sentences": [125908, 162081],
       "sourceId": "222ae96df7"
@@ -6373,6 +6468,7 @@
     {
       "id": "rippa",
       "kana": "りっぱ",
+      "kanji": "立派",
       "romaji": "rippa",
       "en": ["splendid"],
       "pos": ["adj-na"],
@@ -6426,7 +6522,6 @@
       "romaji": "rei",
       "en": ["zero"],
       "pos": ["n"],
-      "sentences": [],
       "sourceId": "92b3bb727e"
     },
     {
@@ -6535,6 +6630,15 @@
       "pos": ["pn"],
       "sentences": [159334, 89373],
       "sourceId": "d5c2e69813"
+    },
+    {
+      "id": "watashi",
+      "kana": "わたし",
+      "kanji": "私",
+      "romaji": "watashi",
+      "en": ["I", "me"],
+      "pos": ["pn"],
+      "sourceId": "jmdict:1311110"
     },
     {
       "id": "watasu",
