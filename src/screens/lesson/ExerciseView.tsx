@@ -10,6 +10,8 @@ interface ExerciseViewProps {
   sound: boolean;
   onAnswered: (correct: boolean) => void;
   onNext: () => void;
+  /** The player is saving the step; the next button waits. */
+  busy?: boolean;
 }
 
 const PROMPTS: Record<Exercise['kind'], string> = {
@@ -34,7 +36,13 @@ export function isTypedAnswerCorrect(exercise: Exercise, input: string): boolean
   return accepted.includes(typed) || isRomajiAnswerCorrect(input, exercise.item.char);
 }
 
-export function ExerciseView({ exercise, sound, onAnswered, onNext }: ExerciseViewProps) {
+export function ExerciseView({
+  exercise,
+  sound,
+  onAnswered,
+  onNext,
+  busy = false,
+}: ExerciseViewProps) {
   const [picked, setPicked] = useState<string | null>(null);
   const [typed, setTyped] = useState('');
   const [result, setResult] = useState<boolean | null>(null);
@@ -160,7 +168,13 @@ export function ExerciseView({ exercise, sound, onAnswered, onNext }: ExerciseVi
               = <strong>{exercise.item.romaji}</strong>
             </p>
           )}
-          <button ref={nextRef} class="btn btn--primary btn--block" onClick={onNext}>
+          <button
+            ref={nextRef}
+            class="btn btn--primary btn--block"
+            onClick={onNext}
+            disabled={busy}
+            aria-busy={busy}
+          >
             Dalej
           </button>
         </div>

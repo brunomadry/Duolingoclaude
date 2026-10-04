@@ -131,18 +131,16 @@ export function TodayScreen({ profile }: { profile: ProfileRecord }) {
             ? 'Krótka sesja, maksymalnie kilka minut. Reszta poczeka.'
             : 'Na razie nic do powtórki. Pamięć ma się dobrze.'}
         </p>
-        <div class="row">
+        <div class="stack" style={{ gap: 'var(--space-2)' }}>
           <button
-            class="btn grow"
-            style={{ flex: 1 }}
+            class="btn btn--block"
             disabled={!due.dueTotal}
             onClick={() => navigate('/powtorki')}
           >
             Powtórz teraz
           </button>
           <button
-            class="btn grow"
-            style={{ flex: 1 }}
+            class="btn btn--block"
             disabled={unlock.completedCount === 0}
             onClick={() => navigate('/cwicz')}
           >

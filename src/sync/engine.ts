@@ -10,7 +10,8 @@ import { getMeta, setMeta, type Database, type OutboxEntry } from '../data/db.ts
 import { removeLocalProfileData } from '../data/repo.ts';
 import { planProfileMerge, recordsToApply } from './merge.ts';
 
-export type SyncOutcome = 'ok' | 'offline' | 'locked' | 'error';
+/** 'clock': the device clock runs far ahead of the server; changes wait in the outbox. */
+export type SyncOutcome = 'ok' | 'offline' | 'locked' | 'clock' | 'error';
 
 export interface SyncHooks {
   /** The server rejected the access cookie: show the access code screen. */
@@ -62,7 +63,8 @@ export function createSyncEngine(db: Database, api: Api, hooks: SyncHooks = {}) 
         e.code === 'offline' ||
         e.code === 'locked' ||
         e.code === 'rate_limited' ||
-        e.code === 'server_error'
+        e.code === 'server_error' ||
+        e.code === 'clock_skew'
       ) {
         throw e;
       }
@@ -222,6 +224,7 @@ export function createSyncEngine(db: Database, api: Api, hooks: SyncHooks = {}) 
     } catch (e) {
       if (e instanceof ApiError) {
         if (e.code === 'offline') return 'offline';
+        if (e.code === 'clock_skew') return 'clock';
         if (e.code === 'locked') {
           hooks.onLocked?.();
           return 'locked';

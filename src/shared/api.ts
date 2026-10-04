@@ -136,7 +136,14 @@ export const ReportSchema = strictObject({
 export type ReportRecord = Infer<typeof ReportSchema>;
 
 export type ApiErrorCode =
-  'locked' | 'bad_request' | 'not_found' | 'gone' | 'rate_limited' | 'too_large' | 'server_error';
+  | 'locked'
+  | 'bad_request'
+  | 'not_found'
+  | 'gone'
+  | 'rate_limited'
+  | 'too_large'
+  | 'clock_skew'
+  | 'server_error';
 
 export interface ApiError {
   error: ApiErrorCode;

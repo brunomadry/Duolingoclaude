@@ -137,7 +137,7 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
         <span>
           Poznane znaki: {known} z {total}
         </span>
-        <span>Dotknij znak, żeby go posłuchać</span>
+        <span>Dotknij znak</span>
       </div>
 
       {view === 'chart' ? (

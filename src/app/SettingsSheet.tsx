@@ -41,6 +41,9 @@ function syncLabel(s: ReturnType<typeof appState.get>['sync'], online: boolean):
       : 'Offline. Wszystko zapisane na telefonie.';
   }
   if (s.status === 'syncing') return 'Synchronizuję…';
+  if (s.status === 'clock') {
+    return 'Zegar w telefonie wyprzedza prawdziwy czas. Włącz automatyczną datę i godzinę, a zmiany wyślą się same.';
+  }
   if (s.status === 'error') return 'Nie udało się zsynchronizować. Spróbuję ponownie.';
   if (s.pending) return `Czeka na wysłanie: ${s.pending}.`;
   if (s.lastSyncedAt) {

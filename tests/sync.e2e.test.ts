@@ -196,6 +196,31 @@ describe('two-device sync', () => {
     expect(await pendingCount(a.db)).toBe(0);
   });
 
+  it('keeps changes queued when the device clock runs far ahead', async () => {
+    const a = await device();
+    const p = await createProfile(a.db, {
+      name: 'Zegar',
+      avatar: 'plain',
+      settings: defaultSettings('Europe/Warsaw'),
+    });
+    await a.sync.run(p.id);
+    // A card written while the phone clock was three days ahead.
+    await a.db.add('outbox', {
+      key: `card:${p.id}:future`,
+      type: 'card',
+      profileId: p.id,
+      record: {
+        profileId: p.id,
+        cardId: 'future',
+        data: {},
+        updatedAt: Date.now() + 3 * 24 * 3600_000,
+        deleted: false,
+      },
+    });
+    expect(await a.sync.run(p.id)).toBe('clock');
+    expect(await pendingCount(a.db)).toBe(1);
+  });
+
   it('reports a lost session as locked and keeps local data', async () => {
     const a = await device();
     const p = await createProfile(a.db, {

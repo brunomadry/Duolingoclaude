@@ -76,12 +76,16 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   const [plan, setPlan] = useState<LessonPlan | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
   const [stepIndex, setStepIndex] = useState(0);
-  const [queue, setQueue] = useState<Exercise[]>([]);
+  /** Missed exercises re-queued at the end of the current step. */
+  const [retries, setRetries] = useState<Exercise[]>([]);
   const [position, setPosition] = useState(0);
   const [finish, setFinish] = useState<Finish | null>(null);
   const [confirmExit, setConfirmExit] = useState(false);
   const stepResults = useRef<AnswerResult[]>([]);
   const firstAttempts = useRef(new Map<string, boolean>());
+  /** Set while a step is being saved, so a double tap cannot apply grades twice. */
+  const advancing = useRef(false);
+  const [saving, setSaving] = useState(false);
   const requeued = useRef(new Set<string>());
   const lesson = n ? lessonByN(n) : undefined;
 
@@ -162,19 +166,24 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
 
   const step = plan?.steps[stepIndex];
 
-  useEffect(() => {
-    if (!step) return;
+  // The queue is derived from the step itself, so it can never lag a render behind it.
+  const queue = useMemo(() => {
+    const base =
+      step?.kind === 'review' || step?.kind === 'practice'
+        ? step.exercises
+        : step?.kind === 'summary'
+          ? step.quiz
+          : [];
+    return [...base, ...retries];
+  }, [step, retries]);
+
+  const goToStep = (index: number) => {
     stepResults.current = [];
     requeued.current = new Set();
+    setRetries([]);
     setPosition(0);
-    setQueue(
-      step.kind === 'review' || step.kind === 'practice'
-        ? step.exercises
-        : step.kind === 'summary'
-          ? step.quiz
-          : [],
-    );
-  }, [step]);
+    setStepIndex(index);
+  };
 
   const exit = () => navigate('/', { replace: true });
 
@@ -229,13 +238,25 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
   };
 
   const nextStep = async () => {
-    if (!plan || !step) return;
-    if ((step.kind === 'review' || step.kind === 'practice') && mode !== 'extra') {
-      await applyGrades(database(), profile.id, gradesFromResults(stepResults.current), Date.now());
-      notifyLocalChange();
+    if (!plan || !step || advancing.current) return;
+    advancing.current = true;
+    setSaving(true);
+    try {
+      if ((step.kind === 'review' || step.kind === 'practice') && mode !== 'extra') {
+        await applyGrades(
+          database(),
+          profile.id,
+          gradesFromResults(stepResults.current),
+          Date.now(),
+        );
+        notifyLocalChange();
+      }
+      if (stepIndex + 1 < plan.steps.length) goToStep(stepIndex + 1);
+      else await completeLesson();
+    } finally {
+      advancing.current = false;
+      setSaving(false);
     }
-    if (stepIndex + 1 < plan.steps.length) setStepIndex(stepIndex + 1);
-    else await completeLesson();
   };
 
   const current = queue[position];
@@ -248,7 +269,7 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
     // A miss comes back once at the end of the step (not in the final quiz).
     if (!correct && step?.kind !== 'summary' && !requeued.current.has(baseId)) {
       requeued.current.add(baseId);
-      setQueue((q) => [...q, { ...current, id: `${baseId}-again` }]);
+      setRetries((r) => [...r, { ...current, id: `${baseId}-again` }]);
     }
   };
 
@@ -362,9 +383,10 @@ export function LessonPlayer({ profile, mode, n }: LessonPlayerProps) {
             sound={profile.settings.sound}
             onAnswered={onAnswered}
             onNext={onNextExercise}
+            busy={saving}
           />
         ) : (
-          <div class="celebration">
+          <div class="player__empty stack" style={{ alignItems: 'center' }}>
             <p class="muted">Tu nie ma nic do zrobienia.</p>
             <button class="btn btn--primary" onClick={() => void nextStep()}>
               Dalej

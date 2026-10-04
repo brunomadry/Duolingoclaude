@@ -186,6 +186,17 @@ describe('profiles', () => {
     expect((await call(`/api/profiles/${PID}/state`, {}, cookie)).status).toBe(410);
   });
 
+  it('flags timestamps from a clock far in the future as clock_skew', async () => {
+    const cookie = await unlock();
+    const res = await call(
+      '/api/profiles',
+      { method: 'POST', json: profile({ updatedAt: T0 + 3 * 24 * 3600_000 }) },
+      cookie,
+    );
+    expect(res.status).toBe(400);
+    expect(await res.json()).toMatchObject({ error: 'clock_skew' });
+  });
+
   it('validates shapes strictly', async () => {
     const cookie = await unlock();
     const bad = [
