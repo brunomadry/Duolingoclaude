@@ -261,3 +261,38 @@ export function checkTokens(tokens: readonly Token[], ctx: CheckContext): Senten
   }
   return { ok: problems.length === 0, problems, wordIds: [...new Set(wordIds)] };
 }
+
+/**
+ * Checks that a kana reading spells the same words as the written sentence: every word of
+ * the written form must appear, in order, in the reading. Extra reading tokens are fine
+ * (３時 is read さんじ), and a lone unknown kana matches any word (single-kana words such
+ * as 目 め or 手 て are not in the matcher). Anything else unknown in the reading is a
+ * problem unless knowingly allowed.
+ */
+export function readingProblems(
+  written: readonly Token[],
+  reading: readonly Token[],
+  allowSurfaces?: ReadonlySet<string>,
+): string[] {
+  const problems: string[] = [];
+  const lone = (t: Token) => t.kind === 'unknown' && [...t.surface].length === 1;
+  for (const t of reading) {
+    if (t.kind === 'unknown' && !lone(t) && !allowSurfaces?.has(t.surface))
+      problems.push(`reading has unknown "${t.surface}"`);
+  }
+  const candidates = reading.filter((t) => t.kind === 'word' || lone(t));
+  let i = 0;
+  for (const t of written) {
+    if (t.kind !== 'word') continue;
+    let found = false;
+    while (i < candidates.length && !found) {
+      const c = candidates[i++] as Token;
+      found = lone(c) || c.wordIds.some((id) => t.wordIds.includes(id));
+    }
+    if (!found) {
+      problems.push(`reading does not spell "${t.surface}"`);
+      break;
+    }
+  }
+  return problems;
+}

@@ -1,9 +1,10 @@
 /**
  * Helper for writing lesson example sentences.
  *
- *   node scripts/examples-tool.ts check <lesson> "<japanese sentence>"
+ *   node scripts/examples-tool.ts check <lesson> "<japanese sentence>" ["<kana reading>"]
  *     Tokenizes the sentence and checks it against what lesson <lesson> has taught
- *     (words via content/curriculum.json, grammar via src/lesson/grammar-gates.ts).
+ *     (words via content/curriculum.json, grammar via src/shared/grammar-gates.ts), and
+ *     that the kana reading, if given, spells the same words.
  *   node scripts/examples-tool.ts candidates <wordId> [limit]
  *     Lists Tatoeba sentences from content/sentences.json that use the word and pass the
  *     check at the word's lesson, shortest first.
@@ -12,7 +13,12 @@
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { createLexicon, tokenize, type LexEntry } from '../src/shared/jp-words.ts';
-import { checkTokens, createGates, type CheckContext } from '../src/shared/grammar-gates.ts';
+import {
+  checkTokens,
+  createGates,
+  readingProblems,
+  type CheckContext,
+} from '../src/shared/grammar-gates.ts';
 
 const content = new URL('../content/', import.meta.url);
 const read = <T>(file: string): T => JSON.parse(readFileSync(new URL(file, content), 'utf8')) as T;
@@ -64,7 +70,7 @@ function show(tokens: ReturnType<typeof tokenize>): string {
     .join(' ');
 }
 
-const [cmd, a, b] = process.argv.slice(2);
+const [cmd, a, b, c] = process.argv.slice(2);
 
 if (cmd === 'check' && a && b) {
   const r = checkSentence(Number(a), b);
@@ -74,7 +80,15 @@ if (cmd === 'check' && a && b) {
       ? `OK at lesson ${a}; words: ${r.wordIds.join(', ')}`
       : `NOT OK at lesson ${a}:\n  ${r.problems.join('\n  ')}`,
   );
-  process.exitCode = r.ok ? 0 : 1;
+  let readingOk = true;
+  if (c) {
+    const reading = tokenize(c, lexicon);
+    const problems = readingProblems(r.tokens, reading);
+    readingOk = problems.length === 0;
+    console.log(show(reading));
+    console.log(readingOk ? 'reading OK' : `READING NOT OK:\n  ${problems.join('\n  ')}`);
+  }
+  process.exitCode = r.ok && readingOk ? 0 : 1;
 } else if (cmd === 'candidates' && a) {
   const lesson = lessonOfWord.get(a);
   if (lesson === undefined) {
@@ -106,5 +120,7 @@ if (cmd === 'check' && a && b) {
     console.log(`  ${done.has(w) ? 'ok ' : '...'} ${w}\t${v?.kanji ?? ''} ${v?.kana ?? ''}`);
   }
 } else {
-  console.log('usage: check <lesson> "<sentence>" | candidates <wordId> [limit] | lesson <n>');
+  console.log(
+    'usage: check <lesson> "<sentence>" ["<kana>"] | candidates <wordId> [limit] | lesson <n>',
+  );
 }

@@ -7,7 +7,7 @@
  */
 import type { z } from 'zod';
 import { KANA_PHASE_END, MAX_WORDS_PER_LESSON } from './constants.ts';
-import { checkTokens, createGates } from './grammar-gates.ts';
+import { checkTokens, createGates, readingProblems } from './grammar-gates.ts';
 import { createLexicon, tokenize } from './jp-words.ts';
 import {
   Curriculum,
@@ -238,14 +238,20 @@ export function validateContent(raw: RawContent): ValidationReport {
       errors.push(`${where}: has kanji but no kana reading`);
     if (ex.kana && /[\u3400-\u9fffa-zA-Z]/.test(ex.kana))
       errors.push(`${where}: kana reading contains kanji or Latin letters`);
-    const result = checkTokens(tokenize(ex.ja, lexicon), {
+    const allowSurfaces = new Set(ex.allowUnknown ?? []);
+    const written = tokenize(ex.ja, lexicon);
+    const result = checkTokens(written, {
       lessonN: ex.lesson,
       gates,
       lessonOfWord,
       posOfWord,
-      allowSurfaces: new Set(ex.allowUnknown ?? []),
+      allowSurfaces,
     });
     for (const p of result.problems) errors.push(`${where}: ${p} in "${ex.ja}"`);
+    if (ex.kana) {
+      for (const p of readingProblems(written, tokenize(ex.kana, lexicon), allowSurfaces))
+        errors.push(`${where}: ${p} ("${ex.ja}" / "${ex.kana}")`);
+    }
     if (result.ok && !result.wordIds.includes(ex.wordId))
       errors.push(`${where}: the sentence does not use the word ("${ex.ja}")`);
   });

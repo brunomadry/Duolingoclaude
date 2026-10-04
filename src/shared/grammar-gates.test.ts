@@ -6,6 +6,7 @@ import {
   GRAMMAR_KEY_GATES,
   checkTokens,
   createGates,
+  readingProblems,
   type CheckContext,
 } from './grammar-gates.ts';
 
@@ -106,6 +107,29 @@ describe('checkTokens', () => {
     expect(checkTokens(tokens, ctx(20, words)).ok).toBe(false);
     expect(checkTokens(tokens, { ...ctx(20, words), allowSurfaces: new Set(['トム']) }).ok).toBe(
       true,
+    );
+  });
+});
+
+describe('readingProblems', () => {
+  const problems = (ja: string, kana: string, allow?: string[]) =>
+    readingProblems(tokenize(ja, lexicon), tokenize(kana, lexicon), new Set(allow));
+
+  it('accepts a reading that spells the same words', () => {
+    expect(problems('私は学生です。', 'わたしは がくせいです。')).toEqual([]);
+    expect(problems('３時に行きます。', 'さんじに いきます。')).toEqual([]);
+    expect(problems('目が痛いです。', 'めが いたいです。')).toEqual([]);
+  });
+
+  it('reports a reading with other words or unknown text', () => {
+    expect(problems('私は学生です。', 'わたしは せんせいです。')).toEqual([
+      'reading does not spell "学生"',
+    ]);
+    expect(problems('マイクさんは学生です。', 'ジョンさんは がくせいです。', ['マイク'])).toEqual([
+      'reading has unknown "ジョン"',
+    ]);
+    expect(problems('マイクさんは学生です。', 'マイクさんは がくせいです。', ['マイク'])).toEqual(
+      [],
     );
   });
 });
