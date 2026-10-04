@@ -218,6 +218,7 @@ export function checkTokens(tokens: readonly Token[], ctx: CheckContext): Senten
       case 'number':
         if (!okAt(ctx.gates.numbersLesson, n))
           problems.push(`number "${t.surface}" before numbers are taught`);
+        else if (t.wordIds[0]) wordIds.push(t.wordIds[0]);
         break;
       case 'grammar': {
         const at = ctx.gates.keyLesson(t.grammar ?? '');

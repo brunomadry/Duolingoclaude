@@ -149,7 +149,10 @@ export interface Token {
   start: number;
   end: number;
   kind: TokenKind;
-  /** Every vocabulary id the surface could be (dictionary forms first); empty unless kind is 'word'. */
+  /**
+   * Every vocabulary id the surface could be (dictionary forms first); empty unless kind is
+   * 'word', or a 'number' that is a single kanji numeral (二 lists the number word ni).
+   */
   wordIds: string[];
   /** Dictionary form (same spelling as the surface) when the first candidate is inflected. */
   base?: string;
@@ -708,6 +711,8 @@ export interface Lexicon {
   /** Every known surface (vocabulary forms and grammar words). Treat as read-only. */
   readonly surfaces: ReadonlyMap<string, SurfaceInfo>;
   readonly trie: TrieNode;
+  /** Number words spelled with one kanji numeral (二 -> ni), reported on number tokens. */
+  readonly numerals: ReadonlyMap<string, string>;
 }
 
 const KANA_ONLY = /^[ぁ-ゟ゠-ヿｦ-ﾟ]+$/;
@@ -844,7 +849,17 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
     node.info = info;
   }
 
-  return { entries, surfaces, trie };
+  const numerals = new Map<string, string>();
+  for (const e of entries) {
+    if (
+      e.kanji &&
+      e.kanji.length === 1 &&
+      KANJI_NUMERALS.includes(e.kanji) &&
+      !numerals.has(e.kanji)
+    )
+      numerals.set(e.kanji, e.id);
+  }
+  return { entries, surfaces, trie, numerals };
 }
 
 /* -------------------------------------------------------------- characters */
@@ -1586,7 +1601,15 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
       if (g !== null) token.grammar = g.key;
       tokens.push(token);
     } else {
-      tokens.push({ surface, start: i, end: j, kind: step.kind, wordIds: [] });
+      // A lone kanji numeral is also its number word (二 is ni), so it counts as that word.
+      const numeral = step.kind === 'number' ? lexicon.numerals.get(surface) : undefined;
+      tokens.push({
+        surface,
+        start: i,
+        end: j,
+        kind: step.kind,
+        wordIds: numeral ? [numeral] : [],
+      });
     }
     state = bestNext[at] ?? S_START;
     i = j;

@@ -1122,7 +1122,9 @@ describe('whole corpus', () => {
         expect(t.start, text).toBe(at);
         expect(t.surface, text).toBe(text.slice(t.start, t.end));
         expect(t.end, text).toBeGreaterThan(t.start);
-        expect(t.wordIds.length > 0, text).toBe(t.kind === 'word');
+        // Words list their ids; a lone kanji numeral lists its number word (二 is ni).
+        if (t.kind === 'number') expect(t.wordIds.length, text).toBeLessThanOrEqual(1);
+        else expect(t.wordIds.length > 0, text).toBe(t.kind === 'word');
         if (t.kind === 'grammar') expect(keys.has(t.grammar ?? ''), text).toBe(true);
         expect(prev?.kind === 'unknown' && t.kind === 'unknown', text).toBe(false);
         prev = t;
@@ -1144,5 +1146,17 @@ describe('whole corpus', () => {
     // Typically ~20 ms and ~50 ms; the limits leave room for slow CI machines.
     expect(built).toBeLessThan(250);
     expect(tokenized).toBeLessThan(2500);
+  });
+});
+
+describe('kanji numerals', () => {
+  it('report their number word on the number token', () => {
+    expect(tok('二時です').map((t) => [t.surface, t.kind, t.wordIds.join()])).toEqual([
+      ['二', 'number', 'ni'],
+      ['時', 'grammar', ''],
+      ['です', 'grammar', ''],
+    ]);
+    // Longer numbers are not one word.
+    expect(tok('二十').map((t) => t.wordIds.length)).toEqual([0]);
   });
 });
