@@ -35,7 +35,7 @@ npx wrangler login                       # opens the browser, pick your account
 npx wrangler d1 create aka-nihongo       # prints a database_id
 ```
 
-Paste the printed `database_id` into `wrangler.jsonc` (replace the zeros) and commit that change (the id is not a secret). Then create the tables and do the first deploy:
+Paste the printed `database_id` into `wrangler.jsonc` (replace the zeros), then **commit and push it** (the id is not a secret). If it only lives in your local file, any `git pull`, branch switch or fresh clone brings the zeros back and the app "loses" its database. Tip: `npx wrangler d1 create aka-nihongo --binding DB` writes the id into the existing `DB` entry for you; if you answer the prompts by hand, use the binding name `DB` or Wrangler adds a second entry. Lost the id? `npx wrangler d1 list` shows it again (never create the database twice). Then create the tables and do the first deploy:
 
 ```bash
 npm run db:migrate:remote                # creates the tables in the real D1 database

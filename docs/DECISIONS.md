@@ -74,3 +74,19 @@ One line per decision, newest at the bottom of each section. The brief (the orig
 - Installed the official Cloudflare plugin for Claude Code (`claude plugin marketplace add cloudflare/skills`, `claude plugin install cloudflare@cloudflare`), following https://developers.cloudflare.com/agent-setup/prompt.md (read from its source in `cloudflare/cloudflare-docs`, because the docs host is blocked from the build sandbox).
 - Applied its Workers guidance: `compatibility_date` set to the current date, Workers Logs plus sampled Traces enabled (`observability.traces` must be enabled explicitly), and SETUP now deploys before `wrangler secret put`, since each secret put deploys a new version immediately.
 - Still open: the guidance prefers `wrangler types` over a hand-written `Env`. We keep `worker/env.ts` for now (small, also documents secrets); revisit when bindings grow (Phase 5 adds AI keys).
+
+## Phase 2: Alfabet
+
+- **Kana schema** gained `alt` (accepted typing spellings such as si, tu, wo, nn; never shown as the answer), `col` (goju-on column, so the chart lays out や _ ゆ _ よ without hard-coded tables) and an optional Polish `note` per group (dakuten, yōon, small っ, ー).
+- **Romaji is Modified Hepburn without macrons**: long vowels are written doubled (koohii), which is easier to type on a phone; macrons typed by the user are accepted.
+- **Stroke order** comes from KanjiVG (all 177 kana incl. ー) via `scripts/fetch-kanjivg.ts`, stored as stroke paths only in `content/strokes.json` and lazy-loaded as its own chunk.
+- **Lesson engine is pure and seeded** (`src/lesson/engine.ts`): the same lesson, progress and seed always give the same plan, so it is testable. Replays use a different seed.
+- **One SRS grade per card per step**: any miss in a step means "again", otherwise "good". Multiple exercises on the same kana in one session would otherwise count as several reviews minutes apart.
+- **A missed exercise comes back once** at the end of the step (not in the final quiz). The score uses first attempts only.
+- **First completion time is kept forever**: replaying a finished lesson can only improve the stored score, never move the next unlock.
+- **Extra practice ("Ćwicz dodatkowo") does not touch SRS or unlocking**, as the brief requires; only the review step and lesson practice write card states.
+- **Review sessions are capped at 20 cards** (about 3 to 5 minutes); the rest stays queued and the UI says so calmly ("Reszta poczeka, bez stresu").
+- **Listening exercises need a Japanese voice**: without one the engine swaps them for romaji-to-kana, so lessons never block on audio.
+- **Hanko** shows the lesson number in Japanese numerals with 課, a deterministic tilt per lesson and a light ink-grain SVG filter; tests get a double ring. Sakura petals appear only on a first completion and never under reduced motion.
+- **Words in kana lessons (from L4)** arrive with the vocabulary pipeline in Phase 3; kana lessons in Phase 2 teach characters only.
+- **Concurrency note for builders**: the build container has 4 CPUs, so multi-agent workflows run two agents at a time.

@@ -1,0 +1,128 @@
+/* Stroke order animation (src/ui/StrokeOrder.tsx). Colours come from tokens.css only. */
+
+.stroke-order {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: min(var(--stroke-order-size, 200px), 100%);
+}
+
+/* The practice square: a faint centre cross like a calligraphy grid. */
+.stroke-order__box {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.stroke-order__svg {
+  width: 100%;
+  height: auto;
+}
+
+.stroke-order__status {
+  margin: 0;
+  padding: var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.stroke-order__grid {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1px;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.stroke-order__guide,
+.stroke-order__ink {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stroke-order__guide {
+  stroke: var(--border-strong);
+  stroke-opacity: 0.45;
+}
+
+/*
+ * Each path has pathLength=1, so a dash of 1 is the whole stroke. Hidden it starts at
+ * offset 1.01 (just past the gap) so round caps leave no dot at the start. The stroke is
+ * drawn in the accent colour and settles to the ink colour once it is complete.
+ */
+.stroke-order__ink path {
+  stroke: var(--text);
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 0;
+  animation:
+    stroke-order-draw var(--stroke-draw) ease-in-out var(--stroke-delay) both,
+    stroke-order-settle var(--dur-med) linear calc(var(--stroke-delay) + var(--stroke-draw)) both;
+}
+
+.stroke-order__numbers text {
+  fill: var(--accent-text);
+  font-family: var(--font-ui);
+  font-size: 7px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-anchor: middle;
+  dominant-baseline: central;
+  /* A halo in the box colour keeps numbers readable where they cross a stroke. */
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 2.4px;
+  stroke-linejoin: round;
+  animation: stroke-order-fade var(--dur-med) var(--ease-out) var(--stroke-delay) both;
+}
+
+.stroke-order__replay {
+  padding: 0 var(--space-4);
+}
+
+@keyframes stroke-order-draw {
+  from {
+    stroke-dashoffset: 1.01;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes stroke-order-settle {
+  from {
+    stroke: var(--accent);
+  }
+  to {
+    stroke: var(--text);
+  }
+}
+
+@keyframes stroke-order-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* No animation: every stroke and number is visible at once, and replay has nothing to do. */
+@media (prefers-reduced-motion: reduce) {
+  .stroke-order__ink path,
+  .stroke-order__numbers text {
+    animation: none;
+  }
+
+  .stroke-order__replay {
+    display: none;
+  }
+}
