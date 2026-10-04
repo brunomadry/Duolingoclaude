@@ -8,6 +8,7 @@ import { loadVocab } from '../../data/vocab-data.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
+  isSentenceExercise,
   kanaCardId,
   type AnswerResult,
   type Exercise,
@@ -38,6 +39,7 @@ import { CloseIcon } from '../../ui/icons.tsx';
 import { Modal } from '../../ui/Modal.tsx';
 import { Celebration } from './Celebration.tsx';
 import { ExerciseView } from './ExerciseView.tsx';
+import { SentenceExerciseView } from './SentenceExerciseView.tsx';
 import { KanaIntro } from './KanaIntro.tsx';
 import { WordIntro } from './WordIntro.tsx';
 
@@ -132,6 +134,8 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   /** Set while a step is being saved, so a double tap cannot apply grades twice. */
   const advancing = useRef(false);
   const [saving, setSaving] = useState(false);
+  /** Lesson level for the romaji setting ("auto" fades romaji after the writing phase). */
+  const [level, setLevel] = useState(1);
   const requeued = useRef(new Set<string>());
   const lesson = n ? lessonByN(n) : undefined;
 
@@ -151,6 +155,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       const speech = voice && profile.settings.sound;
       const now = Date.now();
       const done = completedPrefix(snapshot.lessons);
+      setLevel(mode === 'lesson' && lesson ? lesson.n : done + 1);
       let next: LessonPlan;
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
@@ -478,8 +483,18 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
         ) : step.kind === 'words' ? (
           <WordIntro
             words={step.words}
-            display={romajiDisplay(profile.settings.romaji, plan.n)}
+            display={romajiDisplay(profile.settings.romaji, level)}
             onDone={() => void nextStep()}
+          />
+        ) : current && isSentenceExercise(current) ? (
+          <SentenceExerciseView
+            key={current.id}
+            exercise={current}
+            sound={profile.settings.sound}
+            display={romajiDisplay(profile.settings.romaji, level)}
+            onAnswered={onAnswered}
+            onNext={onNextExercise}
+            busy={saving}
           />
         ) : current ? (
           <ExerciseView

@@ -8,6 +8,7 @@
 import type { Lesson } from '../shared/content-schema.ts';
 import type { Grade } from '../srs/types.ts';
 import { createRng, sample, shuffle, type Rng } from './rng.ts';
+import type { SentenceItem } from './sentences.ts';
 import { foldPolish, vocabCardId, type WordItem } from './vocab.ts';
 
 export interface KanaItem {
@@ -25,7 +26,13 @@ export type KanaExerciseKind =
  */
 export type WordExerciseKind =
   'word-to-meaning' | 'meaning-to-word' | 'audio-to-word' | 'type-word';
-export type ExerciseKind = KanaExerciseKind | WordExerciseKind;
+/**
+ * sentence-tiles: the Polish sentence, arrange kana tiles; sentence-gap: pick the missing
+ * particle; sentence-meaning: read, pick the Polish meaning; sentence-audio: listen, pick it.
+ */
+export type SentenceExerciseKind =
+  'sentence-tiles' | 'sentence-gap' | 'sentence-meaning' | 'sentence-audio';
+export type ExerciseKind = KanaExerciseKind | WordExerciseKind | SentenceExerciseKind;
 
 interface ExerciseBase {
   /** Unique within a plan. */
@@ -48,10 +55,27 @@ export interface WordExercise extends ExerciseBase {
   word: WordItem;
 }
 
-export type Exercise = KanaExercise | WordExercise;
+export interface SentenceExercise extends ExerciseBase {
+  kind: SentenceExerciseKind;
+  sentence: SentenceItem;
+  /** sentence-tiles: the tiles to arrange (the sentence's own plus distractors), shuffled. */
+  tiles?: string[];
+  /** sentence-gap: index of the hidden tile. */
+  gap?: number;
+}
+
+export type Exercise = KanaExercise | WordExercise | SentenceExercise;
 
 export function isKanaExercise(e: Exercise): e is KanaExercise {
   return 'item' in e;
+}
+
+export function isWordExercise(e: Exercise): e is WordExercise {
+  return 'word' in e;
+}
+
+export function isSentenceExercise(e: Exercise): e is SentenceExercise {
+  return 'sentence' in e;
 }
 
 export type Step =
@@ -226,7 +250,8 @@ function makeWordExercise(
 
 /** What an exercise is about, so the same thing never comes twice in a row. */
 function subjectOf(e: Exercise): string {
-  return isKanaExercise(e) ? `k:${e.item.char}` : `w:${e.word.id}`;
+  if (isKanaExercise(e)) return `k:${e.item.char}`;
+  return isWordExercise(e) ? `w:${e.word.id}` : `s:${e.sentence.id}`;
 }
 
 /** Reorders so the same character or word never appears twice in a row when avoidable. */

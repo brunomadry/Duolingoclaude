@@ -211,7 +211,14 @@ export const KanjiFile = z.object({ version: z.literal(1), kanji: z.array(KanjiE
 /* ----------------------------------------------------------------- grammar */
 
 export const GrammarExample = z
-  .object({ ja: z.string(), kana: z.string().optional(), romaji: z.string(), pl: z.string() })
+  .object({
+    ja: z.string().min(1),
+    /** Kana reading with spaces between phrases (required when ja has kanji). */
+    kana: z.string().optional(),
+    /** Generated from the reading when missing (particles as pronounced). */
+    romaji: z.string().optional(),
+    pl: z.string().min(1),
+  })
   .strict();
 
 export const GrammarNote = z

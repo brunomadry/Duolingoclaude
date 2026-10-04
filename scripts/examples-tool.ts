@@ -13,10 +13,15 @@
  *   node scripts/examples-tool.ts validate <part.json> <fromLesson> <toLesson>
  *     Validates one parts file (content/examples/part-K.json) with the same rules as
  *     scripts/validate-content.ts, and lists words of lessons <from>..<to> without an example.
+ *   node scripts/examples-tool.ts grammar <grammarId>
+ *     The lesson of a grammar point, the grammar before it and the words of that lesson.
+ *   node scripts/examples-tool.ts validate-grammar <part.json>
+ *     Validates a grammar notes parts file ({"version": 1, "notes": [...]}).
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { KANA_PHASE_END } from '../src/shared/constants.ts';
-import { ExampleFile } from '../src/shared/content-schema.ts';
+import { ExampleFile, GrammarFile } from '../src/shared/content-schema.ts';
+import { sentenceProblems, usedGrammar } from '../src/shared/content-validate.ts';
 import { createLexicon, tokenize, type LexEntry } from '../src/shared/jp-words.ts';
 import {
   checkTokens,
@@ -163,12 +168,58 @@ if (cmd === 'check' && a && b) {
     const v = vocab.find((x) => x.id === w);
     console.log(`  ${done.has(w) ? 'ok ' : '...'} ${w}\t${v?.kanji ?? ''} ${v?.kana ?? ''}`);
   }
+} else if (cmd === 'grammar' && a) {
+  const n = gates.lessonOfGrammar(a);
+  if (n === null) {
+    console.error(`"${a}" is not a grammar point of the curriculum`);
+    process.exit(1);
+  }
+  const before = curriculum.lessons
+    .filter((l) => l.n < n && l.newItem.grammarId)
+    .map((l) => `L${l.n} ${l.newItem.grammarId}`);
+  console.log(`${a}: lesson ${n} (${curriculum.lessons[n - 1]?.title ?? ''})`);
+  console.log(`grammar before it: ${before.join(', ') || 'none'}`);
+  for (const m of [n, n + 1]) {
+    const l = curriculum.lessons[m - 1];
+    if (!l) continue;
+    console.log(`L${m} words: ${l.words.join(', ') || '(none)'}`);
+  }
+  console.log(`words taught by L${n}: ${[...lessonOfWord.values()].filter((x) => x <= n).length}`);
+} else if (cmd === 'validate-grammar' && a) {
+  const parsed = GrammarFile.safeParse(JSON.parse(readFileSync(a, 'utf8')));
+  const problems: string[] = [];
+  if (!parsed.success) {
+    problems.push(...parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`));
+  } else {
+    for (const note of parsed.data.notes) {
+      const n = gates.lessonOfGrammar(note.id);
+      if (n === null) {
+        problems.push(`${note.id}: not a grammar point of the curriculum`);
+        continue;
+      }
+      if (note.reviewed !== false) problems.push(`${note.id}: reviewed must be false`);
+      const lessonWords = new Set(
+        curriculum.lessons.filter((l) => l.n === n || l.n === n + 1).flatMap((l) => l.words),
+      );
+      note.examples.forEach((ex, i) => {
+        const where = `${note.id} example ${i + 1} (L${n})`;
+        for (const p of sentenceProblems(ex, n, { lexicon, gates, lessonOfWord, posOfWord }))
+          problems.push(`${where}: ${p}`);
+        const tokens = tokenize(ex.ja, lexicon);
+        const words = checkTokens(tokens, contextFor(n)).wordIds;
+        if (!usedGrammar(tokens, posOfWord).has(note.id) && !words.some((w) => lessonWords.has(w)))
+          console.log(`note: ${where} does not seem to use ${note.id} ("${ex.ja}")`);
+      });
+    }
+  }
+  console.log(problems.length ? problems.join('\n') : `${a}: OK`);
+  process.exitCode = problems.length ? 1 : 0;
 } else if (cmd === 'validate' && a && b && c) {
   const problems = validatePart(a, Number(b), Number(c));
   console.log(problems.length ? problems.join('\n') : `${a}: OK for L${b}-L${c}`);
   process.exitCode = problems.length ? 1 : 0;
 } else {
   console.log(
-    'usage: check <lesson> "<sentence>" ["<kana>"] | candidates <wordId> [limit] | lesson <n> | validate <part.json> <from> <to>',
+    'usage: check <lesson> "<sentence>" ["<kana>"] | candidates <wordId> [limit] | lesson <n> | validate <part.json> <from> <to> | grammar <id> | validate-grammar <part.json>',
   );
 }

@@ -7,7 +7,13 @@
  */
 import type { z } from 'zod';
 import { KANA_PHASE_END, MAX_WORDS_PER_LESSON } from './constants.ts';
-import { checkTokens, createGates, readingProblems } from './grammar-gates.ts';
+import {
+  FORM_GATES,
+  GRAMMAR_KEY_GATES,
+  checkTokens,
+  createGates,
+  readingProblems,
+} from './grammar-gates.ts';
 import { createLexicon, tokenize } from './jp-words.ts';
 import {
   Curriculum,
@@ -212,6 +218,42 @@ export function validateContent(raw: RawContent): ValidationReport {
     }
   }
 
+  const lexicon = createLexicon(vocab.words.map((w) => ({ ...w, pos: w.pos ?? [] })));
+  const gates = createGates(curriculum);
+  const posOfWord = new Map(vocab.words.map((w) => [w.id, w.pos ?? []]));
+
+  // Grammar note examples: only words and grammar taught by the note's own lesson.
+  if (grammar) {
+    for (const note of grammar.notes) {
+      const lessonN = gates.lessonOfGrammar(note.id);
+      if (lessonN === null) {
+        errors.push(`grammar.json: note "${note.id}" is not taught by any lesson`);
+        continue;
+      }
+      const lessonWords = new Set(
+        curriculum.lessons
+          .filter((l) => l.n === lessonN || l.n === lessonN + 1)
+          .flatMap((l) => l.words),
+      );
+      note.examples.forEach((ex, i) => {
+        const where = `grammar.json ${note.id} example ${i + 1} (lesson ${lessonN})`;
+        for (const p of sentenceProblems(ex, lessonN, { lexicon, gates, lessonOfWord, posOfWord }))
+          errors.push(`${where}: ${p}`);
+        const check = checkTokens(tokenize(ex.ja, lexicon), {
+          lessonN,
+          gates,
+          lessonOfWord,
+          posOfWord,
+        });
+        const usesPoint =
+          usedGrammar(tokenize(ex.ja, lexicon), posOfWord).has(note.id) ||
+          check.wordIds.some((w) => lessonWords.has(w));
+        if (check.ok && !usesPoint)
+          warnings.push(`${where}: does not seem to use "${note.id}" ("${ex.ja}")`);
+      });
+    }
+  }
+
   // Lesson examples: every word taught after the writing phase needs one, and each must only
   // use words and grammar its lesson has taught (checked with the real word matcher).
   if (!examples) {
@@ -220,9 +262,6 @@ export function validateContent(raw: RawContent): ValidationReport {
     }
     return { errors, warnings };
   }
-  const lexicon = createLexicon(vocab.words.map((w) => ({ ...w, pos: w.pos ?? [] })));
-  const gates = createGates(curriculum);
-  const posOfWord = new Map(vocab.words.map((w) => [w.id, w.pos ?? []]));
   const exampled = new Set<string>();
   examples.examples.forEach((ex, i) => {
     const where = `examples.json #${i} (${ex.wordId}, lesson ${ex.lesson})`;
@@ -261,4 +300,55 @@ export function validateContent(raw: RawContent): ValidationReport {
   }
 
   return { errors, warnings };
+}
+
+interface SentenceDeps {
+  lexicon: ReturnType<typeof createLexicon>;
+  gates: ReturnType<typeof createGates>;
+  lessonOfWord: ReadonlyMap<string, number>;
+  posOfWord: ReadonlyMap<string, readonly string[]>;
+}
+
+/** Problems of one sentence shown at a lesson: unknown words or grammar, a missing or wrong reading. */
+export function sentenceProblems(
+  ex: { ja: string; kana?: string; allowUnknown?: string[] },
+  lessonN: number,
+  deps: SentenceDeps,
+): string[] {
+  const problems: string[] = [];
+  if (/[\u3400-\u9fff々]/.test(ex.ja) && !ex.kana) problems.push('has kanji but no kana reading');
+  if (ex.kana && /[\u3400-\u9fffa-zA-Z]/.test(ex.kana))
+    problems.push('kana reading contains kanji or Latin letters');
+  const allowSurfaces = new Set(ex.allowUnknown ?? []);
+  const written = tokenize(ex.ja, deps.lexicon);
+  const result = checkTokens(written, { lessonN, ...deps, allowSurfaces });
+  for (const p of result.problems) problems.push(`${p} in "${ex.ja}"`);
+  if (ex.kana) {
+    for (const p of readingProblems(written, tokenize(ex.kana, deps.lexicon), allowSurfaces))
+      problems.push(`${p} ("${ex.ja}" / "${ex.kana}")`);
+  }
+  return problems;
+}
+
+const VERB_POS = /^v(?:1|5|k|s-i|z)/;
+
+/** Grammar ids a tokenized sentence uses (function words and inflections). */
+export function usedGrammar(
+  tokens: ReturnType<typeof tokenize>,
+  posOfWord: ReadonlyMap<string, readonly string[]>,
+): Set<string> {
+  const used = new Set<string>();
+  for (const t of tokens) {
+    if (t.kind === 'grammar' && t.grammar) {
+      const id = GRAMMAR_KEY_GATES[t.grammar];
+      if (id) used.add(id);
+    }
+    if (t.kind === 'word' && t.wordIds[0]) {
+      const verb = (posOfWord.get(t.wordIds[0]) ?? []).some((p) => VERB_POS.test(p));
+      const form = t.form ?? (verb ? 'dict' : undefined);
+      const id = form ? FORM_GATES[form] : null;
+      if (id) used.add(id);
+    }
+  }
+  return used;
 }

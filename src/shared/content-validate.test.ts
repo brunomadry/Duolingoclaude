@@ -92,6 +92,8 @@ describe('cross references', () => {
 
   function withWords(neko: number, inu: number, examples?: unknown[]) {
     const raw = base();
+    // Only the two fixture words are taught (independent of the real word assignment).
+    for (const l of raw.curriculum.lessons) l.words = [];
     raw.curriculum.lessons[neko - 1]!.words = ['neko'];
     raw.curriculum.lessons[inu - 1]!.words = ['inu'];
     return {

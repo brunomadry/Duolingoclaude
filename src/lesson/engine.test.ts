@@ -8,6 +8,7 @@ import {
   charFromCardId,
   gradesFromResults,
   isKanaExercise,
+  isWordExercise,
   kanaCardId,
   scoreOf,
   type Exercise,
@@ -262,7 +263,7 @@ describe('buildLessonPlan: words', () => {
         spareWords: [W('kawa', 'かわ', ['rzeka']), W('wanko', 'わんこ', ['Pies'])],
       });
       for (const e of exercisesOf(plan)) {
-        if (isKanaExercise(e) || e.kind === 'type-word') continue;
+        if (!isWordExercise(e) || e.kind === 'type-word') continue;
         expect(e.options).toContain(e.answer);
         expect(new Set(e.options).size).toBe(e.options.length);
         if (e.word.kana === 'はし' && e.kind === 'word-to-meaning') {

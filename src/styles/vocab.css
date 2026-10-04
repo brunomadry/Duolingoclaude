@@ -188,3 +188,74 @@
 .option--text.jp {
   font-size: var(--fs-lg);
 }
+
+/* Sentence exercises. */
+.exercise__stage--sentence {
+  flex-direction: column;
+  padding: 0 var(--space-2);
+  text-align: center;
+}
+.exercise__translation {
+  font-size: var(--fs-lg);
+  line-height: 1.35;
+  text-align: center;
+}
+.sentence-gap {
+  font-size: var(--fs-xl);
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.options--wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+.options--wide .option {
+  min-height: 56px;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+}
+.tiles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.tiles__answer,
+.tiles__bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: 60px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+}
+.tiles__answer {
+  align-items: center;
+  border: 1px dashed var(--border-strong);
+}
+.tiles__hint {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.tile {
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: var(--fs-lg);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.tile:active {
+  transform: scale(0.96);
+}
+.tile.is-used {
+  opacity: 0.25;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .tile:active {
+    transition: none;
+    transform: none;
+  }
+}

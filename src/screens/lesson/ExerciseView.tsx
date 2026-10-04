@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { isKanaExercise, type Exercise, type KanaExercise } from '../../lesson/engine.ts';
+import { isKanaExercise, type KanaExercise, type WordExercise } from '../../lesson/engine.ts';
 import { romajiToKana } from '../../lesson/kana-input.ts';
 import { isRomajiAnswerCorrect } from '../../lesson/romaji.ts';
 import { isKatakanaWord, isWordAnswerCorrect } from '../../lesson/vocab.ts';
 import { speak } from '../../lib/speech.ts';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
 
+export type KanaOrWordExercise = KanaExercise | WordExercise;
+
 interface ExerciseViewProps {
-  exercise: Exercise;
+  exercise: KanaOrWordExercise;
   /** Speak the correct kana or word after answering (profile "sound" setting). */
   sound: boolean;
   onAnswered: (correct: boolean) => void;
@@ -16,7 +18,7 @@ interface ExerciseViewProps {
   busy?: boolean;
 }
 
-const PROMPTS: Record<Exercise['kind'], string> = {
+const PROMPTS: Record<KanaOrWordExercise['kind'], string> = {
   'kana-to-romaji': 'Jak to przeczytać?',
   'romaji-to-kana': 'Który znak to…',
   'audio-to-kana': 'Który znak słyszysz?',
@@ -43,7 +45,11 @@ export function isTypedAnswerCorrect(exercise: KanaExercise, input: string): boo
 }
 
 /** What the learner sees as the answer once the exercise is checked. */
-function solutionOf(exercise: Exercise): { ja: string; romaji: string; meaning?: string } {
+function solutionOf(exercise: KanaOrWordExercise): {
+  ja: string;
+  romaji: string;
+  meaning?: string;
+} {
   if (isKanaExercise(exercise)) return { ja: exercise.item.char, romaji: exercise.item.romaji };
   const w = exercise.word;
   return { ja: w.kana, romaji: w.romaji, meaning: w.pl[0] ?? '' };
