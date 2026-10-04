@@ -61,7 +61,12 @@ export const Mnemonic = z.object({ pl: z.string().min(1), reviewed: z.boolean() 
 export const KanaChar = z
   .object({
     char: z.string().min(1).max(3),
-    romaji: z.string().min(1),
+    /** Modified Hepburn, lowercase (し = shi, を = o, ん = n). */
+    romaji: z.string().regex(/^[a-z-]+$/),
+    /** Other spellings accepted when typing (si, tu, wo, nn). Never shown as the answer. */
+    alt: z.array(z.string().regex(/^[a-z-]+$/)).optional(),
+    /** Column in the gojūon chart: 0..4 = a, i, u, e, o. Omitted for yoon/extended. */
+    col: z.number().int().min(0).max(4).optional(),
     mnemonic: Mnemonic.optional(),
   })
   .strict();
@@ -72,12 +77,37 @@ export const KanaGroup = z
     script: z.enum(['hiragana', 'katakana']),
     label: z.string(),
     kind: z.enum(['basic', 'dakuten', 'yoon', 'small-tsu', 'long-vowel', 'extended']),
+    /** Short original Polish explanation shown when the group is introduced. */
+    note: Mnemonic.optional(),
     chars: z.array(KanaChar).min(1),
   })
   .strict();
 export type KanaGroup = z.infer<typeof KanaGroup>;
 
 export const KanaFile = z.object({ version: z.literal(1), groups: z.array(KanaGroup) }).strict();
+export type KanaFile = z.infer<typeof KanaFile>;
+
+/* ----------------------------------------------------------------- strokes */
+
+/** Stroke order data extracted from KanjiVG (CC BY-SA 3.0) by scripts/fetch-kanjivg.ts. */
+export const StrokeChar = z
+  .object({
+    /** SVG path `d` strings in stroke order. */
+    strokes: z.array(z.string().min(1)).min(1),
+  })
+  .strict();
+
+export const StrokesFile = z
+  .object({
+    version: z.literal(1),
+    source: z.literal('kanjivg'),
+    /** KanjiVG coordinate space, "0 0 109 109". */
+    viewBox: z.string(),
+    /** Keyed by the single character. */
+    chars: z.record(z.string().length(1), StrokeChar),
+  })
+  .strict();
+export type StrokesFile = z.infer<typeof StrokesFile>;
 
 /* -------------------------------------------------------------- vocabulary */
 

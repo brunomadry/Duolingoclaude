@@ -13,6 +13,7 @@ import {
   KanaFile,
   SentenceFile,
   SourcesFile,
+  StrokesFile,
   VocabFile,
   curriculumStructureErrors,
 } from './content-schema.ts';
@@ -25,6 +26,7 @@ export interface RawContent {
   glosses?: unknown;
   sentences?: unknown;
   grammar?: unknown;
+  strokes?: unknown;
 }
 
 export interface ValidationReport {
@@ -65,6 +67,8 @@ export function validateContent(raw: RawContent): ValidationReport {
       : parse(SentenceFile, raw.sentences, 'sentences.json', errors);
   const grammar =
     raw.grammar === undefined ? undefined : parse(GrammarFile, raw.grammar, 'grammar.json', errors);
+  const strokes =
+    raw.strokes === undefined ? undefined : parse(StrokesFile, raw.strokes, 'strokes.json', errors);
 
   if (!curriculum) return { errors, warnings };
   errors.push(...curriculumStructureErrors(curriculum).map((e) => `curriculum.json: ${e}`));
@@ -76,6 +80,20 @@ export function validateContent(raw: RawContent): ValidationReport {
   } else {
     const groupIds = new Set(kana.groups.map((g) => g.id));
     if (groupIds.size !== kana.groups.length) errors.push('kana.json: duplicate group ids');
+    // Every kana group needs Hepburn romaji (schema) and, once strokes.json exists,
+    // stroke data for each single character of the basic and dakuten groups.
+    if (strokes) {
+      for (const g of kana.groups) {
+        if (g.kind !== 'basic' && g.kind !== 'dakuten') continue;
+        for (const c of g.chars) {
+          for (const ch of [...c.char]) {
+            if (!strokes.chars[ch]) errors.push(`strokes.json: missing stroke data for "${ch}" (group ${g.id})`);
+          }
+        }
+      }
+    } else {
+      warnings.push('strokes.json missing: stroke order not checked');
+    }
     for (const l of kanaLessons) {
       if (l.newItem.type !== 'kana') continue;
       for (const g of l.newItem.groups) {
