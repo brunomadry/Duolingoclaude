@@ -4,7 +4,7 @@ import '../../styles/vocab.css';
 import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
 import { applyGrades, loadLearning, recordCompletion, seedCards } from '../../data/learning.ts';
-import { loadVocab } from '../../data/vocab-data.ts';
+import { loadCourse } from '../../data/course-data.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
@@ -19,6 +19,8 @@ import {
   COMING_SOON_TEXT,
   completedPrefix,
   dueReviews,
+  dueSentenceReviews,
+  particlesUpTo,
   kanaUpTo,
   lessonByN,
   lessonSupported,
@@ -29,7 +31,9 @@ import {
 } from '../../lesson/context.ts';
 import { seedFrom } from '../../lesson/rng.ts';
 import { romajiDisplay } from '../../lesson/romaji.ts';
-import { vocabCardId, wordsUpTo, type VocabIndex } from '../../lesson/vocab.ts';
+import { grammarCardId } from '../../lesson/sentence-exercises.ts';
+import { sentencesUpTo } from '../../lesson/grammar.ts';
+import { vocabCardId, wordsUpTo } from '../../lesson/vocab.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
 import { VOICE_GRACE_MS, getSpeechStatus, subscribeSpeech } from '../../lib/speech.ts';
@@ -40,6 +44,7 @@ import { Modal } from '../../ui/Modal.tsx';
 import { Celebration } from './Celebration.tsx';
 import { ExerciseView } from './ExerciseView.tsx';
 import { SentenceExerciseView } from './SentenceExerciseView.tsx';
+import { GrammarIntro } from './GrammarIntro.tsx';
 import { KanaIntro } from './KanaIntro.tsx';
 import { WordIntro } from './WordIntro.tsx';
 
@@ -56,6 +61,7 @@ interface LessonPlayerProps {
 const STEP_LABELS: Record<Step['kind'], string> = {
   review: 'Powtórka',
   new: 'Nowa rzecz',
+  grammar: 'Nowa rzecz',
   words: 'Nowe słówka',
   practice: 'Ćwiczenie',
   summary: 'Podsumowanie',
@@ -143,14 +149,14 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const [snapshot, voice, loaded] = await Promise.all([
+      const [snapshot, voice, course] = await Promise.all([
         loadLearning(database(), profile.id),
         speechAvailable(),
-        loadVocab().catch(() => null),
+        loadCourse().catch(() => null),
       ]);
       if (cancelled) return;
-      if (!loaded) return setProblem(VOCAB_FAILED_TEXT);
-      const vocab: VocabIndex = loaded;
+      if (!course) return setProblem(VOCAB_FAILED_TEXT);
+      const { vocab, grammar } = course;
       // Listening exercises need a voice and the profile's sound switched on.
       const speech = voice && profile.settings.sound;
       const now = Date.now();
@@ -180,11 +186,13 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
             attempt: replay ? now : 0,
           },
           vocab,
+          grammar,
         );
       } else if (mode === 'reviews') {
         const due = dueReviews(snapshot.cards, now, { filter });
         const dueWords = wordsOf(vocab, due.wordIds);
-        if (!due.items.length && !dueWords.length)
+        const dueSentences = dueSentenceReviews(due.grammarIds, grammar, done, `reviews:${now}`);
+        if (!due.items.length && !dueWords.length && !dueSentences.length)
           return setProblem('Brak powtórek na teraz. Wróć później.');
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Powtórki', newItem: { type: 'none' } },
@@ -198,6 +206,9 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           dueWords,
           knownWords: wordsUpTo(vocab, done),
           spareWords: readableWords(vocab, done),
+          dueSentences,
+          sentencePool: sentencesUpTo(grammar, done),
+          particles: particlesUpTo(done),
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
@@ -290,7 +301,10 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
     // Backstop: a lesson with nothing of its own to do is never recorded as completed.
     const ownWork = plan.steps.some(
       (s) =>
-        s.kind === 'new' || s.kind === 'words' || (s.kind === 'practice' && s.exercises.length > 0),
+        s.kind === 'new' ||
+        s.kind === 'grammar' ||
+        s.kind === 'words' ||
+        (s.kind === 'practice' && s.exercises.length > 0),
     );
     if (!ownWork) {
       setProblem(COMING_SOON_TEXT);
@@ -335,6 +349,9 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           step.items.map((i) => kanaCardId(i.char)),
           Date.now(),
         );
+      }
+      if (step.kind === 'grammar' && mode === 'lesson') {
+        await seedCards(database(), profile.id, [grammarCardId(step.note.id)], Date.now());
       }
       if (step.kind === 'words' && mode === 'lesson') {
         await seedCards(
@@ -384,7 +401,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
 
   const stepProgress = useMemo(() => {
     if (!step) return 0;
-    if (step.kind === 'new' || step.kind === 'words') return 0;
+    if (step.kind === 'new' || step.kind === 'grammar' || step.kind === 'words') return 0;
     return queue.length ? position / queue.length : 0;
   }, [step, queue.length, position]);
 
@@ -480,6 +497,12 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
         )}
         {step.kind === 'new' ? (
           <KanaIntro items={step.items} groupIds={step.groupIds} onDone={() => void nextStep()} />
+        ) : step.kind === 'grammar' ? (
+          <GrammarIntro
+            note={step.note}
+            display={romajiDisplay(profile.settings.romaji, level)}
+            onDone={() => void nextStep()}
+          />
         ) : step.kind === 'words' ? (
           <WordIntro
             words={step.words}

@@ -8,6 +8,8 @@
 import type { Lesson } from '../shared/content-schema.ts';
 import type { Grade } from '../srs/types.ts';
 import { createRng, sample, shuffle, type Rng } from './rng.ts';
+import type { GrammarNoteItem } from './grammar.ts';
+import { makeSentenceExercise, sentenceKinds, type SentenceContext } from './sentence-exercises.ts';
 import type { SentenceItem } from './sentences.ts';
 import { foldPolish, vocabCardId, type WordItem } from './vocab.ts';
 
@@ -81,6 +83,7 @@ export function isSentenceExercise(e: Exercise): e is SentenceExercise {
 export type Step =
   | { kind: 'review'; exercises: Exercise[]; dueTotal: number }
   | { kind: 'new'; items: KanaItem[]; groupIds: string[] }
+  | { kind: 'grammar'; note: GrammarNoteItem }
   | { kind: 'words'; words: WordItem[] }
   | { kind: 'practice'; exercises: Exercise[]; mode: 'practice' | 'test' }
   | { kind: 'summary'; quiz: Exercise[] };
@@ -117,6 +120,22 @@ export interface PlanInput {
   dueWords?: readonly WordItem[];
   /** Extra distractors when few words are known (readable with the kana known so far). */
   spareWords?: readonly WordItem[];
+  /** Grammar lessons: the note shown as the lesson's new item. */
+  grammarNote?: GrammarNoteItem;
+  /** Sentences to practise, most relevant first (grammar and practice lessons, tests). */
+  sentences?: readonly SentenceItem[];
+  /** Every sentence the learner can read (distractor meanings). */
+  sentencePool?: readonly SentenceItem[];
+  /** How many sentence exercises the practice step gets. */
+  sentenceCount?: number;
+  /** GAP_PARTICLES keys taught so far. */
+  particles?: readonly string[];
+  /** Particle keys of the lesson's grammar point (preferred gaps). */
+  focusKeys?: readonly string[];
+  /** SRS card a sentence exercise trains (a grammar card). */
+  sentenceCard?: (s: SentenceItem) => string;
+  /** Due grammar cards, each with a sentence to review it. */
+  dueSentences?: readonly { cardId: string; sentence: SentenceItem }[];
 }
 
 export const PRACTICE_CAP = 18;
@@ -437,9 +456,18 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
     ...dueWords,
   ]);
   const spare = input.spareWords ?? [];
+  const sentences = input.sentences ?? [];
+  const sctx: SentenceContext = {
+    pool: input.sentencePool ?? sentences,
+    particles: input.particles ?? [],
+    rng,
+  };
+  const cardOf = input.sentenceCard ?? (() => 'grammar:unknown');
+  const focusKeys = input.focusKeys ?? [];
+  const dueSentences = input.dueSentences ?? [];
   const steps: Step[] = [];
 
-  if (input.dueReviews.length || dueWords.length) {
+  if (input.dueReviews.length || dueWords.length || dueSentences.length) {
     const reviewItems = uniqueByChar(input.dueReviews);
     steps.push({
       kind: 'review',
@@ -459,19 +487,53 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
             `rw${i}`,
           ),
         ),
+        ...dueSentences.map((d, i) =>
+          makeSentenceExercise(
+            i % 2 === 0 ? 'sentence-gap' : 'sentence-tiles',
+            d.sentence,
+            d.cardId,
+            sctx,
+            `rs${i}`,
+          ),
+        ),
       ]),
     });
   }
 
+  const kinds = sentenceKinds(input.speech);
+  const sentenceExercises = (list: readonly SentenceItem[], prefix: string) =>
+    list.map((sentence, i) =>
+      makeSentenceExercise(
+        kinds[i % kinds.length] ?? 'sentence-meaning',
+        sentence,
+        cardOf(sentence),
+        sctx,
+        `${prefix}${i}`,
+        focusKeys,
+      ),
+    );
+
   if (lesson.kind === 'test') {
-    const length = Math.min(TEST_LENGTH, Math.max(covered.length + coveredWords.length, 8));
-    const [kanaLength, wordLength] = splitLength(length, covered.length, coveredWords.length);
+    const length = Math.min(
+      TEST_LENGTH,
+      Math.max(covered.length + coveredWords.length + sentences.length, 8),
+    );
+    // Sentence tests: up to 8 words, the rest sentences.
+    const sentenceLength = sentences.length
+      ? Math.min(sentences.length, length - Math.min(8, coveredWords.length))
+      : 0;
+    const [kanaLength, wordLength] = splitLength(
+      length - sentenceLength,
+      covered.length,
+      coveredWords.length,
+    );
     steps.push({
       kind: 'practice',
       mode: 'test',
       exercises: [
         ...mixedExercises(covered, kanaLength, pool, input.speech, rng, 't'),
         ...mixedWordExercises(coveredWords, wordLength, wordPool, spare, input.speech, rng, 'tw'),
+        ...sentenceExercises(shuffle(sentences, rng).slice(0, sentenceLength), 'ts'),
       ],
     });
     // A test is its own summary: no empty quiz step after it.
@@ -485,6 +547,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
       groupIds: lesson.newItem.type === 'kana' ? lesson.newItem.groups : [],
     });
   }
+  if (input.grammarNote) steps.push({ kind: 'grammar', note: input.grammarNote });
   if (lessonWords.length) steps.push({ kind: 'words', words: lessonWords });
 
   // Review lessons (e.g. L16, both alphabets mixed) and extra practice go over what they cover.
@@ -495,6 +558,13 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
   const [kanaLength, wordLength] = lessonItems.length
     ? [0, 0]
     : splitLength(reviewLength, covered.length, coveredWords.length);
+  // Grammar and practice lessons: the most relevant sentences, varied between attempts.
+  const count = input.sentenceCount ?? 0;
+  const practised = count
+    ? shuffle(sentences.slice(0, count * 2), rng)
+        .slice(0, count)
+        .sort((a, b) => a.tiles.length - b.tiles.length)
+    : [];
   steps.push({
     kind: 'practice',
     mode: 'practice',
@@ -505,15 +575,23 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
         ...mixedExercises(covered, kanaLength, pool, input.speech, rng, 'm'),
         ...mixedWordExercises(coveredWords, wordLength, wordPool, spare, input.speech, rng, 'mw'),
       ]),
+      ...sentenceExercises(practised, 'ps'),
     ],
   });
   const fresh = lessonItems.length || lessonWords.length;
-  steps.push({
-    kind: 'summary',
-    quiz: fresh
-      ? quiz(lessonItems, pool, lessonWords, wordPool, spare, rng)
-      : quiz(covered, pool, coveredWords, wordPool, spare, rng),
-  });
+  const summary = fresh
+    ? quiz(lessonItems, pool, lessonWords, wordPool, spare, rng)
+    : quiz(covered, pool, coveredWords, wordPool, spare, rng);
+  if (practised.length) {
+    // Half the quiz checks that the lesson's sentences are understood.
+    const words = summary.slice(0, QUIZ_LENGTH / 2);
+    const checks = sample(practised, QUIZ_LENGTH - words.length, rng).map((sentence, i) =>
+      makeSentenceExercise('sentence-meaning', sentence, cardOf(sentence), sctx, `qs${i}`),
+    );
+    steps.push({ kind: 'summary', quiz: [...words, ...checks] });
+  } else {
+    steps.push({ kind: 'summary', quiz: summary });
+  }
   return { n: lesson.n, title: lesson.title, steps };
 }
 

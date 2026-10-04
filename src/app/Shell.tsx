@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import { Avatar } from '../mascot/Mascot.tsx';
 import type { ProfileRecord } from '../shared/api.ts';
-import { GrammarScreen } from '../screens/Placeholders.tsx';
+import { GrammarScreen } from '../screens/GrammarScreen.tsx';
 import { VocabScreen } from '../screens/VocabScreen.tsx';
 import { AlphabetScreen } from '../screens/AlphabetScreen.tsx';
 import { LicensesScreen } from '../screens/LicensesScreen.tsx';
@@ -39,7 +39,11 @@ export function Shell({ profile }: { profile: ProfileRecord }) {
     '/': home,
     '/alfabet': { title: 'Alfabet', tab: true, render: () => <AlphabetScreen profile={profile} /> },
     '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen profile={profile} /> },
-    '/gramatyka': { title: 'Gramatyka', tab: true, render: () => <GrammarScreen /> },
+    '/gramatyka': {
+      title: 'Gramatyka',
+      tab: true,
+      render: () => <GrammarScreen profile={profile} />,
+    },
     '/zrodla': { title: 'Źródła i licencje', tab: false, render: () => <LicensesScreen /> },
     '/pieczatki': {
       title: 'Pieczątki',
