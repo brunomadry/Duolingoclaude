@@ -12,5 +12,9 @@ export const TEST_EVERY = 7;
 export const CHAT_FROM_LESSON = 17;
 /** Last lesson where "auto" romaji is visible by default. */
 export const ROMAJI_AUTO_UNTIL = 16;
+/** New words per lesson (the brief: 5 to 7; kana lessons use fewer). */
+export const MAX_WORDS_PER_LESSON = 7;
+/** Last lesson of the writing phase (kana only). */
+export const KANA_PHASE_END = 16;
 /** Time zone used when a profile has none (and in tests). */
 export const DEFAULT_TIME_ZONE = 'Europe/Warsaw';

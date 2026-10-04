@@ -6,6 +6,7 @@
  * enforced and the build fails on any error.
  */
 import type { z } from 'zod';
+import { KANA_PHASE_END, MAX_WORDS_PER_LESSON } from './constants.ts';
 import {
   Curriculum,
   GlossFile,
@@ -144,6 +145,38 @@ export function validateContent(raw: RawContent): ValidationReport {
   }
 
   const vocabById = new Map(vocab.words.map((w) => [w.id, w]));
+
+  // Lesson load: at most MAX_WORDS_PER_LESSON new words, none in tests.
+  for (const l of curriculum.lessons) {
+    if (l.words.length > MAX_WORDS_PER_LESSON) {
+      errors.push(
+        `curriculum.json: lesson ${l.n} introduces ${l.words.length} words (max ${MAX_WORDS_PER_LESSON})`,
+      );
+    }
+    if (l.kind === 'test' && l.words.length)
+      errors.push(`curriculum.json: test lesson ${l.n} must not introduce words`);
+  }
+
+  // Writing phase: a word may only use kana already taught (it is shown in kana only).
+  if (kana) {
+    const learned = new Set<string>(['ー']);
+    const groupChars = new Map(kana.groups.map((g) => [g.id, g.chars.flatMap((c) => [...c.char])]));
+    for (const l of curriculum.lessons) {
+      if (l.n > KANA_PHASE_END) break;
+      if (l.newItem.type === 'kana')
+        for (const g of l.newItem.groups) for (const ch of groupChars.get(g) ?? []) learned.add(ch);
+      for (const w of l.words) {
+        const entry = vocabById.get(w);
+        if (!entry) continue;
+        const missing = [...entry.kana].filter((ch) => !learned.has(ch));
+        if (missing.length) {
+          errors.push(
+            `curriculum.json: lesson ${l.n} word "${w}" (${entry.kana}) uses kana not taught yet: ${[...new Set(missing)].join('')}`,
+          );
+        }
+      }
+    }
+  }
   if (vocabById.size !== vocab.words.length) errors.push('vocab.json: duplicate word ids');
   for (const [w, n] of lessonOfWord) {
     if (!vocabById.has(w))
