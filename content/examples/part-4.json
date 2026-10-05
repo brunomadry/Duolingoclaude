@@ -49,11 +49,10 @@
     {
       "wordId": "tanoshii",
       "lesson": 78,
-      "ja": "あなたと一緒にいて楽しかった。",
-      "kana": "あなたと いっしょに いて たのしかった。",
-      "pl": "Miło było spędzić z tobą czas.",
-      "source": "tatoeba",
-      "tatoebaId": 233856,
+      "ja": "昨日のパーティーは楽しかったね。",
+      "kana": "きのうの パーティーは たのしかったね。",
+      "pl": "Fajnie było wczoraj na imprezie, prawda?",
+      "source": "original",
       "reviewed": false
     },
     {
@@ -215,11 +214,10 @@
     {
       "wordId": "kudamono",
       "lesson": 81,
-      "ja": "父はそんなに果物を食べないんです。",
-      "kana": "ちちは そんなに くだものを たべないんです。",
-      "pl": "Tata nie je aż tak dużo owoców.",
-      "source": "tatoeba",
-      "tatoebaId": 84708,
+      "ja": "冷蔵庫に果物はありますか。",
+      "kana": "れいぞうこに くだものは ありますか。",
+      "pl": "Czy w lodówce są jakieś owoce?",
+      "source": "original",
       "reviewed": false
     },
     {
@@ -509,7 +507,7 @@
       "lesson": 86,
       "ja": "昼は公園でお弁当を食べましょう。",
       "kana": "ひるは こうえんで おべんとうを たべましょう。",
-      "pl": "W południe zjedzmy w parku nasze bento.",
+      "pl": "W południe zjedzmy bento w parku.",
       "source": "original",
       "reviewed": false
     },
@@ -634,11 +632,11 @@
       "reviewed": false
     },
     {
-      "wordId": "zero",
+      "wordId": "atsui-hot-touch",
       "lesson": 88,
-      "ja": "日本の電話番号はゼロから始まります。",
-      "kana": "にほんの でんわばんごうは ゼロから はじまります。",
-      "pl": "Japońskie numery telefonów zaczynają się od zera.",
+      "ja": "寒いですから、熱いお茶を飲みましょう。",
+      "kana": "さむいですから、あつい おちゃを のみましょう。",
+      "pl": "Zimno jest, napijmy się gorącej herbaty.",
       "source": "original",
       "reviewed": false
     },

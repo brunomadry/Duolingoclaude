@@ -178,7 +178,7 @@
       "lesson": 59,
       "ja": "父は仕事が忙しいです。",
       "kana": "ちちは しごとが いそがしいです。",
-      "pl": "Tata jest zapracowany.",
+      "pl": "Tata ma dużo pracy.",
       "source": "original",
       "reviewed": false
     },
@@ -548,7 +548,7 @@
       "lesson": 66,
       "ja": "皆さん、立ってください。",
       "kana": "みなさん、たって ください。",
-      "pl": "Proszę wszystkich o wstanie.",
+      "pl": "Proszę wszystkich wstać.",
       "source": "original",
       "reviewed": false
     },
@@ -741,7 +741,7 @@
       "lesson": 69,
       "ja": "何か困ったことはありませんか。",
       "kana": "なにか こまった ことは ありませんか。",
-      "pl": "Czy masz z czymś kłopot?",
+      "pl": "Czy masz jakiś kłopot?",
       "source": "original",
       "reviewed": false
     },

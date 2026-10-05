@@ -195,11 +195,10 @@
     {
       "wordId": "ii",
       "lesson": 39,
-      "ja": "いいアパートね。",
-      "kana": "いい アパートね。",
-      "pl": "Ładne mieszkanie!",
-      "source": "tatoeba",
-      "tatoebaId": 229463,
+      "ja": "この辞書はとてもいいです。",
+      "kana": "この じしょは とても いいです。",
+      "pl": "Ten słownik jest bardzo dobry.",
+      "source": "original",
       "reviewed": false
     },
     {
@@ -585,11 +584,10 @@
     {
       "wordId": "kyuu",
       "lesson": 46,
-      "ja": "図書館は九時からです。",
-      "kana": "としょかんは くじからです。",
-      "pl": "Biblioteka jest czynna od dziewiątej.",
+      "ja": "電車は八時九分に着きます。",
+      "kana": "でんしゃは はちじ きゅうふんに つきます。",
+      "pl": "Pociąg przyjeżdża o ósmej dziewięć.",
       "source": "original",
-      "allowUnknown": ["くじ"],
       "reviewed": false
     },
     {
@@ -640,9 +638,9 @@
     {
       "wordId": "go",
       "lesson": 47,
-      "ja": "鉛筆が五本あります。",
-      "kana": "えんぴつが ごほん あります。",
-      "pl": "Mam pięć ołówków.",
+      "ja": "鉛筆を五本ください。",
+      "kana": "えんぴつを ごほん ください。",
+      "pl": "Poproszę pięć ołówków.",
       "source": "original",
       "reviewed": false
     },
@@ -903,11 +901,10 @@
     {
       "wordId": "miseru",
       "lesson": 52,
-      "ja": "あなたのノートを見せてください。",
-      "kana": "あなたの ノートを みせて ください。",
-      "pl": "Pokaż mi, proszę, swój zeszyt.",
-      "source": "tatoeba",
-      "tatoebaId": 233500,
+      "ja": "その写真を見せてください。",
+      "kana": "その しゃしんを みせて ください。",
+      "pl": "Pokaż mi, proszę, to zdjęcie.",
+      "source": "original",
       "reviewed": false
     },
     {
@@ -1102,11 +1099,10 @@
     {
       "wordId": "ikutsu",
       "lesson": 55,
-      "ja": "あなたのお父さんはおいくつですか。",
-      "kana": "あなたの おとうさんは おいくつですか。",
+      "ja": "お父さんはおいくつですか。",
+      "kana": "おとうさんは おいくつですか。",
       "pl": "Ile lat ma twój tata?",
-      "source": "tatoeba",
-      "tatoebaId": 233594,
+      "source": "original",
       "reviewed": false
     },
     {
