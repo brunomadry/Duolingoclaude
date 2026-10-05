@@ -4,7 +4,7 @@ import '../../styles/vocab.css';
 import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
 import { applyGrades, loadLearning, recordCompletion, seedCards } from '../../data/learning.ts';
-import { loadCourse } from '../../data/course-data.ts';
+import { loadCourse, type CourseData } from '../../data/course-data.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
@@ -29,21 +29,24 @@ import {
   wordsOf,
   type ReviewFilter,
 } from '../../lesson/context.ts';
-import { seedFrom } from '../../lesson/rng.ts';
+import { createRng, seedFrom, shuffle } from '../../lesson/rng.ts';
+import type { SentenceItem } from '../../lesson/sentences.ts';
+import { KANA_PHASE_END } from '../../shared/constants.ts';
 import { romajiDisplay } from '../../lesson/romaji.ts';
 import { grammarCardId } from '../../lesson/sentence-exercises.ts';
-import { sentencesUpTo } from '../../lesson/grammar.ts';
+import { sentencesUpTo, type GrammarNoteItem } from '../../lesson/grammar.ts';
 import { vocabCardId, wordsUpTo } from '../../lesson/vocab.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
 import { VOICE_GRACE_MS, getSpeechStatus, subscribeSpeech } from '../../lib/speech.ts';
 import { Mascot } from '../../mascot/Mascot.tsx';
-import { database, notifyLocalChange } from '../../state/app.ts';
+import { aiExercise, database, notifyLocalChange } from '../../state/app.ts';
 import { CloseIcon } from '../../ui/icons.tsx';
 import { Modal } from '../../ui/Modal.tsx';
 import { Celebration } from './Celebration.tsx';
 import { ExerciseView } from './ExerciseView.tsx';
 import { SentenceExerciseView } from './SentenceExerciseView.tsx';
+import { ChatStep } from './ChatStep.tsx';
 import { GrammarIntro } from './GrammarIntro.tsx';
 import { KanaIntro } from './KanaIntro.tsx';
 import { WordIntro } from './WordIntro.tsx';
@@ -64,6 +67,7 @@ const STEP_LABELS: Record<Step['kind'], string> = {
   grammar: 'Nowa rzecz',
   words: 'Nowe słówka',
   practice: 'Ćwiczenie',
+  chat: 'Rozmowa',
   summary: 'Podsumowanie',
 };
 
@@ -80,6 +84,26 @@ type Finish =
   | { kind: 'simple'; title: string; text: string };
 
 const EXTRA_LENGTH = 12;
+const EXTRA_WORDS_WITH_SENTENCES = 6;
+const EXTRA_SENTENCES = 8;
+/** How long extra practice waits for fresh AI sentences before using the course's own. */
+const AI_WAIT_MS = 6000;
+
+/** Validated AI practice sentences for the learner's level, or none (offline, off, slow). */
+async function aiSentences(lesson: number, course: CourseData): Promise<SentenceItem[]> {
+  if (typeof navigator !== 'undefined' && !navigator.onLine) return [];
+  try {
+    const res = await Promise.race([
+      aiExercise(lesson),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), AI_WAIT_MS)),
+    ]);
+    return res.sentences.map((s, i) =>
+      course.sentence({ id: `ai:${lesson}:${i}`, ja: s.ja, kana: s.kana, pl: s.pl, lesson }),
+    );
+  } catch {
+    return [];
+  }
+}
 
 const EXIT_COPY: Record<PlayerMode, { title: string; text: string; stay: string; leave: string }> =
   {
@@ -142,6 +166,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   const [saving, setSaving] = useState(false);
   /** Lesson level for the romaji setting ("auto" fades romaji after the writing phase). */
   const [level, setLevel] = useState(1);
+  const [notes, setNotes] = useState<ReadonlyMap<string, GrammarNoteItem>>(new Map());
   const requeued = useRef(new Set<string>());
   const lesson = n ? lessonByN(n) : undefined;
 
@@ -157,6 +182,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       if (cancelled) return;
       if (!course) return setProblem(VOCAB_FAILED_TEXT);
       const { vocab, grammar } = course;
+      setNotes(grammar.notes);
       // Listening exercises need a voice and the profile's sound switched on.
       const speech = voice && profile.settings.sound;
       const now = Date.now();
@@ -212,12 +238,19 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
-        const known = filter === 'words' ? [] : kanaUpTo(done);
+        // After the writing phase, mixed extra practice is words and sentences (kana have
+        // their own practice in the Alfabet tab); fresh AI sentences join when online.
+        const sentencePhase = filter === 'all' && done > KANA_PHASE_END;
+        const known = filter === 'words' || sentencePhase ? [] : kanaUpTo(done);
         const knownWords = filter === 'kana' ? [] : wordsUpTo(vocab, done);
         if (filter === 'words' && knownWords.length < MIN_WORDS_FOR_EXTRA)
           return setProblem('Ćwiczenia ze słówkami odblokują się, gdy poznasz kilka słówek.');
-        if (filter !== 'words' && known.length < MIN_KANA_FOR_EXTRA)
+        if (filter !== 'words' && !sentencePhase && known.length < MIN_KANA_FOR_EXTRA)
           return setProblem('Dodatkowe ćwiczenia odblokują się po pierwszej lekcji.');
+        const seed = seedFrom(`extra:${now}`);
+        const fromAi = sentencePhase ? await aiSentences(done, course) : [];
+        if (cancelled) return;
+        const pool = sentencePhase ? sentencesUpTo(grammar, done) : [];
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Ćwicz dodatkowo', newItem: { type: 'none' } },
           lessonItems: [],
@@ -226,17 +259,24 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           dueReviews: [],
           dueTotal: 0,
           speech,
-          seed: seedFrom(`extra:${now}`),
-          coveredWords: knownWords,
+          seed,
+          coveredWords: sentencePhase
+            ? shuffle(knownWords, createRng(seed)).slice(0, EXTRA_WORDS_WITH_SENTENCES)
+            : knownWords,
           knownWords,
           spareWords: readableWords(vocab, done),
+          sentences: [...fromAi, ...shuffle(pool, createRng(seed + 1))],
+          sentencePool: [...fromAi, ...pool],
+          sentenceCount: sentencePhase ? EXTRA_SENTENCES : 0,
+          particles: particlesUpTo(done),
         });
+        const length = sentencePhase ? EXTRA_WORDS_WITH_SENTENCES + EXTRA_SENTENCES : EXTRA_LENGTH;
         next = {
           ...next,
           steps: next.steps
             .filter((s) => s.kind === 'practice')
             .map((s) =>
-              s.kind === 'practice' ? { ...s, exercises: s.exercises.slice(0, EXTRA_LENGTH) } : s,
+              s.kind === 'practice' ? { ...s, exercises: s.exercises.slice(0, length) } : s,
             ),
         };
       }
@@ -401,7 +441,13 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
 
   const stepProgress = useMemo(() => {
     if (!step) return 0;
-    if (step.kind === 'new' || step.kind === 'grammar' || step.kind === 'words') return 0;
+    if (
+      step.kind === 'new' ||
+      step.kind === 'grammar' ||
+      step.kind === 'words' ||
+      step.kind === 'chat'
+    )
+      return 0;
     return queue.length ? position / queue.length : 0;
   }, [step, queue.length, position]);
 
@@ -501,6 +547,14 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           <GrammarIntro
             note={step.note}
             display={romajiDisplay(profile.settings.romaji, level)}
+            onDone={() => void nextStep()}
+          />
+        ) : step.kind === 'chat' ? (
+          <ChatStep
+            lessonN={plan.n}
+            display={romajiDisplay(profile.settings.romaji, level)}
+            sound={profile.settings.sound}
+            notes={notes}
             onDone={() => void nextStep()}
           />
         ) : step.kind === 'words' ? (

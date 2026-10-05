@@ -88,7 +88,7 @@ const practice = (plan: LessonPlan) => {
 describe('grammar lessons', () => {
   it('a grammar lesson shows its note, its words, then practises words and sentences', () => {
     const plan = planLesson(lesson(17), ctx(), vocab, grammar);
-    expect(kinds(plan)).toEqual(['grammar', 'words', 'practice', 'summary']);
+    expect(kinds(plan)).toEqual(['grammar', 'words', 'practice', 'chat', 'summary']);
     const exercises = practice(plan);
     expect(exercises.some(isWordExercise)).toBe(true);
     const sentences = exercises.filter(isSentenceExercise);
@@ -102,7 +102,7 @@ describe('grammar lessons', () => {
 
   it('a practice lesson works on the previous grammar point without a note', () => {
     const plan = planLesson(lesson(18), ctx(), vocab, grammar);
-    expect(kinds(plan)).toEqual(['words', 'practice', 'summary']);
+    expect(kinds(plan)).toEqual(['words', 'practice', 'chat', 'summary']);
     expect(practice(plan).filter(isSentenceExercise).length).toBeGreaterThan(0);
     expect(focusGrammarOf(18)).toEqual({ id: 'wa-desu', lesson: 17 });
   });

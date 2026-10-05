@@ -6,6 +6,7 @@ import { APP_NAME } from '../src/shared/constants.ts';
 import { COOKIE_NAME, verifyAccessToken } from './auth.ts';
 import type { Env } from './env.ts';
 import { fail, type AppEnv } from './http.ts';
+import { ai } from './routes/ai.ts';
 import { hardDeleteExpired, profiles } from './routes/profiles.ts';
 import { reports } from './routes/reports.ts';
 import { session } from './routes/session.ts';
@@ -48,6 +49,7 @@ app.get('/health', (c) => c.json({ ok: true, app: APP_NAME }));
 app.route('/', session);
 app.route('/profiles', profiles);
 app.route('/reports', reports);
+app.route('/ai', ai);
 
 app.notFound((c) => c.json({ error: 'not_found' }, 404));
 app.onError((err, c) => {

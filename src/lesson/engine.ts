@@ -86,6 +86,8 @@ export type Step =
   | { kind: 'grammar'; note: GrammarNoteItem }
   | { kind: 'words'; words: WordItem[] }
   | { kind: 'practice'; exercises: Exercise[]; mode: 'practice' | 'test' }
+  /** A short AI conversation on known words (online only; it can always be skipped). */
+  | { kind: 'chat' }
   | { kind: 'summary'; quiz: Exercise[] };
 
 export type StepKind = Step['kind'];
@@ -136,6 +138,8 @@ export interface PlanInput {
   sentenceCard?: (s: SentenceItem) => string;
   /** Due grammar cards, each with a sentence to review it. */
   dueSentences?: readonly { cardId: string; sentence: SentenceItem }[];
+  /** Adds the conversation step before the summary. */
+  chat?: boolean;
 }
 
 export const PRACTICE_CAP = 18;
@@ -578,6 +582,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
       ...sentenceExercises(practised, 'ps'),
     ],
   });
+  if (input.chat) steps.push({ kind: 'chat' });
   const fresh = lessonItems.length || lessonWords.length;
   const summary = fresh
     ? quiz(lessonItems, pool, lessonWords, wordPool, spare, rng)

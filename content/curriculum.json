@@ -51,7 +51,7 @@
         "script": "hiragana",
         "groups": ["h-ma", "h-ya"]
       },
-      "words": []
+      "words": ["hai", "iie", "ohayou", "inu", "neko"]
     },
     {
       "n": 5,
@@ -64,7 +64,7 @@
         "script": "hiragana",
         "groups": ["h-ra", "h-wa"]
       },
-      "words": []
+      "words": ["konnichiwa", "sayounara", "hon", "sakana", "tori"]
     },
     {
       "n": 6,
@@ -77,7 +77,7 @@
         "script": "hiragana",
         "groups": ["h-dakuten", "h-handakuten"]
       },
-      "words": []
+      "words": ["arigatou", "itadakimasu", "gochisousama", "mizu", "gohan"]
     },
     {
       "n": 7,
@@ -102,7 +102,7 @@
         "script": "hiragana",
         "groups": ["h-yoon", "h-small-tsu"]
       },
-      "words": []
+      "words": ["ocha", "gyuunyuu", "gakkou", "densha", "kyou"]
     },
     {
       "n": 9,
@@ -115,7 +115,7 @@
         "script": "katakana",
         "groups": ["k-a", "k-ka"]
       },
-      "words": []
+      "words": ["ie", "kasa", "tokei", "kutsu", "tamago"]
     },
     {
       "n": 10,
@@ -128,7 +128,7 @@
         "script": "katakana",
         "groups": ["k-sa", "k-ta"]
       },
-      "words": []
+      "words": ["takushii", "tesuto", "kooto", "seetaa", "sukaato"]
     },
     {
       "n": 11,
@@ -141,7 +141,7 @@
         "script": "katakana",
         "groups": ["k-na", "k-ha"]
       },
-      "words": []
+      "words": ["koohii", "nooto", "naifu", "nekutai", "okashi"]
     },
     {
       "n": 12,
@@ -154,7 +154,7 @@
         "script": "katakana",
         "groups": ["k-ma", "k-ya", "k-ra"]
       },
-      "words": []
+      "words": ["hoteru", "kamera", "karee", "toire", "kurasu"]
     },
     {
       "n": 13,
@@ -167,7 +167,7 @@
         "script": "katakana",
         "groups": ["k-wa", "k-dakuten", "k-handakuten"]
       },
-      "words": []
+      "words": ["terebi", "pen", "pan", "basu", "poorando"]
     },
     {
       "n": 14,
@@ -192,7 +192,7 @@
         "script": "katakana",
         "groups": ["k-yoon", "k-small-tsu", "k-long-vowel", "k-extended"]
       },
-      "words": []
+      "words": ["beddo", "shatsu", "koppu", "paatii", "shawaa"]
     },
     {
       "n": 16,
@@ -203,7 +203,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["resutoran", "depaato", "teeburu", "apaato", "konbanwa"]
     },
     {
       "n": 17,
@@ -215,7 +215,15 @@
         "type": "grammar",
         "grammarId": "wa-desu"
       },
-      "words": []
+      "words": [
+        "watashi",
+        "gakusei",
+        "sensei",
+        "poorandojin",
+        "nihonjin",
+        "hajimemashite",
+        "douzoyoroshiku"
+      ]
     },
     {
       "n": 18,
@@ -226,7 +234,15 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": [
+        "anata",
+        "tomodachi",
+        "minasan",
+        "isha",
+        "ryuugakusei",
+        "gaikokujin",
+        "onegaishimasu"
+      ]
     },
     {
       "n": 19,
@@ -238,7 +254,7 @@
         "type": "grammar",
         "grammarId": "ka-question"
       },
-      "words": []
+      "words": ["nan", "namae", "dare", "doko", "itsu", "sumimasen", "eki"]
     },
     {
       "n": 20,
@@ -249,7 +265,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["ee", "ginkou", "byouin", "toshokan", "yuubinkyoku", "daigaku", "tanjoubi"]
     },
     {
       "n": 21,
@@ -273,7 +289,7 @@
         "type": "grammar",
         "grammarId": "kore-sore-are"
       },
-      "words": []
+      "words": ["kore", "sore", "are", "dore", "jisho", "kaban", "douzo"]
     },
     {
       "n": 23,
@@ -284,7 +300,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["shinbun", "shashin", "kagi", "saifu", "megane", "enpitsu", "doumo"]
     },
     {
       "n": 24,
@@ -296,7 +312,7 @@
         "type": "grammar",
         "grammarId": "kono-sono-ano"
       },
-      "words": []
+      "words": ["kono", "sono", "ano", "dono", "koko", "soko", "asoko"]
     },
     {
       "n": 25,
@@ -307,7 +323,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["heya", "kyoushitsu", "hito", "kaisha", "kochira", "mise", "kuni"]
     },
     {
       "n": 26,
@@ -319,7 +335,7 @@
         "type": "grammar",
         "grammarId": "no-mo"
       },
-      "words": []
+      "words": ["chichi", "haha", "ani", "ane", "otouto", "imouto", "kazoku"]
     },
     {
       "n": 27,
@@ -330,7 +346,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["otousan", "okaasan", "nihongo", "poorandogo", "kodomo", "gaikoku", "nihon"]
     },
     {
       "n": 28,
@@ -354,7 +370,7 @@
         "type": "grammar",
         "grammarId": "masu-wo"
       },
-      "words": []
+      "words": ["taberu", "nomu", "yomu", "miru", "kau", "kiku", "ongaku"]
     },
     {
       "n": 30,
@@ -365,7 +381,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["suru", "kaku", "hanasu", "benkyou", "mainichi", "itsumo", "kudasai"]
     },
     {
       "n": 31,
@@ -377,7 +393,7 @@
         "type": "grammar",
         "grammarId": "ni-he"
       },
-      "words": []
+      "words": ["iku", "kuru", "kaeru", "kaimono", "raishuu", "machi", "umi"]
     },
     {
       "n": 32,
@@ -388,7 +404,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["au", "dekakeru", "hairu", "tsuku", "yama", "ryokou", "kouen"]
     },
     {
       "n": 33,
@@ -400,7 +416,7 @@
         "type": "grammar",
         "grammarId": "de-place-means"
       },
-      "words": []
+      "words": ["chikatetsu", "jitensha", "hikouki", "kuruma", "hataraku", "asobu", "eigakan"]
     },
     {
       "n": 34,
@@ -411,7 +427,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["noru", "oriru", "aruku", "shigoto", "ryouri", "iu", "hashi-chopsticks"]
     },
     {
       "n": 35,
@@ -435,7 +451,7 @@
         "type": "grammar",
         "grammarId": "masen-mashita"
       },
-      "words": []
+      "words": ["kinou", "senshuu", "sengetsu", "kyonen", "asa", "neru", "wakaru"]
     },
     {
       "n": 37,
@@ -446,7 +462,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["ashita", "amari", "yoku", "tokidoki", "asagohan", "hirugohan", "bangohan"]
     },
     {
       "n": 38,
@@ -458,7 +474,7 @@
         "type": "grammar",
         "grammarId": "i-adjectives"
       },
-      "words": []
+      "words": ["ookii", "chiisai", "takai", "yasui", "atarashii", "furui", "oishii"]
     },
     {
       "n": 39,
@@ -469,7 +485,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["ii", "warui", "omoshiroi", "tenki", "muzukashii", "dou", "totemo"]
     },
     {
       "n": 40,
@@ -481,7 +497,7 @@
         "type": "grammar",
         "grammarId": "na-adjectives"
       },
-      "words": []
+      "words": ["suki", "kirai", "jouzu", "heta", "kirei", "shizuka", "genki"]
     },
     {
       "n": 41,
@@ -492,7 +508,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["nigiyaka", "yuumei", "benri", "hima", "donna", "daijoubu", "sukoshi"]
     },
     {
       "n": 42,
@@ -516,7 +532,7 @@
         "type": "grammar",
         "grammarId": "arimasu-imasu"
       },
-      "words": []
+      "words": ["aru", "iru-be", "ue", "shita", "naka", "tsukue", "isu"]
     },
     {
       "n": 44,
@@ -527,7 +543,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["mae", "ushiro", "tonari", "chikaku", "kyoudai", "oniisan", "oneesan"]
     },
     {
       "n": 45,
@@ -539,7 +555,7 @@
         "type": "grammar",
         "grammarId": "numbers-time"
       },
-      "words": []
+      "words": ["ichi", "ni", "san", "shi", "roku", "shichi", "ikura"]
     },
     {
       "n": 46,
@@ -550,7 +566,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["hachi", "kyuu", "juu", "ima", "han", "gozen", "gogo"]
     },
     {
       "n": 47,
@@ -562,7 +578,7 @@
         "type": "grammar",
         "grammarId": "counters"
       },
-      "words": []
+      "words": ["go", "hyaku", "sen", "man", "hitotsu", "futatsu", "mittsu"]
     },
     {
       "n": 48,
@@ -573,7 +589,15 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": [
+        "getsuyoubi",
+        "kayoubi",
+        "suiyoubi",
+        "mokuyoubi",
+        "kinyoubi",
+        "doyoubi",
+        "nichiyoubi"
+      ]
     },
     {
       "n": 49,
@@ -597,7 +621,7 @@
         "type": "grammar",
         "grammarId": "te-form"
       },
-      "words": []
+      "words": ["okiru", "arau", "migaku", "abiru", "kao", "ha", "deru"]
     },
     {
       "n": 51,
@@ -608,7 +632,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["kiru-put-on", "haku", "nugu", "fuku-clothes", "kutsushita", "zubon", "boushi"]
     },
     {
       "n": 52,
@@ -620,7 +644,7 @@
         "type": "grammar",
         "grammarId": "te-kudasai"
       },
-      "words": []
+      "words": ["matsu", "miseru", "oshieru", "kasu", "mouichido", "yukkurito", "chotto"]
     },
     {
       "n": 53,
@@ -631,7 +655,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["yottsu", "itsutsu", "muttsu", "nanatsu", "okane", "hitori", "futari"]
     },
     {
       "n": 54,
@@ -643,7 +667,7 @@
         "type": "grammar",
         "grammarId": "tai-mashou"
       },
-      "words": []
+      "words": ["issho", "yasumi", "kotoshi", "rainen", "raigetsu", "kongetsu", "konban"]
     },
     {
       "n": 55,
@@ -654,7 +678,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["yattsu", "kokonotsu", "ikutsu", "ja", "iriguchi", "deguchi", "eiga"]
     },
     {
       "n": 56,
@@ -678,7 +702,7 @@
         "type": "grammar",
         "grammarId": "yori-hou"
       },
-      "words": []
+      "words": ["yori", "dochira", "ichiban", "hayai-quick", "osoi", "chikai", "tooi"]
     },
     {
       "n": 58,
@@ -689,7 +713,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["haru-spring", "natsu", "aki", "fuyu", "atsui-hot", "samui", "motto"]
     },
     {
       "n": 59,
@@ -701,7 +725,7 @@
         "type": "grammar",
         "grammarId": "kara-demo"
       },
-      "words": []
+      "words": ["demo", "doushite", "tsumaranai", "ame-rain", "yuki", "isogashii", "jikan"]
     },
     {
       "n": 60,
@@ -712,7 +736,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": []
+      "words": ["byouki", "itai", "atama", "onaka", "kaze-cold", "kusuri", "yasumu"]
     },
     {
       "n": 61,
@@ -724,7 +748,7 @@
         "type": "grammar",
         "grammarId": "plain-da"
       },
-      "words": [],
+      "words": ["hontou", "shukudai", "mondai", "jugyou", "kanji", "kotoba", "imi"],
       "kanji": []
     },
     {
@@ -736,7 +760,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["shitsumon", "kotaeru", "peeji", "kami", "e", "iro", "shikashi"],
       "kanji": []
     },
     {
@@ -761,7 +785,7 @@
         "type": "grammar",
         "grammarId": "plain-dictionary"
       },
-      "words": [],
+      "words": ["dekiru", "hiku-play-instrument", "gitaa", "oyogu", "eigo", "hashiru", "noboru"],
       "kanji": []
     },
     {
@@ -773,7 +797,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["narau", "oboeru", "renshuu", "tsukau", "kariru", "kaesu", "uru"],
       "kanji": []
     },
     {
@@ -786,7 +810,7 @@
         "type": "grammar",
         "grammarId": "plain-nai"
       },
-      "words": [],
+      "words": ["wasureru", "abunai", "iru-need", "suwaru", "tatsu", "oku", "kesu"],
       "kanji": []
     },
     {
@@ -798,7 +822,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["tsukeru", "akeru", "shimeru-close", "mado", "doa", "denki", "soto"],
       "kanji": []
     },
     {
@@ -811,7 +835,7 @@
         "type": "grammar",
         "grammarId": "plain-ta"
       },
-      "words": [],
+      "words": ["umareru", "nakusu", "yuube", "ototoi", "hiku-pull", "owaru", "hajimaru"],
       "kanji": []
     },
     {
@@ -823,7 +847,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["kesa", "sanpo", "sentaku", "souji", "komaru", "chigau", "kitanai"],
       "kanji": []
     },
     {
@@ -848,7 +872,7 @@
         "type": "grammar",
         "grammarId": "plain-nakatta"
       },
-      "words": [],
+      "words": ["tegami", "kitte", "dasu", "hako", "nimotsu", "ageru", "yobu"],
       "kanji": []
     },
     {
@@ -860,7 +884,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["kippu", "chizu", "kakaru", "toru-take", "zasshi", "nyuusu", "ryoushin"],
       "kanji": []
     },
     {
@@ -873,7 +897,7 @@
         "type": "grammar",
         "grammarId": "te-iru"
       },
-      "words": [],
+      "words": ["sumu", "shiru", "kekkon", "motsu", "tsukareru", "denwa", "kakeru"],
       "kanji": []
     },
     {
@@ -885,7 +909,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["furu", "petto", "doubutsu", "supootsu", "niwa", "ireru", "reizouko"],
       "kanji": []
     },
     {
@@ -898,7 +922,7 @@
         "type": "grammar",
         "grammarId": "adjectives-plain"
       },
-      "words": [],
+      "words": ["wakai", "nagai", "mijikai", "me", "te", "ashi", "hana-nose"],
       "kanji": []
     },
     {
@@ -910,7 +934,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["aoi", "akai", "shiroi", "kuroi", "kiiroi", "midori", "kawaii"],
       "kanji": []
     },
     {
@@ -935,7 +959,7 @@
         "type": "grammar",
         "grammarId": "casual-speech"
       },
-      "words": [],
+      "words": ["maishuu", "mata", "gomennasai", "minna", "yasashii", "tanoshii", "urusai"],
       "kanji": []
     },
     {
@@ -947,7 +971,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["konna", "sonna", "daisuki", "sugu", "amai", "takusan", "taihen"],
       "kanji": []
     },
     {
@@ -960,7 +984,7 @@
         "type": "grammar",
         "grammarId": "hoshii"
       },
-      "words": [],
+      "words": ["hoshii", "omoi", "karui", "hiroi", "semai", "daidokoro", "ofuro"],
       "kanji": []
     },
     {
@@ -972,7 +996,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["tabemono", "nomimono", "kudamono", "yasai", "koucha", "osake", "niku"],
       "kanji": []
     },
     {
@@ -985,7 +1009,7 @@
         "type": "grammar",
         "grammarId": "mae-ato"
       },
-      "words": [],
+      "words": ["ato", "hayai-early", "maiasa", "maiban", "hiru", "yoru", "konshuu"],
       "kanji": []
     },
     {
@@ -997,7 +1021,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["utau", "uta", "toru-take-photo", "tsukuru", "puuru", "ichinichi", "karada"],
       "kanji": []
     },
     {
@@ -1022,7 +1046,7 @@
         "type": "grammar",
         "grammarId": "te-kara"
       },
-      "words": [],
+      "words": ["migi", "hidari", "massugu", "magaru", "michi", "wataru", "kado"],
       "kanji": []
     },
     {
@@ -1034,7 +1058,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["kiru-cut", "satou", "shio", "osara", "karai", "sorekara", "obentou"],
       "kanji": []
     },
     {
@@ -1047,7 +1071,7 @@
         "type": "grammar",
         "grammarId": "deshou"
       },
-      "words": [],
+      "words": ["tabun", "kumori", "hare", "kaze-wind", "sora", "tsuyoi", "tsumetai"],
       "kanji": []
     },
     {
@@ -1059,7 +1083,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["asatte", "tsugi", "ikaga", "hana-flower", "choudo", "bangou", "zero"],
       "kanji": []
     },
     {
@@ -1072,7 +1096,7 @@
         "type": "grammar",
         "grammarId": "mou-mada"
       },
-      "words": [],
+      "words": ["mou", "mada", "zenbu", "aku", "shimaru", "hajimete", "natsuyasumi"],
       "kanji": []
     },
     {
@@ -1084,7 +1108,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["ojiisan", "obaasan", "okusan", "shokudou", "mimi", "kuchi", "mono"],
       "kanji": []
     },
     {
@@ -1109,7 +1133,7 @@
         "type": "grammar",
         "grammarId": "naru"
       },
-      "words": [],
+      "words": ["naru", "dandan", "atatakai", "suzushii", "akarui", "kurai", "ooi"],
       "kanji": []
     },
     {
@@ -1121,7 +1145,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["sukunai", "hikui", "yowai", "onaji", "iroiro", "tatemono", "tokoro"],
       "kanji": []
     },
     {
@@ -1133,7 +1157,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["higashi", "nishi", "minami", "kita", "kawa", "ki"],
       "kanji": []
     },
     {
@@ -1145,7 +1169,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["futsuka", "mikka", "yokka", "itsuka", "muika", "nanoka"],
       "kanji": []
     },
     {
@@ -1157,7 +1181,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["otoko", "onna", "otokonoko", "onnanoko", "otona", "taisetsu"],
       "kanji": []
     },
     {
@@ -1169,7 +1193,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
+      "words": ["youka", "kokonoka", "tooka", "hatsuka", "jibun", "hanbun"],
       "kanji": []
     },
     {

@@ -143,7 +143,22 @@ export type ApiErrorCode =
   | 'rate_limited'
   | 'too_large'
   | 'clock_skew'
+  | 'ai_unavailable'
   | 'server_error';
+
+/* -------------------------------------------------------------------- AI */
+
+const aiLesson = int().check(minimum(17), maximum(100));
+
+export const AiExerciseRequestSchema = strictObject({ lesson: aiLesson });
+
+export const AiChatRequestSchema = strictObject({
+  lesson: aiLesson,
+  /** The conversation so far, oldest first; the learner's last line is checked first. */
+  history: array(strictObject({ role: zEnum(['ai', 'learner']), ja: text(1, 120) })).check(
+    maxLength(12),
+  ),
+});
 
 export interface ApiError {
   error: ApiErrorCode;

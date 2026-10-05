@@ -49,7 +49,8 @@ export interface SentenceTools {
   word: (id: string) => { kana: string; romaji: string } | undefined;
 }
 
-function toItem(source: SentenceSource, tools: SentenceTools): SentenceItem {
+/** Analyses one sentence (romaji generated from the reading when missing). */
+export function sentenceItem(source: SentenceSource, tools: SentenceTools): SentenceItem {
   const reading = source.kana ?? source.ja;
   const tokens = tools.tokenize(reading);
   const romaji = source.romaji ?? sentenceRomaji(tokens, tools.word);
@@ -74,7 +75,7 @@ export function buildGrammarIndex(
     const lesson = lessonOfGrammar(raw.id);
     if (lesson === null) continue;
     const items = raw.examples.map((ex, i) =>
-      toItem(
+      sentenceItem(
         {
           id: `gr:${raw.id}:${i}`,
           ja: ex.ja,
@@ -100,7 +101,7 @@ export function buildGrammarIndex(
   }
   for (const ex of examples?.examples ?? []) {
     sentences.push(
-      toItem(
+      sentenceItem(
         {
           id: `ex:${ex.wordId}`,
           ja: ex.ja,

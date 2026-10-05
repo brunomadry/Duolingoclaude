@@ -15,7 +15,7 @@ import { createRng, seedFrom, shuffle } from './rng.ts';
 import { grammarCardId, grammarIdFromCardId } from './sentence-exercises.ts';
 import { GAP_PARTICLES, type SentenceItem } from './sentences.ts';
 import { wordIdFromCardId, wordsUpTo, type VocabIndex, type WordItem } from './vocab.ts';
-import { KANA_PHASE_END } from '../shared/constants.ts';
+import { CHAT_FROM_LESSON, KANA_PHASE_END } from '../shared/constants.ts';
 
 export const curriculum = curriculumData as Curriculum;
 export const gates = createGates(curriculum);
@@ -272,5 +272,6 @@ export function planLesson(
     focusKeys: Object.keys(GRAMMAR_KEY_GATES).filter((k) => GRAMMAR_KEY_GATES[k] === focus?.id),
     sentenceCard,
     dueSentences: dueSentenceReviews(due.grammarIds, grammar, lesson.n - 1, `due:${seed}`),
+    chat: lesson.n >= CHAT_FROM_LESSON && (lesson.kind === 'grammar' || lesson.kind === 'practice'),
   });
 }

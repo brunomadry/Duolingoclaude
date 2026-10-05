@@ -5,11 +5,13 @@
  */
 import {
   buildGrammarIndex,
+  sentenceItem,
   type GrammarIndex,
   type RawExampleSentences,
   type RawGrammar,
 } from '../lesson/grammar.ts';
 import { gates } from '../lesson/context.ts';
+import type { SentenceItem, SentenceSource } from '../lesson/sentences.ts';
 import type { VocabIndex } from '../lesson/vocab.ts';
 import { loadVocab } from './vocab-data.ts';
 
@@ -23,6 +25,8 @@ const optionalExamples = import.meta.glob<RawExampleSentences>('../../content/ex
 export interface CourseData {
   vocab: VocabIndex;
   grammar: GrammarIndex;
+  /** Analyses a sentence from elsewhere (AI practice) like the course's own. */
+  sentence: (source: SentenceSource) => SentenceItem;
 }
 
 const VERB_POS = /^v(?:1|5|k|s-i|z)/;
@@ -47,17 +51,13 @@ export function loadCourse(): Promise<CourseData> {
           ...(w.kanji ? { kanji: w.kanji } : {}),
         })),
       );
-      const index = buildGrammarIndex(
-        (id) => gates.lessonOfGrammar(id),
-        {
-          tokenize: (text) => words.tokenize(text, lexicon),
-          isVerb: (id) => (vocab.byId.get(id)?.pos ?? []).some((p) => VERB_POS.test(p)),
-          word: (id) => vocab.byId.get(id),
-        },
-        grammar,
-        examples,
-      );
-      return { vocab, grammar: index };
+      const tools = {
+        tokenize: (text: string) => words.tokenize(text, lexicon),
+        isVerb: (id: string) => (vocab.byId.get(id)?.pos ?? []).some((p) => VERB_POS.test(p)),
+        word: (id: string) => vocab.byId.get(id),
+      };
+      const index = buildGrammarIndex((id) => gates.lessonOfGrammar(id), tools, grammar, examples);
+      return { vocab, grammar: index, sentence: (src) => sentenceItem(src, tools) };
     });
     // A failed chunk load (offline before the first visit) may succeed on the next try.
     pending.catch(() => {

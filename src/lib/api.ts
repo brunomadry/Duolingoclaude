@@ -1,4 +1,5 @@
 /** Thin fetch wrapper for /api. Errors are typed so callers can react to "locked" and "offline". */
+import type { AiChatResponse, AiExerciseResponse, ChatTurn } from '../shared/ai.ts';
 import type {
   ApiErrorCode,
   Change,
@@ -66,6 +67,9 @@ export function createApi(fetchImpl: Fetch = (...args) => fetch(...args)) {
     pushChanges: (id: string, changes: Change[]) =>
       request<SyncResponse>('POST', `/profiles/${id}/sync`, { changes }),
     sendReport: (r: ReportRecord) => request<{ ok: true }>('POST', '/reports', r),
+    aiExercise: (lesson: number) => request<AiExerciseResponse>('POST', '/ai/exercise', { lesson }),
+    aiChat: (lesson: number, history: readonly ChatTurn[]) =>
+      request<AiChatResponse>('POST', '/ai/chat', { lesson, history }),
   };
 }
 

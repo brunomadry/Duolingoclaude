@@ -40,4 +40,7 @@ export const LIMITS = {
   unlockGlobal: { limit: 60, windowMs: 15 * 60_000 },
   reportsPerIp: { limit: 30, windowMs: 60 * 60_000 },
   syncPerProfile: { limit: 240, windowMs: 60 * 60_000 },
+  // Model calls for both learners together: well inside the free tiers.
+  aiPerMinute: { limit: 20, windowMs: 60_000 },
+  aiPerDay: { limit: 500, windowMs: 24 * 60 * 60_000 },
 } satisfies Record<string, RateLimit>;

@@ -8,7 +8,7 @@ import type { Env } from './env.ts';
 export type AppEnv = { Bindings: Env };
 export type AppContext = Context<AppEnv>;
 
-const STATUS: Record<ApiErrorCode, 400 | 401 | 404 | 410 | 413 | 429 | 500> = {
+const STATUS: Record<ApiErrorCode, 400 | 401 | 404 | 410 | 413 | 429 | 500 | 503> = {
   bad_request: 400,
   locked: 401,
   not_found: 404,
@@ -16,6 +16,7 @@ const STATUS: Record<ApiErrorCode, 400 | 401 | 404 | 410 | 413 | 429 | 500> = {
   too_large: 413,
   clock_skew: 400,
   rate_limited: 429,
+  ai_unavailable: 503,
   server_error: 500,
 };
 

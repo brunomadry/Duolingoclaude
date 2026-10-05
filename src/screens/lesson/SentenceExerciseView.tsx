@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { ReportDialog } from '../../app/ReportDialog.tsx';
 import type { SentenceExercise } from '../../lesson/engine.ts';
 import type { RomajiDisplay } from '../../lesson/romaji.ts';
 import { tilesMatch } from '../../lesson/sentences.ts';
@@ -36,6 +37,8 @@ export function SentenceExerciseView({
   /** Indices into `tiles`, in the order the learner placed them. */
   const [placed, setPlaced] = useState<number[]>([]);
   const [result, setResult] = useState<boolean | null>(null);
+  const [reporting, setReporting] = useState(false);
+  const fromAi = s.id.startsWith('ai:');
   const promptRef = useRef<HTMLParagraphElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
@@ -184,6 +187,12 @@ export function SentenceExerciseView({
           <div id={`fb-answer-${exercise.id}`} class="stack" style={{ gap: 'var(--space-1)' }}>
             <JpText text={s.kana} romaji={s.romaji} display="show" />
             <p>{s.pl}</p>
+            <p class="chat__hint">
+              {fromAi ? 'Zdanie od AI, sprawdzone automatycznie. ' : ''}
+              <button class="chat__report" onClick={() => setReporting(true)}>
+                Zgłoś błąd w zdaniu
+              </button>
+            </p>
           </div>
           <button
             ref={nextRef}
@@ -197,6 +206,13 @@ export function SentenceExerciseView({
           </button>
         </div>
       )}
+      <ReportDialog
+        open={reporting}
+        onClose={() => setReporting(false)}
+        sentence={s.ja}
+        context={`zdanie:${s.id}`}
+        lessonN={s.lesson}
+      />
     </div>
   );
 }
