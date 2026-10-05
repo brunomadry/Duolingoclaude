@@ -297,3 +297,36 @@ export function readingProblems(
   }
   return problems;
 }
+
+/**
+ * Grammar ids a tokenized sentence uses: function words and inflections through the gates,
+ * plus patterns made of several tokens (て + いる is ～ている, て + から is ～てから, く or に
+ * + なる is ～なる). A verb with no inflection is the dictionary form.
+ */
+export function grammarOfTokens(
+  tokens: readonly Token[],
+  isVerb: (wordId: string) => boolean,
+): Set<string> {
+  const used = new Set<string>();
+  const content = tokens.filter((t) => t.kind !== 'punct' || t.surface.trim() !== '');
+  content.forEach((t, i) => {
+    const next = content[i + 1];
+    if (t.kind === 'grammar' && t.grammar) {
+      const id = GRAMMAR_KEY_GATES[t.grammar];
+      if (id) used.add(id);
+    }
+    if (t.kind !== 'word' || !t.wordIds[0]) return;
+    const form = t.form ?? (isVerb(t.wordIds[0]) ? 'dict' : undefined);
+    const id = form ? FORM_GATES[form] : null;
+    if (id) used.add(id);
+    if (form === 'te' && next?.kind === 'word' && next.wordIds.includes('iru-be'))
+      used.add('te-iru');
+    if (form === 'te' && next?.kind === 'grammar' && next.grammar === 'kara') used.add('te-kara');
+    if (t.wordIds.includes('naru')) {
+      const prev = content[i - 1];
+      if (prev?.form === 'ku' || (prev?.kind === 'grammar' && prev.grammar === 'ni'))
+        used.add('naru');
+    }
+  });
+  return used;
+}

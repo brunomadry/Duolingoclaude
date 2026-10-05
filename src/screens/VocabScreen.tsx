@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import '../styles/vocab.css';
 import { navigate } from '../app/router.ts';
 import { cardState, loadLearning, type LearningSnapshot } from '../data/learning.ts';
+import { loadKanji } from '../data/kanji-data.ts';
 import { loadVocab } from '../data/vocab-data.ts';
+import { kanjiUpTo, type KanjiIndex } from '../lesson/kanji.ts';
 import { completedPrefix, dueReviews } from '../lesson/context.ts';
 import { romajiDisplay, type RomajiDisplay } from '../lesson/romaji.ts';
 import { localDaysBetween } from '../lesson/schedule.ts';
@@ -21,6 +23,7 @@ import { EmptyState } from '../ui/EmptyState.tsx';
 import { Modal } from '../ui/Modal.tsx';
 import { Segmented } from '../ui/Segmented.tsx';
 import { WordCard } from '../ui/WordCard.tsx';
+import { KnownKanji, WrittenWord, useShowKanji } from '../ui/Written.tsx';
 
 type View = 'mine' | 'all';
 
@@ -96,6 +99,7 @@ function WordRow({
   onOpen: (w: WordItem) => void;
 }) {
   const badge = view === 'all' ? (word.lesson === null ? '+' : `L${word.lesson}`) : null;
+  const kanjiShown = useShowKanji(word.kanji);
   return (
     <button
       class="list__item word-row"
@@ -106,9 +110,9 @@ function WordRow({
     >
       <span class="word-row__ja" aria-hidden="true">
         <span class="word-row__kana jp" lang="ja">
-          {word.kana}
+          <WrittenWord kanji={word.kanji} kana={word.kana} />
         </span>
-        {word.kanji && (
+        {word.kanji && !kanjiShown && (
           <span class="word-row__kanji jp" lang="ja">
             {word.kanji}
           </span>
@@ -130,6 +134,7 @@ export function VocabScreen({ profile }: { profile: ProfileRecord }) {
   const { dataVersion } = useStore(appState);
   const [snap, setSnap] = useState<LearningSnapshot | null>(null);
   const [vocab, setVocab] = useState<VocabIndex | null>(null);
+  const [kanji, setKanji] = useState<KanjiIndex | null>(null);
   const [failed, setFailed] = useState(false);
   const [view, setView] = useState<View>('mine');
   const [query, setQuery] = useState('');
@@ -141,6 +146,7 @@ export function VocabScreen({ profile }: { profile: ProfileRecord }) {
 
   useEffect(() => {
     loadVocab().then(setVocab, () => setFailed(true));
+    loadKanji().then(setKanji, () => undefined);
   }, []);
 
   const done = snap ? completedPrefix(snap.lessons) : 0;
@@ -169,127 +175,129 @@ export function VocabScreen({ profile }: { profile: ProfileRecord }) {
   const shown = searching ? results.slice(0, MAX_RESULTS) : results;
 
   return (
-    <div class="stack">
-      <Segmented<View>
-        label="Widok słówek"
-        value={view}
-        options={[
-          { value: 'mine', label: 'Moje słówka' },
-          { value: 'all', label: 'Słownik N5' },
-        ]}
-        onChange={(v) => {
-          setView(v);
-          setQuery('');
-        }}
-      />
-
-      {view === 'mine' && (
-        <section class="card stack" aria-labelledby="vocab-summary">
-          <div class="row" style={{ justifyContent: 'space-between' }}>
-            <h2 id="vocab-summary" style={{ fontSize: 'var(--fs-md)' }}>
-              Znasz {plural(mine.length, 'słówko', 'słówka', 'słówek')}
-            </h2>
-          </div>
-          <p class="setting__hint">
-            {due
-              ? `Do powtórki: ${plural(due, 'słówko', 'słówka', 'słówek')}.`
-              : mine.length
-                ? 'Na razie nic do powtórki.'
-                : `Pierwsze słówka pojawią się w lekcji ${firstLesson}.`}
-          </p>
-          <div class="vocab-actions">
-            <button
-              class="btn btn--primary"
-              disabled={!due}
-              onClick={() => navigate('/powtorki/slowka')}
-            >
-              Powtórz słówka
-            </button>
-            <button
-              class="btn"
-              disabled={mine.length < 4}
-              onClick={() => navigate('/cwicz/slowka')}
-            >
-              Ćwicz słówka
-            </button>
-          </div>
-        </section>
-      )}
-
-      {(view === 'all' || mine.length > 0) && (
-        <div class="field">
-          <label class="visually-hidden" for="vocab-search">
-            Szukaj słówka
-          </label>
-          <input
-            id="vocab-search"
-            class="input"
-            type="search"
-            value={query}
-            onInput={(e) => setQuery(e.currentTarget.value)}
-            placeholder="Szukaj: kana, romaji albo po polsku"
-            autoComplete="off"
-            autoCapitalize="none"
-            autoCorrect="off"
-            spellcheck={false}
-            enterKeyHint="search"
-          />
-        </div>
-      )}
-
-      {view === 'all' && !searching && (
-        <p class="setting__hint">
-          Wszystkie słówka N5 w kursie: {vocab.words.length}. Oznaczenie L12 to lekcja, w której się
-          pojawiają, a plus to słówka dodatkowe, spoza lekcji.
-        </p>
-      )}
-
-      {searching && (
-        <p class="setting__hint" role="status">
-          {results.length
-            ? `Wyniki: ${results.length}${results.length > MAX_RESULTS ? ` (pokazano ${MAX_RESULTS})` : ''}`
-            : 'Nic nie znaleziono.'}
-        </p>
-      )}
-
-      {view === 'mine' && !mine.length ? (
-        <EmptyState
-          title="Jeszcze pusto"
-          text="Słówka będą się tu zbierać lekcja po lekcji, razem z powtórkami."
-          pose="sleepy"
+    <KnownKanji.Provider value={kanji ? kanjiUpTo(kanji, done) : new Set()}>
+      <div class="stack">
+        <Segmented<View>
+          label="Widok słówek"
+          value={view}
+          options={[
+            { value: 'mine', label: 'Moje słówka' },
+            { value: 'all', label: 'Słownik N5' },
+          ]}
+          onChange={(v) => {
+            setView(v);
+            setQuery('');
+          }}
         />
-      ) : searching ? (
-        <div class="list">
-          {shown.map((w) => (
-            <WordRow key={w.id} word={w} view={view} onOpen={setSelected} />
-          ))}
-        </div>
-      ) : (
-        sectionsOf(shown, view).map((s) => (
-          <section key={s.key} aria-label={view === 'all' ? `Słówka na ${s.title}` : s.title}>
-            <h3 class={`section-label${view === 'all' ? ' jp' : ''}`}>{s.title}</h3>
-            <div class="list">
-              {s.words.map((w) => (
-                <WordRow key={w.id} word={w} view={view} onOpen={setSelected} />
-              ))}
+
+        {view === 'mine' && (
+          <section class="card stack" aria-labelledby="vocab-summary">
+            <div class="row" style={{ justifyContent: 'space-between' }}>
+              <h2 id="vocab-summary" style={{ fontSize: 'var(--fs-md)' }}>
+                Znasz {plural(mine.length, 'słówko', 'słówka', 'słówek')}
+              </h2>
+            </div>
+            <p class="setting__hint">
+              {due
+                ? `Do powtórki: ${plural(due, 'słówko', 'słówka', 'słówek')}.`
+                : mine.length
+                  ? 'Na razie nic do powtórki.'
+                  : `Pierwsze słówka pojawią się w lekcji ${firstLesson}.`}
+            </p>
+            <div class="vocab-actions">
+              <button
+                class="btn btn--primary"
+                disabled={!due}
+                onClick={() => navigate('/powtorki/slowka')}
+              >
+                Powtórz słówka
+              </button>
+              <button
+                class="btn"
+                disabled={mine.length < 4}
+                onClick={() => navigate('/cwicz/slowka')}
+              >
+                Ćwicz słówka
+              </button>
             </div>
           </section>
-        ))
-      )}
-
-      <Modal
-        open={selected !== null}
-        onClose={() => setSelected(null)}
-        title={selected ? selected.kana : 'Słówko'}
-      >
-        {selected && (
-          <WordCard word={selected} display={display}>
-            <p class="setting__hint">
-              {reviewStatus(selected, snap, done, now, profile.settings.timeZone)}
-            </p>
-          </WordCard>
         )}
-      </Modal>
-    </div>
+
+        {(view === 'all' || mine.length > 0) && (
+          <div class="field">
+            <label class="visually-hidden" for="vocab-search">
+              Szukaj słówka
+            </label>
+            <input
+              id="vocab-search"
+              class="input"
+              type="search"
+              value={query}
+              onInput={(e) => setQuery(e.currentTarget.value)}
+              placeholder="Szukaj: kana, romaji albo po polsku"
+              autoComplete="off"
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellcheck={false}
+              enterKeyHint="search"
+            />
+          </div>
+        )}
+
+        {view === 'all' && !searching && (
+          <p class="setting__hint">
+            Wszystkie słówka N5 w kursie: {vocab.words.length}. Oznaczenie L12 to lekcja, w której
+            się pojawiają, a plus to słówka dodatkowe, spoza lekcji.
+          </p>
+        )}
+
+        {searching && (
+          <p class="setting__hint" role="status">
+            {results.length
+              ? `Wyniki: ${results.length}${results.length > MAX_RESULTS ? ` (pokazano ${MAX_RESULTS})` : ''}`
+              : 'Nic nie znaleziono.'}
+          </p>
+        )}
+
+        {view === 'mine' && !mine.length ? (
+          <EmptyState
+            title="Jeszcze pusto"
+            text="Słówka będą się tu zbierać lekcja po lekcji, razem z powtórkami."
+            pose="sleepy"
+          />
+        ) : searching ? (
+          <div class="list">
+            {shown.map((w) => (
+              <WordRow key={w.id} word={w} view={view} onOpen={setSelected} />
+            ))}
+          </div>
+        ) : (
+          sectionsOf(shown, view).map((s) => (
+            <section key={s.key} aria-label={view === 'all' ? `Słówka na ${s.title}` : s.title}>
+              <h3 class={`section-label${view === 'all' ? ' jp' : ''}`}>{s.title}</h3>
+              <div class="list">
+                {s.words.map((w) => (
+                  <WordRow key={w.id} word={w} view={view} onOpen={setSelected} />
+                ))}
+              </div>
+            </section>
+          ))
+        )}
+
+        <Modal
+          open={selected !== null}
+          onClose={() => setSelected(null)}
+          title={selected ? selected.kana : 'Słówko'}
+        >
+          {selected && (
+            <WordCard word={selected} display={display}>
+              <p class="setting__hint">
+                {reviewStatus(selected, snap, done, now, profile.settings.timeZone)}
+              </p>
+            </WordCard>
+          )}
+        </Modal>
+      </div>
+    </KnownKanji.Provider>
   );
 }

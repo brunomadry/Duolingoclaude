@@ -208,6 +208,17 @@ export type KanjiEntry = z.infer<typeof KanjiEntry>;
 
 export const KanjiFile = z.object({ version: z.literal(1), kanji: z.array(KanjiEntry) }).strict();
 
+/** Polish meanings of the kanji (content/kanji.pl.json), written for this project. */
+export const KanjiGlossFile = z
+  .object({
+    version: z.literal(1),
+    kanji: z.record(
+      z.string().length(1),
+      z.object({ pl: z.array(z.string().min(1)).min(1), reviewed: z.boolean() }).strict(),
+    ),
+  })
+  .strict();
+
 /* ----------------------------------------------------------------- grammar */
 
 export const GrammarExample = z

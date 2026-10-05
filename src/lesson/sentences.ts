@@ -3,7 +3,7 @@
  * the known-word matcher (src/shared/jp-words.ts) into kana tiles, particle gaps and the
  * grammar points they use. Pure: tokens come from the caller.
  */
-import { FORM_GATES, GRAMMAR_KEY_GATES } from '../shared/grammar-gates.ts';
+import { grammarOfTokens } from '../shared/grammar-gates.ts';
 import type { Token } from '../shared/jp-words.ts';
 
 export interface SentenceSource {
@@ -77,24 +77,15 @@ export function analyseSentence(
   readingTokens: readonly Token[],
   isVerb: (wordId: string) => boolean,
 ): SentenceItem {
-  const grammar = new Set<string>();
+  const grammar = grammarOfTokens(readingTokens, isVerb);
   const words = new Set<string>();
   const tiles: string[] = [];
   const gaps: Gap[] = [];
   for (const t of readingTokens) {
     if (!isTile(t)) continue;
-    if (t.kind === 'grammar' && t.grammar) {
-      const id = GRAMMAR_KEY_GATES[t.grammar];
-      if (id) grammar.add(id);
-      if (t.grammar in GAP_PARTICLES) gaps.push({ index: tiles.length, key: t.grammar });
-    }
-    if (t.kind === 'word' && t.wordIds[0]) {
-      const id = t.wordIds[0];
-      words.add(id);
-      const form = t.form ?? (isVerb(id) ? 'dict' : undefined);
-      const gate = form ? FORM_GATES[form] : null;
-      if (gate) grammar.add(gate);
-    }
+    if (t.kind === 'grammar' && t.grammar && t.grammar in GAP_PARTICLES)
+      gaps.push({ index: tiles.length, key: t.grammar });
+    if (t.kind === 'word' && t.wordIds[0]) words.add(t.wordIds[0]);
     tiles.push(t.surface);
   }
   return {

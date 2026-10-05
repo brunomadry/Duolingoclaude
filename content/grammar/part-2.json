@@ -5,7 +5,7 @@
       "id": "arimasu-imasu",
       "title": "あります i います",
       "pattern": "X に N が あります / います",
-      "note": "Polskie „jest” w sensie „znajduje się” ma po japońsku dwie formy: あります mówi się o rzeczach i roślinach, a います o ludziach i zwierzętach. Najpierw pada miejsce z partykułą に, potem to, co się tam znajduje, z partykułą が, a czasownik stoi na końcu: つくえの うえに ほんが あります.\n\nPolskie „na”, „pod” i „w” to tutaj rzeczowniki うえ, した i なか, które łączy się z przedmiotem przez の: いすの した to „pod krzesłem”. Te same czasowniki wyrażają też posiadanie: かさが あります to „mam parasol”, a きょうだいが います to „mam rodzeństwo”.",
+      "note": "Polskie „jest” w sensie „znajduje się” ma po japońsku dwa odpowiedniki: あります mówi się o rzeczach i roślinach, a います o ludziach i zwierzętach. Najpierw pada miejsce z partykułą に, potem to, co się tam znajduje, z partykułą が, a czasownik stoi na końcu: つくえの うえに ほんが あります. Polskim przyimkom „na”, „pod” i „w” odpowiadają tu rzeczowniki うえ (góra), した (dół) i なか (wnętrze), połączone z przedmiotem przez の: いすの した to „pod krzesłem”.\n\nGdy mowa o tym, gdzie jest znana już rzecz lub osoba, zaczyna się od niej z は: ねこは いすの したに います (kot jest pod krzesłem). Te same czasowniki wyrażają też posiadanie: かさが あります to „mam parasol”, a きょうだいが います to „mam rodzeństwo”.",
       "examples": [
         {
           "ja": "机の上に本があります。",
@@ -63,9 +63,9 @@
           "pl": "Poproszę dwie kawy."
         },
         {
-          "ja": "このかばんはいくらですか。",
-          "kana": "この かばんは いくらですか。",
-          "pl": "Ile kosztuje ta torba?"
+          "ja": "兄弟が二人います。",
+          "kana": "きょうだいが ふたり います。",
+          "pl": "Mam dwoje rodzeństwa."
         },
         {
           "ja": "このカメラは三万円です。",
@@ -80,7 +80,7 @@
       "id": "te-form",
       "title": "Forma て",
       "pattern": "V-て、V-ます",
-      "note": "Forma て łączy czynności w kolejności, w jakiej się dzieją, podobnie jak polskie „i potem”: あさ おきて、かおを あらいます. Czas i grzeczność wyraża dopiero ostatni czasownik, sama forma て ich nie ma.\n\nWiększość czasowników z dźwiękiem e lub i przed końcowym る, jak たべる, みる i おきる, po prostu zamienia る na て: たべて, みて. Pozostałe zmieniają końcówkę: う, つ, る dają って, む, ぶ, ぬ dają んで, く daje いて, ぐ daje いで, す daje して, np. かう, かって, のむ, のんで, a także かえる, かえって. Wyjątki to いく, いって oraz nieregularne する, して i くる, きて.",
+      "note": "Forma て łączy czynności w kolejności, w jakiej się dzieją, podobnie jak polskie „i potem”, a czas i grzeczność wyraża dopiero ostatni czasownik: あさ おきて、かおを あらいます. Tworzy się ją od formy słownikowej, w której czasowniki stoją na liście słówek, np. たべる czy かう.\n\nWiększość czasowników z dźwiękiem e lub i przed końcowym る, jak たべる, みる i おきる, po prostu zamienia る na て: たべて, みて. Pozostałe zmieniają końcówkę: う, つ, る dają って, む, ぶ, ぬ dają んで, く daje いて, ぐ daje いで, す daje して, np. かう, かって, のむ, のんで, a także かえる, かえって. Wyjątki to いく, いって oraz nieregularne する, して i くる, きて.",
       "examples": [
         {
           "ja": "朝起きて、顔を洗います。",
@@ -105,7 +105,7 @@
       "id": "te-kudasai",
       "title": "Prośby z ～てください",
       "pattern": "V-て ください",
-      "note": "Forma て z ください tworzy uprzejmą prośbę, podobną do polskiego „proszę + bezokolicznik”: まって ください to „proszę zaczekać”. Rzecz, której dotyczy prośba, oznacza jak zwykle を: ペンを かして ください. To podobne do N を ください, czyli „poproszę coś”, tylko tutaj prosi się o czynność. Przed prośbą często pada すみません, a ちょっと łagodzi ton.\n\nTo grzeczna forma, ale wciąż prośba wprost, więc gdy chodzi o dużą przysługę od osoby starszej rangą, Japończycy wybierają jeszcze uprzejmiejsze zwroty.",
+      "note": "Forma て z ください tworzy uprzejmą prośbę, podobną do polskiego „proszę + bezokolicznik”: まって ください to „proszę zaczekać”. To podobne do N を ください, czyli „poproszę coś”, tylko tutaj prosi się o czynność, a jej dopełnienie jak zwykle oznacza を: ペンを かして ください. Przed prośbą często pada すみません, a ちょっと łagodzi ton.\n\nTo grzeczna forma, ale wciąż prośba wprost, więc gdy chodzi o dużą przysługę od osoby starszej rangą, Japończycy wybierają jeszcze uprzejmiejsze zwroty.",
       "examples": [
         {
           "ja": "ちょっと待ってください。",
@@ -155,7 +155,7 @@
       "id": "yori-hou",
       "title": "Porównania",
       "pattern": "A は B より ～です / A の ほうが ～です",
-      "note": "Japońskie przymiotniki nie mają stopnia wyższego: はやい znaczy i „szybki”, i „szybszy”, a porównanie buduje się partykułą より, czyli „niż”. より stoi po tym, z czym się porównuje: でんしゃは バスより はやいです to „pociąg jest szybszy niż autobus”.\n\nGdy wybiera się jedną z dwóch rzeczy, pyta się A と B と どちらが ～ですか, a w odpowiedzi wybraną rzecz oznacza のほうが: でんしゃの ほうが はやいです. Stopień najwyższy tworzy いちばん przed przymiotnikiem: いちばん はやい to „najszybszy”.",
+      "note": "Japońskie przymiotniki nie mają stopnia wyższego: w porównaniu はやい znaczy po prostu „szybszy”, a polskie „niż” wyraża partykuła より. より stoi po tym, z czym się porównuje: でんしゃは バスより はやいです to „pociąg jest szybszy niż autobus”.\n\nGdy wybiera się jedną z dwóch rzeczy, pyta się A と B と どちらが ～ですか, a w odpowiedzi wybraną rzecz oznacza のほうが: でんしゃの ほうが はやいです. Stopień najwyższy tworzy いちばん przed przymiotnikiem: いちばん はやい to „najszybszy”.",
       "examples": [
         {
           "ja": "駅と郵便局と、どちらが近いですか。",
@@ -180,7 +180,7 @@
       "id": "kara-demo",
       "title": "から i でも",
       "pattern": "X から、Y / X。でも、Y",
-      "note": "Na końcu zdania から nie znaczy „od”, tylko podaje powód: あめですから、いきません to „pada deszcz, więc nie idę”. Kolejność jest odwrotna niż w polskim zdaniu z „bo”: najpierw powód zakończony na から, potem skutek. Na pytanie どうして, czyli „dlaczego”, można odpowiedzieć samym powodem: いそがしいですから.\n\nでも otwiera nowe zdanie i znaczy „ale”, a wewnątrz jednego zdania tę rolę pełni が albo swobodniejsze けど: たかいですが、おいしいです.",
+      "note": "Po czasowniku, przymiotniku albo です słowo から nie znaczy „od”, tylko podaje powód: あめですから、いきません to „pada deszcz, więc nie idę”. Kolejność jest odwrotna niż w polskim zdaniu z „bo”: najpierw powód zakończony na から, potem skutek. Na pytanie どうして, czyli „dlaczego”, można odpowiedzieć samym powodem: いそがしいですから.\n\nでも otwiera nowe zdanie i znaczy „ale”, a wewnątrz jednego zdania tę rolę pełni が albo swobodniejsze けど: たかいですが、おいしいです.",
       "examples": [
         {
           "ja": "雨ですから、出かけません。",
@@ -230,7 +230,7 @@
       "id": "plain-dictionary",
       "title": "Forma słownikowa",
       "pattern": "のみます → のむ; たべます → たべる; V ことが できます",
-      "note": "Forma słownikowa to prosta forma teraźniejsza czasownika, ta, którą podają słowniki: zastępuje ます w swobodnej rozmowie i występuje w wielu konstrukcjach, np. V ことが できます, czyli „umiem, mogę”: およぐ ことが できます.\n\nCzasowniki dzielą się na trzy grupy, a w grupie 1 dźwięk i przed ます zmienia się na u: のみます, のむ; かえります, かえる. W grupie 2 ます zamienia się na る: たべます, たべる; należą do niej wszystkie czasowniki z e przed ます i niektóre z i, jak みます i おきます. Grupa 3 to dwa nieregularne czasowniki: します, する i きます, くる.",
+      "note": "Forma słownikowa to prosta forma teraźniejsza czasownika, ta, którą podają słowniki: zastępuje ます w swobodnej rozmowie i występuje w wielu konstrukcjach, np. V ことが できます, czyli „umiem, mogę”: およぐ ことが できます.\n\nCzasowniki dzielą się na trzy grupy, a w grupie 1 dźwięk i przed ます zmienia się na u: のみます, のむ; かえります, かえる. W grupie 2 ます zamienia się na る: たべます, たべる; należą do niej wszystkie czasowniki z e przed ます i niektóre z i, jak みます i おきます. Grupa 3 to dwa nieregularne czasowniki: します, する i きます, くる, a także połączenia z する, jak べんきょうします, べんきょうする.",
       "examples": [
         {
           "ja": "ギターを弾くことができます。",
@@ -248,7 +248,7 @@
           "pl": "Popływamy razem?"
         }
       ],
-      "typicalMistake": "Błąd: みます → みむ. Poprawnie: みます → みる. みます należy do grupy 2, choć przed ます jest dźwięk i, więc takie czasowniki trzeba zapamiętać.",
+      "typicalMistake": "Błąd: おきます → おく. Poprawnie: おきます → おきる. おきます należy do grupy 2, choć przed ます jest dźwięk i, więc takie czasowniki trzeba zapamiętać (おく to zupełnie inny czasownik, „kłaść”).",
       "reviewed": false
     },
     {

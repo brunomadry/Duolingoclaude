@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { isKanaExercise, type KanaExercise, type WordExercise } from '../../lesson/engine.ts';
+import {
+  isKanaExercise,
+  isKanjiExercise,
+  type KanaExercise,
+  type KanjiExercise,
+  type WordExercise,
+} from '../../lesson/engine.ts';
 import { romajiToKana } from '../../lesson/kana-input.ts';
 import { isRomajiAnswerCorrect } from '../../lesson/romaji.ts';
 import { isKatakanaWord, isWordAnswerCorrect } from '../../lesson/vocab.ts';
 import { speak } from '../../lib/speech.ts';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
+import { WrittenWord } from '../../ui/Written.tsx';
 
-export type KanaOrWordExercise = KanaExercise | WordExercise;
+export type KanaOrWordExercise = KanaExercise | WordExercise | KanjiExercise;
 
 interface ExerciseViewProps {
   exercise: KanaOrWordExercise;
@@ -27,6 +34,8 @@ const PROMPTS: Record<KanaOrWordExercise['kind'], string> = {
   'meaning-to-word': 'Jak to jest po japońsku?',
   'audio-to-word': 'Które słowo słyszysz?',
   'type-word': 'Napisz po japońsku (w romaji)',
+  'kanji-meaning': 'Co znaczy ten znak?',
+  'kanji-reading': 'Jak czytamy to słowo?',
 };
 
 /** Lower case without spaces or apostrophes. Hyphens stay: "ka-" is a long vowel (カー). */
@@ -49,10 +58,24 @@ function solutionOf(exercise: KanaOrWordExercise): {
   ja: string;
   romaji: string;
   meaning?: string;
+  /** Read aloud after answering (nothing for a lone kanji: its reading depends on the word). */
+  audio: string;
 } {
-  if (isKanaExercise(exercise)) return { ja: exercise.item.char, romaji: exercise.item.romaji };
+  if (isKanaExercise(exercise))
+    return { ja: exercise.item.char, romaji: exercise.item.romaji, audio: exercise.item.char };
+  if (isKanjiExercise(exercise)) {
+    const w = exercise.word;
+    if (exercise.kind === 'kanji-reading' && w)
+      return {
+        ja: w.kanji ?? w.kana,
+        romaji: `${w.kana}, ${w.romaji}`,
+        meaning: w.pl[0] ?? '',
+        audio: w.kana,
+      };
+    return { ja: exercise.kanji.char, romaji: '', meaning: exercise.kanji.pl[0] ?? '', audio: '' };
+  }
   const w = exercise.word;
-  return { ja: w.kana, romaji: w.romaji, meaning: w.pl[0] ?? '' };
+  return { ja: w.kana, romaji: w.romaji, meaning: w.pl[0] ?? '', audio: w.kana };
 }
 
 export function ExerciseView({
@@ -88,7 +111,7 @@ export function ExerciseView({
     setResult(correct);
     onAnswered(correct);
     // Runs inside the tap handler, so iOS allows speech here.
-    if (sound) speak(solution.ja);
+    if (sound && solution.audio) speak(solution.audio);
   };
 
   const choose = (option: string) => {
@@ -103,7 +126,7 @@ export function ExerciseView({
     finish(
       isKanaExercise(exercise)
         ? isTypedAnswerCorrect(exercise, typed)
-        : isWordAnswerCorrect(exercise.word, typed),
+        : !isKanjiExercise(exercise) && isWordAnswerCorrect(exercise.word, typed),
     );
   };
 
@@ -111,15 +134,19 @@ export function ExerciseView({
   const showJa =
     exercise.kind === 'kana-to-romaji' ||
     exercise.kind === 'type-romaji' ||
-    exercise.kind === 'word-to-meaning';
+    exercise.kind === 'word-to-meaning' ||
+    exercise.kind === 'kanji-meaning' ||
+    exercise.kind === 'kanji-reading';
   const showMeaning = exercise.kind === 'meaning-to-word' || exercise.kind === 'type-word';
   const audio = exercise.kind === 'audio-to-kana' || exercise.kind === 'audio-to-word';
   const optionsAreJa =
     exercise.kind === 'romaji-to-kana' ||
     exercise.kind === 'audio-to-kana' ||
     exercise.kind === 'meaning-to-word' ||
-    exercise.kind === 'audio-to-word';
+    exercise.kind === 'audio-to-word' ||
+    exercise.kind === 'kanji-reading';
   const isWord = !isKanaExercise(exercise);
+  const bigChar = isKanaExercise(exercise) || exercise.kind === 'kanji-meaning';
   const preview =
     exercise.kind === 'type-word' && normalizeRomaji(typed)
       ? romajiToKana(typed, { katakana: isKatakanaWord(exercise.word) })
@@ -134,11 +161,15 @@ export function ExerciseView({
       <div class="exercise__stage">
         {showJa && (
           <span
-            class={`exercise__kana jp${isWord ? ' exercise__kana--word' : ''}`}
+            class={`exercise__kana jp${bigChar ? '' : ' exercise__kana--word'}`}
             lang="ja"
             id={`q-${exercise.id}`}
           >
-            {solution.ja}
+            {exercise.kind === 'word-to-meaning' ? (
+              <WrittenWord kanji={exercise.word.kanji} kana={exercise.word.kana} />
+            ) : (
+              solution.ja
+            )}
           </span>
         )}
         {exercise.kind === 'romaji-to-kana' && (
@@ -157,7 +188,7 @@ export function ExerciseView({
             hideText
           />
         )}
-        {result !== null && showJa && <SpeakButton text={solution.ja} />}
+        {result !== null && showJa && solution.audio && <SpeakButton text={solution.audio} />}
       </div>
 
       {typing ? (
@@ -232,8 +263,13 @@ export function ExerciseView({
               {result ? '' : 'Poprawnie: '}
               <span class="jp" lang="ja">
                 {solution.ja}
-              </span>{' '}
-              = <strong>{solution.romaji}</strong>
+              </span>
+              {solution.romaji && (
+                <>
+                  {' '}
+                  = <strong>{solution.romaji}</strong>
+                </>
+              )}
               {solution.meaning && <> · {solution.meaning}</>}
             </p>
           )}

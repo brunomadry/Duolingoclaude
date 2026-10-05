@@ -4,7 +4,7 @@ import type { SentenceExercise } from '../../lesson/engine.ts';
 import type { RomajiDisplay } from '../../lesson/romaji.ts';
 import { tilesMatch } from '../../lesson/sentences.ts';
 import { speak } from '../../lib/speech.ts';
-import { JpText } from '../../ui/JpText.tsx';
+import { SentenceLine } from '../../ui/Written.tsx';
 import { SpeakButton } from '../../ui/SpeakButton.tsx';
 
 interface SentenceExerciseViewProps {
@@ -87,7 +87,7 @@ export function SentenceExerciseView({
 
       <div class="exercise__stage exercise__stage--sentence">
         {exercise.kind === 'sentence-meaning' && (
-          <JpText text={s.kana} romaji={s.romaji} display={display} size="lg" />
+          <SentenceLine ja={s.ja} kana={s.kana} romaji={s.romaji} display={display} size="lg" />
         )}
         {exercise.kind === 'sentence-audio' && (
           <SpeakButton text={s.kana} size={88} label="Posłuchaj zdania" hideText />
@@ -185,7 +185,7 @@ export function SentenceExerciseView({
             {result ? 'Dobrze!' : 'Prawie.'}
           </p>
           <div id={`fb-answer-${exercise.id}`} class="stack" style={{ gap: 'var(--space-1)' }}>
-            <JpText text={s.kana} romaji={s.romaji} display="show" />
+            <SentenceLine ja={s.ja} kana={s.kana} romaji={s.romaji} display="show" />
             <p>{s.pl}</p>
             <p class="chat__hint">
               {fromAi ? 'Zdanie od AI, sprawdzone automatycznie. ' : ''}

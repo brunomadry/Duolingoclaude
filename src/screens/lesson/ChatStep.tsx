@@ -8,7 +8,7 @@ import { speak } from '../../lib/speech.ts';
 import type { AiChatResponse, AiSentence, ChatFeedback, ChatTurn } from '../../shared/ai.ts';
 import { aiChat } from '../../state/app.ts';
 import { GrammarNoteView } from '../../ui/GrammarNoteView.tsx';
-import { JpText } from '../../ui/JpText.tsx';
+import { SentenceLine } from '../../ui/Written.tsx';
 import { Modal } from '../../ui/Modal.tsx';
 
 interface ChatStepProps {
@@ -106,7 +106,7 @@ export function ChatStep({ lessonN, display, sound, notes, onDone }: ChatStepPro
         {bubbles.map((b, i) =>
           b.role === 'ai' ? (
             <div key={i} class="chat__bubble chat__bubble--ai">
-              <JpText text={b.sentence.kana} display={display} />
+              <SentenceLine ja={b.sentence.ja} kana={b.sentence.kana} display={display} />
               {shownPl.has(i) ? (
                 <p class="chat__pl">{b.sentence.pl}</p>
               ) : (

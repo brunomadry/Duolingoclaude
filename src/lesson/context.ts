@@ -11,6 +11,7 @@ import { buildReviewQueue } from '../srs/queue.ts';
 import { buildLessonPlan, charFromCardId, type KanaItem, type LessonPlan } from './engine.ts';
 import { sentencesFor, sentencesUpTo, type GrammarIndex } from './grammar.ts';
 import { groupById } from './kana.ts';
+import { kanjiFromCardId, type KanjiIndex, type KanjiItem } from './kanji.ts';
 import { createRng, seedFrom, shuffle } from './rng.ts';
 import { grammarCardId, grammarIdFromCardId } from './sentence-exercises.ts';
 import { GAP_PARTICLES, type SentenceItem } from './sentences.ts';
@@ -34,12 +35,11 @@ export function lessonByN(n: number): Lesson | undefined {
  * instead of being completable as empty shells (their completion would be permanent).
  */
 export function lessonSupported(lesson: Pick<Lesson, 'n' | 'kind'>): boolean {
-  if (lesson.n <= KANA_PHASE_END) return true;
-  return (
-    GRAMMAR_AVAILABLE &&
-    (lesson.kind === 'grammar' || lesson.kind === 'practice' || lesson.kind === 'test')
-  );
+  return lesson.n <= KANA_PHASE_END || GRAMMAR_AVAILABLE;
 }
+
+/** The last lesson is the final N5 check: a test over the whole course. */
+export const FINAL_LESSON = 100;
 
 /** The grammar point a lesson works on: its own, or the latest one before it. */
 export function focusGrammarOf(n: number): { id: string; lesson: number } | null {
@@ -109,6 +109,8 @@ export interface DueInfo {
   wordIds: string[];
   /** Due grammar ids (reviewed with a sentence). */
   grammarIds: string[];
+  /** Due kanji (map them with the kanji index). */
+  kanjiChars: string[];
   dueTotal: number;
 }
 
@@ -124,7 +126,7 @@ export function dueReviews(
       (c) =>
         !c.deleted &&
         ((filter !== 'kana' && wordIdFromCardId(c.cardId)) ||
-          (filter !== 'words' && charFromCardId(c.cardId)) ||
+          (filter !== 'words' && (charFromCardId(c.cardId) || kanjiFromCardId(c.cardId))) ||
           (filter === 'all' && grammarIdFromCardId(c.cardId))),
     )
     .map((c) => ({ cardId: c.cardId, state: c.data as SrsState }));
@@ -143,7 +145,23 @@ export function dueReviews(
   const grammarIds = queue
     .map((q) => grammarIdFromCardId(q.cardId))
     .filter((id): id is string => id !== null);
-  return { items, wordIds, grammarIds, dueTotal };
+  const kanjiChars = queue
+    .map((q) => kanjiFromCardId(q.cardId))
+    .filter((ch): ch is string => ch !== null);
+  return { items, wordIds, grammarIds, kanjiChars, dueTotal };
+}
+
+export function kanjiOf(kanji: KanjiIndex | undefined, chars: readonly string[]): KanjiItem[] {
+  return chars.map((ch) => kanji?.byChar.get(ch)).filter((k): k is KanjiItem => k !== undefined);
+}
+
+/** Words taught by lesson n written with each kanji, newest first. */
+export function kanjiWordsUpTo(vocab: VocabIndex, n: number): Map<string, WordItem[]> {
+  const map = new Map<string, WordItem[]>();
+  for (const w of [...wordsUpTo(vocab, n)].reverse()) {
+    for (const ch of new Set(w.kanji ?? '')) map.set(ch, [...(map.get(ch) ?? []), w]);
+  }
+  return map;
 }
 
 export function wordsOf(vocab: VocabIndex, ids: readonly string[]): WordItem[] {
@@ -168,6 +186,8 @@ export interface PlanContext {
 
 export const SENTENCES_IN_GRAMMAR_LESSON = 8;
 export const SENTENCES_IN_PRACTICE_LESSON = 12;
+/** Words revisited by the final review lesson (the rest are sentences and kanji). */
+const LATE_REVIEW_WORDS = 8;
 
 const lessonOfGrammar = (id: string) => gates.lessonOfGrammar(id) ?? 0;
 
@@ -200,24 +220,39 @@ export function planLesson(
   ctx: PlanContext,
   vocab: VocabIndex,
   grammar?: GrammarIndex,
+  kanji?: KanjiIndex,
 ): LessonPlan {
   const due = dueReviews(ctx.cards, ctx.now);
   const covers = lesson.kind === 'test' ? lesson.covers : undefined;
   const coveredLessons = covers
     ? curriculum.lessons.filter((l) => l.n >= covers[0] && l.n <= covers[1])
     : [];
+  // Review lessons after the writing phase (L99, L100) cover the course, without kana drills.
+  const lateReview = lesson.kind === 'review' && lesson.n > KANA_PHASE_END;
   const covered = covers
     ? itemsOfGroups(
         coveredLessons.flatMap((l) => (l.newItem.type === 'kana' ? l.newItem.groups : [])),
       )
-    : lesson.kind === 'review'
+    : lesson.kind === 'review' && !lateReview
       ? kanaUpTo(lesson.n)
       : [];
+  const coveredKanji = kanji
+    ? covers
+      ? coveredLessons.flatMap((l) => kanji.byLesson.get(l.n) ?? [])
+      : lateReview
+        ? kanji.items.filter((k) => k.lesson !== null && k.lesson < lesson.n)
+        : []
+    : [];
   const coveredWords = covers
     ? coveredLessons.flatMap((l) => vocab.byLesson.get(l.n) ?? [])
-    : lesson.kind === 'review'
-      ? wordsUpTo(vocab, lesson.n - 1)
-      : [];
+    : lateReview
+      ? shuffle(
+          wordsUpTo(vocab, lesson.n - 1),
+          createRng(seedFrom(`w:${lesson.n}:${ctx.attempt ?? 0}`)),
+        ).slice(0, LATE_REVIEW_WORDS)
+      : lesson.kind === 'review'
+        ? wordsUpTo(vocab, lesson.n - 1)
+        : [];
 
   // Sentences: grammar and practice lessons work on their grammar point, tests on what they cover.
   const seed = `${lesson.n}:${ctx.attempt ?? 0}`;
@@ -240,6 +275,10 @@ export function planLesson(
       const own = coveredGrammar.filter((g) => s.grammar.includes(g));
       return grammarCardId(own.at(-1) ?? coveredGrammar.at(-1) ?? 'wa-desu');
     };
+  } else if (lateReview) {
+    sentences = shuffle(pool, createRng(seedFrom(seed)));
+    sentenceCount = SENTENCES_IN_PRACTICE_LESSON;
+    sentenceCard = (s) => cardFor(s, null, focusWords);
   } else if (focus && (lesson.kind === 'grammar' || lesson.kind === 'practice')) {
     const relevant = sentencesFor(pool, focus.id, focusWords);
     const rest = pool.filter((s) => !relevant.includes(s)).reverse();
@@ -248,8 +287,10 @@ export function planLesson(
       lesson.kind === 'grammar' ? SENTENCES_IN_GRAMMAR_LESSON : SENTENCES_IN_PRACTICE_LESSON;
   }
 
+  const finalTest = lesson.n === FINAL_LESSON;
   return buildLessonPlan({
-    lesson,
+    // The final lesson is planned like a test over everything taught.
+    lesson: finalTest ? { ...lesson, kind: 'test' } : lesson,
     lessonItems: lessonKana(lesson),
     coveredItems: covered,
     knownItems: kanaUpTo(lesson.n - 1),
@@ -273,5 +314,10 @@ export function planLesson(
     sentenceCard,
     dueSentences: dueSentenceReviews(due.grammarIds, grammar, lesson.n - 1, `due:${seed}`),
     chat: lesson.n >= CHAT_FROM_LESSON && (lesson.kind === 'grammar' || lesson.kind === 'practice'),
+    lessonKanji: kanji?.byLesson.get(lesson.n) ?? [],
+    knownKanji: kanji?.items.filter((k) => k.lesson !== null && k.lesson < lesson.n) ?? [],
+    coveredKanji,
+    dueKanji: kanjiOf(kanji, due.kanjiChars),
+    kanjiWords: kanjiWordsUpTo(vocab, lesson.n),
   });
 }

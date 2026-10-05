@@ -2,6 +2,8 @@ import { useEffect, useState } from 'preact/hooks';
 import '../styles/vocab.css';
 import { ReportDialog } from '../app/ReportDialog.tsx';
 import { loadCourse, type CourseData } from '../data/course-data.ts';
+import { loadKanji } from '../data/kanji-data.ts';
+import { kanjiUpTo, type KanjiIndex } from '../lesson/kanji.ts';
 import { loadLearning, type LearningSnapshot } from '../data/learning.ts';
 import { GRAMMAR_AVAILABLE, completedPrefix } from '../lesson/context.ts';
 import type { GrammarNoteItem } from '../lesson/grammar.ts';
@@ -13,6 +15,7 @@ import { EmptyState } from '../ui/EmptyState.tsx';
 import { GrammarNoteView } from '../ui/GrammarNoteView.tsx';
 import { MixedText } from '../ui/MixedText.tsx';
 import { Modal } from '../ui/Modal.tsx';
+import { KnownKanji } from '../ui/Written.tsx';
 
 export function GrammarScreen({ profile }: { profile: ProfileRecord }) {
   const { dataVersion } = useStore(appState);
@@ -21,6 +24,7 @@ export function GrammarScreen({ profile }: { profile: ProfileRecord }) {
   const [failed, setFailed] = useState(false);
   const [selected, setSelected] = useState<GrammarNoteItem | null>(null);
   const [reporting, setReporting] = useState(false);
+  const [kanji, setKanji] = useState<KanjiIndex | null>(null);
 
   useEffect(() => {
     void loadLearning(database(), profile.id).then(setSnap);
@@ -28,6 +32,7 @@ export function GrammarScreen({ profile }: { profile: ProfileRecord }) {
 
   useEffect(() => {
     if (GRAMMAR_AVAILABLE) loadCourse().then(setCourse, () => setFailed(true));
+    loadKanji().then(setKanji, () => undefined);
   }, []);
 
   if (!GRAMMAR_AVAILABLE) {
@@ -56,66 +61,68 @@ export function GrammarScreen({ profile }: { profile: ProfileRecord }) {
   const display = romajiDisplay(profile.settings.romaji, done + 1);
 
   return (
-    <div class="stack">
-      <p class="setting__hint">
-        {open.length
-          ? `Poznane punkty gramatyki: ${open.length} z ${notes.length}. Notkę można otworzyć po lekcji, która ją wprowadza.`
-          : `Pierwsza notka pojawi się w lekcji ${notes[0]?.lesson ?? ''}.`}
-      </p>
-      <div class="list">
-        {notes.map((n) => {
-          const unlocked = n.lesson <= done;
-          return (
-            <button
-              key={n.id}
-              class={`list__item grammar-row${unlocked ? '' : ' is-locked'}`}
-              disabled={!unlocked}
-              onClick={() => setSelected(n)}
-              aria-label={`${n.title}, lekcja ${n.lesson}${unlocked ? '' : ', jeszcze zamknięta'}`}
-            >
-              <span class="grow" aria-hidden="true">
-                <span class="grammar-row__title">
-                  <MixedText text={n.title} />
+    <KnownKanji.Provider value={kanji ? kanjiUpTo(kanji, done) : new Set()}>
+      <div class="stack">
+        <p class="setting__hint">
+          {open.length
+            ? `Poznane punkty gramatyki: ${open.length} z ${notes.length}. Notkę można otworzyć po lekcji, która ją wprowadza.`
+            : `Pierwsza notka pojawi się w lekcji ${notes[0]?.lesson ?? ''}.`}
+        </p>
+        <div class="list">
+          {notes.map((n) => {
+            const unlocked = n.lesson <= done;
+            return (
+              <button
+                key={n.id}
+                class={`list__item grammar-row${unlocked ? '' : ' is-locked'}`}
+                disabled={!unlocked}
+                onClick={() => setSelected(n)}
+                aria-label={`${n.title}, lekcja ${n.lesson}${unlocked ? '' : ', jeszcze zamknięta'}`}
+              >
+                <span class="grow" aria-hidden="true">
+                  <span class="grammar-row__title">
+                    <MixedText text={n.title} />
+                  </span>
+                  <span class="grammar-row__pattern">
+                    <MixedText text={n.pattern} />
+                  </span>
                 </span>
-                <span class="grammar-row__pattern">
-                  <MixedText text={n.pattern} />
+                <span class="chip" aria-hidden="true">
+                  L{n.lesson}
                 </span>
-              </span>
-              <span class="chip" aria-hidden="true">
-                L{n.lesson}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+              </button>
+            );
+          })}
+        </div>
 
-      <Modal
-        open={selected !== null}
-        onClose={() => setSelected(null)}
-        title={selected?.title ?? 'Gramatyka'}
-      >
-        {selected && (
-          <div class="stack">
-            <GrammarNoteView note={selected} display={display} />
-            {!selected.reviewed && (
-              <p class="setting__hint">
-                Notka napisana dla tej aplikacji i jeszcze nie sprawdzona przez nauczyciela. Jeśli
-                coś się nie zgadza, daj znać.
-              </p>
-            )}
-            <button class="btn btn--ghost" onClick={() => setReporting(true)}>
-              Zgłoś błąd w notce
-            </button>
-          </div>
-        )}
-      </Modal>
-      <ReportDialog
-        open={reporting}
-        onClose={() => setReporting(false)}
-        sentence={selected?.title ?? ''}
-        context={`gramatyka:${selected?.id ?? ''}`}
-        lessonN={selected?.lesson ?? null}
-      />
-    </div>
+        <Modal
+          open={selected !== null}
+          onClose={() => setSelected(null)}
+          title={selected?.title ?? 'Gramatyka'}
+        >
+          {selected && (
+            <div class="stack">
+              <GrammarNoteView note={selected} display={display} />
+              {!selected.reviewed && (
+                <p class="setting__hint">
+                  Notka napisana dla tej aplikacji i jeszcze nie sprawdzona przez nauczyciela. Jeśli
+                  coś się nie zgadza, daj znać.
+                </p>
+              )}
+              <button class="btn btn--ghost" onClick={() => setReporting(true)}>
+                Zgłoś błąd w notce
+              </button>
+            </div>
+          )}
+        </Modal>
+        <ReportDialog
+          open={reporting}
+          onClose={() => setReporting(false)}
+          sentence={selected?.title ?? ''}
+          context={`gramatyka:${selected?.id ?? ''}`}
+          lessonN={selected?.lesson ?? null}
+        />
+      </div>
+    </KnownKanji.Provider>
   );
 }

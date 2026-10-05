@@ -6,8 +6,8 @@
 import '../styles/vocab.css';
 import type { GrammarNoteItem } from '../lesson/grammar.ts';
 import type { RomajiDisplay } from '../lesson/romaji.ts';
-import { JpText } from './JpText.tsx';
 import { MixedText } from './MixedText.tsx';
+import { SentenceLine } from './Written.tsx';
 
 interface GrammarNoteViewProps {
   note: GrammarNoteItem;
@@ -39,15 +39,13 @@ export function GrammarNoteView({ note, display, part = 'all' }: GrammarNoteView
           <ul class="grammar-note__examples">
             {note.examples.map((ex) => (
               <li key={ex.id} class="grammar-note__example">
-                <JpText text={ex.kana} romaji={ex.romaji} display={display} />
-                {ex.ja !== ex.kana.replace(/\s+/g, '') && (
-                  <p class="example__written">
-                    Zapis z kanji:{' '}
-                    <span class="jp" lang="ja">
-                      {ex.ja}
-                    </span>
-                  </p>
-                )}
+                <SentenceLine
+                  ja={ex.ja}
+                  kana={ex.kana}
+                  romaji={ex.romaji}
+                  display={display}
+                  showWritten
+                />
                 <p class="example__pl">{ex.pl}</p>
               </li>
             ))}

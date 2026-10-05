@@ -13,9 +13,10 @@ import { Modal } from '../ui/Modal.tsx';
 import { Segmented } from '../ui/Segmented.tsx';
 import { SpeakButton } from '../ui/SpeakButton.tsx';
 import { StrokeOrder } from '../ui/StrokeOrder.tsx';
+import { KanjiChart } from './KanjiChart.tsx';
 import { MixedText } from '../ui/MixedText.tsx';
 
-type Script = 'hiragana' | 'katakana';
+type Script = 'hiragana' | 'katakana' | 'kanji';
 type View = 'chart' | 'practice';
 type KanaChar = KanaGroup['chars'][number];
 
@@ -122,64 +123,75 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
         options={[
           { value: 'hiragana', label: 'Hiragana' },
           { value: 'katakana', label: 'Katakana' },
+          { value: 'kanji', label: 'Kanji' },
         ]}
       />
-      <Segmented
-        label="Widok"
-        value={view}
-        onChange={setView}
-        options={[
-          { value: 'chart', label: 'Tabela' },
-          { value: 'practice', label: 'Ćwiczenia' },
-        ]}
-      />
-      <div class="alphabet-stats" aria-live="polite">
-        <span>
-          Poznane znaki: {known} z {total}
-        </span>
-        <span>Dotknij znaku</span>
-      </div>
-
-      {view === 'chart' ? (
-        SECTIONS.map((section) => {
-          const sectionGroups = groups.filter((g) => section.kinds.includes(g.kind));
-          if (!sectionGroups.length) return null;
-          return (
-            <section key={section.title} class="kana-section" aria-label={section.title}>
-              <h2 class="kana-section__title">{section.title}</h2>
-              <div class={`kana-grid kana-grid--${section.columns}`}>
-                {sectionGroups.flatMap((g) =>
-                  (section.columns === 5 ? gojuonRows(g.chars) : chunk(g.chars, 3)).flatMap(
-                    (row, r) => row.map((c, i) => cell(c, g, `${g.id}-${r}-${i}`)),
-                  ),
-                )}
-              </div>
-            </section>
-          );
-        })
+      {script === 'kanji' ? (
+        <KanjiChart done={snap ? completedPrefix(snap.lessons) : 0} />
       ) : (
-        <section class="card stack">
-          <h2 class="display" style={{ fontSize: 'var(--fs-lg)' }}>
-            Ćwiczenia z kany
-          </h2>
-          <p class="muted">
-            Dodatkowe ćwiczenia ze wszystkich poznanych znaków. Nie wpływają na odblokowanie lekcji,
-            więc ćwicz, ile chcesz.
-          </p>
-          <button
-            class="btn btn--primary btn--block"
-            disabled={learned.size < 4}
-            onClick={() => navigate('/cwicz/kana')}
-          >
-            Ćwicz rozpoznawanie i pisanie
-          </button>
-          <button class="btn btn--block" disabled={!due} onClick={() => navigate('/powtorki/kana')}>
-            Powtórki ({due})
-          </button>
-          {learned.size < 4 && (
-            <p class="setting__hint">Ćwiczenia odblokują się po pierwszej lekcji.</p>
+        <>
+          <Segmented
+            label="Widok"
+            value={view}
+            onChange={setView}
+            options={[
+              { value: 'chart', label: 'Tabela' },
+              { value: 'practice', label: 'Ćwiczenia' },
+            ]}
+          />
+          <div class="alphabet-stats" aria-live="polite">
+            <span>
+              Poznane znaki: {known} z {total}
+            </span>
+            <span>Dotknij znaku</span>
+          </div>
+
+          {view === 'chart' ? (
+            SECTIONS.map((section) => {
+              const sectionGroups = groups.filter((g) => section.kinds.includes(g.kind));
+              if (!sectionGroups.length) return null;
+              return (
+                <section key={section.title} class="kana-section" aria-label={section.title}>
+                  <h2 class="kana-section__title">{section.title}</h2>
+                  <div class={`kana-grid kana-grid--${section.columns}`}>
+                    {sectionGroups.flatMap((g) =>
+                      (section.columns === 5 ? gojuonRows(g.chars) : chunk(g.chars, 3)).flatMap(
+                        (row, r) => row.map((c, i) => cell(c, g, `${g.id}-${r}-${i}`)),
+                      ),
+                    )}
+                  </div>
+                </section>
+              );
+            })
+          ) : (
+            <section class="card stack">
+              <h2 class="display" style={{ fontSize: 'var(--fs-lg)' }}>
+                Ćwiczenia z kany
+              </h2>
+              <p class="muted">
+                Dodatkowe ćwiczenia ze wszystkich poznanych znaków. Nie wpływają na odblokowanie
+                lekcji, więc ćwicz, ile chcesz.
+              </p>
+              <button
+                class="btn btn--primary btn--block"
+                disabled={learned.size < 4}
+                onClick={() => navigate('/cwicz/kana')}
+              >
+                Ćwicz rozpoznawanie i pisanie
+              </button>
+              <button
+                class="btn btn--block"
+                disabled={!due}
+                onClick={() => navigate('/powtorki/kana')}
+              >
+                Powtórki ({due})
+              </button>
+              {learned.size < 4 && (
+                <p class="setting__hint">Ćwiczenia odblokują się po pierwszej lekcji.</p>
+              )}
+            </section>
           )}
-        </section>
+        </>
       )}
 
       <Modal

@@ -5,7 +5,7 @@
       "id": "wa-desu",
       "title": "Partykuła は i です",
       "pattern": "X は Y です",
-      "note": "Najprostsze japońskie zdanie mówi, kim lub czym coś jest: わたしは がくせいです, czyli „jestem studentem” albo „jestem studentką”. Partykuła は oznacza temat, czyli to, o czym mowa, i w tej roli zawsze czyta się „wa”. です na końcu działa jak grzeczne „jest” lub „to”.\n\nAni です, ani rzeczownik się nie odmieniają: です pasuje do „jestem”, „jesteś” i „są”, a がくせい zostaje bez zmian tam, gdzie po polsku jest „studentem” lub „studentką”. Gdy wiadomo, o kim mowa, temat się pomija, więc samo がくせいです też jest pełnym zdaniem.",
+      "note": "Najprostsze japońskie zdanie mówi, kim lub czym coś jest: わたしは がくせいです, czyli „jestem studentem” albo „jestem studentką”. Partykuła は oznacza temat, czyli to, o czym mowa, i w tej roli zawsze czyta się „wa”. です na końcu działa jak grzeczne „jest” lub „to”.\n\nです nie zmienia się przez osoby: pasuje do „jestem”, „jesteś” i „są”, a rzeczownik nie odmienia się przez przypadki, więc がくせい zostaje bez zmian tam, gdzie po polsku jest „studentem” lub „studentką”. Gdy wiadomo, o kim mowa, temat się pomija, więc samo がくせいです też jest pełnym zdaniem.",
       "examples": [
         {
           "ja": "私はポーランド人です。",
@@ -48,7 +48,7 @@
           "pl": "Czy nauczyciel jest Japończykiem?"
         }
       ],
-      "typicalMistake": "Błąd: どこは えきですか, z „gdzie” na początku jak po polsku. Poprawnie: えきは どこですか, bo słowo pytające stoi tam, gdzie będzie odpowiedź, a nie na początku zdania z は.",
+      "typicalMistake": "Błąd: どこは えきですか, z „gdzie” na początku jak po polsku. Poprawnie: えきは どこですか, bo słowo pytające nie może być tematem z は i stoi tam, gdzie w odpowiedzi pojawi się informacja.",
       "reviewed": false
     },
     {
@@ -105,7 +105,7 @@
       "id": "no-mo",
       "title": "Partykuły の i も",
       "pattern": "X の N, X も Y です",
-      "note": "Partykuła の łączy dwa rzeczowniki, a pierwszy określa drugi, najczęściej jako właściciel: わたしの かばん (moja torba), せんせいの じしょ (słownik nauczyciela). Kolejność jest odwrotna niż w polskim dopełniaczu: najpierw właściciel z の, potem rzecz.\n\nPartykuła も znaczy „też” i zajmuje miejsce は: ははも せんせいです (mama też jest nauczycielką). Rzeczowniki łączy też と („i”, gdy wymienia się wszystko: ちちと はは) oraz や („i”, gdy to tylko przykłady).",
+      "note": "Partykuła の łączy dwa rzeczowniki, a pierwszy określa drugi, najczęściej jako właściciel: わたしの かばん (moja torba), せんせいの じしょ (słownik nauczyciela). Kolejność jest odwrotna niż w polskim dopełniaczu: najpierw właściciel z の, potem rzecz.\n\nPartykuła も znaczy „też” i zajmuje miejsce は: ははも せんせいです (mama też jest nauczycielką). Rzeczowniki łączą też partykuły と („i”, gdy wymienia się wszystko: ちちと はは) oraz や („i między innymi”, gdy podaje się tylko przykłady).",
       "examples": [
         {
           "ja": "これは私のかばんです。",
@@ -180,7 +180,7 @@
       "id": "de-place-means",
       "title": "Partykuła で",
       "pattern": "N で V-ます",
-      "note": "Partykuła で ma dwa główne zadania. Po pierwsze oznacza miejsce, w którym coś się robi: レストランで ごはんを たべます (jem w restauracji). Po drugie oznacza środek lub narzędzie, czyli to, co po polsku wyraża narzędnik: でんしゃで いきます (jadę pociągiem), じてんしゃで きます (przyjeżdżam rowerem). Cel ruchu nadal oznaczają に i へ, a で opisuje miejsce, gdzie trwa czynność.",
+      "note": "Partykuła で ma dwa główne zadania. Po pierwsze oznacza miejsce, w którym coś się robi: レストランで ごはんを たべます (jem w restauracji). Po drugie oznacza środek lub narzędzie, czyli to, co po polsku wyraża narzędnik: でんしゃで いきます (jadę pociągiem), じてんしゃで きます (przyjeżdżam rowerem). Cel ruchu nadal oznaczają に i へ, a で opisuje miejsce, w którym odbywa się czynność.",
       "examples": [
         {
           "ja": "飛行機で日本へ行きます。",
@@ -230,7 +230,7 @@
       "id": "i-adjectives",
       "title": "Przymiotniki na い",
       "pattern": "たかい N, N は たかいです",
-      "note": "Przymiotniki na い kończą się na い i mogą stać przed rzeczownikiem (たかい ほん, droga książka) albo na końcu zdania przed です (この ほんは たかいです). W przeciwieństwie do polskich nie zmieniają się przez rodzaj, liczbę ani przypadek. Za to same niosą przeczenie i czas przeszły: końcowe い zamienia się na くない (たかくないです, to nie jest drogie), かった (たかかったです, to było drogie) lub くなかった (たかくなかったです, to nie było drogie), a です zostaje bez zmian. Wyjątkiem jest いい (dobry), które odmienia się od よ: よくないです, よかったです.",
+      "note": "Przymiotniki na い, jak たかい czy おいしい, mogą stać przed rzeczownikiem (たかい ほん, droga książka) albo na końcu zdania przed です (この ほんは たかいです). W przeciwieństwie do polskich nie zmieniają się przez rodzaj, liczbę ani przypadek. Za to same niosą przeczenie i czas przeszły: końcowe い zamienia się na くない (たかくないです, to nie jest drogie), かった (たかかったです, to było drogie) lub くなかった (たかくなかったです, to nie było drogie), a です zostaje bez zmian. Wyjątkiem jest いい (dobry), które w odmianie zmienia się w よ: よくないです, よかったです.",
       "examples": [
         {
           "ja": "姉は大きいかばんを買いました。",

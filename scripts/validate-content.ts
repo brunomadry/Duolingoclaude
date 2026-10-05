@@ -26,6 +26,7 @@ const report = validateContent({
   grammar: load('grammar.json'),
   strokes: load('strokes.json'),
   kanji: load('kanji.json'),
+  kanjiGlosses: load('kanji.pl.json'),
   examples: load('examples.json'),
 });
 

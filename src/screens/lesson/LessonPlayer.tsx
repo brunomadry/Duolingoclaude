@@ -5,6 +5,7 @@ import type { ProfileRecord } from '../../shared/api.ts';
 import { navigate } from '../../app/router.ts';
 import { applyGrades, loadLearning, recordCompletion, seedCards } from '../../data/learning.ts';
 import { loadCourse, type CourseData } from '../../data/course-data.ts';
+import { loadKanji } from '../../data/kanji-data.ts';
 import {
   buildLessonPlan,
   gradesFromResults,
@@ -20,6 +21,8 @@ import {
   completedPrefix,
   dueReviews,
   dueSentenceReviews,
+  kanjiOf,
+  kanjiWordsUpTo,
   particlesUpTo,
   kanaUpTo,
   lessonByN,
@@ -35,7 +38,8 @@ import { KANA_PHASE_END } from '../../shared/constants.ts';
 import { romajiDisplay } from '../../lesson/romaji.ts';
 import { grammarCardId } from '../../lesson/sentence-exercises.ts';
 import { sentencesUpTo, type GrammarNoteItem } from '../../lesson/grammar.ts';
-import { vocabCardId, wordsUpTo } from '../../lesson/vocab.ts';
+import { kanjiCardId, kanjiUpTo, type KanjiIndex } from '../../lesson/kanji.ts';
+import { vocabCardId, wordsUpTo, type WordItem } from '../../lesson/vocab.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
 import { VOICE_GRACE_MS, getSpeechStatus, subscribeSpeech } from '../../lib/speech.ts';
@@ -43,11 +47,13 @@ import { Mascot } from '../../mascot/Mascot.tsx';
 import { aiExercise, database, notifyLocalChange } from '../../state/app.ts';
 import { CloseIcon } from '../../ui/icons.tsx';
 import { Modal } from '../../ui/Modal.tsx';
+import { KnownKanji } from '../../ui/Written.tsx';
 import { Celebration } from './Celebration.tsx';
 import { ExerciseView } from './ExerciseView.tsx';
 import { SentenceExerciseView } from './SentenceExerciseView.tsx';
 import { ChatStep } from './ChatStep.tsx';
 import { GrammarIntro } from './GrammarIntro.tsx';
+import { KanjiIntro } from './KanjiIntro.tsx';
 import { KanaIntro } from './KanaIntro.tsx';
 import { WordIntro } from './WordIntro.tsx';
 
@@ -66,6 +72,7 @@ const STEP_LABELS: Record<Step['kind'], string> = {
   new: 'Nowa rzecz',
   grammar: 'Nowa rzecz',
   words: 'Nowe słówka',
+  kanji: 'Kanji',
   practice: 'Ćwiczenie',
   chat: 'Rozmowa',
   summary: 'Podsumowanie',
@@ -167,6 +174,8 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   /** Lesson level for the romaji setting ("auto" fades romaji after the writing phase). */
   const [level, setLevel] = useState(1);
   const [notes, setNotes] = useState<ReadonlyMap<string, GrammarNoteItem>>(new Map());
+  const [kanjiIndex, setKanjiIndex] = useState<KanjiIndex | null>(null);
+  const [kanjiWords, setKanjiWords] = useState<ReadonlyMap<string, readonly WordItem[]>>(new Map());
   const requeued = useRef(new Set<string>());
   const lesson = n ? lessonByN(n) : undefined;
 
@@ -174,20 +183,24 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const [snapshot, voice, course] = await Promise.all([
+      const [snapshot, voice, course, kanji] = await Promise.all([
         loadLearning(database(), profile.id),
         speechAvailable(),
         loadCourse().catch(() => null),
+        loadKanji().catch(() => undefined),
       ]);
       if (cancelled) return;
       if (!course) return setProblem(VOCAB_FAILED_TEXT);
       const { vocab, grammar } = course;
       setNotes(grammar.notes);
+      setKanjiIndex(kanji ?? null);
       // Listening exercises need a voice and the profile's sound switched on.
       const speech = voice && profile.settings.sound;
       const now = Date.now();
       const done = completedPrefix(snapshot.lessons);
-      setLevel(mode === 'lesson' && lesson ? lesson.n : done + 1);
+      const levelNow = mode === 'lesson' && lesson ? lesson.n : done + 1;
+      setLevel(levelNow);
+      setKanjiWords(kanjiWordsUpTo(vocab, levelNow));
       let next: LessonPlan;
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
@@ -213,12 +226,13 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           },
           vocab,
           grammar,
+          kanji,
         );
       } else if (mode === 'reviews') {
         const due = dueReviews(snapshot.cards, now, { filter });
         const dueWords = wordsOf(vocab, due.wordIds);
         const dueSentences = dueSentenceReviews(due.grammarIds, grammar, done, `reviews:${now}`);
-        if (!due.items.length && !dueWords.length && !dueSentences.length)
+        if (!due.items.length && !dueWords.length && !dueSentences.length && !due.kanjiChars.length)
           return setProblem('Brak powtórek na teraz. Wróć później.');
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Powtórki', newItem: { type: 'none' } },
@@ -235,6 +249,9 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           dueSentences,
           sentencePool: sentencesUpTo(grammar, done),
           particles: particlesUpTo(done),
+          dueKanji: kanjiOf(kanji, due.kanjiChars),
+          knownKanji: kanji?.items.filter((k) => k.lesson !== null && k.lesson <= done) ?? [],
+          kanjiWords: kanjiWordsUpTo(vocab, done),
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
@@ -290,6 +307,15 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   }, []);
 
   const step = plan?.steps[stepIndex];
+  // Kanji count as known once taught: earlier lessons, plus this lesson's after its kanji step.
+  const kanjiStepDone = !plan?.steps.slice(stepIndex).some((st) => st.kind === 'kanji');
+  const knownKanji = useMemo(
+    () =>
+      kanjiIndex
+        ? kanjiUpTo(kanjiIndex, mode === 'lesson' && kanjiStepDone ? level : level - 1)
+        : new Set<string>(),
+    [kanjiIndex, level, mode, kanjiStepDone],
+  );
 
   // The queue is derived from the step itself, so it can never lag a render behind it.
   const queue = useMemo(() => {
@@ -343,6 +369,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       (s) =>
         s.kind === 'new' ||
         s.kind === 'grammar' ||
+        s.kind === 'kanji' ||
         s.kind === 'words' ||
         (s.kind === 'practice' && s.exercises.length > 0),
     );
@@ -392,6 +419,14 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       }
       if (step.kind === 'grammar' && mode === 'lesson') {
         await seedCards(database(), profile.id, [grammarCardId(step.note.id)], Date.now());
+      }
+      if (step.kind === 'kanji' && mode === 'lesson') {
+        await seedCards(
+          database(),
+          profile.id,
+          step.items.map((k) => kanjiCardId(k.char)),
+          Date.now(),
+        );
       }
       if (step.kind === 'words' && mode === 'lesson') {
         await seedCards(
@@ -444,6 +479,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
     if (
       step.kind === 'new' ||
       step.kind === 'grammar' ||
+      step.kind === 'kanji' ||
       step.kind === 'words' ||
       step.kind === 'chat'
     )
@@ -502,112 +538,116 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
   }
 
   return (
-    <main class="player">
-      <header class="player__header">
-        <button
-          class="icon-button"
-          onClick={() => setConfirmExit(true)}
-          aria-label="Zakończ lekcję"
-        >
-          <CloseIcon />
-        </button>
-        <ol class="player__steps" aria-label="Kroki lekcji">
-          {plan.steps.map((s, i) => (
-            <li
-              key={s.kind}
-              class={`player__step${i < stepIndex ? ' is-done' : i === stepIndex ? ' is-current' : ''}`}
-              aria-current={i === stepIndex ? 'step' : undefined}
-            >
-              <span class="player__step-bar">
-                {i === stepIndex && (
-                  <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />
-                )}
-              </span>
-              <span class="player__step-label">
-                {s.kind === 'practice' && s.mode === 'test' ? 'Test' : STEP_LABELS[s.kind]}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </header>
+    <KnownKanji.Provider value={knownKanji}>
+      <main class="player">
+        <header class="player__header">
+          <button
+            class="icon-button"
+            onClick={() => setConfirmExit(true)}
+            aria-label="Zakończ lekcję"
+          >
+            <CloseIcon />
+          </button>
+          <ol class="player__steps" aria-label="Kroki lekcji">
+            {plan.steps.map((s, i) => (
+              <li
+                key={s.kind}
+                class={`player__step${i < stepIndex ? ' is-done' : i === stepIndex ? ' is-current' : ''}`}
+                aria-current={i === stepIndex ? 'step' : undefined}
+              >
+                <span class="player__step-bar">
+                  {i === stepIndex && (
+                    <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />
+                  )}
+                </span>
+                <span class="player__step-label">
+                  {s.kind === 'practice' && s.mode === 'test' ? 'Test' : STEP_LABELS[s.kind]}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </header>
 
-      <div class="player__body">
-        <h1 class="visually-hidden">
-          {plan.title}: {STEP_LABELS[step.kind]}
-        </h1>
-        {step.kind === 'review' && position === 0 && step.dueTotal > step.exercises.length && (
-          <p class="muted player__hint">
-            Dziś {step.exercises.length} z {step.dueTotal} zaległych powtórek. Reszta poczeka, bez
-            stresu.
-          </p>
-        )}
-        {step.kind === 'new' ? (
-          <KanaIntro items={step.items} groupIds={step.groupIds} onDone={() => void nextStep()} />
-        ) : step.kind === 'grammar' ? (
-          <GrammarIntro
-            note={step.note}
-            display={romajiDisplay(profile.settings.romaji, level)}
-            onDone={() => void nextStep()}
-          />
-        ) : step.kind === 'chat' ? (
-          <ChatStep
-            lessonN={plan.n}
-            display={romajiDisplay(profile.settings.romaji, level)}
-            sound={profile.settings.sound}
-            notes={notes}
-            onDone={() => void nextStep()}
-          />
-        ) : step.kind === 'words' ? (
-          <WordIntro
-            words={step.words}
-            display={romajiDisplay(profile.settings.romaji, level)}
-            onDone={() => void nextStep()}
-          />
-        ) : current && isSentenceExercise(current) ? (
-          <SentenceExerciseView
-            key={current.id}
-            exercise={current}
-            sound={profile.settings.sound}
-            display={romajiDisplay(profile.settings.romaji, level)}
-            onAnswered={onAnswered}
-            onNext={onNextExercise}
-            busy={saving}
-          />
-        ) : current ? (
-          <ExerciseView
-            key={current.id}
-            exercise={current}
-            sound={profile.settings.sound}
-            onAnswered={onAnswered}
-            onNext={onNextExercise}
-            busy={saving}
-          />
-        ) : (
-          <div class="player__empty stack" style={{ alignItems: 'center' }}>
-            <p class="muted">Tu nie ma nic do zrobienia.</p>
-            <button class="btn btn--primary" onClick={() => void nextStep()}>
-              Dalej
+        <div class="player__body">
+          <h1 class="visually-hidden">
+            {plan.title}: {STEP_LABELS[step.kind]}
+          </h1>
+          {step.kind === 'review' && position === 0 && step.dueTotal > step.exercises.length && (
+            <p class="muted player__hint">
+              Dziś {step.exercises.length} z {step.dueTotal} zaległych powtórek. Reszta poczeka, bez
+              stresu.
+            </p>
+          )}
+          {step.kind === 'new' ? (
+            <KanaIntro items={step.items} groupIds={step.groupIds} onDone={() => void nextStep()} />
+          ) : step.kind === 'grammar' ? (
+            <GrammarIntro
+              note={step.note}
+              display={romajiDisplay(profile.settings.romaji, level)}
+              onDone={() => void nextStep()}
+            />
+          ) : step.kind === 'kanji' ? (
+            <KanjiIntro items={step.items} words={kanjiWords} onDone={() => void nextStep()} />
+          ) : step.kind === 'chat' ? (
+            <ChatStep
+              lessonN={plan.n}
+              display={romajiDisplay(profile.settings.romaji, level)}
+              sound={profile.settings.sound}
+              notes={notes}
+              onDone={() => void nextStep()}
+            />
+          ) : step.kind === 'words' ? (
+            <WordIntro
+              words={step.words}
+              display={romajiDisplay(profile.settings.romaji, level)}
+              onDone={() => void nextStep()}
+            />
+          ) : current && isSentenceExercise(current) ? (
+            <SentenceExerciseView
+              key={current.id}
+              exercise={current}
+              sound={profile.settings.sound}
+              display={romajiDisplay(profile.settings.romaji, level)}
+              onAnswered={onAnswered}
+              onNext={onNextExercise}
+              busy={saving}
+            />
+          ) : current ? (
+            <ExerciseView
+              key={current.id}
+              exercise={current}
+              sound={profile.settings.sound}
+              onAnswered={onAnswered}
+              onNext={onNextExercise}
+              busy={saving}
+            />
+          ) : (
+            <div class="player__empty stack" style={{ alignItems: 'center' }}>
+              <p class="muted">Tu nie ma nic do zrobienia.</p>
+              <button class="btn btn--primary" onClick={() => void nextStep()}>
+                Dalej
+              </button>
+            </div>
+          )}
+        </div>
+
+        <Modal
+          open={confirmExit}
+          onClose={() => setConfirmExit(false)}
+          title={EXIT_COPY[mode].title}
+          variant="dialog"
+        >
+          <div class="stack">
+            <p>{EXIT_COPY[mode].text}</p>
+            <button class="btn btn--primary btn--block" onClick={() => setConfirmExit(false)}>
+              {EXIT_COPY[mode].stay}
+            </button>
+            <button class="btn btn--block" onClick={exit}>
+              {EXIT_COPY[mode].leave}
             </button>
           </div>
-        )}
-      </div>
-
-      <Modal
-        open={confirmExit}
-        onClose={() => setConfirmExit(false)}
-        title={EXIT_COPY[mode].title}
-        variant="dialog"
-      >
-        <div class="stack">
-          <p>{EXIT_COPY[mode].text}</p>
-          <button class="btn btn--primary btn--block" onClick={() => setConfirmExit(false)}>
-            {EXIT_COPY[mode].stay}
-          </button>
-          <button class="btn btn--block" onClick={exit}>
-            {EXIT_COPY[mode].leave}
-          </button>
-        </div>
-      </Modal>
-    </main>
+        </Modal>
+      </main>
+    </KnownKanji.Provider>
   );
 }

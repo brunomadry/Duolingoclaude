@@ -7,13 +7,7 @@
  */
 import type { z } from 'zod';
 import { KANA_PHASE_END, MAX_WORDS_PER_LESSON } from './constants.ts';
-import {
-  FORM_GATES,
-  GRAMMAR_KEY_GATES,
-  checkTokens,
-  createGates,
-  readingProblems,
-} from './grammar-gates.ts';
+import { checkTokens, createGates, grammarOfTokens, readingProblems } from './grammar-gates.ts';
 import { createLexicon, tokenize } from './jp-words.ts';
 import {
   Curriculum,
@@ -22,6 +16,7 @@ import {
   ExampleFile,
   KanaFile,
   KanjiFile,
+  KanjiGlossFile,
   SentenceFile,
   SourcesFile,
   StrokesFile,
@@ -39,6 +34,7 @@ export interface RawContent {
   grammar?: unknown;
   strokes?: unknown;
   kanji?: unknown;
+  kanjiGlosses?: unknown;
   examples?: unknown;
 }
 
@@ -82,7 +78,12 @@ export function validateContent(raw: RawContent): ValidationReport {
     raw.grammar === undefined ? undefined : parse(GrammarFile, raw.grammar, 'grammar.json', errors);
   const strokes =
     raw.strokes === undefined ? undefined : parse(StrokesFile, raw.strokes, 'strokes.json', errors);
-  if (raw.kanji !== undefined) parse(KanjiFile, raw.kanji, 'kanji.json', errors);
+  const kanji =
+    raw.kanji === undefined ? undefined : parse(KanjiFile, raw.kanji, 'kanji.json', errors);
+  const kanjiGlosses =
+    raw.kanjiGlosses === undefined
+      ? undefined
+      : parse(KanjiGlossFile, raw.kanjiGlosses, 'kanji.pl.json', errors);
   const examples =
     raw.examples === undefined
       ? undefined
@@ -141,6 +142,24 @@ export function validateContent(raw: RawContent): ValidationReport {
     if (unreviewed)
       warnings.push(`grammar.json: ${unreviewed} note(s) not yet reviewed by the user`);
   }
+
+  // Kanji taught by lessons: known N5 kanji, taught once, with stroke data and a Polish meaning.
+  const kanjiLesson = new Map<string, number>();
+  for (const l of curriculum.lessons) {
+    const taught = [...(l.kanji ?? []), ...(l.newItem.type === 'kanji' ? l.newItem.kanji : [])];
+    for (const ch of taught) {
+      const where = `curriculum.json: lesson ${l.n} kanji ${ch}`;
+      if (kanjiLesson.has(ch))
+        errors.push(`${where} is taught twice (also lesson ${kanjiLesson.get(ch)})`);
+      kanjiLesson.set(ch, l.n);
+      if (kanji && !kanji.kanji.some((k) => k.char === ch))
+        errors.push(`${where} is not in kanji.json`);
+      if (strokes && !strokes.chars[ch]) errors.push(`${where} has no stroke data`);
+      if (kanjiGlosses && !kanjiGlosses.kanji[ch]) errors.push(`${where} has no Polish meaning`);
+    }
+  }
+  if (kanjiLesson.size && kanji && !kanjiGlosses)
+    errors.push('kanji.pl.json missing: taught kanji need Polish meanings');
 
   // Vocabulary: every word a lesson introduces must exist, be introduced once, and have a Polish gloss.
   const lessonOfWord = new Map<string, number>();
@@ -332,23 +351,10 @@ export function sentenceProblems(
 
 const VERB_POS = /^v(?:1|5|k|s-i|z)/;
 
-/** Grammar ids a tokenized sentence uses (function words and inflections). */
+/** Grammar ids a tokenized sentence uses (see grammarOfTokens). */
 export function usedGrammar(
   tokens: ReturnType<typeof tokenize>,
   posOfWord: ReadonlyMap<string, readonly string[]>,
 ): Set<string> {
-  const used = new Set<string>();
-  for (const t of tokens) {
-    if (t.kind === 'grammar' && t.grammar) {
-      const id = GRAMMAR_KEY_GATES[t.grammar];
-      if (id) used.add(id);
-    }
-    if (t.kind === 'word' && t.wordIds[0]) {
-      const verb = (posOfWord.get(t.wordIds[0]) ?? []).some((p) => VERB_POS.test(p));
-      const form = t.form ?? (verb ? 'dict' : undefined);
-      const id = form ? FORM_GATES[form] : null;
-      if (id) used.add(id);
-    }
-  }
-  return used;
+  return grammarOfTokens(tokens, (id) => (posOfWord.get(id) ?? []).some((p) => VERB_POS.test(p)));
 }

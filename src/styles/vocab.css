@@ -90,8 +90,7 @@
   font-size: var(--fs-md);
 }
 .word-card__senses li:first-child {
-  font-size: var(--fs-lg);
-  font-weight: 600;
+  font-weight: 700;
 }
 .word-card__meta {
   display: flex;
@@ -399,4 +398,69 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: var(--space-2);
+}
+
+/* Kanji. */
+.kanji-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+.kanji-card__char {
+  font-size: 128px;
+  line-height: 1.05;
+}
+.kanji-card__meaning {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.kanji-card__readings {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+  text-align: left;
+}
+.kanji-card__readings dt {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.kanji-card__readings dd {
+  margin: 0;
+  font-size: var(--fs-md);
+}
+.kanji-card__label {
+  margin: 0;
+}
+.kanji-card__words {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.kanji-card__words li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  justify-content: center;
+}
+.kanji-card__words .jp {
+  font-size: var(--fs-lg);
+}
+ruby rt {
+  font-size: 0.45em;
+  color: var(--text-muted);
+}
+.sentence-line {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.sentence-line__kana {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
 }

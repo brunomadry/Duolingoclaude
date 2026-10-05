@@ -749,7 +749,7 @@
         "grammarId": "plain-da"
       },
       "words": ["hontou", "shukudai", "mondai", "jugyou", "kanji", "kotoba", "imi"],
-      "kanji": []
+      "kanji": ["一", "二"]
     },
     {
       "n": 62,
@@ -761,7 +761,7 @@
         "type": "none"
       },
       "words": ["shitsumon", "kotaeru", "peeji", "kami", "e", "iro", "shikashi"],
-      "kanji": []
+      "kanji": ["三", "四"]
     },
     {
       "n": 63,
@@ -786,7 +786,7 @@
         "grammarId": "plain-dictionary"
       },
       "words": ["dekiru", "hiku-play-instrument", "gitaa", "oyogu", "eigo", "hashiru", "noboru"],
-      "kanji": []
+      "kanji": ["五", "六"]
     },
     {
       "n": 65,
@@ -798,7 +798,7 @@
         "type": "none"
       },
       "words": ["narau", "oboeru", "renshuu", "tsukau", "kariru", "kaesu", "uru"],
-      "kanji": []
+      "kanji": ["七", "八"]
     },
     {
       "n": 66,
@@ -811,7 +811,7 @@
         "grammarId": "plain-nai"
       },
       "words": ["wasureru", "abunai", "iru-need", "suwaru", "tatsu", "oku", "kesu"],
-      "kanji": []
+      "kanji": ["九", "十"]
     },
     {
       "n": 67,
@@ -823,7 +823,7 @@
         "type": "none"
       },
       "words": ["tsukeru", "akeru", "shimeru-close", "mado", "doa", "denki", "soto"],
-      "kanji": []
+      "kanji": ["百", "千"]
     },
     {
       "n": 68,
@@ -836,7 +836,7 @@
         "grammarId": "plain-ta"
       },
       "words": ["umareru", "nakusu", "yuube", "ototoi", "hiku-pull", "owaru", "hajimaru"],
-      "kanji": []
+      "kanji": ["万", "円"]
     },
     {
       "n": 69,
@@ -848,7 +848,7 @@
         "type": "none"
       },
       "words": ["kesa", "sanpo", "sentaku", "souji", "komaru", "chigau", "kitanai"],
-      "kanji": []
+      "kanji": ["日", "月"]
     },
     {
       "n": 70,
@@ -873,7 +873,7 @@
         "grammarId": "plain-nakatta"
       },
       "words": ["tegami", "kitte", "dasu", "hako", "nimotsu", "ageru", "yobu"],
-      "kanji": []
+      "kanji": ["年", "時"]
     },
     {
       "n": 72,
@@ -885,7 +885,7 @@
         "type": "none"
       },
       "words": ["kippu", "chizu", "kakaru", "toru-take", "zasshi", "nyuusu", "ryoushin"],
-      "kanji": []
+      "kanji": ["分", "半"]
     },
     {
       "n": 73,
@@ -898,7 +898,7 @@
         "grammarId": "te-iru"
       },
       "words": ["sumu", "shiru", "kekkon", "motsu", "tsukareru", "denwa", "kakeru"],
-      "kanji": []
+      "kanji": ["今", "午"]
     },
     {
       "n": 74,
@@ -910,7 +910,7 @@
         "type": "none"
       },
       "words": ["furu", "petto", "doubutsu", "supootsu", "niwa", "ireru", "reizouko"],
-      "kanji": []
+      "kanji": ["前", "後"]
     },
     {
       "n": 75,
@@ -923,7 +923,7 @@
         "grammarId": "adjectives-plain"
       },
       "words": ["wakai", "nagai", "mijikai", "me", "te", "ashi", "hana-nose"],
-      "kanji": []
+      "kanji": ["間", "毎"]
     },
     {
       "n": 76,
@@ -935,7 +935,7 @@
         "type": "none"
       },
       "words": ["aoi", "akai", "shiroi", "kuroi", "kiiroi", "midori", "kawaii"],
-      "kanji": []
+      "kanji": ["人", "子"]
     },
     {
       "n": 77,
@@ -960,7 +960,7 @@
         "grammarId": "casual-speech"
       },
       "words": ["maishuu", "mata", "gomennasai", "minna", "yasashii", "tanoshii", "urusai"],
-      "kanji": []
+      "kanji": ["父", "母"]
     },
     {
       "n": 79,
@@ -972,7 +972,7 @@
         "type": "none"
       },
       "words": ["konna", "sonna", "daisuki", "sugu", "amai", "takusan", "taihen"],
-      "kanji": []
+      "kanji": ["友", "名"]
     },
     {
       "n": 80,
@@ -985,7 +985,7 @@
         "grammarId": "hoshii"
       },
       "words": ["hoshii", "omoi", "karui", "hiroi", "semai", "daidokoro", "ofuro"],
-      "kanji": []
+      "kanji": ["先", "生"]
     },
     {
       "n": 81,
@@ -997,7 +997,7 @@
         "type": "none"
       },
       "words": ["tabemono", "nomimono", "kudamono", "yasai", "koucha", "osake", "niku"],
-      "kanji": []
+      "kanji": ["学", "校"]
     },
     {
       "n": 82,
@@ -1010,7 +1010,7 @@
         "grammarId": "mae-ato"
       },
       "words": ["ato", "hayai-early", "maiasa", "maiban", "hiru", "yoru", "konshuu"],
-      "kanji": []
+      "kanji": ["大", "小"]
     },
     {
       "n": 83,
@@ -1022,7 +1022,7 @@
         "type": "none"
       },
       "words": ["utau", "uta", "toru-take-photo", "tsukuru", "puuru", "ichinichi", "karada"],
-      "kanji": []
+      "kanji": ["高", "長"]
     },
     {
       "n": 84,
@@ -1047,7 +1047,7 @@
         "grammarId": "te-kara"
       },
       "words": ["migi", "hidari", "massugu", "magaru", "michi", "wataru", "kado"],
-      "kanji": []
+      "kanji": ["中", "上"]
     },
     {
       "n": 86,
@@ -1059,7 +1059,7 @@
         "type": "none"
       },
       "words": ["kiru-cut", "satou", "shio", "osara", "karai", "sorekara", "obentou"],
-      "kanji": []
+      "kanji": ["下", "外"]
     },
     {
       "n": 87,
@@ -1072,7 +1072,7 @@
         "grammarId": "deshou"
       },
       "words": ["tabun", "kumori", "hare", "kaze-wind", "sora", "tsuyoi", "tsumetai"],
-      "kanji": []
+      "kanji": ["右", "左"]
     },
     {
       "n": 88,
@@ -1084,7 +1084,7 @@
         "type": "none"
       },
       "words": ["asatte", "tsugi", "ikaga", "hana-flower", "choudo", "bangou", "zero"],
-      "kanji": []
+      "kanji": ["山", "木"]
     },
     {
       "n": 89,
@@ -1097,7 +1097,7 @@
         "grammarId": "mou-mada"
       },
       "words": ["mou", "mada", "zenbu", "aku", "shimaru", "hajimete", "natsuyasumi"],
-      "kanji": []
+      "kanji": ["水", "火"]
     },
     {
       "n": 90,
@@ -1109,7 +1109,7 @@
         "type": "none"
       },
       "words": ["ojiisan", "obaasan", "okusan", "shokudou", "mimi", "kuchi", "mono"],
-      "kanji": []
+      "kanji": ["土", "金"]
     },
     {
       "n": 91,
@@ -1134,7 +1134,7 @@
         "grammarId": "naru"
       },
       "words": ["naru", "dandan", "atatakai", "suzushii", "akarui", "kurai", "ooi"],
-      "kanji": []
+      "kanji": ["天", "雨"]
     },
     {
       "n": 93,
@@ -1146,7 +1146,7 @@
         "type": "none"
       },
       "words": ["sukunai", "hikui", "yowai", "onaji", "iroiro", "tatemono", "tokoro"],
-      "kanji": []
+      "kanji": ["気", "行"]
     },
     {
       "n": 94,
@@ -1155,10 +1155,10 @@
       "title": "Kanji w słowach",
       "summary": "Nowe znaki kanji poznawane przez znane słowa.",
       "newItem": {
-        "type": "none"
+        "type": "kanji",
+        "kanji": ["東", "西", "南", "北", "川", "来", "出"]
       },
-      "words": ["higashi", "nishi", "minami", "kita", "kawa", "ki"],
-      "kanji": []
+      "words": ["higashi", "nishi", "minami", "kita", "kawa", "ki"]
     },
     {
       "n": 95,
@@ -1167,10 +1167,10 @@
       "title": "Kanji w słowach",
       "summary": "Nowe znaki kanji poznawane przez znane słowa.",
       "newItem": {
-        "type": "none"
+        "type": "kanji",
+        "kanji": ["入", "見", "聞", "読", "書", "話"]
       },
-      "words": ["futsuka", "mikka", "yokka", "itsuka", "muika", "nanoka"],
-      "kanji": []
+      "words": ["futsuka", "mikka", "yokka", "itsuka", "muika", "nanoka"]
     },
     {
       "n": 96,
@@ -1179,10 +1179,10 @@
       "title": "Kanji w słowach",
       "summary": "Nowe znaki kanji poznawane przez znane słowa.",
       "newItem": {
-        "type": "none"
+        "type": "kanji",
+        "kanji": ["男", "女", "食", "休", "国", "語"]
       },
-      "words": ["otoko", "onna", "otokonoko", "onnanoko", "otona", "taisetsu"],
-      "kanji": []
+      "words": ["otoko", "onna", "otokonoko", "onnanoko", "otona", "taisetsu"]
     },
     {
       "n": 97,
@@ -1191,10 +1191,10 @@
       "title": "Kanji w słowach",
       "summary": "Nowe znaki kanji poznawane przez znane słowa.",
       "newItem": {
-        "type": "none"
+        "type": "kanji",
+        "kanji": ["本", "車", "電", "何", "白", "誰"]
       },
-      "words": ["youka", "kokonoka", "tooka", "hatsuka", "jibun", "hanbun"],
-      "kanji": []
+      "words": ["youka", "kokonoka", "tooka", "hatsuka", "jibun", "hanbun"]
     },
     {
       "n": 98,
@@ -1217,8 +1217,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
-      "kanji": []
+      "words": []
     },
     {
       "n": 100,
@@ -1229,8 +1228,7 @@
       "newItem": {
         "type": "none"
       },
-      "words": [],
-      "kanji": []
+      "words": []
     }
   ]
 }

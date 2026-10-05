@@ -9,6 +9,7 @@ import type { Lesson } from '../shared/content-schema.ts';
 import type { Grade } from '../srs/types.ts';
 import { createRng, sample, shuffle, type Rng } from './rng.ts';
 import type { GrammarNoteItem } from './grammar.ts';
+import { kanjiCardId, type KanjiItem } from './kanji.ts';
 import { makeSentenceExercise, sentenceKinds, type SentenceContext } from './sentence-exercises.ts';
 import type { SentenceItem } from './sentences.ts';
 import { foldPolish, vocabCardId, type WordItem } from './vocab.ts';
@@ -34,7 +35,10 @@ export type WordExerciseKind =
  */
 export type SentenceExerciseKind =
   'sentence-tiles' | 'sentence-gap' | 'sentence-meaning' | 'sentence-audio';
-export type ExerciseKind = KanaExerciseKind | WordExerciseKind | SentenceExerciseKind;
+/** kanji-meaning: the kanji, pick its meaning; kanji-reading: a word in kanji, pick its reading. */
+export type KanjiExerciseKind = 'kanji-meaning' | 'kanji-reading';
+export type ExerciseKind =
+  KanaExerciseKind | WordExerciseKind | SentenceExerciseKind | KanjiExerciseKind;
 
 interface ExerciseBase {
   /** Unique within a plan. */
@@ -66,7 +70,14 @@ export interface SentenceExercise extends ExerciseBase {
   gap?: number;
 }
 
-export type Exercise = KanaExercise | WordExercise | SentenceExercise;
+export interface KanjiExercise extends ExerciseBase {
+  kind: KanjiExerciseKind;
+  kanji: KanjiItem;
+  /** kanji-reading: the word written with the kanji. */
+  word?: WordItem;
+}
+
+export type Exercise = KanaExercise | WordExercise | SentenceExercise | KanjiExercise;
 
 export function isKanaExercise(e: Exercise): e is KanaExercise {
   return 'item' in e;
@@ -80,10 +91,15 @@ export function isSentenceExercise(e: Exercise): e is SentenceExercise {
   return 'sentence' in e;
 }
 
+export function isKanjiExercise(e: Exercise): e is KanjiExercise {
+  return 'kanji' in e;
+}
+
 export type Step =
   | { kind: 'review'; exercises: Exercise[]; dueTotal: number }
   | { kind: 'new'; items: KanaItem[]; groupIds: string[] }
   | { kind: 'grammar'; note: GrammarNoteItem }
+  | { kind: 'kanji'; items: KanjiItem[] }
   | { kind: 'words'; words: WordItem[] }
   | { kind: 'practice'; exercises: Exercise[]; mode: 'practice' | 'test' }
   /** A short AI conversation on known words (online only; it can always be skipped). */
@@ -140,6 +156,14 @@ export interface PlanInput {
   dueSentences?: readonly { cardId: string; sentence: SentenceItem }[];
   /** Adds the conversation step before the summary. */
   chat?: boolean;
+  /** Kanji introduced by this lesson. */
+  lessonKanji?: readonly KanjiItem[];
+  /** Kanji taught before (distractors) and, for review lessons and tests, covered. */
+  knownKanji?: readonly KanjiItem[];
+  coveredKanji?: readonly KanjiItem[];
+  dueKanji?: readonly KanjiItem[];
+  /** Taught words written with each kanji (for reading exercises). */
+  kanjiWords?: ReadonlyMap<string, readonly WordItem[]>;
 }
 
 export const PRACTICE_CAP = 18;
@@ -147,6 +171,8 @@ export const WORD_PRACTICE_CAP = 12;
 export const TEST_LENGTH = 20;
 export const REVIEW_LESSON_LENGTH = 16;
 export const QUIZ_LENGTH = 4;
+/** Kanji exercises in tests and review lessons. */
+export const KANJI_IN_TESTS = 4;
 /** Share of words in mixed kana and word sessions (tests, review lessons, extra practice). */
 const WORD_SHARE = 0.35;
 
@@ -274,7 +300,50 @@ function makeWordExercise(
 /** What an exercise is about, so the same thing never comes twice in a row. */
 function subjectOf(e: Exercise): string {
   if (isKanaExercise(e)) return `k:${e.item.char}`;
-  return isWordExercise(e) ? `w:${e.word.id}` : `s:${e.sentence.id}`;
+  if (isWordExercise(e)) return `w:${e.word.id}`;
+  return isKanjiExercise(e) ? `j:${e.kanji.char}` : `s:${e.sentence.id}`;
+}
+
+function makeKanjiExercise(
+  wanted: KanjiExerciseKind,
+  k: KanjiItem,
+  pool: readonly KanjiItem[],
+  words: ReadonlyMap<string, readonly WordItem[]>,
+  wordPool: readonly WordItem[],
+  rng: Rng,
+  id: string,
+): KanjiExercise {
+  const base = { id, cardId: kanjiCardId(k.char), kanji: k };
+  const word = shuffle(words.get(k.char) ?? [], rng)[0];
+  if (wanted === 'kanji-reading' && word) {
+    // Other readings of words that are written in kanji too, never the same kana.
+    const others = shuffle(
+      wordPool.filter((w) => w.kanji && w.kana !== word.kana && w.id !== word.id),
+      rng,
+    )
+      .map((w) => w.kana)
+      .filter((v, i, all) => all.indexOf(v) === i)
+      .slice(0, 3);
+    if (others.length) {
+      return {
+        ...base,
+        kind: 'kanji-reading',
+        word,
+        options: shuffle([word.kana, ...others], rng),
+        answer: word.kana,
+      };
+    }
+  }
+  const answer = k.pl[0] ?? k.char;
+  const senses = new Set(k.pl.map(foldPolish));
+  const others = shuffle(
+    pool.filter((o) => o.char !== k.char && !o.pl.some((p) => senses.has(foldPolish(p)))),
+    rng,
+  )
+    .map((o) => o.pl[0] ?? o.char)
+    .filter((v, i, all) => v !== answer && all.indexOf(v) === i)
+    .slice(0, 3);
+  return { ...base, kind: 'kanji-meaning', options: shuffle([answer, ...others], rng), answer };
 }
 
 /** Reorders so the same character or word never appears twice in a row when avoidable. */
@@ -469,9 +538,21 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
   const cardOf = input.sentenceCard ?? (() => 'grammar:unknown');
   const focusKeys = input.focusKeys ?? [];
   const dueSentences = input.dueSentences ?? [];
+  const lessonKanji = input.lessonKanji ?? [];
+  const coveredKanji = input.coveredKanji ?? [];
+  const dueKanji = input.dueKanji ?? [];
+  const kanjiPool = [...lessonKanji, ...(input.knownKanji ?? []), ...coveredKanji, ...dueKanji];
+  const kanjiWords = input.kanjiWords ?? new Map<string, WordItem[]>();
+  const kanjiExercise = (kind: KanjiExerciseKind, k: KanjiItem, id: string) =>
+    makeKanjiExercise(kind, k, kanjiPool, kanjiWords, wordPool, rng, id);
+  /** Up to `count` kanji exercises over a list, alternating meaning and reading. */
+  const kanjiRun = (list: readonly KanjiItem[], count: number, prefix: string) =>
+    shuffle(list, rng)
+      .slice(0, count)
+      .map((k, i) => kanjiExercise(i % 2 ? 'kanji-reading' : 'kanji-meaning', k, `${prefix}${i}`));
   const steps: Step[] = [];
 
-  if (input.dueReviews.length || dueWords.length || dueSentences.length) {
+  if (input.dueReviews.length || dueWords.length || dueSentences.length || dueKanji.length) {
     const reviewItems = uniqueByChar(input.dueReviews);
     steps.push({
       kind: 'review',
@@ -500,6 +581,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
             `rs${i}`,
           ),
         ),
+        ...kanjiRun(dueKanji, dueKanji.length, 'rk'),
       ]),
     });
   }
@@ -538,6 +620,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
         ...mixedExercises(covered, kanaLength, pool, input.speech, rng, 't'),
         ...mixedWordExercises(coveredWords, wordLength, wordPool, spare, input.speech, rng, 'tw'),
         ...sentenceExercises(shuffle(sentences, rng).slice(0, sentenceLength), 'ts'),
+        ...kanjiRun(coveredKanji, KANJI_IN_TESTS, 'tk'),
       ],
     });
     // A test is its own summary: no empty quiz step after it.
@@ -553,6 +636,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
   }
   if (input.grammarNote) steps.push({ kind: 'grammar', note: input.grammarNote });
   if (lessonWords.length) steps.push({ kind: 'words', words: lessonWords });
+  if (lessonKanji.length) steps.push({ kind: 'kanji', items: [...lessonKanji] });
 
   // Review lessons (e.g. L16, both alphabets mixed) and extra practice go over what they cover.
   const reviewLength = Math.min(
@@ -580,6 +664,12 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
         ...mixedWordExercises(coveredWords, wordLength, wordPool, spare, input.speech, rng, 'mw'),
       ]),
       ...sentenceExercises(practised, 'ps'),
+      // New kanji: the meaning, then a word written with it.
+      ...lessonKanji.flatMap((k, i) => [
+        kanjiExercise('kanji-meaning', k, `pk1-${i}`),
+        kanjiExercise('kanji-reading', k, `pk2-${i}`),
+      ]),
+      ...kanjiRun(lessonKanji.length ? [] : coveredKanji, KANJI_IN_TESTS, 'mk'),
     ],
   });
   if (input.chat) steps.push({ kind: 'chat' });

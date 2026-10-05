@@ -3,6 +3,7 @@
  * Romaji modes: "show" prints it under the text, "tap" hides it behind a small toggle,
  * "off" leaves it out entirely. Romaji is derived from the kana reading when not given.
  */
+import type { ComponentChildren } from 'preact';
 import { useState } from 'preact/hooks';
 import { kanaToRomaji, type RomajiDisplay } from '../lesson/romaji.ts';
 import { SpeakButton } from './SpeakButton.tsx';
@@ -16,9 +17,19 @@ interface JpTextProps {
   display: RomajiDisplay;
   size?: 'md' | 'lg' | 'xl';
   speak?: boolean;
+  /** Rendered instead of `text` (e.g. kanji with furigana); `text` still names the audio. */
+  children?: ComponentChildren;
 }
 
-export function JpText({ text, reading, romaji, display, size = 'md', speak = true }: JpTextProps) {
+export function JpText({
+  text,
+  reading,
+  romaji,
+  display,
+  size = 'md',
+  speak = true,
+  children,
+}: JpTextProps) {
   const [revealed, setRevealed] = useState(false);
   const latin = romaji ?? kanaToRomaji(reading ?? text);
   const showRomaji = display === 'show' || (display === 'tap' && revealed);
@@ -27,7 +38,7 @@ export function JpText({ text, reading, romaji, display, size = 'md', speak = tr
     <span class={`jptext jptext--${size}`}>
       <span class="jptext__line">
         <span class="jptext__ja jp" lang="ja">
-          {text}
+          {children ?? text}
         </span>
         {speak && <SpeakButton text={reading ?? text} />}
       </span>

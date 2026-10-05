@@ -7,6 +7,7 @@ import '../styles/vocab.css';
 import type { RomajiDisplay } from '../lesson/romaji.ts';
 import { posLabel, type WordExample, type WordItem } from '../lesson/vocab.ts';
 import { JpText } from './JpText.tsx';
+import { SentenceLine, WrittenWord, useShowKanji } from './Written.tsx';
 
 interface WordCardProps {
   word: WordItem;
@@ -27,21 +28,16 @@ export function ExampleSentence({
   example: WordExample;
   display: RomajiDisplay;
 }) {
-  const reading = example.kana ?? example.ja;
-  // Until kanji are taught the kana reading leads; the usual spelling is shown under it.
-  const written = example.ja !== reading.replace(/\s+/g, '') ? example.ja : null;
   return (
     <figure class="example">
       <figcaption class="section-label example__label">Przykład</figcaption>
-      <JpText text={reading} reading={reading} romaji={example.romaji} display={display} />
-      {written && (
-        <p class="example__written">
-          Zapis z kanji:{' '}
-          <span class="jp" lang="ja">
-            {written}
-          </span>
-        </p>
-      )}
+      <SentenceLine
+        ja={example.ja}
+        kana={example.kana ?? example.ja}
+        romaji={example.romaji}
+        display={display}
+        showWritten
+      />
       <p class="example__pl">{example.pl}</p>
       {example.tatoebaId !== undefined && (
         <a
@@ -59,11 +55,14 @@ export function ExampleSentence({
 
 export function WordCard({ word, display, children }: WordCardProps) {
   const pos = posLabel(word.pos);
+  const kanjiShown = useShowKanji(word.kanji);
   return (
     <article class="word-card" aria-label={`${word.kana}: ${word.pl[0] ?? ''}`}>
       <div class="word-card__head">
-        <JpText text={word.kana} romaji={word.romaji} display={display} size="xl" />
-        {word.kanji && (
+        <JpText text={word.kana} romaji={word.romaji} display={display} size="xl">
+          <WrittenWord kanji={word.kanji} kana={word.kana} />
+        </JpText>
+        {word.kanji && !kanjiShown && (
           <p class="word-card__kanji">
             Zapis z kanji:{' '}
             <span class="jp" lang="ja">

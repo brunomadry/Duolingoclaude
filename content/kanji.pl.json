@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "kanji": {
+    "日": {
+      "pl": ["dzień", "słońce", "Japonia (w 日本)"],
+      "reviewed": false
+    },
+    "一": {
+      "pl": ["jeden"],
+      "reviewed": false
+    },
+    "国": {
+      "pl": ["kraj", "państwo"],
+      "reviewed": false
+    },
+    "人": {
+      "pl": ["człowiek", "osoba"],
+      "reviewed": false
+    },
+    "年": {
+      "pl": ["rok"],
+      "reviewed": false
+    },
+    "大": {
+      "pl": ["duży", "wielki"],
+      "reviewed": false
+    },
+    "十": {
+      "pl": ["dziesięć"],
+      "reviewed": false
+    },
+    "二": {
+      "pl": ["dwa"],
+      "reviewed": false
+    },
+    "本": {
+      "pl": ["książka", "źródło, początek", "(licznik długich przedmiotów)"],
+      "reviewed": false
+    },
+    "中": {
+      "pl": ["środek", "wnętrze, w (czymś)"],
+      "reviewed": false
+    },
+    "長": {
+      "pl": ["długi", "szef, kierownik"],
+      "reviewed": false
+    },
+    "出": {
+      "pl": ["wychodzić", "wyjście"],
+      "reviewed": false
+    },
+    "三": {
+      "pl": ["trzy"],
+      "reviewed": false
+    },
+    "時": {
+      "pl": ["czas", "godzina"],
+      "reviewed": false
+    },
+    "行": {
+      "pl": ["iść, jechać"],
+      "reviewed": false
+    },
+    "見": {
+      "pl": ["widzieć", "patrzeć"],
+      "reviewed": false
+    },
+    "月": {
+      "pl": ["miesiąc", "księżyc"],
+      "reviewed": false
+    },
+    "分": {
+      "pl": ["minuta", "część", "rozumieć (w 分かる)"],
+      "reviewed": false
+    },
+    "後": {
+      "pl": ["po (czymś), później", "tył"],
+      "reviewed": false
+    },
+    "前": {
+      "pl": ["przód", "przed (czymś)"],
+      "reviewed": false
+    },
+    "生": {
+      "pl": ["życie", "rodzić się", "surowy"],
+      "reviewed": false
+    },
+    "五": {
+      "pl": ["pięć"],
+      "reviewed": false
+    },
+    "間": {
+      "pl": ["odstęp, przerwa", "między"],
+      "reviewed": false
+    },
+    "上": {
+      "pl": ["góra", "na, nad (czymś)"],
+      "reviewed": false
+    },
+    "東": {
+      "pl": ["wschód"],
+      "reviewed": false
+    },
+    "四": {
+      "pl": ["cztery"],
+      "reviewed": false
+    },
+    "今": {
+      "pl": ["teraz"],
+      "reviewed": false
+    },
+    "金": {
+      "pl": ["złoto", "pieniądze"],
+      "reviewed": false
+    },
+    "九": {
+      "pl": ["dziewięć"],
+      "reviewed": false
+    },
+    "入": {
+      "pl": ["wchodzić", "wkładać"],
+      "reviewed": false
+    },
+    "学": {
+      "pl": ["nauka", "uczyć się"],
+      "reviewed": false
+    },
+    "高": {
+      "pl": ["wysoki", "drogi (o cenie)"],
+      "reviewed": false
+    },
+    "円": {
+      "pl": ["jen", "koło"],
+      "reviewed": false
+    },
+    "子": {
+      "pl": ["dziecko"],
+      "reviewed": false
+    },
+    "外": {
+      "pl": ["zewnątrz", "obcy, zagraniczny"],
+      "reviewed": false
+    },
+    "八": {
+      "pl": ["osiem"],
+      "reviewed": false
+    },
+    "六": {
+      "pl": ["sześć"],
+      "reviewed": false
+    },
+    "下": {
+      "pl": ["dół", "pod (czymś)"],
+      "reviewed": false
+    },
+    "来": {
+      "pl": ["przychodzić", "następny (np. tydzień)"],
+      "reviewed": false
+    },
+    "気": {
+      "pl": ["duch, nastrój", "powietrze"],
+      "reviewed": false
+    },
+    "小": {
+      "pl": ["mały"],
+      "reviewed": false
+    },
+    "七": {
+      "pl": ["siedem"],
+      "reviewed": false
+    },
+    "山": {
+      "pl": ["góra"],
+      "reviewed": false
+    },
+    "話": {
+      "pl": ["rozmowa", "mówić"],
+      "reviewed": false
+    },
+    "女": {
+      "pl": ["kobieta"],
+      "reviewed": false
+    },
+    "北": {
+      "pl": ["północ"],
+      "reviewed": false
+    },
+    "午": {
+      "pl": ["południe (pora dnia)"],
+      "reviewed": false
+    },
+    "百": {
+      "pl": ["sto"],
+      "reviewed": false
+    },
+    "書": {
+      "pl": ["pisać"],
+      "reviewed": false
+    },
+    "先": {
+      "pl": ["przed, wcześniej", "czubek, przód"],
+      "reviewed": false
+    },
+    "名": {
+      "pl": ["imię", "nazwa"],
+      "reviewed": false
+    },
+    "川": {
+      "pl": ["rzeka"],
+      "reviewed": false
+    },
+    "千": {
+      "pl": ["tysiąc"],
+      "reviewed": false
+    },
+    "水": {
+      "pl": ["woda"],
+      "reviewed": false
+    },
+    "半": {
+      "pl": ["pół, połowa"],
+      "reviewed": false
+    },
+    "男": {
+      "pl": ["mężczyzna"],
+      "reviewed": false
+    },
+    "西": {
+      "pl": ["zachód"],
+      "reviewed": false
+    },
+    "電": {
+      "pl": ["elektryczność"],
+      "reviewed": false
+    },
+    "無": {
+      "pl": ["brak", "nic"],
+      "reviewed": false
+    },
+    "校": {
+      "pl": ["szkoła"],
+      "reviewed": false
+    },
+    "語": {
+      "pl": ["język", "słowo"],
+      "reviewed": false
+    },
+    "土": {
+      "pl": ["ziemia, gleba"],
+      "reviewed": false
+    },
+    "木": {
+      "pl": ["drzewo", "drewno"],
+      "reviewed": false
+    },
+    "聞": {
+      "pl": ["słyszeć, słuchać", "pytać"],
+      "reviewed": false
+    },
+    "食": {
+      "pl": ["jeść", "jedzenie"],
+      "reviewed": false
+    },
+    "車": {
+      "pl": ["samochód", "pojazd"],
+      "reviewed": false
+    },
+    "何": {
+      "pl": ["co"],
+      "reviewed": false
+    },
+    "南": {
+      "pl": ["południe (kierunek)"],
+      "reviewed": false
+    },
+    "万": {
+      "pl": ["dziesięć tysięcy"],
+      "reviewed": false
+    },
+    "毎": {
+      "pl": ["każdy, co (np. co dzień)"],
+      "reviewed": false
+    },
+    "白": {
+      "pl": ["biały"],
+      "reviewed": false
+    },
+    "天": {
+      "pl": ["niebo"],
+      "reviewed": false
+    },
+    "母": {
+      "pl": ["matka"],
+      "reviewed": false
+    },
+    "火": {
+      "pl": ["ogień"],
+      "reviewed": false
+    },
+    "右": {
+      "pl": ["prawa strona"],
+      "reviewed": false
+    },
+    "読": {
+      "pl": ["czytać"],
+      "reviewed": false
+    },
+    "友": {
+      "pl": ["przyjaciel"],
+      "reviewed": false
+    },
+    "左": {
+      "pl": ["lewa strona"],
+      "reviewed": false
+    },
+    "休": {
+      "pl": ["odpoczywać", "dzień wolny"],
+      "reviewed": false
+    },
+    "父": {
+      "pl": ["ojciec"],
+      "reviewed": false
+    },
+    "雨": {
+      "pl": ["deszcz"],
+      "reviewed": false
+    },
+    "丈": {
+      "pl": ["długość, wzrost (w 大丈夫)"],
+      "reviewed": false
+    },
+    "誰": {
+      "pl": ["kto"],
+      "reviewed": false
+    },
+    "貼": {
+      "pl": ["przyklejać"],
+      "reviewed": false
+    }
+  }
+}

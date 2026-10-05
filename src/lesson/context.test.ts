@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { createLexicon, tokenize } from '../shared/jp-words.ts';
 import type { CardRecord } from '../shared/api.ts';
-import { isSentenceExercise, isWordExercise, type LessonPlan } from './engine.ts';
+import { isKanjiExercise, isSentenceExercise, isWordExercise, type LessonPlan } from './engine.ts';
+import { buildKanjiIndex, type RawKanji, type RawKanjiGlosses } from './kanji.ts';
 import { buildGrammarIndex, type RawExampleSentences, type RawGrammar } from './grammar.ts';
 import {
   curriculum,
@@ -147,5 +148,48 @@ describe('helpers', () => {
       ...(curriculum.lessons[17]?.words ?? []),
     ])
       expect(words.has(w)).toBe(true);
+  });
+});
+
+describe('kanji, the final review and the final test', () => {
+  const kanji = buildKanjiIndex(
+    read<RawKanji>('kanji.json'),
+    read<RawKanjiGlosses>('kanji.pl.json'),
+    curriculum,
+  );
+  const firstKanjiLesson = kanji.items[0]?.lesson ?? 61;
+
+  it('teaches a lesson kanji after its words, with meaning and reading exercises', () => {
+    const plan = planLesson(lesson(firstKanjiLesson), ctx(), vocab, grammar, kanji);
+    expect(kinds(plan)).toContain('kanji');
+    const step = plan.steps.find((st) => st.kind === 'kanji');
+    if (step?.kind !== 'kanji') throw new Error('no kanji step');
+    expect(step.items.map((k) => k.lesson)).toEqual(step.items.map(() => firstKanjiLesson));
+    const exercises = practice(plan).filter(isKanjiExercise);
+    expect(exercises.map((e) => e.kind)).toContain('kanji-meaning');
+    for (const e of exercises) {
+      expect(e.options).toContain(e.answer);
+      expect(new Set(e.options).size).toBe(e.options.length);
+    }
+  });
+
+  it('a kanji lesson has its kanji as the new item', () => {
+    const plan = planLesson(lesson(94), ctx(), vocab, grammar, kanji);
+    expect(kinds(plan)).toContain('kanji');
+  });
+
+  it('the review lesson mixes words, sentences and kanji without kana drills', () => {
+    const plan = planLesson(lesson(99), ctx(), vocab, grammar, kanji);
+    const exercises = practice(plan);
+    expect(exercises.some(isWordExercise)).toBe(true);
+    expect(exercises.some(isKanjiExercise)).toBe(true);
+    expect(exercises.some((e) => 'item' in e)).toBe(false);
+  });
+
+  it('the last lesson is a test over the whole course', () => {
+    const plan = planLesson(lesson(100), ctx(), vocab, grammar, kanji);
+    expect(kinds(plan)).toEqual(['practice']);
+    const step = plan.steps[0];
+    expect(step?.kind === 'practice' && step.mode).toBe('test');
   });
 });
