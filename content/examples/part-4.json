@@ -1,0 +1,1123 @@
+{
+  "version": 1,
+  "examples": [
+    {
+      "wordId": "maishuu",
+      "lesson": 78,
+      "ja": "毎週日曜日に母に電話するんだ。",
+      "kana": "まいしゅう にちようびに ははに でんわするんだ。",
+      "pl": "Co niedzielę dzwonię do mamy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mata",
+      "lesson": 78,
+      "ja": "じゃ、また明日ね。",
+      "kana": "じゃ、また あしたね。",
+      "pl": "No to do jutra!",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "gomennasai",
+      "lesson": 78,
+      "ja": "ごめんなさい、明日は時間がないんだ。",
+      "kana": "ごめんなさい、あしたは じかんが ないんだ。",
+      "pl": "Przepraszam, jutro nie mam czasu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "minna",
+      "lesson": 78,
+      "ja": "家族はみんな元気だよ。",
+      "kana": "かぞくは みんな げんきだよ。",
+      "pl": "Cała rodzina ma się dobrze.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yasashii",
+      "lesson": 78,
+      "ja": "今日のテストは易しかったね。",
+      "kana": "きょうの テストは やさしかったね。",
+      "pl": "Dzisiejszy test był łatwy, prawda?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tanoshii",
+      "lesson": 78,
+      "ja": "あなたと一緒にいて楽しかった。",
+      "kana": "あなたと いっしょに いて たのしかった。",
+      "pl": "Miło było spędzić z tobą czas.",
+      "source": "tatoeba",
+      "tatoebaId": 233856,
+      "reviewed": false
+    },
+    {
+      "wordId": "urusai",
+      "lesson": 78,
+      "ja": "隣の犬がうるさいんだ。",
+      "kana": "となりの いぬが うるさいんだ。",
+      "pl": "Pies sąsiadów strasznie hałasuje.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "konna",
+      "lesson": 79,
+      "ja": "こんな部屋に住みたい。",
+      "kana": "こんな へやに すみたい。",
+      "pl": "Chcę mieszkać w takim pokoju.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sonna",
+      "lesson": 79,
+      "ja": "そんなことを言わないで。",
+      "kana": "そんな ことを いわないで。",
+      "pl": "Nie mów takich rzeczy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "daisuki",
+      "lesson": 79,
+      "ja": "妹は猫が大好きなんだ。",
+      "kana": "いもうとは ねこが だいすきなんだ。",
+      "pl": "Moja młodsza siostra uwielbia koty.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sugu",
+      "lesson": 79,
+      "ja": "ちょっと待って。すぐ行くよ。",
+      "kana": "ちょっと まって。すぐ いくよ。",
+      "pl": "Poczekaj chwilę, zaraz idę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "amai",
+      "lesson": 79,
+      "ja": "姉は甘いコーヒーが好きだ。",
+      "kana": "あねは あまい コーヒーが すきだ。",
+      "pl": "Starsza siostra lubi słodką kawę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "takusan",
+      "lesson": 79,
+      "ja": "日本人は魚をたくさん食べますか。",
+      "kana": "にほんじんは さかなを たくさん たべますか。",
+      "pl": "Czy Japończycy jedzą dużo ryb?",
+      "source": "tatoeba",
+      "tatoebaId": 122254,
+      "reviewed": false
+    },
+    {
+      "wordId": "taihen",
+      "lesson": 79,
+      "ja": "この本はたいへんおもしろい。",
+      "kana": "この ほんは たいへん おもしろい。",
+      "pl": "Ta książka jest niezwykle ciekawa.",
+      "source": "tatoeba",
+      "tatoebaId": 219705,
+      "reviewed": false
+    },
+    {
+      "wordId": "hoshii",
+      "lesson": 80,
+      "ja": "誕生日に何がほしいですか。",
+      "kana": "たんじょうびに なにが ほしいですか。",
+      "pl": "Co chcesz dostać na urodziny?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "omoi",
+      "lesson": 80,
+      "ja": "この荷物はとても重い。",
+      "kana": "この にもつは とても おもい。",
+      "pl": "Ten bagaż jest bardzo ciężki.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "karui",
+      "lesson": 80,
+      "ja": "軽い自転車がほしいです。",
+      "kana": "かるい じてんしゃが ほしいです。",
+      "pl": "Chcę mieć lekki rower.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hiroi",
+      "lesson": 80,
+      "ja": "新しいアパートは広くて、静かだ。",
+      "kana": "あたらしい アパートは ひろくて、しずかだ。",
+      "pl": "Nowe mieszkanie jest przestronne i ciche.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "semai",
+      "lesson": 80,
+      "ja": "私の部屋は狭いです。",
+      "kana": "わたしの へやは せまいです。",
+      "pl": "Mój pokój jest ciasny.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "daidokoro",
+      "lesson": 80,
+      "ja": "母は台所で料理をしている。",
+      "kana": "ははは だいどころで りょうりを して いる。",
+      "pl": "Mama gotuje w kuchni.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ofuro",
+      "lesson": 80,
+      "ja": "日本人は毎日お風呂に入ります。",
+      "kana": "にほんじんは まいにち おふろに はいります。",
+      "pl": "Japończycy codziennie biorą kąpiel.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tabemono",
+      "lesson": 81,
+      "ja": "好きな食べ物は何ですか。",
+      "kana": "すきな たべものは なんですか。",
+      "pl": "Jakie jest twoje ulubione jedzenie?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nomimono",
+      "lesson": 81,
+      "ja": "なにかおいしい飲み物をください。",
+      "kana": "なにか おいしい のみものを ください。",
+      "pl": "Poproszę coś dobrego do picia.",
+      "source": "tatoeba",
+      "tatoebaId": 199117,
+      "reviewed": false
+    },
+    {
+      "wordId": "kudamono",
+      "lesson": 81,
+      "ja": "父はそんなに果物を食べないんです。",
+      "kana": "ちちは そんなに くだものを たべないんです。",
+      "pl": "Tata nie je aż tak dużo owoców.",
+      "source": "tatoeba",
+      "tatoebaId": 84708,
+      "reviewed": false
+    },
+    {
+      "wordId": "yasai",
+      "lesson": 81,
+      "ja": "その店は野菜を売っている。",
+      "kana": "その みせは やさいを うって いる。",
+      "pl": "Ten sklep sprzedaje warzywa.",
+      "source": "tatoeba",
+      "tatoebaId": 207603,
+      "reviewed": false
+    },
+    {
+      "wordId": "koucha",
+      "lesson": 81,
+      "ja": "コーヒーと紅茶とどちらがいいですか。",
+      "kana": "コーヒーと こうちゃと どちらが いいですか。",
+      "pl": "Wolisz kawę czy herbatę?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "osake",
+      "lesson": 81,
+      "ja": "父はお酒を飲まない。",
+      "kana": "ちちは おさけを のまない。",
+      "pl": "Tata nie pije alkoholu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "niku",
+      "lesson": 81,
+      "ja": "今日は肉が食べたい。",
+      "kana": "きょうは にくが たべたい。",
+      "pl": "Dziś mam ochotę na mięso.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ato",
+      "lesson": 82,
+      "ja": "授業の後で、図書館に行きます。",
+      "kana": "じゅぎょうの あとで、としょかんに いきます。",
+      "pl": "Po zajęciach idę do biblioteki.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hayai-early",
+      "lesson": 82,
+      "ja": "兄は今朝早く出かけた。",
+      "kana": "あには けさ はやく でかけた。",
+      "pl": "Starszy brat wyszedł dziś wcześnie rano.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "maiasa",
+      "lesson": 82,
+      "ja": "私は毎朝六時に起きます。",
+      "kana": "わたしは まいあさ ろくじに おきます。",
+      "pl": "Codziennie rano wstaję o szóstej.",
+      "source": "tatoeba",
+      "tatoebaId": 152733,
+      "reviewed": false
+    },
+    {
+      "wordId": "maiban",
+      "lesson": 82,
+      "ja": "毎晩寝る前に本を読む。",
+      "kana": "まいばん ねる まえに ほんを よむ。",
+      "pl": "Co wieczór przed snem czytam książkę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hiru",
+      "lesson": 82,
+      "ja": "昼は暑いけど、夜は寒い。",
+      "kana": "ひるは あついけど、よるは さむい。",
+      "pl": "W dzień jest gorąco, ale w nocy zimno.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yoru",
+      "lesson": 82,
+      "ja": "姉は夜遅くまで勉強している。",
+      "kana": "あねは よる おそくまで べんきょうして いる。",
+      "pl": "Starsza siostra uczy się do późna w nocy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "konshuu",
+      "lesson": 82,
+      "ja": "今週の土曜日は暇ですか。",
+      "kana": "こんしゅうの どようびは ひまですか。",
+      "pl": "Masz czas w tę sobotę?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "utau",
+      "lesson": 83,
+      "ja": "妹は歌うことが大好きだ。",
+      "kana": "いもうとは うたう ことが だいすきだ。",
+      "pl": "Młodsza siostra uwielbia śpiewać.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "uta",
+      "lesson": 83,
+      "ja": "この歌を知っていますか。",
+      "kana": "この うたを しって いますか。",
+      "pl": "Znasz tę piosenkę?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "toru-take-photo",
+      "lesson": 83,
+      "ja": "写真を撮りましょうか。",
+      "kana": "しゃしんを とりましょうか。",
+      "pl": "Zrobić wam zdjęcie?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tsukuru",
+      "lesson": 83,
+      "ja": "晩ご飯を作る前に、買い物に行く。",
+      "kana": "ばんごはんを つくる まえに、かいものに いく。",
+      "pl": "Zanim zrobię kolację, idę na zakupy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "puuru",
+      "lesson": 83,
+      "ja": "夏はよくプールで泳ぐ。",
+      "kana": "なつは よく プールで およぐ。",
+      "pl": "Latem często pływam na basenie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ichinichi",
+      "lesson": 83,
+      "ja": "一日に三回薬を飲んでください。",
+      "kana": "いちにちに さんかい くすりを のんで ください。",
+      "pl": "Proszę brać lekarstwo trzy razy dziennie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "karada",
+      "lesson": 83,
+      "ja": "野菜は体にいい。",
+      "kana": "やさいは からだに いい。",
+      "pl": "Warzywa są zdrowe.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "migi",
+      "lesson": 85,
+      "ja": "駅を出てから、右に行ってください。",
+      "kana": "えきを でてから、みぎに いって ください。",
+      "pl": "Po wyjściu z dworca proszę iść w prawo.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hidari",
+      "lesson": 85,
+      "ja": "銀行は郵便局の左にあります。",
+      "kana": "ぎんこうは ゆうびんきょくの ひだりに あります。",
+      "pl": "Bank jest na lewo od poczty.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "massugu",
+      "lesson": 85,
+      "ja": "この道をまっすぐ行ってください。",
+      "kana": "この みちを まっすぐ いって ください。",
+      "pl": "Proszę iść tą ulicą prosto.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "magaru",
+      "lesson": 85,
+      "ja": "あの角を左に曲がってください。",
+      "kana": "あの かどを ひだりに まがって ください。",
+      "pl": "Proszę skręcić w lewo na tamtym rogu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "michi",
+      "lesson": 85,
+      "ja": "駅までの道を教えてください。",
+      "kana": "えきまでの みちを おしえて ください。",
+      "pl": "Proszę mi powiedzieć, jak dojść do dworca.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "wataru",
+      "lesson": 85,
+      "ja": "ここを渡りましょう。",
+      "kana": "ここを わたりましょう。",
+      "pl": "Przejdźmy tutaj na drugą stronę.",
+      "source": "tatoeba",
+      "tatoebaId": 224241,
+      "reviewed": false
+    },
+    {
+      "wordId": "kado",
+      "lesson": 85,
+      "ja": "角に小さい店があります。",
+      "kana": "かどに ちいさい みせが あります。",
+      "pl": "Na rogu jest mały sklep.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kiru-cut",
+      "lesson": 86,
+      "ja": "野菜を小さく切ってください。",
+      "kana": "やさいを ちいさく きって ください。",
+      "pl": "Proszę pokroić warzywa na małe kawałki.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "satou",
+      "lesson": 86,
+      "ja": "紅茶に砂糖を入れますか。",
+      "kana": "こうちゃに さとうを いれますか。",
+      "pl": "Słodzisz herbatę?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "shio",
+      "lesson": 86,
+      "ja": "塩を少し入れてください。",
+      "kana": "しおを すこし いれて ください。",
+      "pl": "Proszę dodać trochę soli.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "osara",
+      "lesson": 86,
+      "ja": "ご飯を食べてから、お皿を洗います。",
+      "kana": "ごはんを たべてから、おさらを あらいます。",
+      "pl": "Po jedzeniu myję talerze.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "karai",
+      "lesson": 86,
+      "ja": "このカレーはちょっと辛い。",
+      "kana": "この カレーは ちょっと からい。",
+      "pl": "To curry jest trochę ostre.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sorekara",
+      "lesson": 86,
+      "ja": "肉を切って、それから野菜を切ります。",
+      "kana": "にくを きって、それから やさいを きります。",
+      "pl": "Kroję mięso, a potem warzywa.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "obentou",
+      "lesson": 86,
+      "ja": "昼は公園でお弁当を食べましょう。",
+      "kana": "ひるは こうえんで おべんとうを たべましょう。",
+      "pl": "W południe zjedzmy w parku nasze bento.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tabun",
+      "lesson": 87,
+      "ja": "明日はたぶん雨でしょう。",
+      "kana": "あしたは たぶん あめでしょう。",
+      "pl": "Jutro chyba będzie padać.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kumori",
+      "lesson": 87,
+      "ja": "明日の朝は曇りでしょう。",
+      "kana": "あしたの あさは くもりでしょう。",
+      "pl": "Jutro rano będzie pochmurno.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hare",
+      "lesson": 87,
+      "ja": "午後は晴れでしょう。",
+      "kana": "ごごは はれでしょう。",
+      "pl": "Po południu będzie słonecznie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaze-wind",
+      "lesson": 87,
+      "ja": "今日は風が強いですね。",
+      "kana": "きょうは かぜが つよいですね。",
+      "pl": "Dziś mocno wieje, prawda?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sora",
+      "lesson": 87,
+      "ja": "今日は空が青くて、きれいですね。",
+      "kana": "きょうは そらが あおくて、きれいですね。",
+      "pl": "Dziś niebo jest piękne i błękitne.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tsuyoi",
+      "lesson": 87,
+      "ja": "夜は強い雨が降るでしょう。",
+      "kana": "よるは つよい あめが ふるでしょう。",
+      "pl": "W nocy będzie mocno padać.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tsumetai",
+      "lesson": 87,
+      "ja": "冷たい水が飲みたい。",
+      "kana": "つめたい みずが のみたい。",
+      "pl": "Mam ochotę na zimną wodę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "asatte",
+      "lesson": 88,
+      "ja": "あさって、時間がありませんか。",
+      "kana": "あさって、じかんが ありませんか。",
+      "pl": "Masz może czas pojutrze?",
+      "source": "tatoeba",
+      "tatoebaId": 234494,
+      "reviewed": false
+    },
+    {
+      "wordId": "tsugi",
+      "lesson": 88,
+      "ja": "次の駅で降ります。",
+      "kana": "つぎの えきで おります。",
+      "pl": "Wysiadam na następnej stacji.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ikaga",
+      "lesson": 88,
+      "ja": "紅茶かコーヒーはいかがですか。",
+      "kana": "こうちゃか コーヒーは いかがですか。",
+      "pl": "Może herbaty albo kawy?",
+      "source": "tatoeba",
+      "tatoebaId": 173507,
+      "reviewed": false
+    },
+    {
+      "wordId": "hana-flower",
+      "lesson": 88,
+      "ja": "母の誕生日に花をあげましょう。",
+      "kana": "ははの たんじょうびに はなを あげましょう。",
+      "pl": "Dajmy mamie kwiaty na urodziny.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "choudo",
+      "lesson": 88,
+      "ja": "ちょうど七時半です。",
+      "kana": "ちょうど しちじはんです。",
+      "pl": "Jest dokładnie wpół do ósmej.",
+      "source": "tatoeba",
+      "tatoebaId": 202909,
+      "reviewed": false
+    },
+    {
+      "wordId": "bangou",
+      "lesson": 88,
+      "ja": "電話番号を教えてください。",
+      "kana": "でんわばんごうを おしえて ください。",
+      "pl": "Proszę podać mi swój numer telefonu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "zero",
+      "lesson": 88,
+      "ja": "日本の電話番号はゼロから始まります。",
+      "kana": "にほんの でんわばんごうは ゼロから はじまります。",
+      "pl": "Japońskie numery telefonów zaczynają się od zera.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mou",
+      "lesson": 89,
+      "ja": "母はもう寝ています。",
+      "kana": "ははは もう ねて います。",
+      "pl": "Mama już śpi.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mada",
+      "lesson": 89,
+      "ja": "父はまだ休んでいる。",
+      "kana": "ちちは まだ やすんで いる。",
+      "pl": "Tata wciąż odpoczywa.",
+      "source": "tatoeba",
+      "tatoebaId": 84662,
+      "reviewed": false
+    },
+    {
+      "wordId": "zenbu",
+      "lesson": 89,
+      "ja": "全部でいくらですか。",
+      "kana": "ぜんぶで いくらですか。",
+      "pl": "Ile to razem kosztuje?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "aku",
+      "lesson": 89,
+      "ja": "店はまだ開いていない。",
+      "kana": "みせは まだ あいて いない。",
+      "pl": "Sklep jeszcze nie jest otwarty.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "shimaru",
+      "lesson": 89,
+      "ja": "郵便局はもう閉まっています。",
+      "kana": "ゆうびんきょくは もう しまって います。",
+      "pl": "Poczta jest już zamknięta.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hajimete",
+      "lesson": 89,
+      "ja": "日本は初めてですか。",
+      "kana": "にほんは はじめてですか。",
+      "pl": "Jesteś w Japonii pierwszy raz?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "natsuyasumi",
+      "lesson": 89,
+      "ja": "夏休みはもう終わった。",
+      "kana": "なつやすみは もう おわった。",
+      "pl": "Wakacje już się skończyły.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ojiisan",
+      "lesson": 90,
+      "ja": "おじいさんはとてもゆっくりと話す。",
+      "kana": "おじいさんは とても ゆっくりと はなす。",
+      "pl": "Dziadek mówi bardzo powoli.",
+      "source": "tatoeba",
+      "tatoebaId": 227740,
+      "reviewed": false
+    },
+    {
+      "wordId": "obaasan",
+      "lesson": 90,
+      "ja": "おばあさんはまだ元気です。",
+      "kana": "おばあさんは まだ げんきです。",
+      "pl": "Babcia wciąż jest w dobrej formie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "okusan",
+      "lesson": 90,
+      "ja": "奥さんはお元気ですか。",
+      "kana": "おくさんは おげんきですか。",
+      "pl": "Jak się miewa pana żona?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "shokudou",
+      "lesson": 90,
+      "ja": "食堂は何時にあきますか。",
+      "kana": "しょくどうは なんじに あきますか。",
+      "pl": "O której otwiera się stołówka?",
+      "source": "tatoeba",
+      "tatoebaId": 145790,
+      "reviewed": false
+    },
+    {
+      "wordId": "mimi",
+      "lesson": 90,
+      "ja": "おじいさんは耳が少し遠い。",
+      "kana": "おじいさんは みみが すこし とおい。",
+      "pl": "Dziadek trochę niedosłyszy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kuchi",
+      "lesson": 90,
+      "ja": "口を大きく開けてください。",
+      "kana": "くちを おおきく あけて ください。",
+      "pl": "Proszę szeroko otworzyć usta.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mono",
+      "lesson": 90,
+      "ja": "甘い物が大好きです。",
+      "kana": "あまい ものが だいすきです。",
+      "pl": "Uwielbiam słodycze.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "naru",
+      "lesson": 92,
+      "ja": "兄は医者になった。",
+      "kana": "あには いしゃに なった。",
+      "pl": "Starszy brat został lekarzem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "dandan",
+      "lesson": 92,
+      "ja": "日本語がだんだん上手になりました。",
+      "kana": "にほんごが だんだん じょうずに なりました。",
+      "pl": "Mój japoński jest coraz lepszy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "atatakai",
+      "lesson": 92,
+      "ja": "だんだん暖かくなります。",
+      "kana": "だんだん あたたかく なります。",
+      "pl": "Robi się coraz cieplej.",
+      "source": "tatoeba",
+      "tatoebaId": 203062,
+      "reviewed": false
+    },
+    {
+      "wordId": "suzushii",
+      "lesson": 92,
+      "ja": "秋になって、涼しくなった。",
+      "kana": "あきに なって、すずしく なった。",
+      "pl": "Przyszła jesień i zrobiło się chłodniej.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "akarui",
+      "lesson": 92,
+      "ja": "この部屋は明るくて、広い。",
+      "kana": "この へやは あかるくて、ひろい。",
+      "pl": "Ten pokój jest jasny i przestronny.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kurai",
+      "lesson": 92,
+      "ja": "外はもう暗くなった。",
+      "kana": "そとは もう くらく なった。",
+      "pl": "Na dworze już się ściemniło.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ooi",
+      "lesson": 92,
+      "ja": "日本は山が多い。",
+      "kana": "にほんは やまが おおい。",
+      "pl": "W Japonii jest dużo gór.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sukunai",
+      "lesson": 93,
+      "ja": "この町は人が少ない。",
+      "kana": "この まちは ひとが すくない。",
+      "pl": "W tym mieście mieszka niewiele osób.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hikui",
+      "lesson": 93,
+      "ja": "この机は少し低いですね。",
+      "kana": "この つくえは すこし ひくいですね。",
+      "pl": "To biurko jest trochę za niskie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yowai",
+      "lesson": 93,
+      "ja": "妹は体が弱い。",
+      "kana": "いもうとは からだが よわい。",
+      "pl": "Młodsza siostra ma słabe zdrowie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "onaji",
+      "lesson": 93,
+      "ja": "これと同じ物をください。",
+      "kana": "これと おなじ ものを ください。",
+      "pl": "Poproszę to samo.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "iroiro",
+      "lesson": 93,
+      "ja": "この店にはいろいろな果物がある。",
+      "kana": "この みせには いろいろな くだものが ある。",
+      "pl": "W tym sklepie są różne owoce.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tatemono",
+      "lesson": 93,
+      "ja": "あの高い建物は何ですか。",
+      "kana": "あの たかい たてものは なんですか。",
+      "pl": "Co to za wysoki budynek?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tokoro",
+      "lesson": 93,
+      "ja": "にぎやかなところが好きだ。",
+      "kana": "にぎやかな ところが すきだ。",
+      "pl": "Lubię gwarne miejsca.",
+      "source": "tatoeba",
+      "tatoebaId": 198795,
+      "reviewed": false
+    },
+    {
+      "wordId": "higashi",
+      "lesson": 94,
+      "ja": "駅の東に大きい公園があります。",
+      "kana": "えきの ひがしに おおきい こうえんが あります。",
+      "pl": "Na wschód od dworca jest duży park.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nishi",
+      "lesson": 94,
+      "ja": "ポーランドは日本の西にあります。",
+      "kana": "ポーランドは にほんの にしに あります。",
+      "pl": "Polska leży na zachód od Japonii.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "minami",
+      "lesson": 94,
+      "ja": "冬は南の国へ行きたい。",
+      "kana": "ふゆは みなみの くにへ いきたい。",
+      "pl": "Zimą chcę pojechać do jakiegoś kraju na południu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kita",
+      "lesson": 94,
+      "ja": "日本の北は冬がとても寒い。",
+      "kana": "にほんの きたは ふゆが とても さむい。",
+      "pl": "Na północy Japonii zimy są bardzo mroźne.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kawa",
+      "lesson": 94,
+      "ja": "その川はあまりきれいではなかった。",
+      "kana": "その かわは あまり きれいでは なかった。",
+      "pl": "Ta rzeka nie była zbyt czysta.",
+      "source": "tatoeba",
+      "tatoebaId": 208510,
+      "reviewed": false
+    },
+    {
+      "wordId": "ki",
+      "lesson": 94,
+      "ja": "父と母は木の下に座っていました。",
+      "kana": "ちちと ははは きの したに すわって いました。",
+      "pl": "Tata i mama siedzieli pod drzewem.",
+      "source": "tatoeba",
+      "tatoebaId": 84829,
+      "reviewed": false
+    },
+    {
+      "wordId": "futsuka",
+      "lesson": 95,
+      "ja": "三月二日は母の誕生日です。",
+      "kana": "さんがつ ふつかは ははの たんじょうびです。",
+      "pl": "Drugiego marca są urodziny mamy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mikka",
+      "lesson": 95,
+      "ja": "もう三日も雨が降っている。",
+      "kana": "もう みっかも あめが ふって いる。",
+      "pl": "Pada już od trzech dni.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yokka",
+      "lesson": 95,
+      "ja": "四日の金曜日に会いましょう。",
+      "kana": "よっかの きんようびに あいましょう。",
+      "pl": "Spotkajmy się w piątek, czwartego.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "itsuka",
+      "lesson": 95,
+      "ja": "五日は休みです。",
+      "kana": "いつかは やすみです。",
+      "pl": "Piątego mam wolne.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "muika",
+      "lesson": 95,
+      "ja": "来月の六日にテストがあります。",
+      "kana": "らいげつの むいかに テストが あります。",
+      "pl": "Szóstego przyszłego miesiąca mamy test.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nanoka",
+      "lesson": 95,
+      "ja": "七日に日本から友達が来ます。",
+      "kana": "なのかに にほんから ともだちが きます。",
+      "pl": "Siódmego przyjeżdża znajomy z Japonii.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "otoko",
+      "lesson": 96,
+      "ja": "あの男の人は誰ですか。",
+      "kana": "あの おとこの ひとは だれですか。",
+      "pl": "Kim jest tamten mężczyzna?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "onna",
+      "lesson": 96,
+      "ja": "店の前に女の人が立っている。",
+      "kana": "みせの まえに おんなの ひとが たって いる。",
+      "pl": "Przed sklepem stoi kobieta.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "otokonoko",
+      "lesson": 96,
+      "ja": "このクラスには何人の男の子がいますか。",
+      "kana": "この クラスには なんにんの おとこのこが いますか。",
+      "pl": "Ilu chłopców jest w tej klasie?",
+      "source": "tatoeba",
+      "tatoebaId": 223857,
+      "reviewed": false
+    },
+    {
+      "wordId": "onnanoko",
+      "lesson": 96,
+      "ja": "公園で女の子が遊んでいる。",
+      "kana": "こうえんで おんなのこが あそんで いる。",
+      "pl": "W parku bawi się dziewczynka.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "otona",
+      "lesson": 96,
+      "ja": "大人は千円、子供は五百円です。",
+      "kana": "おとなは せんえん、こどもは ごひゃくえんです。",
+      "pl": "Dorośli płacą tysiąc jenów, dzieci pięćset.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "taisetsu",
+      "lesson": 96,
+      "ja": "本を読むことは大切です。",
+      "kana": "ほんを よむ ことは たいせつです。",
+      "pl": "Czytanie książek jest ważne.",
+      "source": "tatoeba",
+      "tatoebaId": 81616,
+      "reviewed": false
+    },
+    {
+      "wordId": "youka",
+      "lesson": 97,
+      "ja": "八日から旅行に行きます。",
+      "kana": "ようかから りょこうに いきます。",
+      "pl": "Ósmego wyjeżdżam na wycieczkę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kokonoka",
+      "lesson": 97,
+      "ja": "九日までに宿題を出してください。",
+      "kana": "ここのかまでに しゅくだいを だして ください。",
+      "pl": "Proszę oddać pracę domową do dziewiątego.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tooka",
+      "lesson": 97,
+      "ja": "日本に十日ぐらいいます。",
+      "kana": "にほんに とおかぐらい います。",
+      "pl": "Będę w Japonii około dziesięciu dni.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hatsuka",
+      "lesson": 97,
+      "ja": "二十日の夜、パーティーがあります。",
+      "kana": "はつかの よる、パーティーが あります。",
+      "pl": "Dwudziestego wieczorem jest impreza.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "jibun",
+      "lesson": 97,
+      "ja": "自分の部屋がほしいです。",
+      "kana": "じぶんの へやが ほしいです。",
+      "pl": "Chcę mieć własny pokój.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hanbun",
+      "lesson": 97,
+      "ja": "パンを半分に切ってください。",
+      "kana": "パンを はんぶんに きって ください。",
+      "pl": "Proszę przekroić chleb na pół.",
+      "source": "original",
+      "reviewed": false
+    }
+  ]
+}
