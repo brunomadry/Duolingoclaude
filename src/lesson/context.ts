@@ -15,6 +15,7 @@ import {
   kanjiFromCardId,
   kanjiKnown,
   kanjiUpTo,
+  lessonKanji,
   type KanjiIndex,
   type KanjiItem,
 } from './kanji.ts';
@@ -160,6 +161,28 @@ export function dueReviews(
     .map((q) => kanjiFromCardId(q.cardId))
     .filter((ch): ch is string => ch !== null);
   return { items, wordIds, grammarIds, kanjiChars, dueTotal };
+}
+
+/**
+ * The same question judged from the curriculum alone, for due counts on screens that do
+ * not load the course content: the card's word or kanji is taught by some lesson and its
+ * grammar point by a completed one.
+ */
+export function reviewableByCurriculum(done: number): (cardId: string) => boolean {
+  const kana = new Set(kanaUpTo(100).map((i) => i.char));
+  const words = new Set(curriculum.lessons.flatMap((l) => l.words));
+  const kanji = new Set(curriculum.lessons.flatMap((l) => lessonKanji(l)));
+  return (cardId) => {
+    const char = charFromCardId(cardId);
+    if (char !== null) return kana.has(char);
+    const word = wordIdFromCardId(cardId);
+    if (word !== null) return words.has(word);
+    const kanjiChar = kanjiFromCardId(cardId);
+    if (kanjiChar !== null) return kanji.has(kanjiChar);
+    const id = grammarIdFromCardId(cardId);
+    const at = id === null ? null : gates.lessonOfGrammar(id);
+    return at !== null && at <= done;
+  };
 }
 
 /**

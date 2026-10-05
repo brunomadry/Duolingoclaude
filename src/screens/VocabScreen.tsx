@@ -5,7 +5,7 @@ import { cardState, loadLearning, type LearningSnapshot } from '../data/learning
 import { loadKanji } from '../data/kanji-data.ts';
 import { loadVocab } from '../data/vocab-data.ts';
 import { kanjiUpTo, type KanjiIndex } from '../lesson/kanji.ts';
-import { completedPrefix, dueReviews } from '../lesson/context.ts';
+import { completedPrefix, dueReviews, reviewableByCurriculum } from '../lesson/context.ts';
 import { romajiDisplay, type RomajiDisplay } from '../lesson/romaji.ts';
 import { localDaysBetween } from '../lesson/schedule.ts';
 import {
@@ -169,7 +169,10 @@ export function VocabScreen({ profile }: { profile: ProfileRecord }) {
 
   const now = Date.now();
   const display: RomajiDisplay = romajiDisplay(profile.settings.romaji, done + 1);
-  const due = dueReviews(snap.cards, now, { filter: 'words' }).dueTotal;
+  const due = dueReviews(snap.cards, now, {
+    filter: 'words',
+    reviewable: reviewableByCurriculum(done),
+  }).dueTotal;
   const firstLesson = Math.min(...vocab.byLesson.keys(), done + 1);
   const searching = query.trim().length > 0;
   const shown = searching ? results.slice(0, MAX_RESULTS) : results;

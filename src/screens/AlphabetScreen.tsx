@@ -3,7 +3,12 @@ import '../styles/alphabet.css';
 import { navigate } from '../app/router.ts';
 import { ReportDialog } from '../app/ReportDialog.tsx';
 import { loadLearning, type LearningSnapshot } from '../data/learning.ts';
-import { completedPrefix, dueReviews, kanaUpTo } from '../lesson/context.ts';
+import {
+  completedPrefix,
+  dueReviews,
+  kanaUpTo,
+  reviewableByCurriculum,
+} from '../lesson/context.ts';
 import { kanaGroups } from '../lesson/kana.ts';
 import type { KanaGroup } from '../shared/content-schema.ts';
 import type { ProfileRecord } from '../shared/api.ts';
@@ -93,7 +98,12 @@ export function AlphabetScreen({ profile }: { profile: ProfileRecord }) {
     (sum, g) => sum + g.chars.filter((c) => learned.has(c.char)).length,
     0,
   );
-  const due = snap ? dueReviews(snap.cards, Date.now(), { filter: 'kana' }).dueTotal : 0;
+  const due = snap
+    ? dueReviews(snap.cards, Date.now(), {
+        filter: 'kana',
+        reviewable: reviewableByCurriculum(completedPrefix(snap.lessons)),
+      }).dueTotal
+    : 0;
 
   const cell = (c: KanaChar | null, group: KanaGroup, key: string) =>
     c ? (

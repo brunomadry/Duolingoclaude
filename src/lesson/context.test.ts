@@ -13,6 +13,7 @@ import {
   gates,
   particlesUpTo,
   planLesson,
+  reviewableByCurriculum,
   reviewableCard,
   wordsOfGrammar,
 } from './context.ts';
@@ -165,6 +166,18 @@ describe('the review step', () => {
     // Without the kanji data a kanji card cannot be reviewed either.
     expect(due.kanjiChars).toEqual([]);
     expect(due.dueTotal).toBe(1);
+  });
+
+  it('counts due cards from the curriculum alone on screens without the course content', () => {
+    const reviewable = reviewableByCurriculum(20);
+    expect(reviewable('kana:あ')).toBe(true);
+    expect(reviewable(vocabCardId('gakusei'))).toBe(true);
+    expect(reviewable(vocabCardId('gone-word'))).toBe(false);
+    expect(reviewable(grammarCardId('wa-desu'))).toBe(true);
+    // Its lesson (L29) is not completed: no card yet, and none to count.
+    expect(reviewable(grammarCardId('masu-wo'))).toBe(false);
+    expect(reviewable('kanji:日')).toBe(true);
+    expect(reviewable('kanji:無')).toBe(false);
   });
 
   it('uses only what earlier lessons taught, before the lesson brings anything new', () => {
