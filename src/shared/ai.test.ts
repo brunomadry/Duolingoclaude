@@ -61,7 +61,21 @@ describe('validation', () => {
       deps,
     );
     expect(bad.ok).toBe(false);
-    expect(bad.offending.length).toBeGreaterThan(0);
+    expect(bad.readingOk).toBe(true);
+    expect(bad.offending).toContain('たべます');
+  });
+
+  it('rejects a reading that does not spell the sentence', () => {
+    for (const [ja, kana, n] of [
+      ['本です。', 'ほんでした。', 22],
+      ['本です。', 'たかい ほんです。', 22],
+      ['水を飲みます。', 'みずを のみません。', 30],
+      ['水を飲みます。', 'みずお のみます。', 30],
+      ['私は学生です。', 'わたしわ がくせいです。', 17],
+    ] as const) {
+      const v = checkAiSentence({ ja, kana, pl: '' }, n, deps);
+      expect(v, `${ja} / ${kana}`).toMatchObject({ ok: false, readingOk: false });
+    }
   });
 
   it('keeps a correction only when it passes and names only taught grammar', () => {

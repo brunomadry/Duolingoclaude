@@ -6,6 +6,7 @@ import type { RomajiDisplay } from '../../lesson/romaji.ts';
 import { ApiError } from '../../lib/api.ts';
 import { speak } from '../../lib/speech.ts';
 import type { AiChatResponse, AiSentence, ChatFeedback, ChatTurn } from '../../shared/ai.ts';
+import { MAX_CHAT_LINE } from '../../shared/defaults.ts';
 import { aiChat } from '../../state/app.ts';
 import { GrammarNoteView } from '../../ui/GrammarNoteView.tsx';
 import { SentenceLine } from '../../ui/Written.tsx';
@@ -174,6 +175,7 @@ export function ChatStep({ lessonN, display, sound, notes, onDone }: ChatStepPro
             value={input}
             onInput={(e) => setInput(e.currentTarget.value)}
             placeholder="np. hai, sou desu"
+            maxLength={MAX_CHAT_LINE}
             autoComplete="off"
             autoCapitalize="none"
             autoCorrect="off"

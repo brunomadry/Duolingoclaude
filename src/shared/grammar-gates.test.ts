@@ -113,7 +113,7 @@ describe('checkTokens', () => {
 
 describe('readingProblems', () => {
   const problems = (ja: string, kana: string, allow?: string[]) =>
-    readingProblems(tokenize(ja, lexicon), tokenize(kana, lexicon), new Set(allow));
+    readingProblems(tokenize(ja, lexicon), tokenize(kana, lexicon), lexicon, new Set(allow));
 
   it('accepts a reading that spells the same words', () => {
     expect(problems('私は学生です。', 'わたしは がくせいです。')).toEqual([]);
@@ -121,9 +121,40 @@ describe('readingProblems', () => {
     expect(problems('目が痛いです。', 'めが いたいです。')).toEqual([]);
   });
 
+  it('accepts numbers read in several tokens, split kana words and other candidates', () => {
+    expect(problems('二時に帰ります。', 'にじに かえります。')).toEqual([]);
+    expect(problems('四時に帰ります。', 'よじに かえります。')).toEqual([]);
+    expect(problems('五本ください。', 'ごほん ください。')).toEqual([]);
+    expect(problems('百円です。', 'ひゃくえんです。')).toEqual([]);
+    expect(problems('兄弟が二人います。', 'きょうだいが ふたり います。')).toEqual([]);
+    expect(
+      problems('あの人は悪い人じゃありません。', 'あの ひとは わるい ひとじゃ ありません。'),
+    ).toEqual([]);
+    expect(problems('野菜を切ってください。', 'やさいを きって ください。')).toEqual([]);
+  });
+
+  it('reports a reading with other grammar, forms or extra words', () => {
+    expect(problems('本です。', 'ほんでした。')).toEqual([
+      'reading does not spell "です" (it has "でした")',
+    ]);
+    expect(problems('水を飲みます。', 'みずを のみません。')).toEqual([
+      'reading does not spell "飲みます" (it has "のみません")',
+    ]);
+    expect(problems('水を飲みます。', 'みずお のみます。')).toEqual([
+      'reading does not spell "を" (it has "お")',
+    ]);
+    expect(problems('本です。', 'たかい ほんです。')).toEqual([
+      'reading does not spell "本" (it has "たかい")',
+    ]);
+    expect(problems('本です。', 'ほんです ね。')).toEqual(['reading has extra "ね"']);
+    expect(problems('三時に来ます。', 'さんじでした に きます。')).toEqual([
+      'reading does not spell "に" (it has "でした")',
+    ]);
+  });
+
   it('reports a reading with other words or unknown text', () => {
     expect(problems('私は学生です。', 'わたしは せんせいです。')).toEqual([
-      'reading does not spell "学生"',
+      'reading does not spell "学生" (it has "せんせい")',
     ]);
     expect(problems('マイクさんは学生です。', 'ジョンさんは がくせいです。', ['マイク'])).toEqual([
       'reading has unknown "ジョン"',

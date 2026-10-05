@@ -121,27 +121,38 @@ ai.post('/chat', async (c) => {
   let reply: AiSentence | null = null;
   let suggestion: AiSentence | undefined;
   let offending: string[] = [];
+  let retryNote = '';
   for (let attempt = 0; attempt < 2; attempt++) {
     const prompt = chatPrompt(ctx, history, closing);
-    const user = offending.length
-      ? `${prompt.user}\nYour previous line used words that are not allowed (${offending.join(', ')}). Use only the allowed words.`
-      : prompt.user;
-    const data = parseJsonObject(await complete(c, llm, { ...prompt, user }, 500)) as Record<
-      string,
-      unknown
-    > | null;
+    const data = parseJsonObject(
+      await complete(c, llm, { ...prompt, user: prompt.user + retryNote }, 500),
+    ) as Record<string, unknown> | null;
     const line = readSentence(data?.reply);
     if (!line) continue;
     const verdict = checkAiSentence(line, lesson, deps);
-    reply = line;
-    offending = verdict.offending;
-    const hint = readSentence(data?.suggestion);
-    suggestion = hint && checkAiSentence(hint, lesson, deps).ok ? hint : undefined;
+    // A line whose kana does not spell it is never shown (learners read the kana); one that
+    // still uses untaught words after the retry is shown with those words marked.
+    if (verdict.readingOk) {
+      reply = line;
+      offending = verdict.offending;
+      const hint = readSentence(data?.suggestion);
+      suggestion = hint && checkAiSentence(hint, lesson, deps).ok ? hint : undefined;
+    }
     if (verdict.ok) break;
+    retryNote = [
+      '',
+      ...(verdict.offending.length
+        ? [
+            `Your previous line used words that are not allowed (${verdict.offending.join(', ')}). Use only the allowed words.`,
+          ]
+        : []),
+      ...(verdict.readingOk
+        ? []
+        : ['In your previous line "kana" did not spell "ja" exactly: give the full kana reading.']),
+    ].join('\n');
   }
   if (!reply) fail('ai_unavailable', 'no usable reply');
   const body: AiChatResponse = {
-    // A line that still uses untaught words is marked rather than dropped.
     reply: offending.length ? { ...reply, unknown: offending } : reply,
     ...(suggestion ? { suggestion } : {}),
     ...(feedback ? { feedback } : {}),

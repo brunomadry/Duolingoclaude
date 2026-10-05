@@ -307,7 +307,7 @@ export function validateContent(raw: RawContent): ValidationReport {
     });
     for (const p of result.problems) errors.push(`${where}: ${p} in "${ex.ja}"`);
     if (ex.kana) {
-      for (const p of readingProblems(written, tokenize(ex.kana, lexicon), allowSurfaces))
+      for (const p of readingProblems(written, tokenize(ex.kana, lexicon), lexicon, allowSurfaces))
         errors.push(`${where}: ${p} ("${ex.ja}" / "${ex.kana}")`);
     }
     if (result.ok && !result.wordIds.includes(ex.wordId))
@@ -343,7 +343,12 @@ export function sentenceProblems(
   const result = checkTokens(written, { lessonN, ...deps, allowSurfaces });
   for (const p of result.problems) problems.push(`${p} in "${ex.ja}"`);
   if (ex.kana) {
-    for (const p of readingProblems(written, tokenize(ex.kana, deps.lexicon), allowSurfaces))
+    for (const p of readingProblems(
+      written,
+      tokenize(ex.kana, deps.lexicon),
+      deps.lexicon,
+      allowSurfaces,
+    ))
       problems.push(`${p} ("${ex.ja}" / "${ex.kana}")`);
   }
   return problems;

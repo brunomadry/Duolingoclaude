@@ -171,8 +171,25 @@ describe('POST /api/ai/chat', () => {
     const body = (await (
       await call('/api/ai/chat', { lesson: 17, history: [] }, cookie)
     ).json()) as AiChatResponse;
-    expect(body.reply.unknown?.length).toBeGreaterThan(0);
+    // Named as the learner sees them: in kana.
+    expect(body.reply.unknown).toContain('たべます');
+    expect(body.reply.unknown).not.toContain('食べます');
     expect(calls[1]?.body.messages.at(-1)?.content).toMatch(/not allowed/);
+  });
+
+  it('never shows a line whose kana does not spell it', async () => {
+    const cookie = await unlock();
+    const past = { ...ok, kana: 'わたしは がくせいでした。' };
+    answers.push({ reply: past }, { reply: past });
+    const res = await call('/api/ai/chat', { lesson: 17, history: [] }, cookie);
+    expect(res.status).toBe(503);
+    expect(calls[1]?.body.messages.at(-1)?.content).toMatch(/did not spell/);
+
+    answers.push({ reply: past }, { reply: ok2 });
+    const body = (await (
+      await call('/api/ai/chat', { lesson: 17, history: [] }, cookie)
+    ).json()) as AiChatResponse;
+    expect(body.reply).toEqual(ok2);
   });
 
   it('closes the conversation after the last learner turn', async () => {

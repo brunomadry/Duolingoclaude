@@ -97,7 +97,7 @@ function validatePart(path: string, from: number, to: number): string[] {
     if (r.ok && !r.wordIds.includes(ex.wordId))
       problems.push(`${where}: the sentence does not use the word ("${ex.ja}")`);
     if (ex.kana)
-      for (const p of readingProblems(r.tokens, tokenize(ex.kana, lexicon), allow))
+      for (const p of readingProblems(r.tokens, tokenize(ex.kana, lexicon), lexicon, allow))
         problems.push(`${where}: ${p} ("${ex.ja}" / "${ex.kana}")`);
   });
   for (const l of curriculum.lessons) {
@@ -132,7 +132,7 @@ if (cmd === 'check' && a && b) {
   let readingOk = true;
   if (c) {
     const reading = tokenize(c, lexicon);
-    const problems = readingProblems(r.tokens, reading);
+    const problems = readingProblems(r.tokens, reading, lexicon);
     readingOk = problems.length === 0;
     console.log(show(reading));
     console.log(readingOk ? 'reading OK' : `READING NOT OK:\n  ${problems.join('\n  ')}`);

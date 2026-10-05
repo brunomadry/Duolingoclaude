@@ -8,7 +8,7 @@
  * Pure: the curriculum and the word-to-lesson map are passed in, so this runs in the
  * browser, the Worker and Node scripts alike.
  */
-import type { InflectionForm, Token } from './jp-words.ts';
+import type { InflectionForm, Lexicon, Token } from './jp-words.ts';
 
 /** Grammar id (content/curriculum.json newItem.grammarId) per GRAMMAR_WORDS key. */
 export const GRAMMAR_KEY_GATES: Readonly<Record<string, string | null>> = {
@@ -263,37 +263,124 @@ export function checkTokens(tokens: readonly Token[], ctx: CheckContext): Senten
   return { ok: problems.length === 0, problems, wordIds: [...new Set(wordIds)] };
 }
 
+const NUMERAL_START = /^[〇一二三四五六七八九十百千万]/;
+const numberWordCache = new WeakMap<Lexicon, ReadonlySet<string>>();
+
+/** Words a written number may be read as: number words and words spelled with one (二人 ふたり). */
+function numberWords(lexicon: Lexicon): ReadonlySet<string> {
+  let ids = numberWordCache.get(lexicon);
+  if (!ids) {
+    ids = new Set(
+      lexicon.entries
+        .filter(
+          (e) =>
+            e.pos.includes('num') || e.pos.includes('ctr') || NUMERAL_START.test(e.kanji ?? ''),
+        )
+        .map((e) => e.id),
+    );
+    numberWordCache.set(lexicon, ids);
+  }
+  return ids;
+}
+
+const isCounterSurface = (lexicon: Lexicon, surface: string) =>
+  lexicon.surfaces.get(surface)?.grammar.some((g) => g.role === 'counter') ?? false;
+
+/** Do a written token and a reading token stand for the same word or grammar word? */
+function sameToken(w: Token, r: Token): boolean {
+  const lone = r.kind === 'unknown' && [...r.surface].length === 1;
+  if (w.kind === 'word') {
+    if (r.kind === 'grammar') return !!w.grammar && w.grammar === r.grammar;
+    // A lone kana matches any word: single-kana words (目 め, 手 て) are not matched in kana.
+    if (r.kind !== 'word') return lone;
+    const shared = r.wordIds.filter((id) => w.wordIds.includes(id));
+    if (!shared.length) return false;
+    // Tokens carry the form of their first candidate only: compare forms when that is the
+    // shared word on both sides (飲みます / のみません), otherwise trust the word (切って /
+    // きって, where 切手 comes first).
+    const firstOnBoth = shared.includes(w.wordIds[0] ?? '') && shared.includes(r.wordIds[0] ?? '');
+    return !firstOnBoth || (w.form ?? '') === (r.form ?? '');
+  }
+  if (w.kind === 'grammar') {
+    if (r.kind === 'grammar') return w.grammar === r.grammar;
+    return r.kind === 'word' && !!r.grammar && r.grammar === w.grammar;
+  }
+  return w.kind === r.kind && w.surface === r.surface;
+}
+
 /**
- * Checks that a kana reading spells the same words as the written sentence: every word of
- * the written form must appear, in order, in the reading. Extra reading tokens are fine
- * (３時 is read さんじ), and a lone unknown kana matches any word (single-kana words such
- * as 目 め or 手 て are not in the matcher). Anything else unknown in the reading is a
- * problem unless knowingly allowed.
+ * Checks that a kana reading spells the written sentence token for token: the same words in
+ * the same forms, the same particles and endings, nothing added or left out (でした for
+ * です, を spelled お or an extra adjective are all problems). A number with its counters
+ * may be read in any number of number-like tokens (三時 さんじ, 五本 ごほん, 二人 ふたり),
+ * a flagged name in any tokens, and a space may split a kana word (じゃ ありません).
+ * Unknown text in the reading is a problem unless knowingly allowed.
  */
 export function readingProblems(
   written: readonly Token[],
   reading: readonly Token[],
+  lexicon: Lexicon,
   allowSurfaces?: ReadonlySet<string>,
 ): string[] {
   const problems: string[] = [];
-  const lone = (t: Token) => t.kind === 'unknown' && [...t.surface].length === 1;
   for (const t of reading) {
-    if (t.kind === 'unknown' && !lone(t) && !allowSurfaces?.has(t.surface))
+    if (t.kind === 'unknown' && [...t.surface].length > 1 && !allowSurfaces?.has(t.surface))
       problems.push(`reading has unknown "${t.surface}"`);
   }
-  const candidates = reading.filter((t) => t.kind === 'word' || lone(t));
-  let i = 0;
-  for (const t of written) {
-    if (t.kind !== 'word') continue;
-    let found = false;
-    while (i < candidates.length && !found) {
-      const c = candidates[i++] as Token;
-      found = lone(c) || c.wordIds.some((id) => t.wordIds.includes(id));
+  const W = written.filter((t) => t.kind !== 'punct');
+  const R = reading.filter((t) => t.kind !== 'punct');
+  const numbers = numberWords(lexicon);
+  const isCounter = (t: Token | undefined) =>
+    t?.kind === 'grammar' && isCounterSurface(lexicon, t.surface);
+  const numberLike = (r: Token) =>
+    r.kind === 'number' ||
+    r.kind === 'unknown' ||
+    // The kana matcher splits some numbers into single-kana grammar words (に, ご, よ).
+    (r.kind === 'grammar' && (isCounter(r) || [...r.surface].length === 1)) ||
+    (r.kind === 'word' &&
+      (r.wordIds.some((id) => numbers.has(id)) || isCounterSurface(lexicon, r.surface)));
+
+  // match(i, j): does W[i..] spell R[j..]? Memoised; `reached` keeps the furthest point.
+  const memo = new Map<number, boolean>();
+  let reached = [0, 0] as [number, number];
+  const match = (i: number, j: number): boolean => {
+    const key = i * (R.length + 1) + j;
+    const known = memo.get(key);
+    if (known !== undefined) return known;
+    if (i > reached[0] || (i === reached[0] && j > reached[1])) reached = [i, j];
+    const w = W[i];
+    let ok = false;
+    if (!w) ok = j === R.length;
+    else if (w.kind === 'number' || w.kind === 'unknown') {
+      let next = i + 1;
+      if (w.kind === 'number') while (W[next]?.kind === 'number' || isCounter(W[next])) next++;
+      for (let end = j + 1; end <= R.length && !ok; end++) {
+        if (w.kind === 'number' && !numberLike(R[end - 1] as Token)) break;
+        ok = match(next, end);
+      }
+    } else {
+      const r = R[j];
+      ok = r !== undefined && sameToken(w, r) && match(i + 1, j + 1);
+      if (!ok && /^[ぁ-ゖァ-ヺー]+$/.test(w.surface)) {
+        let joined = '';
+        for (let end = j; end < R.length && !ok && joined.length < w.surface.length; end++) {
+          joined += R[end]?.surface ?? '';
+          if (end > j && joined === w.surface) ok = match(i + 1, end + 1);
+        }
+      }
     }
-    if (!found) {
-      problems.push(`reading does not spell "${t.surface}"`);
-      break;
-    }
+    memo.set(key, ok);
+    return ok;
+  };
+  if (!match(0, 0)) {
+    const [i, j] = reached;
+    const w = W[i];
+    const r = R[j];
+    problems.push(
+      w
+        ? `reading does not spell "${w.surface}"${r ? ` (it has "${r.surface}")` : ''}`
+        : `reading has extra "${r?.surface ?? ''}"`,
+    );
   }
   return problems;
 }

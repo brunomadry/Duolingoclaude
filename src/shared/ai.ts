@@ -204,27 +204,34 @@ export interface ValidatorDeps {
 export interface SentenceVerdict {
   ok: boolean;
   problems: string[];
-  /** Surfaces the matcher does not know or the lesson has not taught. */
+  /** The kana reading spells the sentence token for token (learners mostly read the kana). */
+  readingOk: boolean;
+  /** Surfaces the matcher does not know or the lesson has not taught, in kana when possible. */
   offending: string[];
 }
 
-/** Checks an AI sentence against what lesson n has taught, and its reading. */
+const quotedSurfaces = (problems: readonly string[]) =>
+  [...new Set(problems.map((p) => /"([^"]+)"/.exec(p)?.[1] ?? ''))].filter(Boolean);
+
+/** Checks an AI sentence against what lesson n has taught, and its reading against it. */
 export function checkAiSentence(
   s: AiSentence,
   lessonN: number,
   deps: ValidatorDeps,
 ): SentenceVerdict {
   const allowSurfaces = new Set([AI_PERSONA]);
+  const ctx = { lessonN, ...deps, allowSurfaces };
   const written = tokenize(s.ja, deps.lexicon);
-  const result = checkTokens(written, { lessonN, ...deps, allowSurfaces });
-  const problems = [
-    ...result.problems,
-    ...readingProblems(written, tokenize(s.kana, deps.lexicon), allowSurfaces),
-  ];
-  const offending = [...new Set(result.problems.map((p) => /"([^"]+)"/.exec(p)?.[1] ?? ''))].filter(
-    Boolean,
+  const reading = tokenize(s.kana, deps.lexicon);
+  const result = checkTokens(written, ctx);
+  const mismatch = readingProblems(written, reading, deps.lexicon, allowSurfaces);
+  const readingOk = mismatch.length === 0;
+  // The same tokens are flagged in both when the reading matches; name them as learners see them.
+  const offending = quotedSurfaces(
+    readingOk && !result.ok ? checkTokens(reading, ctx).problems : result.problems,
   );
-  return { ok: problems.length === 0, problems, offending };
+  const problems = [...result.problems, ...mismatch];
+  return { ok: problems.length === 0, problems, readingOk, offending };
 }
 
 /** Valid, distinct sentences from an exercise answer. */
