@@ -16,9 +16,17 @@ export function useShowKanji(written: string | undefined): boolean {
   return !!written && hasKanji(written) && kanjiKnown(written, known);
 }
 
-/** A word: kanji with furigana when known, else kana. */
-export function WrittenWord({ kanji, kana }: { kanji?: string; kana: string }) {
-  const show = useShowKanji(kanji);
+/** A word: kanji with furigana when known (or always, with `force`), else kana. */
+export function WrittenWord({
+  kanji,
+  kana,
+  force = false,
+}: {
+  kanji?: string;
+  kana: string;
+  force?: boolean;
+}) {
+  const show = useShowKanji(kanji) || (force && !!kanji);
   if (!show || !kanji) return <>{kana}</>;
   return (
     <>

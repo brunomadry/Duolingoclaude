@@ -11,7 +11,13 @@ import { buildReviewQueue } from '../srs/queue.ts';
 import { buildLessonPlan, charFromCardId, type KanaItem, type LessonPlan } from './engine.ts';
 import { sentencesFor, sentencesUpTo, type GrammarIndex } from './grammar.ts';
 import { groupById } from './kana.ts';
-import { kanjiFromCardId, type KanjiIndex, type KanjiItem } from './kanji.ts';
+import {
+  kanjiFromCardId,
+  kanjiKnown,
+  kanjiUpTo,
+  type KanjiIndex,
+  type KanjiItem,
+} from './kanji.ts';
 import { createRng, seedFrom, shuffle } from './rng.ts';
 import { grammarCardId, grammarIdFromCardId } from './sentence-exercises.ts';
 import { GAP_PARTICLES, type SentenceItem } from './sentences.ts';
@@ -155,11 +161,21 @@ export function kanjiOf(kanji: KanjiIndex | undefined, chars: readonly string[])
   return chars.map((ch) => kanji?.byChar.get(ch)).filter((k): k is KanjiItem => k !== undefined);
 }
 
-/** Words taught by lesson n written with each kanji, newest first. */
-export function kanjiWordsUpTo(vocab: VocabIndex, n: number): Map<string, WordItem[]> {
+/**
+ * Words taught by lesson n written with each kanji, newest first. With `known`, only words
+ * whose kanji are all known (a reading exercise must not show an untaught kanji).
+ */
+export function kanjiWordsUpTo(
+  vocab: VocabIndex,
+  n: number,
+  known?: ReadonlySet<string>,
+): Map<string, WordItem[]> {
   const map = new Map<string, WordItem[]>();
   for (const w of [...wordsUpTo(vocab, n)].reverse()) {
-    for (const ch of new Set(w.kanji ?? '')) map.set(ch, [...(map.get(ch) ?? []), w]);
+    if (known && w.kanji && !kanjiKnown(w.kanji, known)) continue;
+    for (const ch of new Set(w.kanji ?? '')) {
+      if (/[\u3400-\u9fff]/.test(ch)) map.set(ch, [...(map.get(ch) ?? []), w]);
+    }
   }
   return map;
 }
@@ -318,6 +334,6 @@ export function planLesson(
     knownKanji: kanji?.items.filter((k) => k.lesson !== null && k.lesson < lesson.n) ?? [],
     coveredKanji,
     dueKanji: kanjiOf(kanji, due.kanjiChars),
-    kanjiWords: kanjiWordsUpTo(vocab, lesson.n),
+    kanjiWords: kanjiWordsUpTo(vocab, lesson.n, kanji ? kanjiUpTo(kanji, lesson.n) : new Set()),
   });
 }

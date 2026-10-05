@@ -70,6 +70,27 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.player__progress {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+/* Many steps: bars only, and the current step named once under them. */
+.player__steps--compact .player__step-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.player__step-caption {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
 
 .player__step.is-current .player__step-label {
   color: var(--text);

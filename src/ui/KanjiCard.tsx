@@ -52,12 +52,12 @@ export function KanjiCard({ kanji, words }: KanjiCardProps) {
       </dl>
       {words.length > 0 && (
         <div class="stack" style={{ gap: 'var(--space-2)' }}>
-          <h3 class="section-label kanji-card__label">W znanych słówkach</h3>
+          <h3 class="section-label kanji-card__label">W poznanych słówkach</h3>
           <ul class="kanji-card__words">
             {words.slice(0, 4).map((w) => (
               <li key={w.id}>
                 <span class="jp" lang="ja">
-                  <WrittenWord kanji={w.kanji} kana={w.kana} />
+                  <WrittenWord kanji={w.kanji} kana={w.kana} force />
                 </span>
                 <span class="muted">{w.pl[0]}</span>
               </li>

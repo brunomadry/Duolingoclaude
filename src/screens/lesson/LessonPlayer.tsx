@@ -90,6 +90,13 @@ type Finish =
     }
   | { kind: 'simple'; title: string; text: string };
 
+/** Short step name for the progress bar. */
+function stepLabel(s: Step): string {
+  if (s.kind === 'practice' && s.mode === 'test') return 'Test';
+  if (s.kind === 'words') return 'Słówka';
+  return STEP_LABELS[s.kind];
+}
+
 const EXTRA_LENGTH = 12;
 const EXTRA_WORDS_WITH_SENTENCES = 6;
 const EXTRA_SENTENCES = 8;
@@ -251,7 +258,7 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           particles: particlesUpTo(done),
           dueKanji: kanjiOf(kanji, due.kanjiChars),
           knownKanji: kanji?.items.filter((k) => k.lesson !== null && k.lesson <= done) ?? [],
-          kanjiWords: kanjiWordsUpTo(vocab, done),
+          kanjiWords: kanjiWordsUpTo(vocab, done, kanji ? kanjiUpTo(kanji, done) : new Set()),
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
       } else {
@@ -548,24 +555,32 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           >
             <CloseIcon />
           </button>
-          <ol class="player__steps" aria-label="Kroki lekcji">
-            {plan.steps.map((s, i) => (
-              <li
-                key={s.kind}
-                class={`player__step${i < stepIndex ? ' is-done' : i === stepIndex ? ' is-current' : ''}`}
-                aria-current={i === stepIndex ? 'step' : undefined}
-              >
-                <span class="player__step-bar">
-                  {i === stepIndex && (
-                    <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />
-                  )}
-                </span>
-                <span class="player__step-label">
-                  {s.kind === 'practice' && s.mode === 'test' ? 'Test' : STEP_LABELS[s.kind]}
-                </span>
-              </li>
-            ))}
-          </ol>
+          <div class="player__progress">
+            <ol
+              class={`player__steps${plan.steps.length > 4 ? ' player__steps--compact' : ''}`}
+              aria-label="Kroki lekcji"
+            >
+              {plan.steps.map((s, i) => (
+                <li
+                  key={s.kind}
+                  class={`player__step${i < stepIndex ? ' is-done' : i === stepIndex ? ' is-current' : ''}`}
+                  aria-current={i === stepIndex ? 'step' : undefined}
+                >
+                  <span class="player__step-bar">
+                    {i === stepIndex && (
+                      <span style={{ width: `${Math.round(stepProgress * 100)}%` }} />
+                    )}
+                  </span>
+                  <span class="player__step-label">{stepLabel(s)}</span>
+                </li>
+              ))}
+            </ol>
+            {plan.steps.length > 4 && (
+              <p class="player__step-caption" aria-hidden="true">
+                {stepLabel(step)} · krok {stepIndex + 1} z {plan.steps.length}
+              </p>
+            )}
+          </div>
         </header>
 
         <div class="player__body">
