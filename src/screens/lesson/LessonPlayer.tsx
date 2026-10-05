@@ -29,6 +29,7 @@ import {
   lessonSupported,
   planLesson,
   readableWords,
+  reviewableCard,
   wordsOf,
   type ReviewFilter,
 } from '../../lesson/context.ts';
@@ -38,7 +39,7 @@ import { KANA_PHASE_END } from '../../shared/constants.ts';
 import { romajiDisplay } from '../../lesson/romaji.ts';
 import { grammarCardId } from '../../lesson/sentence-exercises.ts';
 import { sentencesUpTo, type GrammarNoteItem } from '../../lesson/grammar.ts';
-import { kanjiCardId, kanjiUpTo, type KanjiIndex } from '../../lesson/kanji.ts';
+import { kanjiCardId, kanjiUpTo, lessonKanji, type KanjiIndex } from '../../lesson/kanji.ts';
 import { vocabCardId, wordsUpTo, type WordItem } from '../../lesson/vocab.ts';
 import { describeNextUnlock } from '../../lesson/schedule.ts';
 import { computeUnlock } from '../../lesson/unlock.ts';
@@ -162,6 +163,9 @@ const MIN_KANA_FOR_EXTRA = 4;
 const MIN_WORDS_FOR_EXTRA = 4;
 const VOCAB_FAILED_TEXT =
   'Nie udało się wczytać słówek. Sprawdź połączenie z internetem i spróbuj jeszcze raz.';
+const KANJI_FAILED_TEXT =
+  'Nie udało się wczytać znaków kanji. Sprawdź połączenie z internetem i spróbuj jeszcze raz.';
+const NO_REVIEWS_TEXT = 'Brak powtórek na teraz. Wróć później.';
 
 export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerProps) {
   const [plan, setPlan] = useState<LessonPlan | null>(null);
@@ -212,6 +216,8 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       if (mode === 'lesson') {
         if (!lesson) return setProblem('Nie ma takiej lekcji.');
         if (!lessonSupported(lesson)) return setProblem(COMING_SOON_TEXT);
+        // Completing a kanji lesson without its kanji step would be permanent.
+        if (!kanji && lessonKanji(lesson).length) return setProblem(KANJI_FAILED_TEXT);
         const unlock = computeUnlock({
           completions: snapshot.lessons,
           pace: profile.settings.pace,
@@ -236,11 +242,18 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           kanji,
         );
       } else if (mode === 'reviews') {
-        const due = dueReviews(snapshot.cards, now, { filter });
+        const due = dueReviews(snapshot.cards, now, {
+          filter,
+          reviewable: reviewableCard(vocab, grammar, kanji, done),
+        });
         const dueWords = wordsOf(vocab, due.wordIds);
         const dueSentences = dueSentenceReviews(due.grammarIds, grammar, done, `reviews:${now}`);
-        if (!due.items.length && !dueWords.length && !dueSentences.length && !due.kanjiChars.length)
-          return setProblem('Brak powtórek na teraz. Wróć później.');
+        const dueKanji = kanjiOf(kanji, due.kanjiChars);
+        if (!due.items.length && !dueWords.length && !dueSentences.length && !dueKanji.length) {
+          const kanjiMissing =
+            !kanji && dueReviews(snapshot.cards, now, { filter }).kanjiChars.length;
+          return setProblem(kanjiMissing ? KANJI_FAILED_TEXT : NO_REVIEWS_TEXT);
+        }
         next = buildLessonPlan({
           lesson: { n: 0, kind: 'review', title: 'Powtórki', newItem: { type: 'none' } },
           lessonItems: [],
@@ -256,11 +269,13 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           dueSentences,
           sentencePool: sentencesUpTo(grammar, done),
           particles: particlesUpTo(done),
-          dueKanji: kanjiOf(kanji, due.kanjiChars),
+          dueKanji,
           knownKanji: kanji?.items.filter((k) => k.lesson !== null && k.lesson <= done) ?? [],
           kanjiWords: kanjiWordsUpTo(vocab, done, kanji ? kanjiUpTo(kanji, done) : new Set()),
         });
         next = { ...next, steps: next.steps.filter((s) => s.kind === 'review') };
+        // Never an empty player: it would wait forever without a way out.
+        if (!next.steps.length) return setProblem(NO_REVIEWS_TEXT);
       } else {
         // After the writing phase, mixed extra practice is words and sentences (kana have
         // their own practice in the Alfabet tab); fresh AI sentences join when online.
@@ -384,6 +399,11 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
       setProblem(COMING_SOON_TEXT);
       return;
     }
+    // The grammar card starts with the completed lesson: before that no sentence the learner
+    // can read uses the point, so a card seeded with the note could never be reviewed.
+    const note = plan.steps.find((s) => s.kind === 'grammar');
+    if (note?.kind === 'grammar')
+      await seedCards(db, profile.id, [grammarCardId(note.note.id)], now);
     const outcome = await recordCompletion(
       db,
       profile.id,
@@ -423,9 +443,6 @@ export function LessonPlayer({ profile, mode, n, filter = 'all' }: LessonPlayerP
           step.items.map((i) => kanaCardId(i.char)),
           Date.now(),
         );
-      }
-      if (step.kind === 'grammar' && mode === 'lesson') {
-        await seedCards(database(), profile.id, [grammarCardId(step.note.id)], Date.now());
       }
       if (step.kind === 'kanji' && mode === 'lesson') {
         await seedCards(

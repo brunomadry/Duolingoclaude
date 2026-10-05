@@ -13,10 +13,11 @@ import {
   gates,
   particlesUpTo,
   planLesson,
+  reviewableCard,
   wordsOfGrammar,
 } from './context.ts';
 import { grammarCardId } from './sentence-exercises.ts';
-import { buildVocabIndex, type RawVocab } from './vocab.ts';
+import { buildVocabIndex, vocabCardId, type RawVocab } from './vocab.ts';
 
 const read = <T>(f: string): T =>
   JSON.parse(readFileSync(new URL(`../../content/${f}`, import.meta.url), 'utf8')) as T;
@@ -131,6 +132,57 @@ describe('grammar lessons', () => {
     const reviews = dueSentenceReviews(due.grammarIds, grammar, 20, 'seed');
     expect(reviews).toHaveLength(1);
     expect(reviews[0]?.sentence.lesson).toBeLessThanOrEqual(20);
+  });
+});
+
+describe('the review step', () => {
+  const dueCard = (cardId: string): CardRecord => ({
+    profileId: 'p',
+    cardId,
+    data: { algo: 'fsrs', due: NOW - 1000 } as unknown as CardRecord['data'],
+    updatedAt: NOW,
+    deleted: false,
+  });
+  const reviewStep = (plan: LessonPlan) => {
+    const step = plan.steps.find((s) => s.kind === 'review');
+    if (step?.kind !== 'review') throw new Error('no review');
+    return step.exercises;
+  };
+
+  it('counts a grammar card only once a sentence the learner can read uses it', () => {
+    // Read the L17 note, left the lesson: nothing up to L16 can review it yet.
+    expect(reviewableCard(vocab, grammar, undefined, 16)(grammarCardId('wa-desu'))).toBe(false);
+    expect(reviewableCard(vocab, grammar, undefined, 17)(grammarCardId('wa-desu'))).toBe(true);
+  });
+
+  it('leaves out cards no exercise can clear before the queue is capped', () => {
+    const stale = Array.from({ length: 25 }, (_, i) => dueCard(vocabCardId(`gone-${i}`)));
+    const cards = ctx([...stale, dueCard(vocabCardId('gakusei')), dueCard('kanji:日')]).cards;
+    const due = dueReviews(cards, NOW, {
+      reviewable: reviewableCard(vocab, grammar, undefined, 20),
+    });
+    expect(due.wordIds).toEqual(['gakusei']);
+    // Without the kanji data a kanji card cannot be reviewed either.
+    expect(due.kanjiChars).toEqual([]);
+    expect(due.dueTotal).toBe(1);
+  });
+
+  it('uses only what earlier lessons taught, before the lesson brings anything new', () => {
+    const l17 = vocab.byLesson.get(17) ?? [];
+    const plan = planLesson(
+      lesson(19),
+      ctx([dueCard(grammarCardId('wa-desu')), ...l17.map((w) => dueCard(vocabCardId(w.id)))]),
+      vocab,
+      grammar,
+    );
+    const exercises = reviewStep(plan);
+    expect(exercises.some(isSentenceExercise)).toBe(true);
+    // か is taught by L19 itself: no option or tile in its review.
+    for (const e of exercises.filter(isSentenceExercise))
+      expect([...e.options, ...(e.tiles ?? [])]).not.toContain('か');
+    const fresh = new Set((vocab.byLesson.get(19) ?? []).map((w) => w.kana));
+    for (const e of exercises.filter(isWordExercise))
+      for (const o of e.options) expect(fresh.has(o)).toBe(false);
   });
 });
 

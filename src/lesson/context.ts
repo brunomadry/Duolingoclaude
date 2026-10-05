@@ -120,11 +120,15 @@ export interface DueInfo {
   dueTotal: number;
 }
 
-/** Due kana and word reviews, capped by the SRS queue so the review step never snowballs. */
+/**
+ * Due kana and word reviews, capped by the SRS queue so the review step never snowballs.
+ * With `reviewable`, cards no exercise can be built for (see reviewableCard) are left out
+ * before the cap, so they can never hold places in the queue.
+ */
 export function dueReviews(
   cards: ReadonlyMap<string, CardRecord>,
   now: number,
-  opts: { max?: number; filter?: ReviewFilter } = {},
+  opts: { max?: number; filter?: ReviewFilter; reviewable?: (cardId: string) => boolean } = {},
 ): DueInfo {
   const filter = opts.filter ?? 'all';
   const all = [...cards.values()]
@@ -133,7 +137,8 @@ export function dueReviews(
         !c.deleted &&
         ((filter !== 'kana' && wordIdFromCardId(c.cardId)) ||
           (filter !== 'words' && (charFromCardId(c.cardId) || kanjiFromCardId(c.cardId))) ||
-          (filter === 'all' && grammarIdFromCardId(c.cardId))),
+          (filter === 'all' && grammarIdFromCardId(c.cardId))) &&
+        (opts.reviewable?.(c.cardId) ?? true),
     )
     .map((c) => ({ cardId: c.cardId, state: c.data as SrsState }));
   const { queue, dueTotal } = buildReviewQueue(
@@ -155,6 +160,38 @@ export function dueReviews(
     .map((q) => kanjiFromCardId(q.cardId))
     .filter((ch): ch is string => ch !== null);
   return { items, wordIds, grammarIds, kanjiChars, dueTotal };
+}
+
+/**
+ * Can the review step build an exercise for a card, with sentences up to lesson `upTo`? A
+ * grammar card needs a sentence the learner can read; a word or kanji card needs its entry
+ * (content may change, and the kanji data may fail to load).
+ */
+export function reviewableCard(
+  vocab: VocabIndex,
+  grammar: GrammarIndex | undefined,
+  kanji: KanjiIndex | undefined,
+  upTo: number,
+): (cardId: string) => boolean {
+  const kana = new Set(kanaUpTo(100).map((i) => i.char));
+  const pool = grammar ? sentencesUpTo(grammar, upTo) : [];
+  const grammarOk = new Map<string, boolean>();
+  return (cardId) => {
+    const char = charFromCardId(cardId);
+    if (char !== null) return kana.has(char);
+    const word = wordIdFromCardId(cardId);
+    if (word !== null) return vocab.byId.has(word);
+    const kanjiChar = kanjiFromCardId(cardId);
+    if (kanjiChar !== null) return kanji?.byChar.has(kanjiChar) ?? false;
+    const id = grammarIdFromCardId(cardId);
+    if (id === null) return false;
+    let ok = grammarOk.get(id);
+    if (ok === undefined) {
+      ok = sentencesFor(pool, id, wordsOfGrammar(id)).length > 0;
+      grammarOk.set(id, ok);
+    }
+    return ok;
+  };
 }
 
 export function kanjiOf(kanji: KanjiIndex | undefined, chars: readonly string[]): KanjiItem[] {
@@ -238,7 +275,9 @@ export function planLesson(
   grammar?: GrammarIndex,
   kanji?: KanjiIndex,
 ): LessonPlan {
-  const due = dueReviews(ctx.cards, ctx.now);
+  const due = dueReviews(ctx.cards, ctx.now, {
+    reviewable: reviewableCard(vocab, grammar, kanji, lesson.n - 1),
+  });
   const covers = lesson.kind === 'test' ? lesson.covers : undefined;
   const coveredLessons = covers
     ? curriculum.lessons.filter((l) => l.n >= covers[0] && l.n <= covers[1])
@@ -326,6 +365,8 @@ export function planLesson(
     sentencePool: pool,
     sentenceCount,
     particles: particlesUpTo(lesson.n),
+    // The review step comes before anything new: only what earlier lessons taught.
+    reviewParticles: particlesUpTo(lesson.n - 1),
     focusKeys: Object.keys(GRAMMAR_KEY_GATES).filter((k) => GRAMMAR_KEY_GATES[k] === focus?.id),
     sentenceCard,
     dueSentences: dueSentenceReviews(due.grammarIds, grammar, lesson.n - 1, `due:${seed}`),
@@ -335,5 +376,10 @@ export function planLesson(
     coveredKanji,
     dueKanji: kanjiOf(kanji, due.kanjiChars),
     kanjiWords: kanjiWordsUpTo(vocab, lesson.n, kanji ? kanjiUpTo(kanji, lesson.n) : new Set()),
+    reviewKanjiWords: kanjiWordsUpTo(
+      vocab,
+      lesson.n - 1,
+      kanji ? kanjiUpTo(kanji, lesson.n - 1) : new Set(),
+    ),
   });
 }

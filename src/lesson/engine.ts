@@ -148,6 +148,8 @@ export interface PlanInput {
   sentenceCount?: number;
   /** GAP_PARTICLES keys taught so far. */
   particles?: readonly string[];
+  /** Particles for the review step, before this lesson's new item (defaults to `particles`). */
+  reviewParticles?: readonly string[];
   /** Particle keys of the lesson's grammar point (preferred gaps). */
   focusKeys?: readonly string[];
   /** SRS card a sentence exercise trains (a grammar card). */
@@ -164,6 +166,8 @@ export interface PlanInput {
   dueKanji?: readonly KanjiItem[];
   /** Taught words written with each kanji (for reading exercises). */
   kanjiWords?: ReadonlyMap<string, readonly WordItem[]>;
+  /** The same for the review step, before this lesson's words and kanji (defaults to `kanjiWords`). */
+  reviewKanjiWords?: ReadonlyMap<string, readonly WordItem[]>;
 }
 
 export const PRACTICE_CAP = 18;
@@ -546,13 +550,29 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
   const kanjiExercise = (kind: KanjiExerciseKind, k: KanjiItem, id: string) =>
     makeKanjiExercise(kind, k, kanjiPool, kanjiWords, wordPool, rng, id);
   /** Up to `count` kanji exercises over a list, alternating meaning and reading. */
-  const kanjiRun = (list: readonly KanjiItem[], count: number, prefix: string) =>
+  const kanjiRun = (
+    list: readonly KanjiItem[],
+    count: number,
+    prefix: string,
+    make: typeof kanjiExercise = kanjiExercise,
+  ) =>
     shuffle(list, rng)
       .slice(0, count)
-      .map((k, i) => kanjiExercise(i % 2 ? 'kanji-reading' : 'kanji-meaning', k, `${prefix}${i}`));
+      .map((k, i) => make(i % 2 ? 'kanji-reading' : 'kanji-meaning', k, `${prefix}${i}`));
   const steps: Step[] = [];
 
   if (input.dueReviews.length || dueWords.length || dueSentences.length || dueKanji.length) {
+    // The review comes first: this lesson's words, kanji and particles are not known yet,
+    // so they are neither options nor reading words here.
+    const reviewWordPool = uniqueById([...coveredWords, ...(input.knownWords ?? []), ...dueWords]);
+    const reviewSctx: SentenceContext = {
+      ...sctx,
+      particles: input.reviewParticles ?? sctx.particles,
+    };
+    const reviewKanjiPool = [...(input.knownKanji ?? []), ...coveredKanji, ...dueKanji];
+    const reviewKanjiWords = input.reviewKanjiWords ?? kanjiWords;
+    const reviewKanji = (kind: KanjiExerciseKind, k: KanjiItem, id: string) =>
+      makeKanjiExercise(kind, k, reviewKanjiPool, reviewKanjiWords, reviewWordPool, rng, id);
     const reviewItems = uniqueByChar(input.dueReviews);
     steps.push({
       kind: 'review',
@@ -566,7 +586,7 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
             (['word-to-meaning', 'meaning-to-word', 'type-word'] as const)[i % 3] ??
               'word-to-meaning',
             w,
-            wordPool,
+            reviewWordPool,
             spare,
             rng,
             `rw${i}`,
@@ -577,11 +597,11 @@ export function buildLessonPlan(input: PlanInput): LessonPlan {
             i % 2 === 0 ? 'sentence-gap' : 'sentence-tiles',
             d.sentence,
             d.cardId,
-            sctx,
+            reviewSctx,
             `rs${i}`,
           ),
         ),
-        ...kanjiRun(dueKanji, dueKanji.length, 'rk'),
+        ...kanjiRun(dueKanji, dueKanji.length, 'rk', reviewKanji),
       ]),
     });
   }
