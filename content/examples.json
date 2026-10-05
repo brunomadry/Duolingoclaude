@@ -1693,7 +1693,7 @@
       "pl": "O pierwszej spotykam się z kolegą.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ichi ji ni tomodachi ni aimasu."
+      "romaji": "Ichiji ni tomodachi ni aimasu."
     },
     {
       "wordId": "ni",
@@ -1703,7 +1703,7 @@
       "pl": "Na dworzec dojeżdżam o drugiej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ni ji ni eki ni tsukimasu."
+      "romaji": "Niji ni eki ni tsukimasu."
     },
     {
       "wordId": "san",
@@ -1713,7 +1713,7 @@
       "pl": "O trzeciej piję kawę.",
       "source": "original",
       "reviewed": false,
-      "romaji": "San ji ni koohii o nomimasu."
+      "romaji": "Sanji ni koohii o nomimasu."
     },
     {
       "wordId": "shi",
@@ -1723,7 +1723,7 @@
       "pl": "O czwartej wracam do domu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Yo ji ni ie e kaerimasu."
+      "romaji": "Yoji ni ie e kaerimasu."
     },
     {
       "wordId": "roku",
@@ -1733,7 +1733,7 @@
       "pl": "Kolację jemy o szóstej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Roku ji ni bangohan o tabemasu."
+      "romaji": "Rokuji ni bangohan o tabemasu."
     },
     {
       "wordId": "shichi",
@@ -1743,7 +1743,7 @@
       "pl": "Śniadanie jem o siódmej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Shichi ji ni asagohan o tabemasu."
+      "romaji": "Shichiji ni asagohan o tabemasu."
     },
     {
       "wordId": "ikura",
@@ -1764,7 +1764,7 @@
       "pl": "O ósmej idę do pracy.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Hachi ji ni kaisha e ikimasu."
+      "romaji": "Hachiji ni kaisha e ikimasu."
     },
     {
       "wordId": "kyuu",
@@ -1774,7 +1774,7 @@
       "pl": "Pociąg przyjeżdża o ósmej dziewięć.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Densha wa hachi ji kyuu fun ni tsukimasu."
+      "romaji": "Densha wa hachiji kyuufun ni tsukimasu."
     },
     {
       "wordId": "juu",
@@ -1784,7 +1784,7 @@
       "pl": "Kładę się spać o dziesiątej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Juu ji ni nemasu."
+      "romaji": "Juuji ni nemasu."
     },
     {
       "wordId": "ima",
@@ -1794,7 +1794,7 @@
       "pl": "Która jest teraz godzina?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ima, nan ji desu ka."
+      "romaji": "Ima, nanji desu ka."
     },
     {
       "wordId": "han",
@@ -1804,7 +1804,7 @@
       "pl": "Spotykamy się na dworcu o wpół do czwartej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "San ji han ni eki de aimasu."
+      "romaji": "Sanji han ni eki de aimasu."
     },
     {
       "wordId": "gozen",
@@ -1824,7 +1824,7 @@
       "pl": "Kolega przyjdzie o trzeciej po południu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Gogo san ji ni tomodachi ga kimasu."
+      "romaji": "Gogo sanji ni tomodachi ga kimasu."
     },
     {
       "wordId": "go",
@@ -1834,7 +1834,7 @@
       "pl": "Poproszę pięć ołówków.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Enpitsu o go hon kudasai."
+      "romaji": "Enpitsu o gohon kudasai."
     },
     {
       "wordId": "hyaku",
@@ -1844,7 +1844,7 @@
       "pl": "Ten długopis kosztuje sto jenów.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kono pen wa hyaku en desu."
+      "romaji": "Kono pen wa hyakuen desu."
     },
     {
       "wordId": "sen",
@@ -1854,7 +1854,7 @@
       "pl": "Ta książka kosztuje tysiąc jenów.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kono hon wa sen en desu."
+      "romaji": "Kono hon wa sen'en desu."
     },
     {
       "wordId": "man",
@@ -1864,7 +1864,7 @@
       "pl": "Ten zegarek kosztuje dziesiątki tysięcy jenów.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kono tokei wa nan man en mo shimasu."
+      "romaji": "Kono tokei wa nanman'en mo shimasu."
     },
     {
       "wordId": "hitotsu",
@@ -1995,7 +1995,7 @@
       "pl": "Myję zęby trzy razy dziennie.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Mainichi san kai ha o migakimasu."
+      "romaji": "Mainichi sankai ha o migakimasu."
     },
     {
       "wordId": "abiru",
@@ -2035,7 +2035,7 @@
       "pl": "O ósmej wychodzę z domu i jadę do pracy.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Hachi ji ni ie o dete, kaisha e ikimasu."
+      "romaji": "Hachiji ni ie o dete, kaisha e ikimasu."
     },
     {
       "wordId": "kiru-put-on",
@@ -2909,7 +2909,7 @@
       "pl": "Codziennie ćwiczę przez godzinę.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Mainichi ichi jikan renshuusuru."
+      "romaji": "Mainichi ichijikan renshuusuru."
     },
     {
       "wordId": "tsukau",
@@ -3101,7 +3101,7 @@
       "pl": "Młodsza siostra urodziła się w marcu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Imouto wa san gatsu ni umareta."
+      "romaji": "Imouto wa sangatsu ni umareta."
     },
     {
       "wordId": "nakusu",
@@ -3151,7 +3151,7 @@
       "pl": "Zajęcia skończyły się o trzeciej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Jugyou wa san ji ni owatta."
+      "romaji": "Jugyou wa sanji ni owatta."
     },
     {
       "wordId": "hajimaru",
@@ -3162,7 +3162,7 @@
       "source": "tatoeba",
       "tatoebaId": 184419,
       "reviewed": false,
-      "romaji": "Gakkou wa hachi ji han ni hajimarimasu ka."
+      "romaji": "Gakkou wa hachiji han ni hajimarimasu ka."
     },
     {
       "wordId": "kesa",
@@ -3253,7 +3253,7 @@
       "pl": "Poproszę trzy znaczki po sto jenów.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Hyaku en no kitte o san mai kudasai."
+      "romaji": "Hyakuen no kitte o sanmai kudasai."
     },
     {
       "wordId": "dasu",
@@ -3334,7 +3334,7 @@
       "pl": "Dojazd pociągiem do pracy zajmuje godzinę.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kaisha made densha de ichi jikan kakarimasu."
+      "romaji": "Kaisha made densha de ichijikan kakarimasu."
     },
     {
       "wordId": "toru-take",
@@ -3974,7 +3974,7 @@
       "source": "tatoeba",
       "tatoebaId": 152733,
       "reviewed": false,
-      "romaji": "Watashi wa maiasa roku ji ni okimasu."
+      "romaji": "Watashi wa maiasa rokuji ni okimasu."
     },
     {
       "wordId": "maiban",
@@ -4075,7 +4075,7 @@
       "pl": "Proszę brać lekarstwo trzy razy dziennie.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ichinichi ni san kai kusuri o nonde kudasai."
+      "romaji": "Ichinichi ni sankai kusuri o nonde kudasai."
     },
     {
       "wordId": "karada",
@@ -4349,7 +4349,7 @@
       "source": "tatoeba",
       "tatoebaId": 202909,
       "reviewed": false,
-      "romaji": "Choudo shichi ji han desu."
+      "romaji": "Choudo shichiji han desu."
     },
     {
       "wordId": "bangou",
@@ -4482,7 +4482,7 @@
       "source": "tatoeba",
       "tatoebaId": 145790,
       "reviewed": false,
-      "romaji": "Shokudou wa nan ji ni akimasu ka."
+      "romaji": "Shokudou wa nanji ni akimasu ka."
     },
     {
       "wordId": "mimi",
@@ -4726,7 +4726,7 @@
       "pl": "Drugiego marca są urodziny mamy.",
       "source": "original",
       "reviewed": false,
-      "romaji": "San gatsu futsuka wa haha no tanjoubi desu."
+      "romaji": "Sangatsu futsuka wa haha no tanjoubi desu."
     },
     {
       "wordId": "mikka",
@@ -4807,7 +4807,7 @@
       "source": "tatoeba",
       "tatoebaId": 223857,
       "reviewed": false,
-      "romaji": "Kono kurasu ni wa nan nin no otokonoko ga imasu ka."
+      "romaji": "Kono kurasu ni wa nannin no otokonoko ga imasu ka."
     },
     {
       "wordId": "onnanoko",
@@ -4827,7 +4827,7 @@
       "pl": "Dorośli płacą tysiąc jenów, dzieci pięćset.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Otona wa sen en, kodomo wa go hyaku en desu."
+      "romaji": "Otona wa sen'en, kodomo wa gohyakuen desu."
     },
     {
       "wordId": "taisetsu",

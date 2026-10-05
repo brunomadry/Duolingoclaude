@@ -25,8 +25,20 @@ export function sentenceRomaji(
   romajiOfWord: (id: string) => { kana: string; romaji: string } | undefined,
 ): string {
   const parts: string[] = [];
+  let previous: Token | undefined;
+  /** Kana of the number being read (さん, then さんびゃく, then さんびゃくえん). */
+  let number = '';
   for (const t of tokens) {
+    const after = previous;
+    previous = t;
     if (!t.surface.trim()) continue;
+    // A number and its counter are one word, romanised together: sanji, ippun, gohyakuen.
+    if (t.numeral && after?.numeral && parts.length > 0) {
+      number += t.surface;
+      parts[parts.length - 1] = ` ${kanaToRomaji(number)}`;
+      continue;
+    }
+    number = t.numeral ? t.surface : '';
     if (t.kind === 'punct') {
       const p = PUNCT[t.surface] ?? t.surface;
       if (p === '"' && !parts.at(-1)?.endsWith(' ')) parts.push(` ${p}`);

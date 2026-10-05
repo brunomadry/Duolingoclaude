@@ -105,13 +105,23 @@ export function analyseSentence(
   const words = new Set<string>();
   const tiles: string[] = [];
   const gaps: Gap[] = [];
+  let previous: Token | undefined;
   for (const t of readingTokens) {
-    if (!isTile(t)) continue;
-    if (t.kind === 'grammar' && t.grammar && t.grammar in GAP_PARTICLES)
-      gaps.push({ index: tiles.length, key: t.grammar });
+    if (!isTile(t)) {
+      previous = undefined;
+      continue;
+    }
     const word = t.kind === 'word' ? pickWord(t) : undefined;
     if (word) words.add(word);
-    tiles.push(t.surface);
+    // A number and its counter make one tile (さんじ, ごひゃくえん), never a particle gap.
+    if (t.numeral && previous?.numeral && tiles.length) {
+      tiles[tiles.length - 1] += t.surface;
+    } else {
+      if (t.kind === 'grammar' && t.grammar && t.grammar in GAP_PARTICLES && !t.numeral)
+        gaps.push({ index: tiles.length, key: t.grammar });
+      tiles.push(t.surface);
+    }
+    previous = t;
   }
   return {
     ...source,

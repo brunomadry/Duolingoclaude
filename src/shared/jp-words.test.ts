@@ -1160,3 +1160,51 @@ describe('kanji numerals', () => {
     expect(tok('二十').map((t) => t.wordIds.length)).toEqual([0]);
   });
 });
+
+describe('numbers in kana', () => {
+  const numerals = (text: string) =>
+    tok(text)
+      .filter((t) => t.numeral)
+      .map((t) => t.surface);
+
+  it('reads に, よ, し, ご, く and いっ as numbers before a counter', () => {
+    expect(show('にじに えきに つきます。').slice(0, 3)).toEqual(['に[ni]', 'じ{ji}', 'に{ni}']);
+    expect(show('よじに かえります。').slice(0, 2)).toEqual(['よ[shi]', 'じ{ji}']);
+    expect(show('しがつ')).toEqual(['し[shi]', 'がつ{gatsu}']);
+    expect(show('くじに ねます。').slice(0, 2)).toEqual(['く[kyuu]', 'じ{ji}']);
+    expect(show('ペンを ごほん ください。').slice(3, 5)).toEqual(['ご[go]', 'ほん{hon}']);
+    expect(show('いっぷん')).toEqual(['いっ[ichi]', 'ぷん{fun}']);
+    expect(show('じゅっぷん')).toEqual(['じゅっ[juu]', 'ぷん{fun}']);
+  });
+
+  it('reads sound changes after a number and marks every part of a number', () => {
+    expect(show('さんびゃくえん')).toEqual(['さん[san]', 'びゃく[hyaku]', 'えん{en}']);
+    expect(show('ろっぴゃくえん')).toEqual(['ろっ[roku]', 'ぴゃく[hyaku]', 'えん{en}']);
+    expect(numerals('こどもは ごひゃくえんです。')).toEqual(['ご', 'ひゃく', 'えん']);
+    expect(numerals('なんじですか。')).toEqual(['なん', 'じ']);
+    expect(numerals('にじかん べんきょうしました。')).toEqual(['に', 'じかん']);
+    expect(numerals('なんですか。')).toEqual([]);
+  });
+
+  it('keeps particles, prefixes and words that only look like numbers', () => {
+    expect(show('がっこうにじてんしゃで')[1]).toBe('に{ni}');
+    expect(show('えきにはいります。')[1]).toBe('に{ni}');
+    expect(show('その語にはいくつかの意味がある。').slice(2, 5)).toEqual([
+      'に{ni}',
+      'は{wa}',
+      'いくつ[ikutsu]',
+    ]);
+    expect(show('いっしょに')[0]).toBe('いっしょ[issho]');
+    expect(show('ごはんを たべます。')[0]).toBe('ごはん[gohan]');
+    expect(show('にほんごを はなします。')[0]).toBe('にほんご[nihongo]');
+    expect(show('ごぜん くじに')[0]).toBe('ごぜん[gozen]');
+  });
+
+  it('reads いちばん before an adjective as one word ("most")', () => {
+    expect(show('いちばん やすい').slice(0, 1)).toEqual(['いちばん[ichiban]']);
+    expect(show('どれがいちばん安いですか').slice(2, 4)).toEqual([
+      'いちばん[ichiban]',
+      '安い[yasui]',
+    ]);
+  });
+});

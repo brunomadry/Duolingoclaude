@@ -32,6 +32,13 @@ describe('analyseSentence', () => {
     expect(analyse('ほんを よむ。').grammar.sort()).toEqual(['masu-wo', 'plain-dictionary']);
   });
 
+  it('keeps a number and its counter in one tile, never a gap', () => {
+    const s = analyse('にじに えきに つきます。', '二時に駅に着きます。');
+    expect(s.tiles).toEqual(['にじ', 'に', 'えき', 'に', 'つきます']);
+    expect(s.gaps.map((g) => g.index)).toEqual([1, 3]);
+    expect(analyse('さんびゃくえんです。').tiles).toEqual(['さんびゃくえん', 'です']);
+  });
+
   it('tells homophones apart by the written sentence, then by the lesson', () => {
     const lessonOf = (id: string) =>
       ({ 'kiru-put-on': 51, kuru: 31, 'kaze-cold': 60, 'kaze-wind': 87 })[id] ?? null;

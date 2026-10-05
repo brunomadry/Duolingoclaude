@@ -73,6 +73,9 @@ export const CORRECTIONS: Readonly<
   // Missing usual kanji.
   a45af4ed89: { word: '立派' },
   '34784ed6ca': { word: '風呂' },
+  // 一番 is also the adverb "most" (いちばん安い), as in JMdict; without it the matcher reads
+  // いちばん before an adjective as いち + the counter ばん.
+  cb96f363df: { pos: ['n', 'adv', 'adj-no'] },
   // Senses that are not N5.
   '6e6a06687d': { meanings: ['bag'] },
   cd1bcc2b1b: { meanings: ['busy'] },

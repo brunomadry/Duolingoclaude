@@ -126,6 +126,7 @@ describe('readingProblems', () => {
     expect(problems('四時に帰ります。', 'よじに かえります。')).toEqual([]);
     expect(problems('五本ください。', 'ごほん ください。')).toEqual([]);
     expect(problems('百円です。', 'ひゃくえんです。')).toEqual([]);
+    expect(problems('三百円です。', 'さんびゃくえんです。')).toEqual([]);
     expect(problems('兄弟が二人います。', 'きょうだいが ふたり います。')).toEqual([]);
     expect(
       problems('あの人は悪い人じゃありません。', 'あの ひとは わるい ひとじゃ ありません。'),

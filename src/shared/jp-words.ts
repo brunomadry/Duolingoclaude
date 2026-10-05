@@ -164,6 +164,12 @@ export interface Token {
    * either reading.
    */
   grammar?: string;
+  /**
+   * Part of a number: a number (三, ３), a number word (さん, ひゃく and the kana
+   * forms before counters: に in にじ, いっ in いっぷん) or a counter after one.
+   * Consecutive numeral tokens read as one quantity (さん + じ is 3 o'clock).
+   */
+  numeral?: true;
 }
 
 export type GrammarRole =
@@ -713,6 +719,14 @@ export interface Lexicon {
   readonly trie: TrieNode;
   /** Number words spelled with one kanji numeral (二 -> ni), reported on number tokens. */
   readonly numerals: ReadonlyMap<string, string>;
+  /** Kana forms of numbers that only occur next to other number parts (see KANA_NUMERALS). */
+  readonly kanaNumerals: ReadonlyMap<string, KanaNumeral>;
+}
+
+export interface KanaNumeral {
+  readings: readonly LexReading[];
+  /** What must follow (counters and number words); null for a form that follows a number. */
+  before: readonly string[] | null;
 }
 
 const KANA_ONLY = /^[ぁ-ゟ゠-ヿｦ-ﾟ]+$/;
@@ -859,7 +873,37 @@ export function createLexicon(entries: readonly LexEntry[]): Lexicon {
     )
       numerals.set(e.kanji, e.id);
   }
-  return { entries, surfaces, trie, numerals };
+  const kanaNumerals = new Map<string, KanaNumeral>();
+  const numeralForms = [
+    ...KANA_NUMERALS.map((f) => ({
+      ...f,
+      before: f.before ?? [...COUNTER_KANA, ...MULTIPLIER_KANA],
+    })),
+    ...NUMBER_CONTINUATIONS.map((f) => ({ ...f, before: null })),
+  ];
+  for (const form of numeralForms) {
+    const id = numerals.get(form.kanji);
+    const order = entries.findIndex((e) => e.id === id);
+    if (id === undefined || order < 0) continue;
+    const reading: LexReading = {
+      id,
+      order,
+      base: form.kana,
+      form: 'dict',
+      weak: false,
+      verbal: false,
+      adjective: false,
+      predicate: false,
+      stem: false,
+      nominal: false,
+      numeric: true,
+      numberWord: true,
+      particle: false,
+      clauseInitial: false,
+    };
+    kanaNumerals.set(form.kana, { readings: [reading], before: form.before });
+  }
+  return { entries, surfaces, trie, numerals, kanaNumerals };
 }
 
 /* -------------------------------------------------------------- characters */
@@ -876,6 +920,42 @@ const C_OTHER = 7;
 const C_CONT = 8;
 
 const KANJI_NUMERALS = '〇一二三四五六七八九十百千万';
+
+/** Number words a kana numeral may come before (にじゅう, ごひゃく, ろっぴゃく, はっせん). */
+const MULTIPLIER_KANA = ['じゅう', 'ひゃく', 'ぴゃく', 'せん', 'まん'];
+/**
+ * Kana counters, the default of what a kana numeral must come before. つ is left out: it
+ * only follows native numbers, which are words of their own (ふたつ, いつつ).
+ */
+const COUNTER_KANA = GRAMMAR_WORDS.filter((g) => g.role === 'counter')
+  .flatMap((g) => g.surfaces)
+  .filter((s) => /^[ぁ-ゖ]+$/.test(s) && s !== 'つ');
+/**
+ * Kana a number takes only before a counter or another number, never read as the number
+ * on their own (に is a particle, ご a prefix): 二時 にじ, 四時 よじ, 四月 しがつ, 九時
+ * くじ, 一本 いっぽん, 六分 ろっぷん, 八百 はっぴゃく, 十分 じゅっぷん. Without `before`
+ * any kana counter or multiplier may follow.
+ */
+const KANA_NUMERALS: readonly { kana: string; kanji: string; before?: readonly string[] }[] = [
+  { kana: 'に', kanji: '二' },
+  { kana: 'し', kanji: '四', before: ['がつ', 'じゅう'] },
+  { kana: 'よ', kanji: '四', before: ['じ', 'にん', 'ねん', 'えん'] },
+  { kana: 'ご', kanji: '五' },
+  { kana: 'く', kanji: '九', before: ['じ', 'がつ'] },
+  { kana: 'いっ', kanji: '一' },
+  { kana: 'ろっ', kanji: '六' },
+  { kana: 'はっ', kanji: '八' },
+  { kana: 'じゅっ', kanji: '十' },
+  { kana: 'じっ', kanji: '十' },
+];
+/** Sound changes of 百 and 千 after another number: 三百 さんびゃく, 六百 ろっぴゃく, 三千 さんぜん. */
+const NUMBER_CONTINUATIONS: readonly { kana: string; kanji: string }[] = [
+  { kana: 'びゃく', kanji: '百' },
+  { kana: 'ぴゃく', kanji: '百' },
+  { kana: 'ぜん', kanji: '千' },
+];
+/** Nouns that make a quantity with a number before them: 二時間 にじかん. */
+const QUANTITY_NOUNS = new Set(['じかん']);
 const SMALL_KANA =
   'ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿｧｨｩｪｫｬｭｮｯ';
 const LONG_MARKS = 'ーｰ';
@@ -949,9 +1029,15 @@ const S_NA_UNK = 19;
 // After a one-kanji noun: another one-kanji noun cannot follow inside the same
 // kanji run, so unknown compounds (中国人, 外人, 年上) are not read as 中 + 国 + 人.
 const S_NOMINAL_K1 = 20;
-const STATES = 21;
+// After a kana numeral (に in にじ): only a counter or another number part may follow.
+const S_KANA_NUMBER = 21;
+// After a counter that follows a kana numeral (にはい): like S_WORD, but no noun may follow
+// directly, so には + いくつ is not に + はい (two cups) + くつ.
+const S_KANA_QUANTITY = 22;
+const STATES = 23;
 
 const isNominalState = (s: number): boolean => s === S_NOMINAL || s === S_NOMINAL_K1;
+const isNumberState = (s: number): boolean => s === S_NUMBER || s === S_KANA_NUMBER;
 const isCaseState = (s: number): boolean => s === S_CASE || s === S_CASE_UNK;
 const isObliqueState = (s: number): boolean => s === S_OBLIQUE || s === S_OBLIQUE_UNK;
 /** After an unknown run of any script (an unknown token continues it). */
@@ -1037,6 +1123,10 @@ interface Step {
   nominal: boolean;
   /** Word step that attaches to a noun without a particle (勉強できる, 一つください). */
   nounVerb: boolean;
+  /** Word step that may follow a kana numeral: a number word or a quantity noun (じかん). */
+  quantity: boolean;
+  /** Sound-changed number part valid only after a number (びゃく in さんびゃく). */
+  afterNumber: boolean;
 }
 
 function afterOk(after: GrammarContext | undefined, state: number): boolean {
@@ -1044,7 +1134,7 @@ function afterOk(after: GrammarContext | undefined, state: number): boolean {
     case undefined:
       return true;
     case 'number':
-      return state === S_NUMBER;
+      return isNumberState(state);
     case 'predicate':
       return state === S_PRED || state === S_COPULA || state === S_DA;
     case 'predicate-or-na':
@@ -1059,6 +1149,7 @@ function afterOk(after: GrammarContext | undefined, state: number): boolean {
       return (
         isNominalState(state) ||
         state === S_WORD ||
+        state === S_KANA_QUANTITY ||
         state === S_PRED ||
         state === S_UNK ||
         state === S_UNK_HIRA ||
@@ -1076,7 +1167,7 @@ function afterOk(after: GrammarContext | undefined, state: number): boolean {
 function stepState(step: Step, s: number): number {
   if (step.space) return s;
   // A noun right after a number is a quantity (２時間かかります), not a topic.
-  if (s === S_NUMBER && isNominalState(step.next)) return S_WORD;
+  if (isNumberState(s) && isNominalState(step.next)) return S_WORD;
   // お + masu stem is an honorific noun (お待ちください), no に needed.
   if (s === S_PREFIX && step.next === S_STEM) return S_NOMINAL;
   return step.next;
@@ -1107,7 +1198,8 @@ function grammarState(g: GrammarWord, state: number): number {
   if (g.role === 'polite' || g.role === 'verb' || g.after === 'unknown') return S_PRED;
   if (g.role === 'noun' || g.role === 'suffix') return S_NOMINAL;
   // A quantity (３日, 二人) works like an adverb: ３日かかった.
-  if (g.role === 'adverb' || g.role === 'counter') return S_WORD;
+  if (g.role === 'counter') return state === S_KANA_NUMBER ? S_KANA_QUANTITY : S_WORD;
+  if (g.role === 'adverb') return S_WORD;
   // A particle or the copula right after an unknown hiragana run may be part
   // of that word (しっかり, しだい, くださって).
   const inWord =
@@ -1140,6 +1232,8 @@ function makeStep(len: number, kind: TokenKind, rank: number, next: number): Ste
     stemFollower: false,
     nominal: false,
     nounVerb: false,
+    quantity: false,
+    afterNumber: false,
   };
 }
 
@@ -1361,6 +1455,8 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
         step.hiragana = c === C_HIRA;
         step.nominal = words.every((r) => r.nominal);
         step.nounVerb = words.every((r) => AFTER_NOUN_BASES.has(r.base));
+        step.quantity =
+          words.some((r) => r.numberWord) || QUANTITY_NOUNS.has(text.slice(i, i + len));
         step.okurigana = step.hiragana && !step.nounVerb;
         step.stemFollower = len <= 2 && STEM_FOLLOWERS.has(text.slice(i, i + len));
         list.push(step);
@@ -1383,6 +1479,26 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
         if (numberEndsAt[i] === 1 && grammar.some((g) => g.role === 'counter')) {
           anchorEnd[i + len] = 1;
         }
+      }
+    }
+    // Kana numerals (に in にじ, いっ in いっぷん, びゃく in さんびゃく).
+    if (c === C_HIRA) {
+      for (const [kana, numeral] of lexicon.kanaNumerals) {
+        if (!text.startsWith(kana, i)) continue;
+        const end = i + kana.length;
+        if (numeral.before && !numeral.before.some((b) => text.startsWith(b, end))) continue;
+        const step = makeStep(
+          kana.length,
+          'word',
+          R_NUMBER,
+          numeral.before ? S_KANA_NUMBER : S_NUMBER,
+        );
+        step.words = numeral.readings;
+        step.hiragana = true;
+        step.quantity = true;
+        step.afterNumber = numeral.before === null;
+        list.push(step);
+        numberEndsAt[end] = 1;
       }
     }
     if (width === 2) steps[i + 1] = [];
@@ -1495,6 +1611,7 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
         let joins = 0;
         let rank = step.rank;
         if (step.kind === 'word') {
+          if (step.afterNumber && !isNumberState(s)) violations++;
           if (s === S_UNK_KANJI && step.okurigana) violations++;
           // No verb or adjective right after plain だ (いた|だ|きます), no verb
           // right after the linker な (出られ|な|かった).
@@ -1513,7 +1630,7 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
           grammar = chooseGrammar(step.grammar, s);
           if (grammar === null) continue;
           next = grammarState(grammar, s);
-          if (s === S_NUMBER && grammar.role === 'counter') rank = R_NUMBER;
+          if (isNumberState(s) && grammar.role === 'counter') rank = R_NUMBER;
           if (RESTRICTED_ROLES.has(grammar.role)) {
             if (isCaseState(s) || (atClauseStart && !isFragment)) violations++;
             else if (atClauseStart) joins++;
@@ -1531,6 +1648,22 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
           // A particle between two unknown hiragana runs is part of one word (しっかり).
           if (isParticleAfterUnknownState(s) && step.hiragana) violations++;
           if (step.particleChar) violations++;
+        }
+        // A quantity in kana is followed by a particle, a verb or the end, not by a noun.
+        if (
+          s === S_KANA_QUANTITY &&
+          ((step.kind === 'word' && step.content && !step.verb && !step.nounVerb) ||
+            grammar?.role === 'suffix')
+        ) {
+          violations++;
+        }
+        // A kana numeral is only a number before a counter or another number part.
+        if (
+          s === S_KANA_NUMBER &&
+          !(grammar?.role === 'counter') &&
+          !(step.kind === 'word' && step.quantity)
+        ) {
+          violations++;
         }
         const continuesUnknown = step.kind === 'unknown' && isUnknownState(s);
         if (isDependent && !continuesUnknown) violations++;
@@ -1568,6 +1701,11 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
 
   // Walk the best path and build tokens, merging adjacent unknown steps.
   const tokens: Token[] = [];
+  /**
+   * Tokens of words that can be number parts (さん, なん, じかん): numerals when next to
+   * another number part.
+   */
+  const numericWords = new Set<number>();
   let state = S_START;
   for (let i = 0; i < n;) {
     const at = i * STATES + state;
@@ -1594,11 +1732,13 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
       }
       const altGrammar = step.grammar.length > 0 ? chooseGrammar(step.grammar, state) : null;
       if (altGrammar !== null && altGrammar.role !== 'counter') token.grammar = altGrammar.key;
+      if (step.quantity || step.words.some((r) => r.numeric)) numericWords.add(tokens.length);
       tokens.push(token);
     } else if (step.kind === 'grammar') {
       const token: Token = { surface, start: i, end: j, kind: 'grammar', wordIds: [] };
       const g = bestGrammar[at] ?? null;
       if (g !== null) token.grammar = g.key;
+      if (g?.role === 'counter') token.numeral = true;
       tokens.push(token);
     } else {
       // A lone kanji numeral is also its number word (二 is ni), so it counts as that word.
@@ -1609,10 +1749,16 @@ export function tokenize(text: string, lexicon: Lexicon): Token[] {
         end: j,
         kind: step.kind,
         wordIds: numeral ? [numeral] : [],
+        ...(step.kind === 'number' ? { numeral: true as const } : {}),
       });
     }
     state = bestNext[at] ?? S_START;
     i = j;
+  }
+  for (const k of numericWords) {
+    const near = (m: number) => tokens[m]?.numeral === true || numericWords.has(m);
+    const token = tokens[k];
+    if (token && (near(k - 1) || near(k + 1))) token.numeral = true;
   }
   return tokens;
 }

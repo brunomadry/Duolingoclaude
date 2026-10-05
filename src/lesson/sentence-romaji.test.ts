@@ -26,6 +26,13 @@ describe('sentenceRomaji', () => {
     expect(romaji('たべませんでした。')).toBe('Tabemasen deshita.');
   });
 
+  it('writes a number with its counter as one word', () => {
+    expect(romaji('にじに えきに つきます。')).toBe('Niji ni eki ni tsukimasu.');
+    expect(romaji('こどもは ごひゃくえんです。')).toBe('Kodomo wa gohyakuen desu.');
+    expect(romaji('いっぷん まって ください。')).toBe('Ippun matte kudasai.');
+    expect(romaji('なんにん いますか。')).toBe('Nannin imasu ka.');
+  });
+
   it('turns Japanese punctuation into Western punctuation', () => {
     expect(romaji('ねこですか？')).toBe('Neko desu ka?');
     expect(romaji('いぬと、ねこ。')).toBe('Inu to, neko.');

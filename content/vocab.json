@@ -573,7 +573,7 @@
       "kana": "いちばん",
       "romaji": "ichiban",
       "en": ["best", "first"],
-      "pos": ["n", "adj-no"],
+      "pos": ["n", "adv", "adj-no"],
       "sentences": [223023, 234637],
       "sourceId": "cb96f363df"
     },
