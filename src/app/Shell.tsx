@@ -1,10 +1,14 @@
 import { useState } from 'preact/hooks';
 import { Avatar } from '../mascot/Mascot.tsx';
 import type { ProfileRecord } from '../shared/api.ts';
-import { AlphabetScreen, GrammarScreen, VocabScreen } from '../screens/Placeholders.tsx';
+import { GrammarScreen } from '../screens/GrammarScreen.tsx';
+import { VocabScreen } from '../screens/VocabScreen.tsx';
+import { AlphabetScreen } from '../screens/AlphabetScreen.tsx';
 import { LicensesScreen } from '../screens/LicensesScreen.tsx';
 import { ProfileEditor } from '../screens/ProfileEditor.tsx';
 import { TodayScreen } from '../screens/TodayScreen.tsx';
+import { StampsScreen } from '../screens/StampsScreen.tsx';
+import { LessonPlayer } from '../screens/lesson/LessonPlayer.tsx';
 import { BackIcon, BrushIcon, CardsIcon, ToriiIcon } from '../ui/icons.tsx';
 import { SettingsSheet } from './SettingsSheet.tsx';
 import { TABS, goBack, navigate, usePath } from './router.ts';
@@ -33,11 +37,39 @@ export function Shell({ profile }: { profile: ProfileRecord }) {
   const home: Route = { title: 'Dziś', tab: true, render: () => <TodayScreen profile={profile} /> };
   const routes: Record<string, Route> = {
     '/': home,
-    '/alfabet': { title: 'Alfabet', tab: true, render: () => <AlphabetScreen /> },
-    '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen /> },
-    '/gramatyka': { title: 'Gramatyka', tab: true, render: () => <GrammarScreen /> },
+    '/alfabet': { title: 'Alfabet', tab: true, render: () => <AlphabetScreen profile={profile} /> },
+    '/slowka': { title: 'Słówka', tab: true, render: () => <VocabScreen profile={profile} /> },
+    '/gramatyka': {
+      title: 'Gramatyka',
+      tab: true,
+      render: () => <GrammarScreen profile={profile} />,
+    },
     '/zrodla': { title: 'Źródła i licencje', tab: false, render: () => <LicensesScreen /> },
+    '/pieczatki': {
+      title: 'Pieczątki',
+      tab: false,
+      render: () => <StampsScreen profile={profile} />,
+    },
   };
+
+  // Full-screen flows without the tab bar.
+  const lessonMatch = /^\/lekcja\/(\d{1,3})$/.exec(path);
+  if (lessonMatch) {
+    return <LessonPlayer key={path} profile={profile} mode="lesson" n={Number(lessonMatch[1])} />;
+  }
+  const sessionMatch = /^\/(powtorki|cwicz)(?:\/(kana|slowka))?$/.exec(path);
+  if (sessionMatch) {
+    return (
+      <LessonPlayer
+        key={path}
+        profile={profile}
+        mode={sessionMatch[1] === 'powtorki' ? 'reviews' : 'extra'}
+        filter={
+          sessionMatch[2] === 'kana' ? 'kana' : sessionMatch[2] === 'slowka' ? 'words' : 'all'
+        }
+      />
+    );
+  }
 
   if (path === '/profil') {
     return <ProfileEditor profile={profile} onDone={() => goBack()} onCancel={() => goBack()} />;

@@ -68,3 +68,75 @@ One line per decision, newest at the bottom of each section. The brief (the orig
 - **Status bar**: `black-translucent` gives the dark theme an edge-to-edge look; iOS reads it once at launch and always draws white text, so the light theme draws a thin ink band under the status bar in standalone mode. Verify on a device (QA checklist).
 - **Native `<dialog>`** for the settings sheet and confirmations: focus trap, Escape and inert background for free on iOS 15.4+.
 - **Export** uses the Web Share API with a file when available (iOS share sheet, "Zapisz w Plikach"), otherwise a download link. **Import** merges into the same live profile (newer record wins) or becomes a new profile with a fresh id, so it never collides with a server tombstone.
+
+## Cloudflare setup (agent tooling)
+
+- Installed the official Cloudflare plugin for Claude Code (`claude plugin marketplace add cloudflare/skills`, `claude plugin install cloudflare@cloudflare`), following https://developers.cloudflare.com/agent-setup/prompt.md (read from its source in `cloudflare/cloudflare-docs`, because the docs host is blocked from the build sandbox).
+- Applied its Workers guidance: `compatibility_date` set to the current date, Workers Logs plus sampled Traces enabled (`observability.traces` must be enabled explicitly), and SETUP now deploys before `wrangler secret put`, since each secret put deploys a new version immediately.
+- Still open: the guidance prefers `wrangler types` over a hand-written `Env`. We keep `worker/env.ts` for now (small, also documents secrets); revisit when bindings grow (Phase 5 adds AI keys).
+
+## Phase 2: Alfabet
+
+- **Kana schema** gained `alt` (accepted typing spellings such as si, tu, wo, nn; never shown as the answer), `col` (goju-on column, so the chart lays out や _ ゆ _ よ without hard-coded tables) and an optional Polish `note` per group (dakuten, yōon, small っ, ー).
+- **Romaji is Modified Hepburn without macrons**: long vowels are written doubled (koohii), which is easier to type on a phone; macrons typed by the user are accepted.
+- **Stroke order** comes from KanjiVG (all 177 kana incl. ー) via `scripts/fetch-kanjivg.ts`, stored as stroke paths only in `content/strokes.json` and lazy-loaded as its own chunk.
+- **Lesson engine is pure and seeded** (`src/lesson/engine.ts`): the same lesson, progress and seed always give the same plan, so it is testable. Replays use a different seed.
+- **One SRS grade per card per step**: any miss in a step means "again", otherwise "good". Multiple exercises on the same kana in one session would otherwise count as several reviews minutes apart.
+- **A missed exercise comes back once** at the end of the step (not in the final quiz). The score uses first attempts only.
+- **First completion time is kept forever**: replaying a finished lesson can only improve the stored score, never move the next unlock.
+- **Extra practice ("Ćwicz dodatkowo") does not touch SRS or unlocking**, as the brief requires; only the review step and lesson practice write card states.
+- **Review sessions are capped at 20 cards** (about 3 to 5 minutes); the rest stays queued and the UI says so calmly ("Reszta poczeka, bez stresu").
+- **Listening exercises need a Japanese voice**: without one the engine swaps them for romaji-to-kana, so lessons never block on audio.
+- **Hanko** shows the lesson number in Japanese numerals with 課, a deterministic tilt per lesson and a light ink-grain SVG filter; tests get a double ring. Sakura petals appear only on a first completion and never under reduced motion.
+- **Words in kana lessons (from L4)** arrive with the vocabulary pipeline in Phase 3; kana lessons in Phase 2 teach characters only.
+- **Concurrency note for builders**: the build container has 4 CPUs, so multi-agent workflows run two agents at a time.
+
+### Phase 2 adversarial review (18 confirmed findings, all fixed)
+
+- **Every introduced kana gets an SRS card** when the "new" step ends (`seedCards`), because the practice step is capped at 18 exercises: large groups (yōon, extended katakana) would otherwise leave up to 99 of 276 kana out of reviews forever. The capped review queue feeds them in gradually.
+- **Lessons the engine cannot teach yet stay closed** (`lessonSupported`): from L17 on, until vocabulary and grammar content exist, Dziś says "Ta lekcja pojawi się w jednej z kolejnych aktualizacji" instead of letting the learner complete an empty lesson (completions are permanent). The player also refuses to record a lesson with no work of its own.
+- **Tests end after their questions** (no empty summary step); the lesson score ignores answers from the review step.
+- **Listening exercises only when sound is on** and a Japanese voice exists; a multiple choice that would have fewer than two options becomes a typing exercise.
+- **Unlock timer starts from the latest completion in 1..n**, so a stray later record cannot open two lessons on one day.
+- **A trailing hyphen in a typed answer is always a long vowel** ("ka-" is カー, never か).
+- **VoiceOver**: focus moves to each new question, page or celebration title; the result is announced with the "Dalej" button; the listening button is named without the kana; options and placeholders never leak answers.
+- **Copy and layout**: Polish fixes ("Pierwsze hanko", "Dotknij znaku", "jeszcze niepoznany", "Test 7 · jeszcze zamknięty"), mode-specific exit dialogs, safe-area padding on finish screens, all tap targets at least 44 px.
+- **Clock skew**: the Worker answers far-future timestamps with `clock_skew`; the client keeps those changes queued and the settings sheet explains how to fix the phone clock.
+
+## Phase 3: vocabulary content
+
+- **LLM provider layer** (`src/shared/llm.ts`): Groq (OpenAI-compatible chat completions, JSON mode) first, Gemini (`generateContent`, `responseMimeType: application/json`) as fallback; plain fetch so it runs in the Worker and in Node scripts. Request shapes were checked against Groq's and Google's official cookbooks on GitHub (their docs sites are blocked from the build sandbox). Free-tier limits in late 2026 (third-party summaries, verify before relying on them): Groq about 30 requests/min and 1,000 to 14,400 requests/day depending on the model; Gemini free tier only covers Flash and Flash-Lite models at roughly 10 to 15 requests/min and 500 to 1,500 requests/day. Default models (`llama-3.3-70b-versatile`, `gemini-3.5-flash-lite`) are configuration, overridable per environment.
+- **Polish glosses**: `scripts/generate-glosses.ts` is the repeatable, keys-required generator from the brief (fills only missing ids, never overwrites reviewed work). The committed glosses were produced once during development by the same kind of LLM pass (Claude agents working in four batches), then every one of the 674 entries was reviewed by a second agent; all stay `reviewed: false` until a human confirms them via `docs/glosses-spot-check.md`.
+- **Readable word ids** from romaji (`taberu`), disambiguated with a short meaning when romaji collide (`hashi-bridge`, `hashi-chopsticks`); lexicalised は read as wa (`konnichiwa`).
+- **Kana readings only when reliable**: some OpenJLPT sentences have kanji but no furigana; those keep no `kana` field instead of a guessed reading.
+- **Known-word matcher** (`src/shared/jp-words.ts`) instead of a morphological analyser (kuromoji's dictionary is ~17 MB and could not run in the Worker): generates N5 inflections of the vocabulary and parses longest-match with a small rule-scored dynamic programme. It deliberately reports anything it cannot explain as unknown, which is what the "only known words" checks need.
+- **Grammar gates** (`src/shared/grammar-gates.ts`): each function word and inflection is unlocked by the curriculum grammar point that teaches it; N4 forms (たら, たり, volitional, ながら, てしまう) count as above level.
+- **Vocabulary corrections and supplement** (`scripts/import-openjlpt.ts`): the gloss review found OpenJLPT entries with wrong data for N5 (せっけん as 節倹 "economy", 厚い with the meanings of 篤い, 半分 as "half minute", outdated okurigana 終る/曲る and a few more). These are fixed in a small `CORRECTIONS` table keyed by OpenJLPT id, so a re-import stays reproducible. OpenJLPT also lacks words no beginner course can do without (私 わたし, 日本, 日本語, 日本人, 父, 母, 顔, そんな/どんな/あんな); they come straight from JMdict (jmdict-simplified, sequence numbers kept in `sourceId`). ポーランド, ポーランド人 and ポーランド語 are added as course words because the learners introduce themselves as Poles from the first sentence. Supplemented words have no Tatoeba sentences; their lesson examples are original.
+- **Generated files go through Prettier** (`scripts/write-formatted.ts`), so rerunning any content script leaves `npm run format:check` green.
+- **Words per lesson** (`scripts/curriculum-tool.ts`): 5 per writing-phase lesson from L4 (only words readable with the kana taught so far), 7 per grammar and practice lesson, 6 per kanji lesson, none in tests and the last two reviews. That caps the course at 541 of the 687 N5 words; the other 146 (rare readings, duplicates such as 自動車 next to 車, formal variants) are "bonus" words in the Słówka dictionary. Every word from L17 can be used in a sentence at its own lesson: no verbs before ます (L29), adjectives at L38/L40, ある/いる at L43, numbers and counters at L45-L48.
+- **One example sentence per word from L17** (`content/examples/part-*.json` merged into `content/examples.json`): a short Tatoeba sentence when one passes the checks, otherwise an original one. Every sentence is checked by the matcher at its lesson, and its kana reading (with spaces between phrases, for beginners) must spell the same words (`readingProblems`). Romaji is generated (particles as pronounced), never written by hand.
+- **A lone kanji numeral counts as its number word** (二時 uses ni). In kana, に, し, よ, ご, く and the sound-changed いっ, ろっ, はっ, じゅっ are numbers only right before a counter or another number (にじ, よじ, いっぷん, ごひゃく), and びゃく, ぴゃく, ぜん only right after a number (さんびゃく). A kana number with its counter may not be followed directly by a noun, so には + いくつ never becomes に + はい (two cups) + くつ. A number and its counter make one tile and one romaji word (さんじ, sanji).
+
+## Phase 4: grammar lessons
+
+- **Grammar notes** (`content/grammar.json`, 33 points) are original Polish text written for this project by one LLM pass and reviewed adversarially by a second; all stay `reviewed: false` and the Gramatyka tab says so, with an error report. Each note has three examples that pass the same checks as lesson examples, and a typical mistake of Polish speakers.
+- **Lesson flow from L17**: Powtórka, Nowa rzecz (the note), Nowe słówka, Kanji (phase C), Ćwiczenie, Rozmowa, Podsumowanie. Practice lessons skip the note and work on the previous grammar point; tests mix the words and sentences of the lessons they cover.
+- **Sentence exercises are built from the content at runtime** (`src/lesson/sentences.ts`): the matcher (25 KB, about 30 ms to build the lexicon) cuts each sentence's kana reading into tiles, finds particle gaps and the grammar points used, so tiles, gap fills and comprehension questions need no extra content. Particles that are often both right (に/へ, は/が, と/や) are never offered against each other.
+- **Grammar SRS cards** (`grammar:<id>`) start when the lesson is completed (before that no sentence the learner can read uses the point, so a card seeded with the note could not be reviewed) and are reviewed with a sentence the learner can already read. Cards no exercise can serve (a word removed from the course, kanji data that failed to load) are left out of the queue and of every due count.
+- **Multi-token patterns** (～ている, ～てから, ～くなる) are recognised by `grammarOfTokens`, shared by the validator and the app, so their lessons pick the right practice sentences.
+
+## Phase 5: AI
+
+- **Two endpoints behind the access cookie**: `/api/ai/exercise` (practice sentences for a lesson, cached in D1 `ai_cache` per lesson, whitelist hash and one of three variants) and `/api/ai/chat` (the conversation). Groq first, Gemini as fallback (`src/shared/llm.ts`); keys only as Worker secrets; without keys the endpoints answer `ai_unavailable` and the app skips AI quietly.
+- **The model never explains grammar.** It writes practice sentences, the partner's lines and a correction of the learner's sentence; a correction may only name grammar ids, which link to the static notes. Every Japanese line from the model goes through the same matcher and grammar gates as the course content at the learner's lesson: practice sentences that fail are dropped, a partner line is retried once and then shown with its untaught words marked, a correction that fails is dropped. The kana reading must spell the sentence token for token (learners mostly read the kana): a partner line whose reading does not is never shown.
+- **Two prompts per chat turn** (the research's advice): the learner's line is judged first by a correction prompt, then the partner answers with a conversation prompt that never corrects. Low temperature (0.3) and JSON answers.
+- **Limits**: 20 model calls a minute and 500 a day for both learners together (D1 counters); the free tiers allow far more, the limits only stop runaway loops. Prompts never contain profile names.
+- **Every sentence can be reported** (lesson, AI and note examples) through the existing outbox, so reports work offline.
+
+## Phase 6: kanji and finishing
+
+- **Kanji from L61** (`scripts/assign-kanji.ts`, deterministic): 81 N5 kanji in a teaching order (numbers, time, people, places, nature, verbs), two per phase C grammar or practice lesson and the rest in the kanji lessons L94-L97, each only after a word written with it has been taught (counters such as 円 are known from L47). 無, 丈 and 貼 from the OpenJLPT list are not taught.
+- **Kana first, kanji when known**: a word is shown in kanji with furigana only when every kanji in it has been taught (furigana aligned to okurigana: 食(た)べる, 男(おとこ)の子(こ)); a sentence switches to kanji with its kana line under it on the same rule. Before that, the usual spelling is shown as "Zapis z kanji".
+- **Polish kanji meanings** (`content/kanji.pl.json`) are short and original, `reviewed: false`; readings come from KANJIDIC through OpenJLPT and are shown as on (katakana) and kun (hiragana, okurigana in brackets).
+- **L99 and L100**: L99 reviews a sample of words, sentences from the whole course and kanji; L100 is planned as a test over everything taught.
+- **Accessibility audit**: axe-core (WCAG 2.2 AA and best-practice rules) over every tab, sheet and lesson step at 390 px, in light and dark mode and in a kana, a grammar and a kanji lesson. The only findings were skipped heading levels, now fixed; the intro captions ("Słówko 1 z 7") are h2 headings that take focus on every page.

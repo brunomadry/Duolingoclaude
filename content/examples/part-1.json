@@ -1,0 +1,1029 @@
+{
+  "version": 1,
+  "examples": [
+    {
+      "wordId": "watashi",
+      "lesson": 17,
+      "ja": "私はポーランド人です。",
+      "kana": "わたしは ポーランドじんです。",
+      "pl": "Jestem z Polski.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "gakusei",
+      "lesson": 17,
+      "ja": "はい、学生です。",
+      "kana": "はい、がくせいです。",
+      "pl": "Tak, studiuję.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sensei",
+      "lesson": 17,
+      "ja": "先生、こんにちは。",
+      "kana": "せんせい、こんにちは。",
+      "pl": "Dzień dobry, panie profesorze.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "poorandojin",
+      "lesson": 17,
+      "ja": "ポーランド人ですね。",
+      "kana": "ポーランドじんですね。",
+      "pl": "Jest pan z Polski, prawda?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nihonjin",
+      "lesson": 17,
+      "ja": "先生は日本人です。",
+      "kana": "せんせいは にほんじんです。",
+      "pl": "Nauczyciel jest Japończykiem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hajimemashite",
+      "lesson": 17,
+      "ja": "はじめまして、どうぞよろしく。",
+      "kana": "はじめまして、どうぞよろしく。",
+      "pl": "Dzień dobry, miło mi poznać.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "douzoyoroshiku",
+      "lesson": 17,
+      "ja": "どうぞよろしく。",
+      "kana": "どうぞよろしく。",
+      "pl": "Bardzo mi miło.",
+      "source": "tatoeba",
+      "tatoebaId": 201303,
+      "reviewed": false
+    },
+
+    {
+      "wordId": "anata",
+      "lesson": 18,
+      "ja": "私は学生です。あなたは？",
+      "kana": "わたしは がくせいです。あなたは？",
+      "pl": "Studiuję. A ty?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tomodachi",
+      "lesson": 18,
+      "ja": "友達は日本人です。",
+      "kana": "ともだちは にほんじんです。",
+      "pl": "Mój kolega jest Japończykiem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "minasan",
+      "lesson": 18,
+      "ja": "皆さん、こんにちは。",
+      "kana": "みなさん、こんにちは。",
+      "pl": "Dzień dobry wszystkim.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "isha",
+      "lesson": 18,
+      "ja": "友達は医者です。",
+      "kana": "ともだちは いしゃです。",
+      "pl": "Moja przyjaciółka jest lekarką.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ryuugakusei",
+      "lesson": 18,
+      "ja": "私は留学生です。",
+      "kana": "わたしは りゅうがくせいです。",
+      "pl": "Studiuję za granicą.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "gaikokujin",
+      "lesson": 18,
+      "ja": "先生は外国人です。",
+      "kana": "せんせいは がいこくじんです。",
+      "pl": "Nauczyciel jest obcokrajowcem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "onegaishimasu",
+      "lesson": 18,
+      "ja": "コーヒー、お願いします。",
+      "kana": "コーヒー、おねがいします。",
+      "pl": "Poproszę kawę.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "nan",
+      "lesson": 19,
+      "ja": "はい、何ですか。",
+      "kana": "はい、なんですか。",
+      "pl": "Tak, o co chodzi?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "namae",
+      "lesson": 19,
+      "ja": "お名前は何ですか。",
+      "kana": "おなまえは なんですか。",
+      "pl": "Jak się pan nazywa?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "dare",
+      "lesson": 19,
+      "ja": "先生は誰ですか。",
+      "kana": "せんせいは だれですか。",
+      "pl": "Kto jest nauczycielem?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "doko",
+      "lesson": 19,
+      "ja": "トイレはどこですか。",
+      "kana": "トイレは どこですか。",
+      "pl": "Gdzie jest toaleta?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "itsu",
+      "lesson": 19,
+      "ja": "テストはいつですか。",
+      "kana": "テストは いつですか。",
+      "pl": "Kiedy jest test?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sumimasen",
+      "lesson": 19,
+      "ja": "すみません、先生ですか。",
+      "kana": "すみません、せんせいですか。",
+      "pl": "Przepraszam, czy pan jest nauczycielem?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "eki",
+      "lesson": 19,
+      "ja": "駅はどこですか。",
+      "kana": "えきは どこですか。",
+      "pl": "Gdzie jest stacja?",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "ee",
+      "lesson": 20,
+      "ja": "ええ、そうです。",
+      "kana": "ええ、そうです。",
+      "pl": "Tak, zgadza się.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ginkou",
+      "lesson": 20,
+      "ja": "銀行はどこですか。",
+      "kana": "ぎんこうは どこですか。",
+      "pl": "Gdzie jest bank?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "byouin",
+      "lesson": 20,
+      "ja": "今日は病院です。",
+      "kana": "きょうは びょういんです。",
+      "pl": "Dziś idę do przychodni.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "toshokan",
+      "lesson": 20,
+      "ja": "先生は図書館ですよ。",
+      "kana": "せんせいは としょかんですよ。",
+      "pl": "Nauczyciel jest w bibliotece.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yuubinkyoku",
+      "lesson": 20,
+      "ja": "すみません、郵便局はどこですか。",
+      "kana": "すみません、ゆうびんきょくは どこですか。",
+      "pl": "Przepraszam, gdzie jest poczta?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "daigaku",
+      "lesson": 20,
+      "ja": "今日は大学ですか。",
+      "kana": "きょうは だいがくですか。",
+      "pl": "Masz dziś zajęcia na uczelni?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tanjoubi",
+      "lesson": 20,
+      "ja": "お誕生日はいつですか。",
+      "kana": "おたんじょうびは いつですか。",
+      "pl": "Kiedy masz urodziny?",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "kore",
+      "lesson": 22,
+      "ja": "これは何ですか。",
+      "kana": "これは なんですか。",
+      "pl": "Co to jest?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sore",
+      "lesson": 22,
+      "ja": "それはペンですか。",
+      "kana": "それは ペンですか。",
+      "pl": "Czy to długopis?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "are",
+      "lesson": 22,
+      "ja": "あれは銀行ですか。",
+      "kana": "あれは ぎんこうですか。",
+      "pl": "Czy tamten budynek to bank?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "dore",
+      "lesson": 22,
+      "ja": "傘はどれですか。",
+      "kana": "かさは どれですか。",
+      "pl": "Który parasol jest twój?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "jisho",
+      "lesson": 22,
+      "ja": "これは辞書です。",
+      "kana": "これは じしょです。",
+      "pl": "To jest słownik.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaban",
+      "lesson": 22,
+      "ja": "かばんはどこですか。",
+      "kana": "かばんは どこですか。",
+      "pl": "Gdzie jest torba?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "douzo",
+      "lesson": 22,
+      "ja": "お茶、どうぞ。",
+      "kana": "おちゃ、どうぞ。",
+      "pl": "Proszę, oto herbata.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "shinbun",
+      "lesson": 23,
+      "ja": "それは新聞ですか。",
+      "kana": "それは しんぶんですか。",
+      "pl": "Czy to gazeta?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "shashin",
+      "lesson": 23,
+      "ja": "すみません、写真お願いします。",
+      "kana": "すみません、しゃしん おねがいします。",
+      "pl": "Przepraszam, czy może pan zrobić nam zdjęcie?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kagi",
+      "lesson": 23,
+      "ja": "はい、かぎです。どうぞ。",
+      "kana": "はい、かぎです。どうぞ。",
+      "pl": "Proszę, oto klucz.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "saifu",
+      "lesson": 23,
+      "ja": "これは財布ですか。",
+      "kana": "これは さいふですか。",
+      "pl": "Czy to portfel?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "megane",
+      "lesson": 23,
+      "ja": "眼鏡はどこですか。",
+      "kana": "めがねは どこですか。",
+      "pl": "Gdzie są okulary?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "enpitsu",
+      "lesson": 23,
+      "ja": "鉛筆ですか、ペンですか。",
+      "kana": "えんぴつですか、ペンですか。",
+      "pl": "Ołówek czy długopis?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "doumo",
+      "lesson": 23,
+      "ja": "どうもありがとう。",
+      "kana": "どうも ありがとう。",
+      "pl": "Dziękuję bardzo.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "kono",
+      "lesson": 24,
+      "ja": "このホテルですか。",
+      "kana": "この ホテルですか。",
+      "pl": "Czy to ten hotel?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "sono",
+      "lesson": 24,
+      "ja": "そのテストはいつですか。",
+      "kana": "その テストは いつですか。",
+      "pl": "Kiedy jest ten test?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ano",
+      "lesson": 24,
+      "ja": "あの先生は日本人ですよ。",
+      "kana": "あの せんせいは にほんじんですよ。",
+      "pl": "Tamten nauczyciel jest Japończykiem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "dono",
+      "lesson": 24,
+      "ja": "どの電車ですか。",
+      "kana": "どの でんしゃですか。",
+      "pl": "Który to pociąg?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "koko",
+      "lesson": 24,
+      "ja": "ここはどこですか。",
+      "kana": "ここは どこですか。",
+      "pl": "Gdzie jesteśmy?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "soko",
+      "lesson": 24,
+      "ja": "トイレはそこです。",
+      "kana": "トイレは そこです。",
+      "pl": "Toaleta jest tam.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "asoko",
+      "lesson": 24,
+      "ja": "駅はあそこです。",
+      "kana": "えきは あそこです。",
+      "pl": "Stacja jest o tam.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "heya",
+      "lesson": 25,
+      "ja": "お部屋はこちらです。",
+      "kana": "おへやは こちらです。",
+      "pl": "Państwa pokój jest tutaj.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kyoushitsu",
+      "lesson": 25,
+      "ja": "教室はあそこですよ。",
+      "kana": "きょうしつは あそこですよ。",
+      "pl": "Sala lekcyjna jest tam.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hito",
+      "lesson": 25,
+      "ja": "あの人は誰ですか。",
+      "kana": "あの ひとは だれですか。",
+      "pl": "Kim jest tamta osoba?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaisha",
+      "lesson": 25,
+      "ja": "会社はどこですか。",
+      "kana": "かいしゃは どこですか。",
+      "pl": "Gdzie jest twoja firma?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kochira",
+      "lesson": 25,
+      "ja": "こちらは先生です。",
+      "kana": "こちらは せんせいです。",
+      "pl": "Przedstawiam naszego nauczyciela.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mise",
+      "lesson": 25,
+      "ja": "あの店はレストランですか。",
+      "kana": "あの みせは レストランですか。",
+      "pl": "Czy tamten lokal to restauracja?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kuni",
+      "lesson": 25,
+      "ja": "国はどこですか。",
+      "kana": "くには どこですか。",
+      "pl": "Z jakiego kraju jesteś?",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "chichi",
+      "lesson": 26,
+      "ja": "父は医者です。",
+      "kana": "ちちは いしゃです。",
+      "pl": "Mój tata jest lekarzem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "haha",
+      "lesson": 26,
+      "ja": "母は大学の先生です。",
+      "kana": "ははは だいがくの せんせいです。",
+      "pl": "Moja mama wykłada na uniwersytecie.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ani",
+      "lesson": 26,
+      "ja": "兄は留学生です。",
+      "kana": "あには りゅうがくせいです。",
+      "pl": "Mój starszy brat studiuje za granicą.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ane",
+      "lesson": 26,
+      "ja": "これは姉の傘です。",
+      "kana": "これは あねの かさです。",
+      "pl": "To parasol mojej starszej siostry.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "otouto",
+      "lesson": 26,
+      "ja": "弟も学生です。",
+      "kana": "おとうとも がくせいです。",
+      "pl": "Mój młodszy brat też studiuje.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "imouto",
+      "lesson": 26,
+      "ja": "あの人は妹です。",
+      "kana": "あの ひとは いもうとです。",
+      "pl": "Tamta dziewczyna to moja młodsza siostra.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kazoku",
+      "lesson": 26,
+      "ja": "これは私の家族の写真です。",
+      "kana": "これは わたしの かぞくの しゃしんです。",
+      "pl": "To zdjęcie mojej rodziny.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "otousan",
+      "lesson": 27,
+      "ja": "お父さんは先生ですか。",
+      "kana": "おとうさんは せんせいですか。",
+      "pl": "Czy twój tata jest nauczycielem?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "okaasan",
+      "lesson": 27,
+      "ja": "お母さんも日本人ですか。",
+      "kana": "おかあさんも にほんじんですか。",
+      "pl": "Czy twoja mama też jest Japonką?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nihongo",
+      "lesson": 27,
+      "ja": "あの人は日本語の先生です。",
+      "kana": "あの ひとは にほんごの せんせいです。",
+      "pl": "Tamten pan uczy japońskiego.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "poorandogo",
+      "lesson": 27,
+      "ja": "これはポーランド語の本です。",
+      "kana": "これは ポーランドごの ほんです。",
+      "pl": "To książka po polsku.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kodomo",
+      "lesson": 27,
+      "ja": "これは子供の靴です。",
+      "kana": "これは こどもの くつです。",
+      "pl": "To buty dla dziecka.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "gaikoku",
+      "lesson": 27,
+      "ja": "これは外国のお菓子です。",
+      "kana": "これは がいこくの おかしです。",
+      "pl": "To słodycze z zagranicy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nihon",
+      "lesson": 27,
+      "ja": "これは日本のお茶です。",
+      "kana": "これは にほんの おちゃです。",
+      "pl": "To japońska herbata.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "taberu",
+      "lesson": 29,
+      "ja": "猫は魚を食べます。",
+      "kana": "ねこは さかなを たべます。",
+      "pl": "Koty jedzą ryby.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "nomu",
+      "lesson": 29,
+      "ja": "コーヒーを飲みます。",
+      "kana": "コーヒーを のみます。",
+      "pl": "Piję kawę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yomu",
+      "lesson": 29,
+      "ja": "父は新聞を読みます。",
+      "kana": "ちちは しんぶんを よみます。",
+      "pl": "Tata czyta gazetę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "miru",
+      "lesson": 29,
+      "ja": "テレビを見ます。",
+      "kana": "テレビを みます。",
+      "pl": "Oglądam telewizję.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kau",
+      "lesson": 29,
+      "ja": "パンを買います。",
+      "kana": "パンを かいます。",
+      "pl": "Kupuję chleb.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kiku",
+      "lesson": 29,
+      "ja": "音楽を聞きます。",
+      "kana": "おんがくを ききます。",
+      "pl": "Słucham muzyki.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ongaku",
+      "lesson": 29,
+      "ja": "姉は音楽の先生です。",
+      "kana": "あねは おんがくの せんせいです。",
+      "pl": "Moja starsza siostra uczy muzyki.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "suru",
+      "lesson": 30,
+      "ja": "今日はパーティーをします。",
+      "kana": "きょうは パーティーを します。",
+      "pl": "Dziś robimy imprezę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaku",
+      "lesson": 30,
+      "ja": "兄は本を書きます。",
+      "kana": "あには ほんを かきます。",
+      "pl": "Mój starszy brat pisze książki.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hanasu",
+      "lesson": 30,
+      "ja": "先生はポーランド語を話します。",
+      "kana": "せんせいは ポーランドごを はなします。",
+      "pl": "Nauczyciel mówi po polsku.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "benkyou",
+      "lesson": 30,
+      "ja": "日本語を勉強します。",
+      "kana": "にほんごを べんきょうします。",
+      "pl": "Uczę się japońskiego.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "mainichi",
+      "lesson": 30,
+      "ja": "毎日コーヒーを飲みます。",
+      "kana": "まいにち コーヒーを のみます。",
+      "pl": "Codziennie piję kawę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "itsumo",
+      "lesson": 30,
+      "ja": "母はいつもお茶を飲みます。",
+      "kana": "ははは いつも おちゃを のみます。",
+      "pl": "Mama zawsze pije herbatę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kudasai",
+      "lesson": 30,
+      "ja": "お水をください。",
+      "kana": "おみずを ください。",
+      "pl": "Poproszę wodę.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "iku",
+      "lesson": 31,
+      "ja": "銀行へ行きます。",
+      "kana": "ぎんこうへ いきます。",
+      "pl": "Idę do banku.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kuru",
+      "lesson": 31,
+      "ja": "友達は来週、ポーランドから来ます。",
+      "kana": "ともだちは らいしゅう、ポーランドから きます。",
+      "pl": "Kolega przyjeżdża z Polski w przyszłym tygodniu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaeru",
+      "lesson": 31,
+      "ja": "家に帰ります。",
+      "kana": "いえに かえります。",
+      "pl": "Wracam do domu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kaimono",
+      "lesson": 31,
+      "ja": "デパートへ買い物に行きます。",
+      "kana": "デパートへ かいものに いきます。",
+      "pl": "Idę na zakupy do domu towarowego.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "raishuu",
+      "lesson": 31,
+      "ja": "来週、日本へ行きます。",
+      "kana": "らいしゅう、にほんへ いきます。",
+      "pl": "W przyszłym tygodniu jadę do Japonii.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "machi",
+      "lesson": 31,
+      "ja": "町へ本を買いに行きます。",
+      "kana": "まちへ ほんを かいに いきます。",
+      "pl": "Idę do miasta kupić książkę.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "umi",
+      "lesson": 31,
+      "ja": "家族と海へ行きます。",
+      "kana": "かぞくと うみへ いきます。",
+      "pl": "Jadę z rodziną nad morze.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "au",
+      "lesson": 32,
+      "ja": "来週、友達に会います。",
+      "kana": "らいしゅう、ともだちに あいます。",
+      "pl": "W przyszłym tygodniu spotykam się z kolegą.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "dekakeru",
+      "lesson": 32,
+      "ja": "母は買い物に出かけます。",
+      "kana": "ははは かいものに でかけます。",
+      "pl": "Mama wychodzi na zakupy.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hairu",
+      "lesson": 32,
+      "ja": "部屋に入ります。",
+      "kana": "へやに はいります。",
+      "pl": "Wchodzę do pokoju.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "tsuku",
+      "lesson": 32,
+      "ja": "母は今日、日本に着きます。",
+      "kana": "ははは きょう、にほんに つきます。",
+      "pl": "Mama dziś przylatuje do Japonii.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "yama",
+      "lesson": 32,
+      "ja": "友達と山へ行きます。",
+      "kana": "ともだちと やまへ いきます。",
+      "pl": "Jadę z kolegą w góry.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ryokou",
+      "lesson": 32,
+      "ja": "日本へ旅行に行きます。",
+      "kana": "にほんへ りょこうに いきます。",
+      "pl": "Jadę na wycieczkę do Japonii.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kouen",
+      "lesson": 32,
+      "ja": "犬と公園へ行きます。",
+      "kana": "いぬと こうえんへ いきます。",
+      "pl": "Idę z psem do parku.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "chikatetsu",
+      "lesson": 33,
+      "ja": "地下鉄で会社へ行きます。",
+      "kana": "ちかてつで かいしゃへ いきます。",
+      "pl": "Jeżdżę do pracy metrem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "jitensha",
+      "lesson": 33,
+      "ja": "自転車で大学へ行きます。",
+      "kana": "じてんしゃで だいがくへ いきます。",
+      "pl": "Jeżdżę na uczelnię rowerem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hikouki",
+      "lesson": 33,
+      "ja": "飛行機でポーランドへ帰ります。",
+      "kana": "ひこうきで ポーランドへ かえります。",
+      "pl": "Wracam do Polski samolotem.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "kuruma",
+      "lesson": 33,
+      "ja": "車で海へ行きます。",
+      "kana": "くるまで うみへ いきます。",
+      "pl": "Jadę samochodem nad morze.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hataraku",
+      "lesson": 33,
+      "ja": "来週はホテルで働きます。",
+      "kana": "らいしゅうは ホテルで はたらきます。",
+      "pl": "W przyszłym tygodniu pracuję w hotelu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "asobu",
+      "lesson": 33,
+      "ja": "子供たちは公園で遊びます。",
+      "kana": "こどもたちは こうえんで あそびます。",
+      "pl": "Dzieci bawią się w parku.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "eigakan",
+      "lesson": 33,
+      "ja": "友達と映画館へ行きます。",
+      "kana": "ともだちと えいがかんへ いきます。",
+      "pl": "Idę z kolegą do kina.",
+      "source": "original",
+      "reviewed": false
+    },
+
+    {
+      "wordId": "noru",
+      "lesson": 34,
+      "ja": "駅で電車に乗ります。",
+      "kana": "えきで でんしゃに のります。",
+      "pl": "Na stacji wsiadam do pociągu.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "oriru",
+      "lesson": 34,
+      "ja": "ここで降ります。",
+      "kana": "ここで おります。",
+      "pl": "Wysiadam tutaj.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "aruku",
+      "lesson": 34,
+      "ja": "駅まで歩きます。",
+      "kana": "えきまで あるきます。",
+      "pl": "Idę pieszo na stację.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "shigoto",
+      "lesson": 34,
+      "ja": "仕事で日本へ行きます。",
+      "kana": "しごとで にほんへ いきます。",
+      "pl": "Jadę do Japonii służbowo.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "ryouri",
+      "lesson": 34,
+      "ja": "父は毎日料理をします。",
+      "kana": "ちちは まいにち りょうりを します。",
+      "pl": "Tata codziennie gotuje.",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "iu",
+      "lesson": 34,
+      "ja": "これは日本語で何と言いますか。",
+      "kana": "これは にほんごで なんと いいますか。",
+      "pl": "Jak to się mówi po japońsku?",
+      "source": "original",
+      "reviewed": false
+    },
+    {
+      "wordId": "hashi-chopsticks",
+      "lesson": 34,
+      "ja": "はしでご飯を食べます。",
+      "kana": "はしで ごはんを たべます。",
+      "pl": "Jem ryż pałeczkami.",
+      "source": "original",
+      "reviewed": false
+    }
+  ]
+}

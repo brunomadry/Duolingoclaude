@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "glosses": {
+    "watashi": { "pl": ["ja"], "reviewed": false },
+    "nihon": { "pl": ["Japonia"], "reviewed": false },
+    "nihonjin": { "pl": ["Japończyk, Japonka"], "reviewed": false },
+    "nihongo": { "pl": ["język japoński"], "reviewed": false },
+    "chichi": { "pl": ["ojciec (własny)", "tata (własny)"], "reviewed": false },
+    "haha": { "pl": ["matka (własna)", "mama (własna)"], "reviewed": false },
+    "kao": { "pl": ["twarz", "mina, wyraz twarzy"], "reviewed": false },
+    "sonna": { "pl": ["taki (jak ten u rozmówcy)", "tego rodzaju"], "reviewed": false },
+    "donna": { "pl": ["jaki, jakiego rodzaju"], "reviewed": false },
+    "anna": { "pl": ["taki (jak tamten)", "tamtego rodzaju"], "reviewed": false },
+    "poorando": { "pl": ["Polska"], "reviewed": false },
+    "poorandojin": { "pl": ["Polak, Polka"], "reviewed": false },
+    "poorandogo": { "pl": ["język polski"], "reviewed": false }
+  }
+}

@@ -1,0 +1,2760 @@
+{
+  "version": 1,
+  "glosses": {
+    "au": {
+      "pl": ["spotykać się (z kimś)", "spotkać (kogoś)"],
+      "reviewed": false
+    },
+    "ao": {
+      "pl": ["kolor niebieski", "błękit"],
+      "reviewed": false
+    },
+    "aoi": {
+      "pl": ["niebieski", "błękitny"],
+      "reviewed": false
+    },
+    "aka": {
+      "pl": ["kolor czerwony", "czerwień"],
+      "reviewed": false
+    },
+    "akai": {
+      "pl": ["czerwony"],
+      "reviewed": false
+    },
+    "akarui": {
+      "pl": ["jasny", "pogodny, wesoły"],
+      "reviewed": false
+    },
+    "aki": {
+      "pl": ["jesień"],
+      "reviewed": false
+    },
+    "aku": {
+      "pl": ["otwierać się"],
+      "reviewed": false
+    },
+    "akeru": {
+      "pl": ["otwierać (coś)"],
+      "reviewed": false
+    },
+    "ageru": {
+      "pl": ["dawać (komuś)", "podnosić (coś)"],
+      "reviewed": false
+    },
+    "asa": {
+      "pl": ["rano", "poranek"],
+      "reviewed": false
+    },
+    "asagohan": {
+      "pl": ["śniadanie"],
+      "reviewed": false
+    },
+    "asatte": {
+      "pl": ["pojutrze"],
+      "reviewed": false
+    },
+    "ashi": {
+      "pl": ["noga", "stopa"],
+      "reviewed": false
+    },
+    "ashita": {
+      "pl": ["jutro"],
+      "reviewed": false
+    },
+    "asoko": {
+      "pl": ["tam (daleko)", "tamto miejsce"],
+      "reviewed": false
+    },
+    "asobu": {
+      "pl": ["bawić się", "spędzać czas (ze znajomymi)"],
+      "reviewed": false
+    },
+    "atatakai": {
+      "pl": ["ciepły (o pogodzie)"],
+      "reviewed": false
+    },
+    "atama": {
+      "pl": ["głowa"],
+      "reviewed": false
+    },
+    "atarashii": {
+      "pl": ["nowy"],
+      "reviewed": false
+    },
+    "achira": {
+      "pl": ["tamta strona (grzecznie)", "tam"],
+      "reviewed": false
+    },
+    "atsui-thick": {
+      "pl": ["gruby (np. o książce)"],
+      "reviewed": false
+    },
+    "atsui-hot": {
+      "pl": ["gorący (o pogodzie)", "upalny"],
+      "reviewed": false
+    },
+    "atsui-hot-touch": {
+      "pl": ["gorący (w dotyku)"],
+      "reviewed": false
+    },
+    "atchi": {
+      "pl": ["tam (potocznie)"],
+      "reviewed": false
+    },
+    "ato": {
+      "pl": ["potem, później", "po (czymś)"],
+      "reviewed": false
+    },
+    "anata": {
+      "pl": ["ty", "pan, pani"],
+      "reviewed": false
+    },
+    "ani": {
+      "pl": ["starszy brat (własny)"],
+      "reviewed": false
+    },
+    "ane": {
+      "pl": ["starsza siostra (własna)"],
+      "reviewed": false
+    },
+    "ano": {
+      "pl": ["tamten (daleko)"],
+      "reviewed": false
+    },
+    "apaato": {
+      "pl": ["mieszkanie (w bloku)", "blok mieszkalny"],
+      "reviewed": false
+    },
+    "abiru": {
+      "pl": ["brać (prysznic)", "polewać się (wodą)"],
+      "reviewed": false
+    },
+    "abunai": {
+      "pl": ["niebezpieczny"],
+      "reviewed": false
+    },
+    "amai": {
+      "pl": ["słodki"],
+      "reviewed": false
+    },
+    "amari": {
+      "pl": ["niezbyt (z przeczeniem)", "nie za bardzo"],
+      "reviewed": false
+    },
+    "ame-candy": {
+      "pl": ["cukierek"],
+      "reviewed": false
+    },
+    "ame-rain": {
+      "pl": ["deszcz"],
+      "reviewed": false
+    },
+    "arau": {
+      "pl": ["myć", "prać"],
+      "reviewed": false
+    },
+    "arigatou": {
+      "pl": ["dziękuję"],
+      "reviewed": false
+    },
+    "aru": {
+      "pl": ["być, znajdować się (o rzeczach)", "mieć (coś)"],
+      "reviewed": false
+    },
+    "aruku": {
+      "pl": ["chodzić", "iść pieszo"],
+      "reviewed": false
+    },
+    "are": {
+      "pl": ["tamto (daleko)"],
+      "reviewed": false
+    },
+    "anna": {
+      "pl": ["taki (jak tamten)", "tamtego rodzaju"],
+      "reviewed": false
+    },
+    "ii": {
+      "pl": ["dobry"],
+      "reviewed": false
+    },
+    "iie": {
+      "pl": ["nie"],
+      "reviewed": false
+    },
+    "iu": {
+      "pl": ["mówić", "powiedzieć"],
+      "reviewed": false
+    },
+    "ie": {
+      "pl": ["dom"],
+      "reviewed": false
+    },
+    "ikaga": {
+      "pl": ["jak (grzecznie)", "może (w propozycji)"],
+      "reviewed": false
+    },
+    "iku": {
+      "pl": ["iść, jechać"],
+      "reviewed": false
+    },
+    "ikutsu": {
+      "pl": ["ile (sztuk)", "ile lat"],
+      "reviewed": false
+    },
+    "ikura": {
+      "pl": ["ile (kosztuje)"],
+      "reviewed": false
+    },
+    "ike": {
+      "pl": ["staw"],
+      "reviewed": false
+    },
+    "isha": {
+      "pl": ["lekarz, lekarka"],
+      "reviewed": false
+    },
+    "isu": {
+      "pl": ["krzesło"],
+      "reviewed": false
+    },
+    "isogashii": {
+      "pl": ["zajęty", "zapracowany"],
+      "reviewed": false
+    },
+    "itai": {
+      "pl": ["bolesny", "bolący (o części ciała)"],
+      "reviewed": false
+    },
+    "itadakimasu": {
+      "pl": ["smacznego (zwrot przed posiłkiem)"],
+      "reviewed": false
+    },
+    "ichi": {
+      "pl": ["jeden"],
+      "reviewed": false
+    },
+    "ichinichi": {
+      "pl": ["jeden dzień", "cały dzień"],
+      "reviewed": false
+    },
+    "ichiban": {
+      "pl": ["najbardziej", "pierwszy, numer jeden"],
+      "reviewed": false
+    },
+    "itsu": {
+      "pl": ["kiedy"],
+      "reviewed": false
+    },
+    "itsuka": {
+      "pl": ["piąty dzień miesiąca", "pięć dni"],
+      "reviewed": false
+    },
+    "issho": {
+      "pl": ["razem"],
+      "reviewed": false
+    },
+    "itsutsu": {
+      "pl": ["pięć (sztuk)", "pięć lat (wiek dziecka)"],
+      "reviewed": false
+    },
+    "itsumo": {
+      "pl": ["zawsze"],
+      "reviewed": false
+    },
+    "inu": {
+      "pl": ["pies"],
+      "reviewed": false
+    },
+    "ima": {
+      "pl": ["teraz"],
+      "reviewed": false
+    },
+    "imi": {
+      "pl": ["znaczenie"],
+      "reviewed": false
+    },
+    "imouto": {
+      "pl": ["młodsza siostra (własna)"],
+      "reviewed": false
+    },
+    "iya": {
+      "pl": ["nieprzyjemny", "niechciany, nielubiany"],
+      "reviewed": false
+    },
+    "iriguchi": {
+      "pl": ["wejście"],
+      "reviewed": false
+    },
+    "iru-be": {
+      "pl": ["być (o ludziach i zwierzętach)", "mieć (np. rodzeństwo)"],
+      "reviewed": false
+    },
+    "iru-need": {
+      "pl": ["potrzebować", "być potrzebnym"],
+      "reviewed": false
+    },
+    "ireru": {
+      "pl": ["wkładać (do czegoś)", "zaparzać (herbatę, kawę)"],
+      "reviewed": false
+    },
+    "iro": {
+      "pl": ["kolor"],
+      "reviewed": false
+    },
+    "iroiro": {
+      "pl": ["różny", "rozmaity"],
+      "reviewed": false
+    },
+    "ue": {
+      "pl": ["góra, wierzch", "na, nad (czymś)"],
+      "reviewed": false
+    },
+    "ushiro": {
+      "pl": ["tył", "za (czymś)"],
+      "reviewed": false
+    },
+    "usui": {
+      "pl": ["cienki (np. o papierze)", "słaby (o napoju, smaku)", "jasny (o kolorze)"],
+      "reviewed": false
+    },
+    "uta": {
+      "pl": ["piosenka"],
+      "reviewed": false
+    },
+    "utau": {
+      "pl": ["śpiewać"],
+      "reviewed": false
+    },
+    "umareru": {
+      "pl": ["urodzić się"],
+      "reviewed": false
+    },
+    "umi": {
+      "pl": ["morze"],
+      "reviewed": false
+    },
+    "uru": {
+      "pl": ["sprzedawać"],
+      "reviewed": false
+    },
+    "urusai": {
+      "pl": ["głośny, hałaśliwy", "uciążliwy, natrętny"],
+      "reviewed": false
+    },
+    "uwagi": {
+      "pl": ["kurtka, marynarka", "okrycie wierzchnie"],
+      "reviewed": false
+    },
+    "e": {
+      "pl": ["obraz", "rysunek"],
+      "reviewed": false
+    },
+    "eiga": {
+      "pl": ["film"],
+      "reviewed": false
+    },
+    "eigakan": {
+      "pl": ["kino"],
+      "reviewed": false
+    },
+    "eigo": {
+      "pl": ["język angielski"],
+      "reviewed": false
+    },
+    "ee": {
+      "pl": ["tak (mniej formalnie)"],
+      "reviewed": false
+    },
+    "eki": {
+      "pl": ["stacja (kolejowa)", "dworzec"],
+      "reviewed": false
+    },
+    "erebeetaa": {
+      "pl": ["winda"],
+      "reviewed": false
+    },
+    "enpitsu": {
+      "pl": ["ołówek"],
+      "reviewed": false
+    },
+    "oishii": {
+      "pl": ["smaczny", "pyszny"],
+      "reviewed": false
+    },
+    "ooi": {
+      "pl": ["liczny", "dużo (czegoś)"],
+      "reviewed": false
+    },
+    "ookii": {
+      "pl": ["duży"],
+      "reviewed": false
+    },
+    "ookina": {
+      "pl": ["duży (przed rzeczownikiem)"],
+      "reviewed": false
+    },
+    "oozei": {
+      "pl": ["dużo ludzi", "tłum"],
+      "reviewed": false
+    },
+    "okaasan": {
+      "pl": ["mama", "matka (czyjaś, grzecznie)"],
+      "reviewed": false
+    },
+    "okashi": {
+      "pl": ["słodycze", "przekąska"],
+      "reviewed": false
+    },
+    "okane": {
+      "pl": ["pieniądze"],
+      "reviewed": false
+    },
+    "okiru": {
+      "pl": ["wstawać", "budzić się"],
+      "reviewed": false
+    },
+    "oku": {
+      "pl": ["kłaść", "stawiać"],
+      "reviewed": false
+    },
+    "okusan": {
+      "pl": ["żona (czyjaś, grzecznie)"],
+      "reviewed": false
+    },
+    "osake": {
+      "pl": ["alkohol", "sake (wino ryżowe)"],
+      "reviewed": false
+    },
+    "osara": {
+      "pl": ["talerz"],
+      "reviewed": false
+    },
+    "ojiisan": {
+      "pl": ["dziadek", "starszy pan"],
+      "reviewed": false
+    },
+    "oshieru": {
+      "pl": ["uczyć (kogoś)", "powiedzieć, wskazać (np. drogę)"],
+      "reviewed": false
+    },
+    "osu": {
+      "pl": ["pchać", "naciskać"],
+      "reviewed": false
+    },
+    "osoi": {
+      "pl": ["późny", "wolny, powolny"],
+      "reviewed": false
+    },
+    "ocha": {
+      "pl": ["herbata (zielona)"],
+      "reviewed": false
+    },
+    "otearai": {
+      "pl": ["toaleta (grzecznie)"],
+      "reviewed": false
+    },
+    "otousan": {
+      "pl": ["tata", "ojciec (czyjś, grzecznie)"],
+      "reviewed": false
+    },
+    "otouto": {
+      "pl": ["młodszy brat (własny)"],
+      "reviewed": false
+    },
+    "otoko": {
+      "pl": ["mężczyzna"],
+      "reviewed": false
+    },
+    "otokonoko": {
+      "pl": ["chłopiec"],
+      "reviewed": false
+    },
+    "ototoi": {
+      "pl": ["przedwczoraj"],
+      "reviewed": false
+    },
+    "ototoshi": {
+      "pl": ["dwa lata temu", "rok przed zeszłym"],
+      "reviewed": false
+    },
+    "otona": {
+      "pl": ["dorosły, dorosła"],
+      "reviewed": false
+    },
+    "onaka": {
+      "pl": ["brzuch"],
+      "reviewed": false
+    },
+    "onaji": {
+      "pl": ["taki sam", "ten sam"],
+      "reviewed": false
+    },
+    "oniisan": {
+      "pl": ["starszy brat (grzecznie)"],
+      "reviewed": false
+    },
+    "oneesan": {
+      "pl": ["starsza siostra (grzecznie)"],
+      "reviewed": false
+    },
+    "onegaishimasu": {
+      "pl": ["proszę (prosząc o coś)"],
+      "reviewed": false
+    },
+    "obaasan": {
+      "pl": ["babcia", "starsza pani"],
+      "reviewed": false
+    },
+    "obasan": {
+      "pl": ["ciocia", "pani w średnim wieku"],
+      "reviewed": false
+    },
+    "ohayou": {
+      "pl": ["dzień dobry (rano, potocznie)"],
+      "reviewed": false
+    },
+    "ofuro": {
+      "pl": ["kąpiel (w wannie)", "wanna"],
+      "reviewed": false
+    },
+    "obentou": {
+      "pl": ["posiłek w pudełku", "drugie śniadanie"],
+      "reviewed": false
+    },
+    "oboeru": {
+      "pl": ["zapamiętywać", "nauczyć się (na pamięć)"],
+      "reviewed": false
+    },
+    "omawarisan": {
+      "pl": ["policjant, policjantka (potocznie)"],
+      "reviewed": false
+    },
+    "omoi": {
+      "pl": ["ciężki"],
+      "reviewed": false
+    },
+    "omoshiroi": {
+      "pl": ["ciekawy", "zabawny"],
+      "reviewed": false
+    },
+    "oyogu": {
+      "pl": ["pływać"],
+      "reviewed": false
+    },
+    "oriru": {
+      "pl": ["wysiadać (z pojazdu)", "schodzić (w dół)"],
+      "reviewed": false
+    },
+    "owaru": {
+      "pl": ["kończyć się"],
+      "reviewed": false
+    },
+    "ongaku": {
+      "pl": ["muzyka"],
+      "reviewed": false
+    },
+    "onna": {
+      "pl": ["kobieta"],
+      "reviewed": false
+    },
+    "onnanoko": {
+      "pl": ["dziewczynka"],
+      "reviewed": false
+    },
+    "gaikoku": {
+      "pl": ["zagranica", "obcy kraj"],
+      "reviewed": false
+    },
+    "gaikokujin": {
+      "pl": ["cudzoziemiec, cudzoziemka", "obcokrajowiec"],
+      "reviewed": false
+    },
+    "kaisha": {
+      "pl": ["firma"],
+      "reviewed": false
+    },
+    "kaidan": {
+      "pl": ["schody"],
+      "reviewed": false
+    },
+    "kaimono": {
+      "pl": ["zakupy"],
+      "reviewed": false
+    },
+    "kau": {
+      "pl": ["kupować"],
+      "reviewed": false
+    },
+    "kaesu": {
+      "pl": ["oddawać (coś)", "zwracać (coś)"],
+      "reviewed": false
+    },
+    "kaeru": {
+      "pl": ["wracać (do domu)"],
+      "reviewed": false
+    },
+    "kao": {
+      "pl": ["twarz", "mina, wyraz twarzy"],
+      "reviewed": false
+    },
+    "kakaru": {
+      "pl": ["zajmować (czas)", "kosztować"],
+      "reviewed": false
+    },
+    "kagi": {
+      "pl": ["klucz"],
+      "reviewed": false
+    },
+    "kaku": {
+      "pl": ["pisać"],
+      "reviewed": false
+    },
+    "gakusei": {
+      "pl": ["student, studentka", "uczeń, uczennica"],
+      "reviewed": false
+    },
+    "kakeru": {
+      "pl": ["dzwonić (do kogoś)", "zakładać (okulary)", "wieszać"],
+      "reviewed": false
+    },
+    "kasa": {
+      "pl": ["parasol"],
+      "reviewed": false
+    },
+    "kasu": {
+      "pl": ["pożyczać (komuś)"],
+      "reviewed": false
+    },
+    "kaze-wind": {
+      "pl": ["wiatr"],
+      "reviewed": false
+    },
+    "kaze-cold": {
+      "pl": ["przeziębienie"],
+      "reviewed": false
+    },
+    "kazoku": {
+      "pl": ["rodzina"],
+      "reviewed": false
+    },
+    "kata": {
+      "pl": ["osoba (grzecznie)", "sposób (robienia czegoś)"],
+      "reviewed": false
+    },
+    "gakkou": {
+      "pl": ["szkoła"],
+      "reviewed": false
+    },
+    "kappu": {
+      "pl": ["kubek", "filiżanka"],
+      "reviewed": false
+    },
+    "katei": {
+      "pl": ["dom rodzinny", "gospodarstwo domowe"],
+      "reviewed": false
+    },
+    "kado": {
+      "pl": ["róg (ulicy)", "narożnik"],
+      "reviewed": false
+    },
+    "kaban": {
+      "pl": ["torba", "teczka"],
+      "reviewed": false
+    },
+    "kabin": {
+      "pl": ["wazon"],
+      "reviewed": false
+    },
+    "kami": {
+      "pl": ["papier"],
+      "reviewed": false
+    },
+    "kamera": {
+      "pl": ["aparat fotograficzny"],
+      "reviewed": false
+    },
+    "kayoubi": {
+      "pl": ["wtorek"],
+      "reviewed": false
+    },
+    "karai": {
+      "pl": ["ostry, pikantny"],
+      "reviewed": false
+    },
+    "karada": {
+      "pl": ["ciało", "zdrowie"],
+      "reviewed": false
+    },
+    "kariru": {
+      "pl": ["pożyczać (od kogoś)", "wypożyczać"],
+      "reviewed": false
+    },
+    "karui": {
+      "pl": ["lekki"],
+      "reviewed": false
+    },
+    "karee": {
+      "pl": ["curry (potrawa)"],
+      "reviewed": false
+    },
+    "karendaa": {
+      "pl": ["kalendarz"],
+      "reviewed": false
+    },
+    "kawa": {
+      "pl": ["rzeka"],
+      "reviewed": false
+    },
+    "kawaii": {
+      "pl": ["uroczy, słodki", "śliczny"],
+      "reviewed": false
+    },
+    "kanji": {
+      "pl": ["znak kanji", "znak chiński"],
+      "reviewed": false
+    },
+    "ki": {
+      "pl": ["drzewo", "drewno"],
+      "reviewed": false
+    },
+    "kiiro": {
+      "pl": ["kolor żółty", "żółty"],
+      "reviewed": false
+    },
+    "kiiroi": {
+      "pl": ["żółty"],
+      "reviewed": false
+    },
+    "kieru": {
+      "pl": ["znikać", "gasnąć (o świetle)"],
+      "reviewed": false
+    },
+    "kiku": {
+      "pl": ["słuchać", "słyszeć", "pytać"],
+      "reviewed": false
+    },
+    "kita": {
+      "pl": ["północ"],
+      "reviewed": false
+    },
+    "gitaa": {
+      "pl": ["gitara"],
+      "reviewed": false
+    },
+    "kitanai": {
+      "pl": ["brudny"],
+      "reviewed": false
+    },
+    "kissaten": {
+      "pl": ["kawiarnia"],
+      "reviewed": false
+    },
+    "kitte": {
+      "pl": ["znaczek pocztowy"],
+      "reviewed": false
+    },
+    "kippu": {
+      "pl": ["bilet"],
+      "reviewed": false
+    },
+    "kinou": {
+      "pl": ["wczoraj"],
+      "reviewed": false
+    },
+    "kyuu": {
+      "pl": ["dziewięć"],
+      "reviewed": false
+    },
+    "gyuuniku": {
+      "pl": ["wołowina"],
+      "reviewed": false
+    },
+    "gyuunyuu": {
+      "pl": ["mleko"],
+      "reviewed": false
+    },
+    "kyou": {
+      "pl": ["dzisiaj, dziś"],
+      "reviewed": false
+    },
+    "kyoushitsu": {
+      "pl": ["sala lekcyjna", "klasa (pomieszczenie)"],
+      "reviewed": false
+    },
+    "kyoudai": {
+      "pl": ["rodzeństwo", "bracia"],
+      "reviewed": false
+    },
+    "kyonen": {
+      "pl": ["zeszły rok", "w zeszłym roku"],
+      "reviewed": false
+    },
+    "kirai": {
+      "pl": ["nie lubić (czegoś)", "nielubiany"],
+      "reviewed": false
+    },
+    "kiru-cut": {
+      "pl": ["ciąć, kroić"],
+      "reviewed": false
+    },
+    "kiru-put-on": {
+      "pl": ["zakładać (koszulę, kurtkę)", "ubierać się (w coś)"],
+      "reviewed": false
+    },
+    "kirei": {
+      "pl": ["ładny, piękny", "czysty"],
+      "reviewed": false
+    },
+    "kiro": {
+      "pl": ["kilo, kilogram", "kilometr"],
+      "reviewed": false
+    },
+    "ginkou": {
+      "pl": ["bank"],
+      "reviewed": false
+    },
+    "kinyoubi": {
+      "pl": ["piątek"],
+      "reviewed": false
+    },
+    "kusuri": {
+      "pl": ["lekarstwo, lek"],
+      "reviewed": false
+    },
+    "kudasai": {
+      "pl": ["poproszę (o coś)", "proszę (zrobić coś)"],
+      "reviewed": false
+    },
+    "kudamono": {
+      "pl": ["owoc, owoce"],
+      "reviewed": false
+    },
+    "kuchi": {
+      "pl": ["usta", "otwór, wylot"],
+      "reviewed": false
+    },
+    "kutsu": {
+      "pl": ["but, buty"],
+      "reviewed": false
+    },
+    "kutsushita": {
+      "pl": ["skarpetka, skarpetki"],
+      "reviewed": false
+    },
+    "kuni": {
+      "pl": ["kraj, państwo", "ojczyzna"],
+      "reviewed": false
+    },
+    "kumori": {
+      "pl": ["pochmurna pogoda", "zachmurzenie"],
+      "reviewed": false
+    },
+    "kumoru": {
+      "pl": ["chmurzyć się (o niebie)", "zaparowywać, matowieć"],
+      "reviewed": false
+    },
+    "kurai": {
+      "pl": ["ciemny", "ponury"],
+      "reviewed": false
+    },
+    "kurasu": {
+      "pl": ["klasa (grupa uczniów)", "poziom"],
+      "reviewed": false
+    },
+    "guramu": {
+      "pl": ["gram"],
+      "reviewed": false
+    },
+    "kuru": {
+      "pl": ["przychodzić, przyjeżdżać"],
+      "reviewed": false
+    },
+    "kuruma": {
+      "pl": ["samochód", "pojazd"],
+      "reviewed": false
+    },
+    "kuro": {
+      "pl": ["kolor czarny", "czarny"],
+      "reviewed": false
+    },
+    "kuroi": {
+      "pl": ["czarny"],
+      "reviewed": false
+    },
+    "keikan": {
+      "pl": ["policjant, policjantka"],
+      "reviewed": false
+    },
+    "kesa": {
+      "pl": ["dziś rano", "dzisiejszy ranek"],
+      "reviewed": false
+    },
+    "kesu": {
+      "pl": ["gasić, wyłączać (coś)", "wymazywać, ścierać"],
+      "reviewed": false
+    },
+    "kekkou": {
+      "pl": ["wspaniały, świetny", "dziękuję, nie trzeba (grzeczna odmowa)", "całkiem, dość"],
+      "reviewed": false
+    },
+    "kekkon": {
+      "pl": ["małżeństwo, ślub", "brać ślub"],
+      "reviewed": false
+    },
+    "getsuyoubi": {
+      "pl": ["poniedziałek"],
+      "reviewed": false
+    },
+    "genkan": {
+      "pl": ["wejście (do domu)", "przedsionek (miejsce na buty)"],
+      "reviewed": false
+    },
+    "genki": {
+      "pl": ["zdrowy, w dobrej formie", "energiczny, pełen życia"],
+      "reviewed": false
+    },
+    "go": {
+      "pl": ["pięć"],
+      "reviewed": false
+    },
+    "kouen": {
+      "pl": ["park"],
+      "reviewed": false
+    },
+    "kousaten": {
+      "pl": ["skrzyżowanie"],
+      "reviewed": false
+    },
+    "koucha": {
+      "pl": ["herbata (czarna)"],
+      "reviewed": false
+    },
+    "kouban": {
+      "pl": ["budka policyjna", "mały posterunek policji"],
+      "reviewed": false
+    },
+    "koe": {
+      "pl": ["głos"],
+      "reviewed": false
+    },
+    "kooto": {
+      "pl": ["płaszcz", "kort (tenisowy)"],
+      "reviewed": false
+    },
+    "koohii": {
+      "pl": ["kawa"],
+      "reviewed": false
+    },
+    "koko": {
+      "pl": ["tutaj, tu"],
+      "reviewed": false
+    },
+    "gogo": {
+      "pl": ["popołudnie", "po południu"],
+      "reviewed": false
+    },
+    "kokonoka": {
+      "pl": ["dziewiąty dzień miesiąca", "dziewięć dni"],
+      "reviewed": false
+    },
+    "kokonotsu": {
+      "pl": ["dziewięć (sztuk)", "dziewięć lat (wiek dziecka)"],
+      "reviewed": false
+    },
+    "gozen": {
+      "pl": ["przedpołudnie", "przed południem"],
+      "reviewed": false
+    },
+    "kotaeru": {
+      "pl": ["odpowiadać (na pytanie)"],
+      "reviewed": false
+    },
+    "gochisousama": {
+      "pl": ["dziękuję za posiłek (zwrot po jedzeniu)"],
+      "reviewed": false
+    },
+    "kochira": {
+      "pl": ["tędy, tutaj (grzecznie)", "ta osoba, to (przedstawiając)"],
+      "reviewed": false
+    },
+    "kotchi": {
+      "pl": ["tu, tędy (potocznie)", "ten, ta strona (z dwóch)"],
+      "reviewed": false
+    },
+    "koppu": {
+      "pl": ["szklanka", "kubek"],
+      "reviewed": false
+    },
+    "kotoshi": {
+      "pl": ["ten rok", "w tym roku"],
+      "reviewed": false
+    },
+    "kotoba": {
+      "pl": ["słowo", "język, mowa"],
+      "reviewed": false
+    },
+    "kodomo": {
+      "pl": ["dziecko"],
+      "reviewed": false
+    },
+    "kono": {
+      "pl": ["ten (blisko mówiącego)"],
+      "reviewed": false
+    },
+    "gohan": {
+      "pl": ["ryż (gotowany)", "posiłek"],
+      "reviewed": false
+    },
+    "kopiisuru": {
+      "pl": ["kopiować", "kserować"],
+      "reviewed": false
+    },
+    "komaru": {
+      "pl": ["mieć kłopot, być w kłopocie", "nie wiedzieć, co robić"],
+      "reviewed": false
+    },
+    "gomennasai": {
+      "pl": ["przepraszam (mniej formalnie)"],
+      "reviewed": false
+    },
+    "kore": {
+      "pl": ["to (blisko mówiącego)"],
+      "reviewed": false
+    },
+    "kongetsu": {
+      "pl": ["ten miesiąc", "w tym miesiącu"],
+      "reviewed": false
+    },
+    "konshuu": {
+      "pl": ["ten tydzień", "w tym tygodniu"],
+      "reviewed": false
+    },
+    "konna": {
+      "pl": ["taki (jak ten)", "tego rodzaju"],
+      "reviewed": false
+    },
+    "konnichiwa": {
+      "pl": ["dzień dobry (w ciągu dnia)", "cześć"],
+      "reviewed": false
+    },
+    "konban": {
+      "pl": ["dziś wieczorem", "dzisiejszy wieczór"],
+      "reviewed": false
+    },
+    "konbanwa": {
+      "pl": ["dobry wieczór"],
+      "reviewed": false
+    },
+    "saa": {
+      "pl": ["no cóż (niepewność)", "no to, dalej (zachęta)"],
+      "reviewed": false
+    },
+    "saifu": {
+      "pl": ["portfel"],
+      "reviewed": false
+    },
+    "sakana": {
+      "pl": ["ryba"],
+      "reviewed": false
+    },
+    "saki": {
+      "pl": ["wcześniej, najpierw", "dalej, z przodu", "czubek, koniec"],
+      "reviewed": false
+    },
+    "saku": {
+      "pl": ["kwitnąć, rozkwitać"],
+      "reviewed": false
+    },
+    "sakubun": {
+      "pl": ["wypracowanie", "pisanie wypracowania"],
+      "reviewed": false
+    },
+    "sasu": {
+      "pl": ["rozkładać (parasol)", "trzymać parasol (nad sobą)"],
+      "reviewed": false
+    },
+    "zasshi": {
+      "pl": ["czasopismo, magazyn"],
+      "reviewed": false
+    },
+    "satou": {
+      "pl": ["cukier"],
+      "reviewed": false
+    },
+    "samui": {
+      "pl": ["zimny (o pogodzie, powietrzu)"],
+      "reviewed": false
+    },
+    "sayounara": {
+      "pl": ["do widzenia"],
+      "reviewed": false
+    },
+    "sarainen": {
+      "pl": ["za dwa lata", "rok po przyszłym"],
+      "reviewed": false
+    },
+    "san": {
+      "pl": ["trzy"],
+      "reviewed": false
+    },
+    "sanpo": {
+      "pl": ["spacer", "spacerować"],
+      "reviewed": false
+    },
+    "shi": {
+      "pl": ["cztery"],
+      "reviewed": false
+    },
+    "shio": {
+      "pl": ["sól"],
+      "reviewed": false
+    },
+    "shikashi": {
+      "pl": ["jednak", "ale"],
+      "reviewed": false
+    },
+    "jikan": {
+      "pl": ["czas", "godzina (czas trwania)"],
+      "reviewed": false
+    },
+    "shigoto": {
+      "pl": ["praca", "pracować (zawodowo)"],
+      "reviewed": false
+    },
+    "jisho": {
+      "pl": ["słownik"],
+      "reviewed": false
+    },
+    "shizuka": {
+      "pl": ["cichy, spokojny"],
+      "reviewed": false
+    },
+    "shita": {
+      "pl": ["dół", "pod (czymś), poniżej"],
+      "reviewed": false
+    },
+    "shichi": {
+      "pl": ["siedem"],
+      "reviewed": false
+    },
+    "shitsumon": {
+      "pl": ["pytanie", "zadawać pytanie"],
+      "reviewed": false
+    },
+    "jitensha": {
+      "pl": ["rower"],
+      "reviewed": false
+    },
+    "jidousha": {
+      "pl": ["samochód (formalnie)", "pojazd mechaniczny"],
+      "reviewed": false
+    },
+    "shinu": {
+      "pl": ["umierać"],
+      "reviewed": false
+    },
+    "jibiki": {
+      "pl": ["słownik (starsze słowo)"],
+      "reviewed": false
+    },
+    "jibun": {
+      "pl": ["siebie, sam", "własny"],
+      "reviewed": false
+    },
+    "shimaru": {
+      "pl": ["zamykać się", "być zamkniętym"],
+      "reviewed": false
+    },
+    "shimeru-tie": {
+      "pl": ["zawiązywać (krawat)", "zapinać (pas)"],
+      "reviewed": false
+    },
+    "shimeru-close": {
+      "pl": ["zamykać (coś)"],
+      "reviewed": false
+    },
+    "ja": {
+      "pl": ["no to, w takim razie (potocznie)", "to na razie (pożegnanie)"],
+      "reviewed": false
+    },
+    "shashin": {
+      "pl": ["zdjęcie, fotografia"],
+      "reviewed": false
+    },
+    "shatsu": {
+      "pl": ["koszula", "koszulka"],
+      "reviewed": false
+    },
+    "shawaa": {
+      "pl": ["prysznic"],
+      "reviewed": false
+    },
+    "juu": {
+      "pl": ["dziesięć"],
+      "reviewed": false
+    },
+    "jugyou": {
+      "pl": ["lekcja, zajęcia"],
+      "reviewed": false
+    },
+    "shukudai": {
+      "pl": ["zadanie domowe, praca domowa"],
+      "reviewed": false
+    },
+    "jouzu": {
+      "pl": ["wprawny, dobry (w czymś)", "zręczny"],
+      "reviewed": false
+    },
+    "joubu": {
+      "pl": ["mocny, wytrzymały", "zdrowy, silny"],
+      "reviewed": false
+    },
+    "shouyu": {
+      "pl": ["sos sojowy"],
+      "reviewed": false
+    },
+    "shokudou": {
+      "pl": ["stołówka", "jadłodajnia"],
+      "reviewed": false
+    },
+    "shiru": {
+      "pl": ["wiedzieć, znać", "dowiadywać się"],
+      "reviewed": false
+    },
+    "shiro": {
+      "pl": ["kolor biały", "biały"],
+      "reviewed": false
+    },
+    "shiroi": {
+      "pl": ["biały"],
+      "reviewed": false
+    },
+    "shinbun": {
+      "pl": ["gazeta"],
+      "reviewed": false
+    },
+    "suiyoubi": {
+      "pl": ["środa"],
+      "reviewed": false
+    },
+    "suu": {
+      "pl": ["palić (papierosa)", "wdychać, wciągać", "ssać"],
+      "reviewed": false
+    },
+    "sukaato": {
+      "pl": ["spódnica"],
+      "reviewed": false
+    },
+    "suki": {
+      "pl": ["lubić (coś)", "lubiany"],
+      "reviewed": false
+    },
+    "sugu": {
+      "pl": ["zaraz, od razu", "tuż obok, blisko"],
+      "reviewed": false
+    },
+    "sukunai": {
+      "pl": ["nieliczny, niewielki (o ilości)", "mało (czegoś)"],
+      "reviewed": false
+    },
+    "suguni": {
+      "pl": ["natychmiast, od razu"],
+      "reviewed": false
+    },
+    "sukoshi": {
+      "pl": ["trochę, nieco"],
+      "reviewed": false
+    },
+    "suzushii": {
+      "pl": ["chłodny (przyjemnie)", "rześki"],
+      "reviewed": false
+    },
+    "sutoobu": {
+      "pl": ["piecyk, grzejnik"],
+      "reviewed": false
+    },
+    "supuun": {
+      "pl": ["łyżka", "łyżeczka"],
+      "reviewed": false
+    },
+    "supootsu": {
+      "pl": ["sport"],
+      "reviewed": false
+    },
+    "zubon": {
+      "pl": ["spodnie"],
+      "reviewed": false
+    },
+    "sumimasen": {
+      "pl": ["przepraszam (przeprosiny)", "przepraszam (zwracając uwagę)", "dziękuję (za fatygę)"],
+      "reviewed": false
+    },
+    "sumu": {
+      "pl": ["mieszkać (gdzieś)"],
+      "reviewed": false
+    },
+    "surippa": {
+      "pl": ["kapcie, pantofle"],
+      "reviewed": false
+    },
+    "suru": {
+      "pl": ["robić", "uprawiać (sport), grać"],
+      "reviewed": false
+    },
+    "suwaru": {
+      "pl": ["siadać"],
+      "reviewed": false
+    },
+    "se": {
+      "pl": ["wzrost (człowieka)", "plecy, grzbiet"],
+      "reviewed": false
+    },
+    "seito": {
+      "pl": ["uczeń, uczennica"],
+      "reviewed": false
+    },
+    "seetaa": {
+      "pl": ["sweter"],
+      "reviewed": false
+    },
+    "sekken": {
+      "pl": ["mydło"],
+      "reviewed": false
+    },
+    "sebiro": {
+      "pl": ["garnitur"],
+      "reviewed": false
+    },
+    "semai": {
+      "pl": ["wąski", "ciasny, mały (o pomieszczeniu)"],
+      "reviewed": false
+    },
+    "zero": {
+      "pl": ["zero"],
+      "reviewed": false
+    },
+    "sen": {
+      "pl": ["tysiąc"],
+      "reviewed": false
+    },
+    "sengetsu": {
+      "pl": ["zeszły miesiąc", "w zeszłym miesiącu"],
+      "reviewed": false
+    },
+    "senshuu": {
+      "pl": ["zeszły tydzień", "w zeszłym tygodniu"],
+      "reviewed": false
+    },
+    "sensei": {
+      "pl": [
+        "nauczyciel, nauczycielka",
+        "lekarz, lekarka",
+        "pan, pani (tytuł nauczyciela, lekarza)"
+      ],
+      "reviewed": false
+    },
+    "sentaku": {
+      "pl": ["pranie", "prać"],
+      "reviewed": false
+    },
+    "zenbu": {
+      "pl": ["wszystko, całość", "razem, łącznie"],
+      "reviewed": false
+    },
+    "souji": {
+      "pl": ["sprzątanie", "sprzątać"],
+      "reviewed": false
+    },
+    "soushite": {
+      "pl": ["i wtedy, a potem", "w ten sposób"],
+      "reviewed": false
+    },
+    "soko": {
+      "pl": ["tam (blisko rozmówcy)", "to miejsce"],
+      "reviewed": false
+    },
+    "sochira": {
+      "pl": ["tam, ta strona (blisko rozmówcy, grzecznie)", "pan, pani (o rozmówcy)"],
+      "reviewed": false
+    },
+    "sotchi": {
+      "pl": ["tam, ta strona (blisko rozmówcy, potocznie)"],
+      "reviewed": false
+    },
+    "soto": {
+      "pl": ["na zewnątrz", "na dworze"],
+      "reviewed": false
+    },
+    "sono": {
+      "pl": ["ten (blisko rozmówcy)"],
+      "reviewed": false
+    },
+    "soba": {
+      "pl": ["obok, przy", "pobliże"],
+      "reviewed": false
+    },
+    "sora": {
+      "pl": ["niebo"],
+      "reviewed": false
+    },
+    "sore": {
+      "pl": ["to (blisko rozmówcy)"],
+      "reviewed": false
+    },
+    "sorekara": {
+      "pl": ["potem, następnie", "poza tym"],
+      "reviewed": false
+    },
+    "soredewa": {
+      "pl": ["w takim razie", "skoro tak, to"],
+      "reviewed": false
+    },
+    "sonna": {
+      "pl": ["taki (jak ten u rozmówcy)", "tego rodzaju"],
+      "reviewed": false
+    },
+    "daigaku": {
+      "pl": ["uniwersytet", "uczelnia"],
+      "reviewed": false
+    },
+    "taishikan": {
+      "pl": ["ambasada"],
+      "reviewed": false
+    },
+    "daijoubu": {
+      "pl": ["w porządku", "bezpieczny"],
+      "reviewed": false
+    },
+    "daisuki": {
+      "pl": ["bardzo lubiany", "ulubiony, uwielbiany"],
+      "reviewed": false
+    },
+    "taisetsu": {
+      "pl": ["ważny", "cenny, drogi (komuś)"],
+      "reviewed": false
+    },
+    "daidokoro": {
+      "pl": ["kuchnia (pomieszczenie)"],
+      "reviewed": false
+    },
+    "taihen": {
+      "pl": ["bardzo, niezmiernie", "ciężki, okropny (o sytuacji)"],
+      "reviewed": false
+    },
+    "takai": {
+      "pl": ["wysoki", "drogi (o cenie)"],
+      "reviewed": false
+    },
+    "takusan": {
+      "pl": ["dużo, wiele", "mnóstwo"],
+      "reviewed": false
+    },
+    "takushii": {
+      "pl": ["taksówka"],
+      "reviewed": false
+    },
+    "dasu": {
+      "pl": ["wyjmować, wyciągać (coś)", "wysyłać (np. list)", "oddawać (np. pracę domową)"],
+      "reviewed": false
+    },
+    "tatsu": {
+      "pl": ["stać", "wstawać"],
+      "reviewed": false
+    },
+    "tate": {
+      "pl": ["długość, wysokość", "pion (kierunek)"],
+      "reviewed": false
+    },
+    "tatemono": {
+      "pl": ["budynek"],
+      "reviewed": false
+    },
+    "tanoshii": {
+      "pl": ["przyjemny", "wesoły, udany (np. dzień)"],
+      "reviewed": false
+    },
+    "tanomu": {
+      "pl": ["prosić (kogoś o coś)", "zamawiać"],
+      "reviewed": false
+    },
+    "tabako": {
+      "pl": ["papieros", "tytoń"],
+      "reviewed": false
+    },
+    "tabun": {
+      "pl": ["prawdopodobnie", "chyba"],
+      "reviewed": false
+    },
+    "tabemono": {
+      "pl": ["jedzenie", "pokarm"],
+      "reviewed": false
+    },
+    "taberu": {
+      "pl": ["jeść"],
+      "reviewed": false
+    },
+    "tamago": {
+      "pl": ["jajko"],
+      "reviewed": false
+    },
+    "dare": {
+      "pl": ["kto"],
+      "reviewed": false
+    },
+    "tanjoubi": {
+      "pl": ["urodziny"],
+      "reviewed": false
+    },
+    "dandan": {
+      "pl": ["stopniowo", "coraz (bardziej)"],
+      "reviewed": false
+    },
+    "chiisai": {
+      "pl": ["mały"],
+      "reviewed": false
+    },
+    "chiisana": {
+      "pl": ["mały (przed rzeczownikiem)"],
+      "reviewed": false
+    },
+    "chikai": {
+      "pl": ["bliski", "niedaleki"],
+      "reviewed": false
+    },
+    "chigau": {
+      "pl": ["różnić się", "nie zgadzać się, być błędnym"],
+      "reviewed": false
+    },
+    "chikaku": {
+      "pl": ["w pobliżu, niedaleko", "okolica, pobliże"],
+      "reviewed": false
+    },
+    "chikatetsu": {
+      "pl": ["metro"],
+      "reviewed": false
+    },
+    "chizu": {
+      "pl": ["mapa"],
+      "reviewed": false
+    },
+    "chichi": {
+      "pl": ["ojciec (własny)", "tata (własny)"],
+      "reviewed": false
+    },
+    "chairo": {
+      "pl": ["kolor brązowy", "brązowy"],
+      "reviewed": false
+    },
+    "chawan": {
+      "pl": ["miseczka (na ryż)", "czarka (do herbaty)"],
+      "reviewed": false
+    },
+    "choudo": {
+      "pl": ["dokładnie, akurat", "w samą porę"],
+      "reviewed": false
+    },
+    "chotto": {
+      "pl": ["trochę, nieco (potocznie)", "chwilę, chwileczkę"],
+      "reviewed": false
+    },
+    "tsukau": {
+      "pl": ["używać", "korzystać (z czegoś)"],
+      "reviewed": false
+    },
+    "tsukareru": {
+      "pl": ["męczyć się", "być zmęczonym"],
+      "reviewed": false
+    },
+    "tsugi": {
+      "pl": ["następny", "kolejny"],
+      "reviewed": false
+    },
+    "tsuku": {
+      "pl": ["przybywać (na miejsce)", "docierać, dojeżdżać"],
+      "reviewed": false
+    },
+    "tsukue": {
+      "pl": ["biurko", "ławka (szkolna)"],
+      "reviewed": false
+    },
+    "tsukuru": {
+      "pl": ["robić, wytwarzać", "przygotowywać (posiłek)"],
+      "reviewed": false
+    },
+    "tsukeru": {
+      "pl": ["włączać (coś, np. światło)", "przyczepiać, dodawać (coś)"],
+      "reviewed": false
+    },
+    "tsutomeru": {
+      "pl": ["pracować (w firmie, instytucji)", "być zatrudnionym"],
+      "reviewed": false
+    },
+    "tsumaranai": {
+      "pl": ["nudny", "nieciekawy, błahy"],
+      "reviewed": false
+    },
+    "tsumetai": {
+      "pl": ["zimny (w dotyku)", "chłodny (o osobie)"],
+      "reviewed": false
+    },
+    "tsuyoi": {
+      "pl": ["silny", "mocny"],
+      "reviewed": false
+    },
+    "te": {
+      "pl": ["ręka", "dłoń"],
+      "reviewed": false
+    },
+    "teepu": {
+      "pl": ["taśma", "kaseta (magnetofonowa)"],
+      "reviewed": false
+    },
+    "teeburu": {
+      "pl": ["stół"],
+      "reviewed": false
+    },
+    "teepurekoodaa": {
+      "pl": ["magnetofon"],
+      "reviewed": false
+    },
+    "dekakeru": {
+      "pl": ["wychodzić (z domu)", "wybierać się (gdzieś)"],
+      "reviewed": false
+    },
+    "tegami": {
+      "pl": ["list"],
+      "reviewed": false
+    },
+    "dekiru": {
+      "pl": ["móc, potrafić, umieć", "być gotowym, powstawać"],
+      "reviewed": false
+    },
+    "deguchi": {
+      "pl": ["wyjście"],
+      "reviewed": false
+    },
+    "tesuto": {
+      "pl": ["test", "sprawdzian"],
+      "reviewed": false
+    },
+    "dewa": {
+      "pl": ["no to, w takim razie", "zatem"],
+      "reviewed": false
+    },
+    "depaato": {
+      "pl": ["dom towarowy"],
+      "reviewed": false
+    },
+    "demo": {
+      "pl": ["ale", "jednak"],
+      "reviewed": false
+    },
+    "deru": {
+      "pl": ["wychodzić (skądś)", "odjeżdżać (o pociągu)", "pojawiać się"],
+      "reviewed": false
+    },
+    "terebi": {
+      "pl": ["telewizja", "telewizor"],
+      "reviewed": false
+    },
+    "tenki": {
+      "pl": ["pogoda", "ładna pogoda"],
+      "reviewed": false
+    },
+    "denki": {
+      "pl": ["prąd, elektryczność", "światło (elektryczne)"],
+      "reviewed": false
+    },
+    "densha": {
+      "pl": ["pociąg", "kolejka (elektryczna)"],
+      "reviewed": false
+    },
+    "denwa": {
+      "pl": ["telefon", "rozmowa telefoniczna"],
+      "reviewed": false
+    },
+    "to": {
+      "pl": ["drzwi (japońskie, zwykle rozsuwane)"],
+      "reviewed": false
+    },
+    "doa": {
+      "pl": ["drzwi (w stylu zachodnim)"],
+      "reviewed": false
+    },
+    "toire": {
+      "pl": ["toaleta"],
+      "reviewed": false
+    },
+    "dou": {
+      "pl": ["jak, w jaki sposób", "jak tam (pytanie o opinię)"],
+      "reviewed": false
+    },
+    "doushite": {
+      "pl": ["dlaczego", "z jakiego powodu"],
+      "reviewed": false
+    },
+    "douzo": {
+      "pl": ["proszę (podając coś)", "proszę bardzo, śmiało"],
+      "reviewed": false
+    },
+    "douzoyoroshiku": {
+      "pl": ["bardzo mi miło (na koniec przedstawienia się)", "proszę o życzliwość"],
+      "reviewed": false
+    },
+    "doubutsu": {
+      "pl": ["zwierzę"],
+      "reviewed": false
+    },
+    "doumo": {
+      "pl": ["dzięki", "bardzo (np. dziękuję bardzo)", "cześć (krótkie powitanie)"],
+      "reviewed": false
+    },
+    "tooi": {
+      "pl": ["daleki", "odległy"],
+      "reviewed": false
+    },
+    "tooka": {
+      "pl": ["dziesiąty dzień miesiąca", "dziesięć dni"],
+      "reviewed": false
+    },
+    "tokidoki": {
+      "pl": ["czasami", "od czasu do czasu"],
+      "reviewed": false
+    },
+    "tokei": {
+      "pl": ["zegar", "zegarek"],
+      "reviewed": false
+    },
+    "doko": {
+      "pl": ["gdzie"],
+      "reviewed": false
+    },
+    "tokoro": {
+      "pl": ["miejsce"],
+      "reviewed": false
+    },
+    "toshi": {
+      "pl": ["rok", "wiek (lata życia)"],
+      "reviewed": false
+    },
+    "toshokan": {
+      "pl": ["biblioteka"],
+      "reviewed": false
+    },
+    "dochira": {
+      "pl": ["który (z dwóch, grzecznie)", "gdzie, w którą stronę (grzecznie)"],
+      "reviewed": false
+    },
+    "dotchi": {
+      "pl": ["który (z dwóch, potocznie)", "gdzie, w którą stronę (potocznie)"],
+      "reviewed": false
+    },
+    "totemo": {
+      "pl": ["bardzo"],
+      "reviewed": false
+    },
+    "donata": {
+      "pl": ["kto (grzecznie)"],
+      "reviewed": false
+    },
+    "tonari": {
+      "pl": ["obok, tuż obok", "sąsiedni (np. dom, pokój)"],
+      "reviewed": false
+    },
+    "dono": {
+      "pl": ["który (przed rzeczownikiem)"],
+      "reviewed": false
+    },
+    "tobu": {
+      "pl": ["latać, lecieć", "skakać"],
+      "reviewed": false
+    },
+    "tomaru": {
+      "pl": ["zatrzymywać się", "stawać (np. o zegarku, pojeździe)"],
+      "reviewed": false
+    },
+    "tomodachi": {
+      "pl": ["przyjaciel, przyjaciółka", "kolega, koleżanka"],
+      "reviewed": false
+    },
+    "doyoubi": {
+      "pl": ["sobota"],
+      "reviewed": false
+    },
+    "tori": {
+      "pl": ["ptak"],
+      "reviewed": false
+    },
+    "toriniku": {
+      "pl": ["mięso z kurczaka", "drób"],
+      "reviewed": false
+    },
+    "toru-take-photo": {
+      "pl": ["robić (zdjęcie)", "filmować, nagrywać"],
+      "reviewed": false
+    },
+    "toru-take": {
+      "pl": ["brać (coś)", "podawać (np. sól)"],
+      "reviewed": false
+    },
+    "dore": {
+      "pl": ["który (z trzech lub więcej)"],
+      "reviewed": false
+    },
+    "donna": {
+      "pl": ["jaki, jakiego rodzaju"],
+      "reviewed": false
+    },
+    "naifu": {
+      "pl": ["nóż"],
+      "reviewed": false
+    },
+    "naka": {
+      "pl": ["wnętrze, środek", "w (czymś), wewnątrz"],
+      "reviewed": false
+    },
+    "nagai": {
+      "pl": ["długi"],
+      "reviewed": false
+    },
+    "naku": {
+      "pl": ["wydawać głos (o zwierzęciu)", "śpiewać, ćwierkać (o ptaku)"],
+      "reviewed": false
+    },
+    "nakusu": {
+      "pl": ["gubić (coś)", "tracić (coś)"],
+      "reviewed": false
+    },
+    "naze": {
+      "pl": ["dlaczego (bardziej formalnie)"],
+      "reviewed": false
+    },
+    "natsu": {
+      "pl": ["lato"],
+      "reviewed": false
+    },
+    "natsuyasumi": {
+      "pl": ["wakacje (letnie)"],
+      "reviewed": false
+    },
+    "nado": {
+      "pl": ["i tak dalej", "między innymi, na przykład"],
+      "reviewed": false
+    },
+    "nanatsu": {
+      "pl": ["siedem (sztuk)", "siedem lat (wiek dziecka)"],
+      "reviewed": false
+    },
+    "nanoka": {
+      "pl": ["siódmy dzień miesiąca", "siedem dni"],
+      "reviewed": false
+    },
+    "namae": {
+      "pl": ["imię, nazwisko", "nazwa"],
+      "reviewed": false
+    },
+    "narau": {
+      "pl": ["uczyć się (od kogoś)", "brać lekcje (czegoś)"],
+      "reviewed": false
+    },
+    "narabu": {
+      "pl": ["stać w rzędzie, w kolejce", "ustawiać się (w rzędzie)"],
+      "reviewed": false
+    },
+    "naraberu": {
+      "pl": ["ustawiać (coś) w rzędzie", "układać, rozkładać (coś)"],
+      "reviewed": false
+    },
+    "naru": {
+      "pl": ["stawać się", "zostać (np. lekarzem)"],
+      "reviewed": false
+    },
+    "nan": {
+      "pl": ["co", "ile (z licznikiem, np. ile osób)"],
+      "reviewed": false
+    },
+    "ni": {
+      "pl": ["dwa"],
+      "reviewed": false
+    },
+    "nigiyaka": {
+      "pl": ["gwarny, ruchliwy", "żywy, wesoły"],
+      "reviewed": false
+    },
+    "niku": {
+      "pl": ["mięso"],
+      "reviewed": false
+    },
+    "nishi": {
+      "pl": ["zachód"],
+      "reviewed": false
+    },
+    "nichiyoubi": {
+      "pl": ["niedziela"],
+      "reviewed": false
+    },
+    "nihon": {
+      "pl": ["Japonia"],
+      "reviewed": false
+    },
+    "nihongo": {
+      "pl": ["język japoński"],
+      "reviewed": false
+    },
+    "nihonjin": {
+      "pl": ["Japończyk, Japonka"],
+      "reviewed": false
+    },
+    "nimotsu": {
+      "pl": ["bagaż", "paczka, pakunek"],
+      "reviewed": false
+    },
+    "nyuusu": {
+      "pl": ["wiadomości (w mediach)", "nowina"],
+      "reviewed": false
+    },
+    "niwa": {
+      "pl": ["ogród", "podwórko"],
+      "reviewed": false
+    },
+    "nugu": {
+      "pl": ["zdejmować (ubranie, buty)"],
+      "reviewed": false
+    },
+    "nurui": {
+      "pl": ["letni (o wodzie, napoju)", "ledwo ciepły"],
+      "reviewed": false
+    },
+    "nekutai": {
+      "pl": ["krawat"],
+      "reviewed": false
+    },
+    "neko": {
+      "pl": ["kot"],
+      "reviewed": false
+    },
+    "neru": {
+      "pl": ["iść spać, kłaść się", "spać"],
+      "reviewed": false
+    },
+    "nooto": {
+      "pl": ["zeszyt", "notes"],
+      "reviewed": false
+    },
+    "noboru": {
+      "pl": ["wspinać się", "wchodzić (np. na górę, po schodach)"],
+      "reviewed": false
+    },
+    "nomimono": {
+      "pl": ["napój"],
+      "reviewed": false
+    },
+    "nomu": {
+      "pl": ["pić", "brać, łykać (lekarstwo)"],
+      "reviewed": false
+    },
+    "noru": {
+      "pl": ["wsiadać (do pojazdu)", "jechać (czymś), jeździć (na czymś)"],
+      "reviewed": false
+    },
+    "ha": {
+      "pl": ["ząb"],
+      "reviewed": false
+    },
+    "paatii": {
+      "pl": ["przyjęcie", "impreza"],
+      "reviewed": false
+    },
+    "hai": {
+      "pl": ["tak", "dobrze (zgoda)"],
+      "reviewed": false
+    },
+    "haizara": {
+      "pl": ["popielniczka"],
+      "reviewed": false
+    },
+    "hairu": {
+      "pl": ["wchodzić (do środka)", "wstępować (np. do szkoły, klubu)", "mieścić się (w czymś)"],
+      "reviewed": false
+    },
+    "hagaki": {
+      "pl": ["pocztówka", "kartka pocztowa"],
+      "reviewed": false
+    },
+    "haku": {
+      "pl": ["zakładać, wkładać (buty, spodnie)", "nosić (buty, spodnie)"],
+      "reviewed": false
+    },
+    "hako": {
+      "pl": ["pudełko", "skrzynka, pudło"],
+      "reviewed": false
+    },
+    "hashi-chopsticks": {
+      "pl": ["pałeczki (do jedzenia)"],
+      "reviewed": false
+    },
+    "hashi-bridge": {
+      "pl": ["most"],
+      "reviewed": false
+    },
+    "hajimaru": {
+      "pl": ["zaczynać się", "rozpoczynać się"],
+      "reviewed": false
+    },
+    "hajime": {
+      "pl": ["początek", "na początku"],
+      "reviewed": false
+    },
+    "hajimete": {
+      "pl": ["po raz pierwszy"],
+      "reviewed": false
+    },
+    "hajimemashite": {
+      "pl": [
+        "miło poznać (na początek przedstawienia się)",
+        "dzień dobry (przy pierwszym spotkaniu)"
+      ],
+      "reviewed": false
+    },
+    "hashiru": {
+      "pl": ["biegać, biec", "jechać (o pojeździe)"],
+      "reviewed": false
+    },
+    "basu": {
+      "pl": ["autobus"],
+      "reviewed": false
+    },
+    "bataa": {
+      "pl": ["masło"],
+      "reviewed": false
+    },
+    "hatachi": {
+      "pl": ["dwadzieścia lat (wiek)"],
+      "reviewed": false
+    },
+    "hataraku": {
+      "pl": ["pracować"],
+      "reviewed": false
+    },
+    "hachi": {
+      "pl": ["osiem"],
+      "reviewed": false
+    },
+    "hatsuka": {
+      "pl": ["dwudziesty dzień miesiąca", "dwadzieścia dni"],
+      "reviewed": false
+    },
+    "hana-flower": {
+      "pl": ["kwiat"],
+      "reviewed": false
+    },
+    "hana-nose": {
+      "pl": ["nos"],
+      "reviewed": false
+    },
+    "hanashi": {
+      "pl": ["rozmowa", "opowieść, historia"],
+      "reviewed": false
+    },
+    "hanasu": {
+      "pl": ["mówić, rozmawiać", "opowiadać"],
+      "reviewed": false
+    },
+    "haha": {
+      "pl": ["matka (własna)", "mama (własna)"],
+      "reviewed": false
+    },
+    "hayai-early": {
+      "pl": ["wczesny"],
+      "reviewed": false
+    },
+    "hayai-quick": {
+      "pl": ["szybki", "prędki"],
+      "reviewed": false
+    },
+    "haru-spring": {
+      "pl": ["wiosna"],
+      "reviewed": false
+    },
+    "haru-stick": {
+      "pl": ["przyklejać (coś)", "naklejać"],
+      "reviewed": false
+    },
+    "hare": {
+      "pl": ["ładna pogoda", "bezchmurne niebo"],
+      "reviewed": false
+    },
+    "hareru": {
+      "pl": ["przejaśniać się", "wypogadzać się"],
+      "reviewed": false
+    },
+    "han": {
+      "pl": ["pół", "i pół (np. 3:30, 2,5 godziny)"],
+      "reviewed": false
+    },
+    "ban": {
+      "pl": ["wieczór", "noc"],
+      "reviewed": false
+    },
+    "pan": {
+      "pl": ["chleb", "pieczywo, bułka"],
+      "reviewed": false
+    },
+    "hankachi": {
+      "pl": ["chusteczka (materiałowa)"],
+      "reviewed": false
+    },
+    "bangou": {
+      "pl": ["numer"],
+      "reviewed": false
+    },
+    "bangohan": {
+      "pl": ["kolacja"],
+      "reviewed": false
+    },
+    "hanbun": {
+      "pl": ["połowa", "pół"],
+      "reviewed": false
+    },
+    "higashi": {
+      "pl": ["wschód"],
+      "reviewed": false
+    },
+    "hiku-pull": {
+      "pl": ["ciągnąć (coś)", "łapać (przeziębienie)"],
+      "reviewed": false
+    },
+    "hiku-play-instrument": {
+      "pl": ["grać (na pianinie, gitarze itp.)"],
+      "reviewed": false
+    },
+    "hikui": {
+      "pl": ["niski"],
+      "reviewed": false
+    },
+    "hikouki": {
+      "pl": ["samolot"],
+      "reviewed": false
+    },
+    "hidari": {
+      "pl": ["lewa strona", "w lewo, na lewo"],
+      "reviewed": false
+    },
+    "hito": {
+      "pl": ["człowiek", "osoba"],
+      "reviewed": false
+    },
+    "hitotsu": {
+      "pl": ["jeden (sztuka)", "jeden rok (wiek dziecka)"],
+      "reviewed": false
+    },
+    "hitotsuki": {
+      "pl": ["jeden miesiąc (okres)"],
+      "reviewed": false
+    },
+    "hitori": {
+      "pl": ["jedna osoba", "sam (w pojedynkę)"],
+      "reviewed": false
+    },
+    "hima": {
+      "pl": ["wolny czas", "wolny (niezajęty)"],
+      "reviewed": false
+    },
+    "hyaku": {
+      "pl": ["sto"],
+      "reviewed": false
+    },
+    "byouin": {
+      "pl": ["szpital", "przychodnia"],
+      "reviewed": false
+    },
+    "byouki": {
+      "pl": ["choroba"],
+      "reviewed": false
+    },
+    "hiru": {
+      "pl": ["południe (pora dnia)", "dzień (za dnia)"],
+      "reviewed": false
+    },
+    "hirugohan": {
+      "pl": ["obiad", "posiłek w południe"],
+      "reviewed": false
+    },
+    "hiroi": {
+      "pl": ["przestronny, obszerny", "szeroki"],
+      "reviewed": false
+    },
+    "firumu": {
+      "pl": ["klisza", "film fotograficzny"],
+      "reviewed": false
+    },
+    "fuutou": {
+      "pl": ["koperta"],
+      "reviewed": false
+    },
+    "puuru": {
+      "pl": ["basen"],
+      "reviewed": false
+    },
+    "fooku": {
+      "pl": ["widelec"],
+      "reviewed": false
+    },
+    "fuku-blow": {
+      "pl": ["wiać (o wietrze)", "dmuchać", "grać (na instrumencie dętym)"],
+      "reviewed": false
+    },
+    "fuku-clothes": {
+      "pl": ["ubranie", "strój"],
+      "reviewed": false
+    },
+    "futatsu": {
+      "pl": ["dwa (sztuki)", "dwa lata (wiek dziecka)"],
+      "reviewed": false
+    },
+    "butaniku": {
+      "pl": ["wieprzowina"],
+      "reviewed": false
+    },
+    "futari": {
+      "pl": ["dwie osoby", "we dwoje"],
+      "reviewed": false
+    },
+    "futsuka": {
+      "pl": ["drugi dzień miesiąca", "dwa dni"],
+      "reviewed": false
+    },
+    "futoi": {
+      "pl": ["gruby (np. o kiju, palcu)"],
+      "reviewed": false
+    },
+    "fuyu": {
+      "pl": ["zima"],
+      "reviewed": false
+    },
+    "furu": {
+      "pl": ["padać (o deszczu, śniegu)"],
+      "reviewed": false
+    },
+    "furui": {
+      "pl": ["stary (nie o ludziach)", "dawny"],
+      "reviewed": false
+    },
+    "furo": {
+      "pl": ["kąpiel", "wanna"],
+      "reviewed": false
+    },
+    "bunshou": {
+      "pl": ["tekst", "wypracowanie"],
+      "reviewed": false
+    },
+    "peeji": {
+      "pl": ["strona (w książce, też licznik stron)"],
+      "reviewed": false
+    },
+    "heta": {
+      "pl": ["kiepski (w czymś)", "niewprawny, niezdarny"],
+      "reviewed": false
+    },
+    "beddo": {
+      "pl": ["łóżko"],
+      "reviewed": false
+    },
+    "petto": {
+      "pl": ["zwierzę domowe", "pupil"],
+      "reviewed": false
+    },
+    "heya": {
+      "pl": ["pokój"],
+      "reviewed": false
+    },
+    "hen": {
+      "pl": ["okolica", "pobliże"],
+      "reviewed": false
+    },
+    "pen": {
+      "pl": ["pióro, długopis"],
+      "reviewed": false
+    },
+    "benkyou": {
+      "pl": ["nauka", "uczyć się"],
+      "reviewed": false
+    },
+    "benri": {
+      "pl": ["wygodny, praktyczny", "przydatny"],
+      "reviewed": false
+    },
+    "boushi": {
+      "pl": ["czapka", "kapelusz"],
+      "reviewed": false
+    },
+    "poorando": {
+      "pl": ["Polska"],
+      "reviewed": false
+    },
+    "poorandogo": {
+      "pl": ["język polski"],
+      "reviewed": false
+    },
+    "poorandojin": {
+      "pl": ["Polak, Polka"],
+      "reviewed": false
+    },
+    "boorupen": {
+      "pl": ["długopis"],
+      "reviewed": false
+    },
+    "hoka": {
+      "pl": ["inny", "reszta, pozostałe"],
+      "reviewed": false
+    },
+    "poketto": {
+      "pl": ["kieszeń"],
+      "reviewed": false
+    },
+    "hoshii": {
+      "pl": ["chcieć (mieć coś)", "pragnąć (czegoś)"],
+      "reviewed": false
+    },
+    "posuto": {
+      "pl": ["skrzynka pocztowa"],
+      "reviewed": false
+    },
+    "hosoi": {
+      "pl": ["cienki (np. o nitce, palcu)", "wąski", "szczupły"],
+      "reviewed": false
+    },
+    "botan": {
+      "pl": ["guzik", "przycisk"],
+      "reviewed": false
+    },
+    "hoteru": {
+      "pl": ["hotel"],
+      "reviewed": false
+    },
+    "hon": {
+      "pl": ["książka"],
+      "reviewed": false
+    },
+    "hondana": {
+      "pl": ["regał na książki", "półka na książki"],
+      "reviewed": false
+    },
+    "hontou": {
+      "pl": ["prawda", "prawdziwy", "naprawdę"],
+      "reviewed": false
+    },
+    "maiasa": {
+      "pl": ["co rano", "każdego ranka"],
+      "reviewed": false
+    },
+    "maigetsu": {
+      "pl": ["co miesiąc", "każdego miesiąca"],
+      "reviewed": false
+    },
+    "maishuu": {
+      "pl": ["co tydzień", "każdego tygodnia"],
+      "reviewed": false
+    },
+    "mainichi": {
+      "pl": ["codziennie", "każdego dnia"],
+      "reviewed": false
+    },
+    "mainen": {
+      "pl": ["co roku", "każdego roku"],
+      "reviewed": false
+    },
+    "maiban": {
+      "pl": ["co wieczór", "co noc"],
+      "reviewed": false
+    },
+    "mae": {
+      "pl": ["przód", "przed (czymś)", "temu (np. trzy dni temu)"],
+      "reviewed": false
+    },
+    "magaru": {
+      "pl": ["skręcać (np. w prawo)", "zginać się, wyginać się"],
+      "reviewed": false
+    },
+    "mazui": {
+      "pl": ["niesmaczny", "kiepski, niedobry"],
+      "reviewed": false
+    },
+    "mata": {
+      "pl": ["znowu, ponownie", "także, a także"],
+      "reviewed": false
+    },
+    "mada": {
+      "pl": ["jeszcze", "jeszcze nie (z przeczeniem)"],
+      "reviewed": false
+    },
+    "machi": {
+      "pl": ["miasto, miasteczko", "dzielnica"],
+      "reviewed": false
+    },
+    "matsu": {
+      "pl": ["czekać (na kogoś, na coś)"],
+      "reviewed": false
+    },
+    "massugu": {
+      "pl": ["prosto (przed siebie)", "prosty", "bezpośrednio"],
+      "reviewed": false
+    },
+    "matchi": {
+      "pl": ["zapałka"],
+      "reviewed": false
+    },
+    "mado": {
+      "pl": ["okno"],
+      "reviewed": false
+    },
+    "marui": {
+      "pl": ["okrągły"],
+      "reviewed": false
+    },
+    "man": {
+      "pl": ["dziesięć tysięcy"],
+      "reviewed": false
+    },
+    "mannenhitsu": {
+      "pl": ["wieczne pióro"],
+      "reviewed": false
+    },
+    "migaku": {
+      "pl": ["myć (zęby)", "polerować, czyścić (coś)"],
+      "reviewed": false
+    },
+    "migi": {
+      "pl": ["prawa strona", "w prawo, na prawo"],
+      "reviewed": false
+    },
+    "mijikai": {
+      "pl": ["krótki"],
+      "reviewed": false
+    },
+    "mizu": {
+      "pl": ["woda"],
+      "reviewed": false
+    },
+    "mise": {
+      "pl": ["sklep", "lokal (np. restauracja)"],
+      "reviewed": false
+    },
+    "miseru": {
+      "pl": ["pokazywać (coś komuś)"],
+      "reviewed": false
+    },
+    "michi": {
+      "pl": ["droga", "ulica, trasa"],
+      "reviewed": false
+    },
+    "mikka": {
+      "pl": ["trzeci dzień miesiąca", "trzy dni"],
+      "reviewed": false
+    },
+    "mittsu": {
+      "pl": ["trzy (sztuki)", "trzy lata (wiek dziecka)"],
+      "reviewed": false
+    },
+    "midori": {
+      "pl": ["kolor zielony", "zielony", "zieleń (roślinność)"],
+      "reviewed": false
+    },
+    "minasan": {
+      "pl": ["wszyscy (grzecznie)", "państwo (zwracając się do grupy)"],
+      "reviewed": false
+    },
+    "minami": {
+      "pl": ["południe (kierunek)"],
+      "reviewed": false
+    },
+    "mimi": {
+      "pl": ["ucho"],
+      "reviewed": false
+    },
+    "miru": {
+      "pl": ["widzieć", "patrzeć, oglądać"],
+      "reviewed": false
+    },
+    "minna": {
+      "pl": ["wszyscy", "wszystko"],
+      "reviewed": false
+    },
+    "muika": {
+      "pl": ["szósty dzień miesiąca", "sześć dni"],
+      "reviewed": false
+    },
+    "mukou": {
+      "pl": ["tamta strona, druga strona", "tam (w oddali)"],
+      "reviewed": false
+    },
+    "muzukashii": {
+      "pl": ["trudny"],
+      "reviewed": false
+    },
+    "muttsu": {
+      "pl": ["sześć (sztuk)", "sześć lat (wiek dziecka)"],
+      "reviewed": false
+    },
+    "mura": {
+      "pl": ["wieś", "wioska"],
+      "reviewed": false
+    },
+    "me": {
+      "pl": ["oko"],
+      "reviewed": false
+    },
+    "meetoru": {
+      "pl": ["metr"],
+      "reviewed": false
+    },
+    "megane": {
+      "pl": ["okulary"],
+      "reviewed": false
+    },
+    "mou": {
+      "pl": ["już", "jeszcze (np. jeszcze jeden)", "już nie (z przeczeniem)"],
+      "reviewed": false
+    },
+    "mouichido": {
+      "pl": ["jeszcze raz", "ponownie"],
+      "reviewed": false
+    },
+    "mokuyoubi": {
+      "pl": ["czwartek"],
+      "reviewed": false
+    },
+    "motsu": {
+      "pl": ["trzymać (coś)", "mieć, posiadać", "nieść"],
+      "reviewed": false
+    },
+    "motto": {
+      "pl": ["więcej", "bardziej"],
+      "reviewed": false
+    },
+    "mono": {
+      "pl": ["rzecz", "przedmiot"],
+      "reviewed": false
+    },
+    "mon": {
+      "pl": ["brama"],
+      "reviewed": false
+    },
+    "mondai": {
+      "pl": ["problem", "zadanie (np. na teście)"],
+      "reviewed": false
+    },
+    "yaoya": {
+      "pl": ["warzywniak (sklep)", "sprzedawca warzyw"],
+      "reviewed": false
+    },
+    "yasai": {
+      "pl": ["warzywo", "warzywa"],
+      "reviewed": false
+    },
+    "yasashii": {
+      "pl": ["łatwy", "prosty"],
+      "reviewed": false
+    },
+    "yasui": {
+      "pl": ["tani"],
+      "reviewed": false
+    },
+    "yasumi": {
+      "pl": ["przerwa, odpoczynek", "dzień wolny", "wakacje, urlop"],
+      "reviewed": false
+    },
+    "yasumu": {
+      "pl": ["odpoczywać", "brać wolne", "być nieobecnym (np. w szkole)"],
+      "reviewed": false
+    },
+    "yattsu": {
+      "pl": ["osiem (sztuk)", "osiem lat (wiek dziecka)"],
+      "reviewed": false
+    },
+    "yama": {
+      "pl": ["góra"],
+      "reviewed": false
+    },
+    "yaru": {
+      "pl": ["robić (potocznie)", "dawać (np. jedzenie zwierzęciu)"],
+      "reviewed": false
+    },
+    "yuugata": {
+      "pl": ["wczesny wieczór", "pod wieczór"],
+      "reviewed": false
+    },
+    "yuuhan": {
+      "pl": ["kolacja"],
+      "reviewed": false
+    },
+    "yuubinkyoku": {
+      "pl": ["poczta (urząd pocztowy)"],
+      "reviewed": false
+    },
+    "yuube": {
+      "pl": ["wczoraj wieczorem", "zeszłej nocy"],
+      "reviewed": false
+    },
+    "yuumei": {
+      "pl": ["sławny", "znany"],
+      "reviewed": false
+    },
+    "yuki": {
+      "pl": ["śnieg"],
+      "reviewed": false
+    },
+    "yukkurito": {
+      "pl": ["powoli", "spokojnie, bez pośpiechu"],
+      "reviewed": false
+    },
+    "youka": {
+      "pl": ["ósmy dzień miesiąca", "osiem dni"],
+      "reviewed": false
+    },
+    "youfuku": {
+      "pl": ["ubranie w stylu zachodnim", "ubranie (ogólnie)"],
+      "reviewed": false
+    },
+    "yoku": {
+      "pl": ["często", "dobrze"],
+      "reviewed": false
+    },
+    "yoko": {
+      "pl": ["obok, z boku", "bok", "szerokość"],
+      "reviewed": false
+    },
+    "yokka": {
+      "pl": ["czwarty dzień miesiąca", "cztery dni"],
+      "reviewed": false
+    },
+    "yottsu": {
+      "pl": ["cztery (sztuki)", "cztery lata (wiek dziecka)"],
+      "reviewed": false
+    },
+    "yobu": {
+      "pl": ["wołać, wzywać (kogoś)", "zapraszać", "nazywać"],
+      "reviewed": false
+    },
+    "yomu": {
+      "pl": ["czytać"],
+      "reviewed": false
+    },
+    "yori": {
+      "pl": ["niż (przy porównaniach)"],
+      "reviewed": false
+    },
+    "yoru": {
+      "pl": ["noc", "wieczór (późny)"],
+      "reviewed": false
+    },
+    "yowai": {
+      "pl": ["słaby"],
+      "reviewed": false
+    },
+    "raigetsu": {
+      "pl": ["przyszły miesiąc", "w przyszłym miesiącu"],
+      "reviewed": false
+    },
+    "raishuu": {
+      "pl": ["przyszły tydzień", "w przyszłym tygodniu"],
+      "reviewed": false
+    },
+    "rainen": {
+      "pl": ["przyszły rok", "w przyszłym roku"],
+      "reviewed": false
+    },
+    "rajio": {
+      "pl": ["radio"],
+      "reviewed": false
+    },
+    "rajikase": {
+      "pl": ["radiomagnetofon"],
+      "reviewed": false
+    },
+    "rippa": {
+      "pl": ["wspaniały, okazały", "godny podziwu"],
+      "reviewed": false
+    },
+    "ryuugakusei": {
+      "pl": ["student zagraniczny, studentka zagraniczna", "osoba studiująca za granicą"],
+      "reviewed": false
+    },
+    "ryoushin": {
+      "pl": ["rodzice", "oboje rodzice"],
+      "reviewed": false
+    },
+    "ryouri": {
+      "pl": ["potrawa, danie", "kuchnia (np. japońska)", "gotowanie"],
+      "reviewed": false
+    },
+    "ryokou": {
+      "pl": ["podróż, wycieczka", "podróżować"],
+      "reviewed": false
+    },
+    "rei": {
+      "pl": ["zero"],
+      "reviewed": false
+    },
+    "reizouko": {
+      "pl": ["lodówka"],
+      "reviewed": false
+    },
+    "rekoodo": {
+      "pl": ["płyta gramofonowa"],
+      "reviewed": false
+    },
+    "resutoran": {
+      "pl": ["restauracja"],
+      "reviewed": false
+    },
+    "renshuu": {
+      "pl": ["ćwiczenie, trening", "ćwiczyć"],
+      "reviewed": false
+    },
+    "rouka": {
+      "pl": ["korytarz"],
+      "reviewed": false
+    },
+    "roku": {
+      "pl": ["sześć"],
+      "reviewed": false
+    },
+    "waishatsu": {
+      "pl": ["koszula (do garnituru)"],
+      "reviewed": false
+    },
+    "wakai": {
+      "pl": ["młody"],
+      "reviewed": false
+    },
+    "wakaru": {
+      "pl": ["rozumieć", "wiedzieć (np. odpowiedź)"],
+      "reviewed": false
+    },
+    "wasureru": {
+      "pl": ["zapominać", "zostawiać (przez zapomnienie)"],
+      "reviewed": false
+    },
+    "watakushi": {
+      "pl": ["ja (bardzo grzecznie)"],
+      "reviewed": false
+    },
+    "watashi": {
+      "pl": ["ja"],
+      "reviewed": false
+    },
+    "watasu": {
+      "pl": ["wręczać, podawać (coś komuś)", "przekazywać"],
+      "reviewed": false
+    },
+    "wataru": {
+      "pl": ["przechodzić (przez ulicę, most)", "przeprawiać się"],
+      "reviewed": false
+    },
+    "warui": {
+      "pl": ["zły", "niedobry"],
+      "reviewed": false
+    }
+  }
+}

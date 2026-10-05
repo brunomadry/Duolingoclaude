@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "notes": [
+    {
+      "id": "arimasu-imasu",
+      "title": "あります i います",
+      "pattern": "X に N が あります / います",
+      "note": "Polskie „jest” w sensie „znajduje się” ma po japońsku dwa odpowiedniki: あります mówi się o rzeczach i roślinach, a います o ludziach i zwierzętach. Najpierw pada miejsce z partykułą に, potem to, co się tam znajduje, z partykułą が, a czasownik stoi na końcu: つくえの うえに ほんが あります. Polskim przyimkom „na”, „pod” i „w” odpowiadają tu rzeczowniki うえ (góra), した (dół) i なか (wnętrze), połączone z przedmiotem przez の: いすの した to „pod krzesłem”.\n\nGdy mowa o tym, gdzie jest znana już rzecz lub osoba, zaczyna się od niej z は: ねこは いすの したに います (kot jest pod krzesłem). Te same czasowniki wyrażają też posiadanie: かさが あります to „mam parasol”, a きょうだいが います to „mam rodzeństwo”.",
+      "examples": [
+        {
+          "ja": "机の上に本があります。",
+          "kana": "つくえの うえに ほんが あります。",
+          "pl": "Na biurku jest książka."
+        },
+        {
+          "ja": "いすの下に猫がいます。",
+          "kana": "いすの したに ねこが います。",
+          "pl": "Pod krzesłem jest kot."
+        },
+        {
+          "ja": "教室に誰がいますか。",
+          "kana": "きょうしつに だれが いますか。",
+          "pl": "Kto jest w sali lekcyjnej?"
+        }
+      ],
+      "typicalMistake": "Błąd: ねこが あります. Poprawnie: ねこが います. Kot jest żywą istotą, więc mówi się います, nawet gdy śpi i się nie rusza.",
+      "reviewed": false
+    },
+    {
+      "id": "numbers-time",
+      "title": "Liczby i godziny",
+      "pattern": "～じ ～ふん に V-ます",
+      "note": "Liczby od 1 do 10 to いち, に, さん, よん, ご, ろく, なな, はち, きゅう, じゅう, przy czym 4, 7 i 9 mają też odczyty し, しち i く. Godzinę tworzy się, dodając じ do liczby: さんじ to trzecia, a ろくじ szósta, ale czwarta to よじ, siódma しちじ, a dziewiąta くじ. Minuty liczy się z ふん, które po niektórych liczbach zmienia się w ぷん: ごふん, さんぷん.\n\nTak jak polskie „o”, partykuła に mówi, o której godzinie coś się dzieje: しちじに おきます to „wstaję o siódmej”.",
+      "examples": [
+        {
+          "ja": "毎日七時に帰ります。",
+          "kana": "まいにち しちじに かえります。",
+          "pl": "Codziennie wracam do domu o siódmej."
+        },
+        {
+          "ja": "四時に友達に会います。",
+          "kana": "よじに ともだちに あいます。",
+          "pl": "O czwartej spotykam się z przyjaciółmi."
+        },
+        {
+          "ja": "何時に寝ますか。",
+          "kana": "なんじに ねますか。",
+          "pl": "O której godzinie kładziesz się spać?"
+        }
+      ],
+      "typicalMistake": "Błąd: よんじ albo しじ (czwarta). Poprawnie: よじ. Godziny 4, 7 i 9 mają odczyty do zapamiętania: よじ, しちじ i くじ.",
+      "reviewed": false
+    },
+    {
+      "id": "counters",
+      "title": "Liczniki i daty",
+      "pattern": "N を liczba + licznik V-ます",
+      "note": "Po japońsku do liczby dodaje się zwykle licznik, czyli krótkie słowo zależne od tego, co się liczy: えん przy cenach, にん przy ludziach (ale ひとり, ふたり), まい przy płaskich rzeczach, jak bilety czy kartki. Zwykłe rzeczy liczy się też słowami ひとつ, ふたつ, みっつ i kolejnymi, a liczba stoi zwykle po partykule, tuż przed czasownikiem: パンを みっつ かいます.\n\nDuże liczby liczy się co dziesięć tysięcy (まん), więc 30 000 to さんまん. Miesiąc to liczba z がつ (さんがつ to marzec), a dzień to zwykle liczba z にち, choć dni od 1 do 10, 14, 20 i 24 mają własne nazwy, np. みっか to trzeci dzień miesiąca.",
+      "examples": [
+        {
+          "ja": "コーヒーを二つください。",
+          "kana": "コーヒーを ふたつ ください。",
+          "pl": "Poproszę dwie kawy."
+        },
+        {
+          "ja": "兄弟が二人います。",
+          "kana": "きょうだいが ふたり います。",
+          "pl": "Mam dwoje rodzeństwa."
+        },
+        {
+          "ja": "このカメラは三万円です。",
+          "kana": "この カメラは さんまんえんです。",
+          "pl": "Ten aparat kosztuje trzydzieści tysięcy jenów."
+        }
+      ],
+      "typicalMistake": "Błąd: パンを さん かいます. Poprawnie: パンを みっつ かいます. Przy liczeniu rzeczy sama liczba nie wystarcza, potrzebny jest licznik, tutaj つ.",
+      "reviewed": false
+    },
+    {
+      "id": "te-form",
+      "title": "Forma て",
+      "pattern": "V-て、V-ます",
+      "note": "Forma て łączy czynności w kolejności, w jakiej się dzieją, podobnie jak polskie „i potem”, a czas i grzeczność wyraża dopiero ostatni czasownik: あさ おきて、かおを あらいます. Tworzy się ją od formy słownikowej, w której czasowniki stoją na liście słówek, np. たべる czy かう.\n\nWiększość czasowników z dźwiękiem e lub i przed końcowym る, jak たべる, みる i おきる, po prostu zamienia る na て: たべて, みて. Pozostałe zmieniają końcówkę: う, つ, る dają って, む, ぶ, ぬ dają んで, く daje いて, ぐ daje いで, す daje して, np. かう, かって, のむ, のんで, a także かえる, かえって. Wyjątki to いく, いって oraz nieregularne する, して i くる, きて.",
+      "examples": [
+        {
+          "ja": "朝起きて、顔を洗います。",
+          "kana": "あさ おきて、かおを あらいます。",
+          "pl": "Rano wstaję i myję twarz."
+        },
+        {
+          "ja": "七時に家を出て、駅へ行きます。",
+          "kana": "しちじに いえを でて、えきへ いきます。",
+          "pl": "O siódmej wychodzę z domu i idę na stację."
+        },
+        {
+          "ja": "母はデパートへ行って、セーターを買いました。",
+          "kana": "ははは デパートへ いって、セーターを かいました。",
+          "pl": "Mama poszła do domu towarowego i kupiła sweter."
+        }
+      ],
+      "typicalMistake": "Błąd: おきます と かおを あらいます. Poprawnie: おきて、かおを あらいます. と w znaczeniu „i” łączy tylko rzeczowniki, a czynności łączy forma て.",
+      "reviewed": false
+    },
+    {
+      "id": "te-kudasai",
+      "title": "Prośby z ～てください",
+      "pattern": "V-て ください",
+      "note": "Forma て z ください tworzy uprzejmą prośbę, podobną do polskiego „proszę + bezokolicznik”: まって ください to „proszę zaczekać”. To podobne do N を ください, czyli „poproszę coś”, tylko tutaj prosi się o czynność, a jej dopełnienie jak zwykle oznacza を: ペンを かして ください. Przed prośbą często pada すみません, a ちょっと łagodzi ton.\n\nTo grzeczna forma, ale wciąż prośba wprost, więc gdy chodzi o dużą przysługę od osoby starszej rangą, Japończycy wybierają jeszcze uprzejmiejsze zwroty.",
+      "examples": [
+        {
+          "ja": "ちょっと待ってください。",
+          "kana": "ちょっと まって ください。",
+          "pl": "Proszę chwilę zaczekać."
+        },
+        {
+          "ja": "もう一度ゆっくりと話してください。",
+          "kana": "もういちど ゆっくりと はなして ください。",
+          "pl": "Proszę powiedzieć to jeszcze raz, powoli."
+        },
+        {
+          "ja": "ペンを貸してください。",
+          "kana": "ペンを かして ください。",
+          "pl": "Proszę mi pożyczyć długopis."
+        }
+      ],
+      "typicalMistake": "Błąd: まちます ください. Poprawnie: まって ください. Przed ください stoi forma て, a nie forma ます.",
+      "reviewed": false
+    },
+    {
+      "id": "tai-mashou",
+      "title": "～たい i ～ましょう",
+      "pattern": "V-たいです / V-ましょう(か)",
+      "note": "Żeby powiedzieć, że chce się coś zrobić, zamienia się ます na たい: たべます, たべたい, czyli „chcę zjeść”. たい odmienia się jak przymiotnik na い: たべたいです, たべたくないです, たべたかったです. Tak mówi się o własnych chęciach albo pyta o chęci rozmówcy, natomiast o chęciach innych osób mówi się po japońsku inaczej.\n\nZamiana ます na ましょう daje propozycję, jak polskie „zróbmy”: いっしょに いきましょう. Z ましょうか propozycja brzmi łagodniej: いきましょうか to raczej „może pójdziemy?”.",
+      "examples": [
+        {
+          "ja": "来年日本へ行きたいです。",
+          "kana": "らいねん にほんへ いきたいです。",
+          "pl": "W przyszłym roku chcę pojechać do Japonii."
+        },
+        {
+          "ja": "一緒に日本語を勉強しましょう。",
+          "kana": "いっしょに にほんごを べんきょうしましょう。",
+          "pl": "Uczmy się razem japońskiego."
+        },
+        {
+          "ja": "今晩一緒に出かけましょうか。",
+          "kana": "こんばん いっしょに でかけましょうか。",
+          "pl": "Może wyjdziemy gdzieś razem dziś wieczorem?"
+        }
+      ],
+      "typicalMistake": "Błąd: いきたいます. Poprawnie: いきたいです. たい zachowuje się jak przymiotnik na い, więc grzeczność dodaje です, a nie ます.",
+      "reviewed": false
+    },
+    {
+      "id": "yori-hou",
+      "title": "Porównania",
+      "pattern": "A は B より ～です / A の ほうが ～です",
+      "note": "Japońskie przymiotniki nie mają stopnia wyższego: w porównaniu はやい znaczy po prostu „szybszy”, a polskie „niż” wyraża partykuła より. より stoi po tym, z czym się porównuje: でんしゃは バスより はやいです to „pociąg jest szybszy niż autobus”.\n\nGdy wybiera się jedną z dwóch rzeczy, pyta się A と B と どちらが ～ですか, a w odpowiedzi wybraną rzecz oznacza のほうが: でんしゃの ほうが はやいです. Stopień najwyższy tworzy いちばん przed przymiotnikiem: いちばん はやい to „najszybszy”.",
+      "examples": [
+        {
+          "ja": "駅と郵便局と、どちらが近いですか。",
+          "kana": "えきと ゆうびんきょくと、どちらが ちかいですか。",
+          "pl": "Co jest bliżej: stacja czy poczta?"
+        },
+        {
+          "ja": "海より山のほうが好きです。",
+          "kana": "うみより やまの ほうが すきです。",
+          "pl": "Wolę góry od morza."
+        },
+        {
+          "ja": "この中でどれがいちばん安いですか。",
+          "kana": "この なかで どれが いちばん やすいですか。",
+          "pl": "Która z tych rzeczy jest najtańsza?"
+        }
+      ],
+      "typicalMistake": "Błąd: でんしゃは より バス はやいです. Poprawnie: でんしゃは バスより はやいです. より to partykuła, więc stoi po rzeczowniku, a nie przed nim jak polskie „niż”.",
+      "reviewed": false
+    },
+    {
+      "id": "kara-demo",
+      "title": "から i でも",
+      "pattern": "X から、Y / X。でも、Y",
+      "note": "Po czasowniku, przymiotniku albo です słowo から nie znaczy „od”, tylko podaje powód: あめですから、いきません to „pada deszcz, więc nie idę”. Kolejność jest odwrotna niż w polskim zdaniu z „bo”: najpierw powód zakończony na から, potem skutek. Na pytanie どうして, czyli „dlaczego”, można odpowiedzieć samym powodem: いそがしいですから.\n\nでも otwiera nowe zdanie i znaczy „ale”, a wewnątrz jednego zdania tę rolę pełni が albo swobodniejsze けど: たかいですが、おいしいです.",
+      "examples": [
+        {
+          "ja": "雨ですから、出かけません。",
+          "kana": "あめですから、でかけません。",
+          "pl": "Pada deszcz, więc nie wychodzę."
+        },
+        {
+          "ja": "時間がありませんから、タクシーで行きます。",
+          "kana": "じかんが ありませんから、タクシーで いきます。",
+          "pl": "Nie mam czasu, więc jadę taksówką."
+        },
+        {
+          "ja": "日本語は難しいです。でも、おもしろいです。",
+          "kana": "にほんごは むずかしいです。でも、おもしろいです。",
+          "pl": "Japoński jest trudny. Ale jest ciekawy."
+        }
+      ],
+      "typicalMistake": "Błąd: いきません、から あめです (jak w „nie idę, bo pada”). Poprawnie: あめですから、いきません. から zamyka powód, a powód idzie przed skutkiem.",
+      "reviewed": false
+    },
+    {
+      "id": "plain-da",
+      "title": "Forma prosta: だ",
+      "pattern": "X は Y だ",
+      "note": "だ to prosta, swobodna forma です, której używa się w rozmowie z rodziną i przyjaciółmi: がくせいです brzmi wtedy がくせいだ. Stoi po rzeczownikach i przymiotnikach na な (しずかだ), a jej przeczenie to じゃない zamiast じゃありません.\n\nPrzymiotniki na い nie dostają だ, tylko po prostu tracą です: たかいです, たかい. W swobodnych pytaniach だ się pomija i wystarczy podnieść ton na końcu: ほんとう？ znaczy „naprawdę?”.",
+      "examples": [
+        {
+          "ja": "明日はテストだ。",
+          "kana": "あしたは テストだ。",
+          "pl": "Jutro jest test."
+        },
+        {
+          "ja": "今日の宿題は難しい。",
+          "kana": "きょうの しゅくだいは むずかしい。",
+          "pl": "Dzisiejsze zadanie domowe jest trudne."
+        },
+        {
+          "ja": "私の部屋は静かじゃない。",
+          "kana": "わたしの へやは しずかじゃない。",
+          "pl": "Mój pokój nie jest cichy."
+        }
+      ],
+      "typicalMistake": "Błąd: たかいだ. Poprawnie: たかい. Przymiotnik na い sam jest pełnym orzeczeniem, więc w formie prostej po prostu odpada です.",
+      "reviewed": false
+    },
+    {
+      "id": "plain-dictionary",
+      "title": "Forma słownikowa",
+      "pattern": "のみます → のむ; たべます → たべる; V ことが できます",
+      "note": "Forma słownikowa to prosta forma teraźniejsza czasownika, ta, którą podają słowniki: zastępuje ます w swobodnej rozmowie i występuje w wielu konstrukcjach, np. V ことが できます, czyli „umiem, mogę”: およぐ ことが できます.\n\nCzasowniki dzielą się na trzy grupy, a w grupie 1 dźwięk i przed ます zmienia się na u: のみます, のむ; かえります, かえる. W grupie 2 ます zamienia się na る: たべます, たべる; należą do niej wszystkie czasowniki z e przed ます i niektóre z i, jak みます i おきます. Grupa 3 to dwa nieregularne czasowniki: します, する i きます, くる, a także połączenia z する, jak べんきょうします, べんきょうする.",
+      "examples": [
+        {
+          "ja": "ギターを弾くことができます。",
+          "kana": "ギターを ひく ことが できます。",
+          "pl": "Umiem grać na gitarze."
+        },
+        {
+          "ja": "毎日公園で走る。",
+          "kana": "まいにち こうえんで はしる。",
+          "pl": "Codziennie biegam w parku."
+        },
+        {
+          "ja": "一緒に泳ぐ？",
+          "kana": "いっしょに およぐ？",
+          "pl": "Popływamy razem?"
+        }
+      ],
+      "typicalMistake": "Błąd: おきます → おく. Poprawnie: おきます → おきる. おきます należy do grupy 2, choć przed ます jest dźwięk i, więc takie czasowniki trzeba zapamiętać (おく to zupełnie inny czasownik, „kłaść”).",
+      "reviewed": false
+    },
+    {
+      "id": "plain-nai",
+      "title": "Forma ない",
+      "pattern": "V-ない / V-ないで ください",
+      "note": "Forma ない to proste przeczenie czasownika, swobodny odpowiednik ません: のまない to „nie piję”. W grupie 1 ostatni dźwięk u zmienia się na a i dochodzi ない (のむ, のまない; かく, かかない), a czasowniki na う dostają わ: かう, かわない. W grupie 2 る zamienia się na ない (たべる, たべない), w grupie 3 są しない i こない, a przeczeniem ある jest samo ない.\n\nPo dodaniu で i ください powstaje prośba, żeby czegoś nie robić: わすれないで ください, czyli „proszę nie zapomnieć”.",
+      "examples": [
+        {
+          "ja": "傘を忘れないでください。",
+          "kana": "かさを わすれないで ください。",
+          "pl": "Proszę nie zapomnieć parasola."
+        },
+        {
+          "ja": "今日は時間がない。",
+          "kana": "きょうは じかんが ない。",
+          "pl": "Dziś nie mam czasu."
+        },
+        {
+          "ja": "明日は学校へ行かない。",
+          "kana": "あしたは がっこうへ いかない。",
+          "pl": "Jutro nie idę do szkoły."
+        }
+      ],
+      "typicalMistake": "Błąd: じかんが あらない. Poprawnie: じかんが ない. ある to wyjątek: jego przeczeniem jest samo ない, a nie forma według reguły grupy 1.",
+      "reviewed": false
+    }
+  ]
+}

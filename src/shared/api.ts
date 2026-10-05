@@ -32,7 +32,7 @@ import {
   type infer as Infer,
 } from 'zod/mini';
 import { AVATAR_IDS } from './avatars.ts';
-import { MAX_NAME_LENGTH, MAX_SYNC_BATCH } from './defaults.ts';
+import { MAX_CHAT_LINE, MAX_NAME_LENGTH, MAX_SYNC_BATCH } from './defaults.ts';
 
 const epochMs = int().check(nonnegative());
 const uuid = string().check(regex(/^[0-9a-f-]{36}$/i, 'expected a UUID'));
@@ -136,7 +136,29 @@ export const ReportSchema = strictObject({
 export type ReportRecord = Infer<typeof ReportSchema>;
 
 export type ApiErrorCode =
-  'locked' | 'bad_request' | 'not_found' | 'gone' | 'rate_limited' | 'too_large' | 'server_error';
+  | 'locked'
+  | 'bad_request'
+  | 'not_found'
+  | 'gone'
+  | 'rate_limited'
+  | 'too_large'
+  | 'clock_skew'
+  | 'ai_unavailable'
+  | 'server_error';
+
+/* -------------------------------------------------------------------- AI */
+
+const aiLesson = int().check(minimum(17), maximum(100));
+
+export const AiExerciseRequestSchema = strictObject({ lesson: aiLesson });
+
+export const AiChatRequestSchema = strictObject({
+  lesson: aiLesson,
+  /** The conversation so far, oldest first; the learner's last line is checked first. */
+  history: array(
+    strictObject({ role: zEnum(['ai', 'learner']), ja: text(1, MAX_CHAT_LINE) }),
+  ).check(maxLength(12)),
+});
 
 export interface ApiError {
   error: ApiErrorCode;

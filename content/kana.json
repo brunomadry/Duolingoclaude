@@ -1,0 +1,1994 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "id": "h-a",
+      "script": "hiragana",
+      "label": "Samogłoski",
+      "kind": "basic",
+      "note": {
+        "pl": "Hiragana to podstawowe japońskie pismo sylabiczne: jeden znak to zwykle jedna sylaba. Zaczynamy od pięciu samogłosek, które brzmią prawie jak polskie. Tylko japońskie u wymawia się bez zaokrąglania i wysuwania warg.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "あ",
+          "romaji": "a",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Akrobata kręci salto wokół drążka: a jak akrobata.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "い",
+          "romaji": "i",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Dwie igły wbite pionowo w poduszkę: i jak igła.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "う",
+          "romaji": "u",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Wygięte ucho z kolczykiem u góry: u jak ucho.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "え",
+          "romaji": "e",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Elf w czapeczce tańczy i wyrzuca nogę w bok: e jak elf.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "お",
+          "romaji": "o",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Patyk z nadzianym obwarzankiem, a obok okruszek: o jak obwarzanek.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ka",
+      "script": "hiragana",
+      "label": "Rząd K",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "か",
+          "romaji": "ka",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Karateka wyprowadza cios ramieniem, a obok leci kropla potu: ka jak karateka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "き",
+          "romaji": "ki",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Kij z dwoma szczebelkami i haczykiem na dole: ki jak kij.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "く",
+          "romaji": "ku",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Grot strzałki wskazuje kierunek, a po polsku „ku” znaczy „w stronę”: ku.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "け",
+          "romaji": "ke",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Kelner stoi obok wysokiego wieszaka na płaszcze: ke jak kelner.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "こ",
+          "romaji": "ko",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Dwa złożone koce leżą jeden nad drugim: ko jak koc.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-sa",
+      "script": "hiragana",
+      "label": "Rząd S",
+      "kind": "basic",
+      "note": {
+        "pl": "Uwaga na し: w romaji zapisujemy shi, a wymawiamy prawie jak polskie „si”.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "さ",
+          "romaji": "sa",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Krzyżyk to rączka, a łuk pod spodem to płoza sanek: sa jak sanki.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "し",
+          "romaji": "shi",
+          "alt": ["si"],
+          "col": 1,
+          "mnemonic": {
+            "pl": "Zjeżdżasz w dół zjeżdżalni i wylatujesz w górę z piskiem „siii”: shi.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "す",
+          "romaji": "su",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Sznurek z supełkiem w połowie: su jak supeł.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "せ",
+          "romaji": "se",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Otwarty sejf z półką w środku: se jak sejf.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "そ",
+          "romaji": "so",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Sokół leci zygzakiem, a potem nurkuje w dół: so jak sokół.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ta",
+      "script": "hiragana",
+      "label": "Rząd T",
+      "kind": "basic",
+      "note": {
+        "pl": "W tym rzędzie są dwa wyjątki: ち zapisujemy chi (brzmi blisko polskiego „ci”), a つ to tsu (blisko polskiego „cu”).",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "た",
+          "romaji": "ta",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Krzyżyk jak litera t, a obok dwa talerze: ta jak talerz.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ち",
+          "romaji": "chi",
+          "alt": ["ti"],
+          "col": 1,
+          "mnemonic": {
+            "pl": "Krzyżyk to ramiona, a łuk to wielki brzuch cioci po obiedzie: chi jak ciocia.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "つ",
+          "romaji": "tsu",
+          "alt": ["tu"],
+          "col": 2,
+          "mnemonic": {
+            "pl": "Zgarbione plecy kogoś, kto schyla się po cukierek: tsu jak cukierek.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "て",
+          "romaji": "te",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Na drążku wisi zawinięta kurtyna teatru: te jak teatr.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "と",
+          "romaji": "to",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Wędrowiec opiera kij o swój tobołek: to jak tobołek.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-na",
+      "script": "hiragana",
+      "label": "Rząd N",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "な",
+          "romaji": "na",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Krzyżyk apteki, a obok butelka nalewki z korkiem: na jak nalewka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "に",
+          "romaji": "ni",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Igła stoi pionowo, a obok leżą dwie nitki: ni jak nić.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ぬ",
+          "romaji": "nu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Z nudów kreślisz zawijasy, aż na końcu wychodzi pętelka: nu jak nuda.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ね",
+          "romaji": "ne",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Słupek z wygiętą rurką neonu, zwiniętą na końcu: ne jak neon.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "の",
+          "romaji": "no",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Po nokaucie przed oczami kręci się spirala: no jak nokaut.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ha",
+      "script": "hiragana",
+      "label": "Rząd H",
+      "kind": "basic",
+      "note": {
+        "pl": "ふ zapisujemy jako fu, ale to nie jest polskie f: zęby nie dotykają wargi, a powietrze przechodzi między lekko zbliżonymi wargami, jak przy zdmuchiwaniu świeczki. Gdy は jest partykułą, czytamy ją wa, a partykułę へ czytamy e.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "は",
+          "romaji": "ha",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Dwa słupki, a między nimi zawiązany hamak: ha jak hamak.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ひ",
+          "romaji": "hi",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Hipopotam ziewa tak szeroko, że paszcza wygina się w łuk: hi jak hipopotam.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ふ",
+          "romaji": "fu",
+          "alt": ["hu"],
+          "col": 2,
+          "mnemonic": {
+            "pl": "Fusy rozsypane na dnie filiżanki: fu jak fusy.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "へ",
+          "romaji": "he",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Niski pagórek, a ze szczytu ktoś woła „hej!”: he.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ほ",
+          "romaji": "ho",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Hamak z は, ale z dodatkowym daszkiem, to już hotel: ho jak hotel.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ma",
+      "script": "hiragana",
+      "label": "Rząd M",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "ま",
+          "romaji": "ma",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Maszt z dwiema rejami i pętlą liny u dołu: ma jak maszt.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "み",
+          "romaji": "mi",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Kabel mikrofonu zwinięty w pętlę i spięty klamerką: mi jak mikrofon.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "む",
+          "romaji": "mu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Mucha krąży wokół sznurka z pętelką, a kropka to właśnie ona: mu jak mucha.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "め",
+          "romaji": "me",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Meduza z okrągłą głową i skrzyżowanymi mackami: me jak meduza.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "も",
+          "romaji": "mo",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Dwie deski przybite w poprzek wygiętej kłody tworzą most: mo jak most.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ya",
+      "script": "hiragana",
+      "label": "Rząd Y",
+      "kind": "basic",
+      "note": {
+        "pl": "Rząd Y ma tylko trzy znaki: や, ゆ i よ. Japońskie y brzmi jak polskie j.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "や",
+          "romaji": "ya",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Żagiel jachtu wydęty wiatrem, obok mała flaga, a przez żagiel przechodzi maszt: ya jak jacht (czytamy „ja”).",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ゆ",
+          "romaji": "yu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Okrągła jurta z wysokim drągiem pośrodku: yu jak jurta (czytamy „ju”).",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "よ",
+          "romaji": "yo",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Jogin stoi na jednej nodze, drugą zgina w pętlę, a rękę wyciąga w bok: yo jak jogin (czytamy „jo”).",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-ra",
+      "script": "hiragana",
+      "label": "Rząd R",
+      "kind": "basic",
+      "note": {
+        "pl": "Japońskie r to jedno lekkie uderzenie języka, coś pomiędzy polskim r a l.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ら",
+          "romaji": "ra",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Rak unosi szczypce w łuk, a nad nim sterczy czułek: ra jak rak.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "り",
+          "romaji": "ri",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Dwa drążki rikszy, prawy dłuższy od lewego: ri jak riksza.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "る",
+          "romaji": "ru",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Zakręcona rura kończy się małą pętlą: ru jak rura.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "れ",
+          "romaji": "re",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Rekin przy słupie macha ogonem w bok: re jak rekin.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ろ",
+          "romaji": "ro",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Rogal z kreską u góry, bez pętelki na końcu: ro jak rogal.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-wa",
+      "script": "hiragana",
+      "label": "Rząd W i ん",
+      "kind": "basic",
+      "note": {
+        "pl": "わ czytamy jak polskie „ła”. を brzmi jak o i prawie zawsze jest partykułą, a ん to jedyny znak, który jest samą spółgłoską n (przed b, m i p brzmi raczej jak m).",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "わ",
+          "romaji": "wa",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Łabędź wygina szyję obok trzciny: wa jak łabędź (czytamy „ła”).",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "を",
+          "romaji": "o",
+          "alt": ["wo"],
+          "col": 4,
+          "mnemonic": {
+            "pl": "Zawodnik w biegu wyrzuca oszczep: o jak oszczep.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ん",
+          "romaji": "n",
+          "alt": ["nn"],
+          "mnemonic": {
+            "pl": "Pisane n z długim ogonkiem: nnn, jak nucenie z zamkniętymi ustami.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "h-dakuten",
+      "script": "hiragana",
+      "label": "Dakuten: G, Z, D, B",
+      "kind": "dakuten",
+      "note": {
+        "pl": "Dwie kreseczki ゛ (dakuten) udźwięczniają spółgłoskę: k zmienia się w g, s w z, t w d, a h w b. Wyjątki: じ i ぢ zapisujemy ji, a ず i づ to zu; ぢ i づ zdarzają się rzadko. Romaji ji czytamy prawie jak polskie „dzi”, a nie jak „ji”.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "が",
+          "romaji": "ga",
+          "col": 0
+        },
+        {
+          "char": "ぎ",
+          "romaji": "gi",
+          "col": 1
+        },
+        {
+          "char": "ぐ",
+          "romaji": "gu",
+          "col": 2
+        },
+        {
+          "char": "げ",
+          "romaji": "ge",
+          "col": 3
+        },
+        {
+          "char": "ご",
+          "romaji": "go",
+          "col": 4
+        },
+        {
+          "char": "ざ",
+          "romaji": "za",
+          "col": 0
+        },
+        {
+          "char": "じ",
+          "romaji": "ji",
+          "alt": ["zi"],
+          "col": 1
+        },
+        {
+          "char": "ず",
+          "romaji": "zu",
+          "col": 2
+        },
+        {
+          "char": "ぜ",
+          "romaji": "ze",
+          "col": 3
+        },
+        {
+          "char": "ぞ",
+          "romaji": "zo",
+          "col": 4
+        },
+        {
+          "char": "だ",
+          "romaji": "da",
+          "col": 0
+        },
+        {
+          "char": "ぢ",
+          "romaji": "ji",
+          "alt": ["di"],
+          "col": 1
+        },
+        {
+          "char": "づ",
+          "romaji": "zu",
+          "alt": ["du"],
+          "col": 2
+        },
+        {
+          "char": "で",
+          "romaji": "de",
+          "col": 3
+        },
+        {
+          "char": "ど",
+          "romaji": "do",
+          "col": 4
+        },
+        {
+          "char": "ば",
+          "romaji": "ba",
+          "col": 0
+        },
+        {
+          "char": "び",
+          "romaji": "bi",
+          "col": 1
+        },
+        {
+          "char": "ぶ",
+          "romaji": "bu",
+          "col": 2
+        },
+        {
+          "char": "べ",
+          "romaji": "be",
+          "col": 3
+        },
+        {
+          "char": "ぼ",
+          "romaji": "bo",
+          "col": 4
+        }
+      ]
+    },
+    {
+      "id": "h-handakuten",
+      "script": "hiragana",
+      "label": "Handakuten: P",
+      "kind": "dakuten",
+      "note": {
+        "pl": "Kółko ゜ (handakuten) dodaje się tylko do rzędu H i zmienia h w p, na przykład は w ぱ.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ぱ",
+          "romaji": "pa",
+          "col": 0
+        },
+        {
+          "char": "ぴ",
+          "romaji": "pi",
+          "col": 1
+        },
+        {
+          "char": "ぷ",
+          "romaji": "pu",
+          "col": 2
+        },
+        {
+          "char": "ぺ",
+          "romaji": "pe",
+          "col": 3
+        },
+        {
+          "char": "ぽ",
+          "romaji": "po",
+          "col": 4
+        }
+      ]
+    },
+    {
+      "id": "h-yoon",
+      "script": "hiragana",
+      "label": "Połączenia z ゃ ゅ ょ",
+      "kind": "yoon",
+      "note": {
+        "pl": "Małe ゃ, ゅ albo ょ dopisane po znaku kończącym się na i tworzy z nim jedną sylabę: き i ゃ dają きゃ (kya). Uważaj na rozmiar: duże や to osobna sylaba. W romaji sh, ch i j odpowiadają polskim ś, ć i dź: しゃ (sha) czytamy „sia”, ちゃ (cha) „cia”, a じゃ (ja) „dzia”.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "きゃ",
+          "romaji": "kya"
+        },
+        {
+          "char": "きゅ",
+          "romaji": "kyu"
+        },
+        {
+          "char": "きょ",
+          "romaji": "kyo"
+        },
+        {
+          "char": "しゃ",
+          "romaji": "sha",
+          "alt": ["sya"]
+        },
+        {
+          "char": "しゅ",
+          "romaji": "shu",
+          "alt": ["syu"]
+        },
+        {
+          "char": "しょ",
+          "romaji": "sho",
+          "alt": ["syo"]
+        },
+        {
+          "char": "ちゃ",
+          "romaji": "cha",
+          "alt": ["tya", "cya"]
+        },
+        {
+          "char": "ちゅ",
+          "romaji": "chu",
+          "alt": ["tyu", "cyu"]
+        },
+        {
+          "char": "ちょ",
+          "romaji": "cho",
+          "alt": ["tyo", "cyo"]
+        },
+        {
+          "char": "にゃ",
+          "romaji": "nya"
+        },
+        {
+          "char": "にゅ",
+          "romaji": "nyu"
+        },
+        {
+          "char": "にょ",
+          "romaji": "nyo"
+        },
+        {
+          "char": "ひゃ",
+          "romaji": "hya"
+        },
+        {
+          "char": "ひゅ",
+          "romaji": "hyu"
+        },
+        {
+          "char": "ひょ",
+          "romaji": "hyo"
+        },
+        {
+          "char": "みゃ",
+          "romaji": "mya"
+        },
+        {
+          "char": "みゅ",
+          "romaji": "myu"
+        },
+        {
+          "char": "みょ",
+          "romaji": "myo"
+        },
+        {
+          "char": "りゃ",
+          "romaji": "rya"
+        },
+        {
+          "char": "りゅ",
+          "romaji": "ryu"
+        },
+        {
+          "char": "りょ",
+          "romaji": "ryo"
+        },
+        {
+          "char": "ぎゃ",
+          "romaji": "gya"
+        },
+        {
+          "char": "ぎゅ",
+          "romaji": "gyu"
+        },
+        {
+          "char": "ぎょ",
+          "romaji": "gyo"
+        },
+        {
+          "char": "じゃ",
+          "romaji": "ja",
+          "alt": ["zya", "jya"]
+        },
+        {
+          "char": "じゅ",
+          "romaji": "ju",
+          "alt": ["zyu", "jyu"]
+        },
+        {
+          "char": "じょ",
+          "romaji": "jo",
+          "alt": ["zyo", "jyo"]
+        },
+        {
+          "char": "びゃ",
+          "romaji": "bya"
+        },
+        {
+          "char": "びゅ",
+          "romaji": "byu"
+        },
+        {
+          "char": "びょ",
+          "romaji": "byo"
+        },
+        {
+          "char": "ぴゃ",
+          "romaji": "pya"
+        },
+        {
+          "char": "ぴゅ",
+          "romaji": "pyu"
+        },
+        {
+          "char": "ぴょ",
+          "romaji": "pyo"
+        }
+      ]
+    },
+    {
+      "id": "h-small-tsu",
+      "script": "hiragana",
+      "label": "Małe っ",
+      "kind": "small-tsu",
+      "note": {
+        "pl": "Małe っ nie ma własnego dźwięku: daje krótką pauzę i podwaja następną spółgłoskę, na przykład きって to kitte (znaczek). Przed ち podwajamy t, więc っち to tchi. Długą samogłoskę w hiraganie zapisuje się, dopisując samogłoskę, jak w おかあさん (mama). Długie o zwykle zapisuje się jako おう, a długie e jako えい: とうきょう (Tokio), えいが (film).",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "っか",
+          "romaji": "kka"
+        },
+        {
+          "char": "っき",
+          "romaji": "kki"
+        },
+        {
+          "char": "っく",
+          "romaji": "kku"
+        },
+        {
+          "char": "っこ",
+          "romaji": "kko"
+        },
+        {
+          "char": "っさ",
+          "romaji": "ssa"
+        },
+        {
+          "char": "っし",
+          "romaji": "sshi",
+          "alt": ["ssi"]
+        },
+        {
+          "char": "っそ",
+          "romaji": "sso"
+        },
+        {
+          "char": "った",
+          "romaji": "tta"
+        },
+        {
+          "char": "っち",
+          "romaji": "tchi",
+          "alt": ["cchi", "tti"]
+        },
+        {
+          "char": "っつ",
+          "romaji": "ttsu",
+          "alt": ["ttu"]
+        },
+        {
+          "char": "って",
+          "romaji": "tte"
+        },
+        {
+          "char": "っと",
+          "romaji": "tto"
+        },
+        {
+          "char": "っぱ",
+          "romaji": "ppa"
+        },
+        {
+          "char": "っぴ",
+          "romaji": "ppi"
+        },
+        {
+          "char": "っぽ",
+          "romaji": "ppo"
+        }
+      ]
+    },
+    {
+      "id": "k-a",
+      "script": "katakana",
+      "label": "Samogłoski",
+      "kind": "basic",
+      "note": {
+        "pl": "Katakana zapisuje te same dźwięki co hiragana, ale służy głównie do słów obcych, nazw i wyrazów dźwiękonaśladowczych. Kształty są bardziej kanciaste, a kilka przypomina swoje odpowiedniki z hiragany.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ア",
+          "romaji": "a",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Czekan alpinisty z ostrzem u góry i trzonkiem skierowanym w dół: a jak alpinista.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "イ",
+          "romaji": "i",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Igła z ukośną nitką: i jak igła.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ウ",
+          "romaji": "u",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Ul z kominkiem na dachu: u jak ul.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "エ",
+          "romaji": "e",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Dwie półki połączone jednym słupkiem tworzą etażerkę: e jak etażerka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "オ",
+          "romaji": "o",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Z お zjedzono obwarzanek i okruszek, zostały krzyżyk i ukośna nóżka: o jak obwarzanek.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ka",
+      "script": "katakana",
+      "label": "Rząd K",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "カ",
+          "romaji": "ka",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Karateka z か otarł już pot, został sam cios: ka jak karateka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "キ",
+          "romaji": "ki",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Kij z dwoma szczebelkami, tym razem bez haczyka: ki jak kij.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ク",
+          "romaji": "ku",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Kurek od kranu wygięty w dół: ku jak kurek.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ケ",
+          "romaji": "ke",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Kelner unosi tacę na wyciągniętej ręce: ke jak kelner.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "コ",
+          "romaji": "ko",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Dwa koce z こ zszyte z boku: ko jak koc.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-sa",
+      "script": "katakana",
+      "label": "Rząd S",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "サ",
+          "romaji": "sa",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Sanki na dwóch nóżkach, a dłuższa z nich sunie w dół: sa jak sanki.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "シ",
+          "romaji": "shi",
+          "alt": ["si"],
+          "col": 1,
+          "mnemonic": {
+            "pl": "Sikawka tryska z dołu w górę, a obok kapią dwie krople: shi jak sikawka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ス",
+          "romaji": "su",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Zapaśnik sumo w szerokim rozkroku: su jak sumo.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "セ",
+          "romaji": "se",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Sejf z せ, któremu odpadła jedna ścianka: se jak sejf.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ソ",
+          "romaji": "so",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Sokół spada z góry w dół obok piórka: so jak sokół.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ta",
+      "script": "katakana",
+      "label": "Rząd T",
+      "kind": "basic",
+      "note": {
+        "pl": "Nie myl シ (shi) z ツ (tsu). W シ kreseczki stoją jedna nad drugą, a długa kreska idzie z dołu w górę; w ツ kreseczki są obok siebie, a długa kreska spada z góry.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "タ",
+          "romaji": "ta",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Taczka z jedną cegłą w środku: ta jak taczka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "チ",
+          "romaji": "chi",
+          "alt": ["ti"],
+          "col": 1,
+          "mnemonic": {
+            "pl": "Ciężarowiec w czapce dźwiga sztangę na barkach: chi jak ciężarowiec.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ツ",
+          "romaji": "tsu",
+          "alt": ["tu"],
+          "col": 2,
+          "mnemonic": {
+            "pl": "Dwa ziarenka i strużka cukru sypią się z góry w dół: tsu jak cukier.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "テ",
+          "romaji": "te",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Kurtyna teatru, scena pod nią i jedna noga sceny: te jak teatr.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ト",
+          "romaji": "to",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Wysoka topola z jedną gałązką: to jak topola.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-na",
+      "script": "katakana",
+      "label": "Rząd N",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "ナ",
+          "romaji": "na",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Krzyżyk apteki z な, tym razem bez butelki nalewki: na jak nalewka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ニ",
+          "romaji": "ni",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Dwie nitki rozciągnięte poziomo: ni jak nić.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ヌ",
+          "romaji": "nu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Z nudów ktoś rysuje haczyk i przekreśla go: nu jak nuda.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ネ",
+          "romaji": "ne",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Neptun w koronie rozkłada ramiona i stoi w rozkroku: ne jak Neptun.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ノ",
+          "romaji": "no",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Jedna ukośna kreska jak nos widziany z profilu: no jak nos.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ha",
+      "script": "katakana",
+      "label": "Rząd H",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "ハ",
+          "romaji": "ha",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Sam dach chaty, bez ścian: ha jak chata (ch czytamy jak h).",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ヒ",
+          "romaji": "hi",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Hiena siedzi bokiem i podwija ogon: hi jak hiena.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "フ",
+          "romaji": "fu",
+          "alt": ["hu"],
+          "col": 2,
+          "mnemonic": {
+            "pl": "Uchylona furtka, czyli górna belka i skrzydło odchylone w dół: fu jak furtka.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ヘ",
+          "romaji": "he",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Ten sam pagórek co w へ, ze szczytu znów słychać „hej!”: he.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ホ",
+          "romaji": "ho",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Mała choinka z rozłożonymi gałęziami: ho jak choinka (ch czytamy jak h).",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ma",
+      "script": "katakana",
+      "label": "Rząd M",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "マ",
+          "romaji": "ma",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Trójkątna mapa skarbów z zagiętym rogiem: ma jak mapa.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ミ",
+          "romaji": "mi",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Trzy witki miotły: mi jak miotła.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ム",
+          "romaji": "mu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Trójkątny kawałek pizzy z muchą na rogu: mu jak mucha.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "メ",
+          "romaji": "me",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Dwie skrzyżowane chorągiewki na mecie: me jak meta.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "モ",
+          "romaji": "mo",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Most z も, ale z prostszą kłodą: mo jak most.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ya",
+      "script": "katakana",
+      "label": "Rząd Y",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "ヤ",
+          "romaji": "ya",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Żagiel jachtu z や, tym razem bez flagi: ya jak jacht.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ユ",
+          "romaji": "yu",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Niska jurta z płaskim dachem i długą podłogą: yu jak jurta.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ヨ",
+          "romaji": "yo",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Jodła z trzema gałęziami wyrastającymi w lewo: yo jak jodła.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-ra",
+      "script": "katakana",
+      "label": "Rząd R",
+      "kind": "basic",
+      "chars": [
+        {
+          "char": "ラ",
+          "romaji": "ra",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Rak z ら schował się w skorupę, zostały czułek i szczypce: ra jak rak.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "リ",
+          "romaji": "ri",
+          "col": 1,
+          "mnemonic": {
+            "pl": "Dwa drążki rikszy, jak w り: ri jak riksza.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ル",
+          "romaji": "ru",
+          "col": 2,
+          "mnemonic": {
+            "pl": "Rumak podpiera się lewą nogą, a prawą wierzga w górę: ru jak rumak.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "レ",
+          "romaji": "re",
+          "col": 3,
+          "mnemonic": {
+            "pl": "Ptaszek stawiany przy potwierdzonej rezerwacji: re jak rezerwacja.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ロ",
+          "romaji": "ro",
+          "col": 4,
+          "mnemonic": {
+            "pl": "Kwadratowa głowa robota: ro jak robot.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-wa",
+      "script": "katakana",
+      "label": "Rząd W i ン",
+      "kind": "basic",
+      "note": {
+        "pl": "Nie myl ン (n) z ソ (so): w ン długa kreska idzie z dołu w górę, a w ソ spada z góry. ヲ spotyka się bardzo rzadko, bo partykułę o zapisuje się hiraganą: を.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ワ",
+          "romaji": "wa",
+          "col": 0,
+          "mnemonic": {
+            "pl": "Łajba odwrócona do góry dnem: wa jak łajba (czytamy „ła”).",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ヲ",
+          "romaji": "o",
+          "alt": ["wo"],
+          "col": 4,
+          "mnemonic": {
+            "pl": "Okap kuchenny z dwiema półkami i rurą w dół: o jak okap.",
+            "reviewed": false
+          }
+        },
+        {
+          "char": "ン",
+          "romaji": "n",
+          "alt": ["nn"],
+          "mnemonic": {
+            "pl": "Nucenie wznosi się z dołu w górę, a kropka to pierwszy dźwięk: n jak nucenie.",
+            "reviewed": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "k-dakuten",
+      "script": "katakana",
+      "label": "Dakuten: G, Z, D, B",
+      "kind": "dakuten",
+      "note": {
+        "pl": "Kreseczki ゛ działają tak samo jak w hiraganie: カ zmienia się w ガ, サ w ザ, タ w ダ, a ハ w バ.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ガ",
+          "romaji": "ga",
+          "col": 0
+        },
+        {
+          "char": "ギ",
+          "romaji": "gi",
+          "col": 1
+        },
+        {
+          "char": "グ",
+          "romaji": "gu",
+          "col": 2
+        },
+        {
+          "char": "ゲ",
+          "romaji": "ge",
+          "col": 3
+        },
+        {
+          "char": "ゴ",
+          "romaji": "go",
+          "col": 4
+        },
+        {
+          "char": "ザ",
+          "romaji": "za",
+          "col": 0
+        },
+        {
+          "char": "ジ",
+          "romaji": "ji",
+          "alt": ["zi"],
+          "col": 1
+        },
+        {
+          "char": "ズ",
+          "romaji": "zu",
+          "col": 2
+        },
+        {
+          "char": "ゼ",
+          "romaji": "ze",
+          "col": 3
+        },
+        {
+          "char": "ゾ",
+          "romaji": "zo",
+          "col": 4
+        },
+        {
+          "char": "ダ",
+          "romaji": "da",
+          "col": 0
+        },
+        {
+          "char": "ヂ",
+          "romaji": "ji",
+          "alt": ["di"],
+          "col": 1
+        },
+        {
+          "char": "ヅ",
+          "romaji": "zu",
+          "alt": ["du"],
+          "col": 2
+        },
+        {
+          "char": "デ",
+          "romaji": "de",
+          "col": 3
+        },
+        {
+          "char": "ド",
+          "romaji": "do",
+          "col": 4
+        },
+        {
+          "char": "バ",
+          "romaji": "ba",
+          "col": 0
+        },
+        {
+          "char": "ビ",
+          "romaji": "bi",
+          "col": 1
+        },
+        {
+          "char": "ブ",
+          "romaji": "bu",
+          "col": 2
+        },
+        {
+          "char": "ベ",
+          "romaji": "be",
+          "col": 3
+        },
+        {
+          "char": "ボ",
+          "romaji": "bo",
+          "col": 4
+        }
+      ]
+    },
+    {
+      "id": "k-handakuten",
+      "script": "katakana",
+      "label": "Handakuten: P",
+      "kind": "dakuten",
+      "note": {
+        "pl": "Kółko ゜ zmienia rząd H w P, tak jak w hiraganie: ハ staje się パ.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "パ",
+          "romaji": "pa",
+          "col": 0
+        },
+        {
+          "char": "ピ",
+          "romaji": "pi",
+          "col": 1
+        },
+        {
+          "char": "プ",
+          "romaji": "pu",
+          "col": 2
+        },
+        {
+          "char": "ペ",
+          "romaji": "pe",
+          "col": 3
+        },
+        {
+          "char": "ポ",
+          "romaji": "po",
+          "col": 4
+        }
+      ]
+    },
+    {
+      "id": "k-yoon",
+      "script": "katakana",
+      "label": "Połączenia z ャ ュ ョ",
+      "kind": "yoon",
+      "note": {
+        "pl": "Połączenia z małymi ャ, ュ i ョ działają tak samo jak w hiraganie: キャ to kya, a シュ to shu.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "キャ",
+          "romaji": "kya"
+        },
+        {
+          "char": "キュ",
+          "romaji": "kyu"
+        },
+        {
+          "char": "キョ",
+          "romaji": "kyo"
+        },
+        {
+          "char": "シャ",
+          "romaji": "sha",
+          "alt": ["sya"]
+        },
+        {
+          "char": "シュ",
+          "romaji": "shu",
+          "alt": ["syu"]
+        },
+        {
+          "char": "ショ",
+          "romaji": "sho",
+          "alt": ["syo"]
+        },
+        {
+          "char": "チャ",
+          "romaji": "cha",
+          "alt": ["tya", "cya"]
+        },
+        {
+          "char": "チュ",
+          "romaji": "chu",
+          "alt": ["tyu", "cyu"]
+        },
+        {
+          "char": "チョ",
+          "romaji": "cho",
+          "alt": ["tyo", "cyo"]
+        },
+        {
+          "char": "ニャ",
+          "romaji": "nya"
+        },
+        {
+          "char": "ニュ",
+          "romaji": "nyu"
+        },
+        {
+          "char": "ニョ",
+          "romaji": "nyo"
+        },
+        {
+          "char": "ヒャ",
+          "romaji": "hya"
+        },
+        {
+          "char": "ヒュ",
+          "romaji": "hyu"
+        },
+        {
+          "char": "ヒョ",
+          "romaji": "hyo"
+        },
+        {
+          "char": "ミャ",
+          "romaji": "mya"
+        },
+        {
+          "char": "ミュ",
+          "romaji": "myu"
+        },
+        {
+          "char": "ミョ",
+          "romaji": "myo"
+        },
+        {
+          "char": "リャ",
+          "romaji": "rya"
+        },
+        {
+          "char": "リュ",
+          "romaji": "ryu"
+        },
+        {
+          "char": "リョ",
+          "romaji": "ryo"
+        },
+        {
+          "char": "ギャ",
+          "romaji": "gya"
+        },
+        {
+          "char": "ギュ",
+          "romaji": "gyu"
+        },
+        {
+          "char": "ギョ",
+          "romaji": "gyo"
+        },
+        {
+          "char": "ジャ",
+          "romaji": "ja",
+          "alt": ["zya", "jya"]
+        },
+        {
+          "char": "ジュ",
+          "romaji": "ju",
+          "alt": ["zyu", "jyu"]
+        },
+        {
+          "char": "ジョ",
+          "romaji": "jo",
+          "alt": ["zyo", "jyo"]
+        },
+        {
+          "char": "ビャ",
+          "romaji": "bya"
+        },
+        {
+          "char": "ビュ",
+          "romaji": "byu"
+        },
+        {
+          "char": "ビョ",
+          "romaji": "byo"
+        },
+        {
+          "char": "ピャ",
+          "romaji": "pya"
+        },
+        {
+          "char": "ピュ",
+          "romaji": "pyu"
+        },
+        {
+          "char": "ピョ",
+          "romaji": "pyo"
+        }
+      ]
+    },
+    {
+      "id": "k-small-tsu",
+      "script": "katakana",
+      "label": "Małe ッ",
+      "kind": "small-tsu",
+      "note": {
+        "pl": "Małe ッ podwaja następną spółgłoskę, tak jak っ w hiraganie. W słowach obcych często stoi przed k, t, d i p, na przykład ベッド (beddo, łóżko).",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ッカ",
+          "romaji": "kka"
+        },
+        {
+          "char": "ッキ",
+          "romaji": "kki"
+        },
+        {
+          "char": "ック",
+          "romaji": "kku"
+        },
+        {
+          "char": "ッコ",
+          "romaji": "kko"
+        },
+        {
+          "char": "ッサ",
+          "romaji": "ssa"
+        },
+        {
+          "char": "ッシ",
+          "romaji": "sshi",
+          "alt": ["ssi"]
+        },
+        {
+          "char": "ッタ",
+          "romaji": "tta"
+        },
+        {
+          "char": "ッチ",
+          "romaji": "tchi",
+          "alt": ["cchi", "tti"]
+        },
+        {
+          "char": "ッツ",
+          "romaji": "ttsu",
+          "alt": ["ttu"]
+        },
+        {
+          "char": "ッテ",
+          "romaji": "tte"
+        },
+        {
+          "char": "ット",
+          "romaji": "tto"
+        },
+        {
+          "char": "ッド",
+          "romaji": "ddo"
+        },
+        {
+          "char": "ッグ",
+          "romaji": "ggu"
+        },
+        {
+          "char": "ッパ",
+          "romaji": "ppa"
+        },
+        {
+          "char": "ッピ",
+          "romaji": "ppi"
+        },
+        {
+          "char": "ップ",
+          "romaji": "ppu"
+        }
+      ]
+    },
+    {
+      "id": "k-long-vowel",
+      "script": "katakana",
+      "label": "Długa kreska ー",
+      "kind": "long-vowel",
+      "note": {
+        "pl": "Kreska ー wydłuża poprzednią samogłoskę: カー czytamy jak ka przeciągnięte dwa razy dłużej. W romaji zapisujemy to podwójną literą (kaa), a na japońskiej klawiaturze ー wpisuje się myślnikiem.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "カー",
+          "romaji": "kaa",
+          "alt": ["ka-"]
+        },
+        {
+          "char": "キー",
+          "romaji": "kii",
+          "alt": ["ki-"]
+        },
+        {
+          "char": "クー",
+          "romaji": "kuu",
+          "alt": ["ku-"]
+        },
+        {
+          "char": "ケー",
+          "romaji": "kee",
+          "alt": ["ke-"]
+        },
+        {
+          "char": "コー",
+          "romaji": "koo",
+          "alt": ["ko-"]
+        },
+        {
+          "char": "シー",
+          "romaji": "shii",
+          "alt": ["shi-"]
+        },
+        {
+          "char": "スー",
+          "romaji": "suu",
+          "alt": ["su-"]
+        },
+        {
+          "char": "ター",
+          "romaji": "taa",
+          "alt": ["ta-"]
+        },
+        {
+          "char": "ツー",
+          "romaji": "tsuu",
+          "alt": ["tsu-"]
+        },
+        {
+          "char": "ノー",
+          "romaji": "noo",
+          "alt": ["no-"]
+        },
+        {
+          "char": "ビー",
+          "romaji": "bii",
+          "alt": ["bi-"]
+        },
+        {
+          "char": "ボー",
+          "romaji": "boo",
+          "alt": ["bo-"]
+        },
+        {
+          "char": "パー",
+          "romaji": "paa",
+          "alt": ["pa-"]
+        },
+        {
+          "char": "ルー",
+          "romaji": "ruu",
+          "alt": ["ru-"]
+        },
+        {
+          "char": "メー",
+          "romaji": "mee",
+          "alt": ["me-"]
+        }
+      ]
+    },
+    {
+      "id": "k-extended",
+      "script": "katakana",
+      "label": "Dźwięki obce",
+      "kind": "extended",
+      "note": {
+        "pl": "Żeby zapisać dźwięki, których japoński nie ma, katakana łączy znak z małą samogłoską: テ i ィ dają ティ (ti), a フ i ァ dają ファ (fa). ヴ to próba oddania dźwięku v.",
+        "reviewed": false
+      },
+      "chars": [
+        {
+          "char": "ティ",
+          "romaji": "ti"
+        },
+        {
+          "char": "ディ",
+          "romaji": "di"
+        },
+        {
+          "char": "デュ",
+          "romaji": "dyu"
+        },
+        {
+          "char": "トゥ",
+          "romaji": "tu"
+        },
+        {
+          "char": "ドゥ",
+          "romaji": "du"
+        },
+        {
+          "char": "ファ",
+          "romaji": "fa"
+        },
+        {
+          "char": "フィ",
+          "romaji": "fi"
+        },
+        {
+          "char": "フェ",
+          "romaji": "fe"
+        },
+        {
+          "char": "フォ",
+          "romaji": "fo"
+        },
+        {
+          "char": "ウィ",
+          "romaji": "wi"
+        },
+        {
+          "char": "ウェ",
+          "romaji": "we"
+        },
+        {
+          "char": "ウォ",
+          "romaji": "wo"
+        },
+        {
+          "char": "シェ",
+          "romaji": "she"
+        },
+        {
+          "char": "ジェ",
+          "romaji": "je"
+        },
+        {
+          "char": "チェ",
+          "romaji": "che"
+        },
+        {
+          "char": "ツァ",
+          "romaji": "tsa"
+        },
+        {
+          "char": "イェ",
+          "romaji": "ye"
+        },
+        {
+          "char": "ヴァ",
+          "romaji": "va"
+        },
+        {
+          "char": "ヴィ",
+          "romaji": "vi"
+        },
+        {
+          "char": "ヴ",
+          "romaji": "vu"
+        },
+        {
+          "char": "ヴェ",
+          "romaji": "ve"
+        },
+        {
+          "char": "ヴォ",
+          "romaji": "vo"
+        }
+      ]
+    }
+  ]
+}

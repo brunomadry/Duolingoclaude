@@ -18,9 +18,9 @@
       "url": "https://www.edrdg.org/",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://www.edrdg.org/edrdg/licence.html",
-      "attribution": "JMdict and KANJIDIC2 are the property of the Electronic Dictionary Research and Development Group, used in conformance with the Group's licence (via OpenJLPT).",
-      "usedFor": "Readings, meanings and kanji data, through OpenJLPT.",
-      "usedForPl": "Czytania, znaczenia i dane o kanji (przez OpenJLPT).",
+      "attribution": "JMdict and KANJIDIC2 are the property of the Electronic Dictionary Research and Development Group, used in conformance with the Group's licence (via OpenJLPT and jmdict-simplified).",
+      "usedFor": "Readings, meanings and kanji data, through OpenJLPT; ten essential N5 words missing there (私, 日本, 父, 母, どんな and others) taken directly from JMdict.",
+      "usedForPl": "Czytania, znaczenia i dane o kanji (przez OpenJLPT) oraz dziesięć podstawowych słówek N5, których tam brakuje (np. 私, 日本, 父, 母).",
       "verified": true
     },
     {

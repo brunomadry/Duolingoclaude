@@ -1,0 +1,6674 @@
+{
+  "version": 1,
+  "words": [
+    {
+      "id": "au",
+      "kana": "あう",
+      "kanji": "会う",
+      "romaji": "au",
+      "en": ["to meet"],
+      "pos": ["v5u", "vi"],
+      "sentences": [194412, 215904],
+      "sourceId": "ada066edfd"
+    },
+    {
+      "id": "ao",
+      "kana": "あお",
+      "kanji": "青",
+      "romaji": "ao",
+      "en": ["blue"],
+      "pos": ["n", "adj-no"],
+      "sentences": [145720, 187219],
+      "sourceId": "ebec658463"
+    },
+    {
+      "id": "aoi",
+      "kana": "あおい",
+      "kanji": "青い",
+      "romaji": "aoi",
+      "en": ["blue"],
+      "pos": ["adj-i"],
+      "sentences": [226939, 199202],
+      "sourceId": "51a671ec17"
+    },
+    {
+      "id": "aka",
+      "kana": "あか",
+      "kanji": "赤",
+      "romaji": "aka",
+      "en": ["red"],
+      "pos": ["n", "adj-no"],
+      "sentences": [142280, 212071],
+      "sourceId": "2dacb910b2"
+    },
+    {
+      "id": "akai",
+      "kana": "あかい",
+      "kanji": "赤い",
+      "romaji": "akai",
+      "en": ["red"],
+      "pos": ["adj-i"],
+      "sentences": [88306, 142281],
+      "sourceId": "44ba38cf8b"
+    },
+    {
+      "id": "akarui",
+      "kana": "あかるい",
+      "kanji": "明るい",
+      "romaji": "akarui",
+      "en": ["bright"],
+      "pos": ["adj-i"],
+      "sentences": [184877, 203874],
+      "sourceId": "91987ae840"
+    },
+    {
+      "id": "aki",
+      "kana": "あき",
+      "kanji": "秋",
+      "romaji": "aki",
+      "en": ["autumn"],
+      "pos": ["n", "adv"],
+      "sentences": [148194, 216632],
+      "sourceId": "8dc7006bda"
+    },
+    {
+      "id": "aku",
+      "kana": "あく",
+      "kanji": "開く",
+      "romaji": "aku",
+      "en": ["to open", "to become open"],
+      "pos": ["v5k", "vi"],
+      "sentences": [225720, 201844],
+      "sourceId": "fc3bc1e6f1"
+    },
+    {
+      "id": "akeru",
+      "kana": "あける",
+      "kanji": "開ける",
+      "romaji": "akeru",
+      "en": ["to open"],
+      "pos": ["v1", "vt"],
+      "sentences": [201846, 203221],
+      "sourceId": "321963ed35"
+    },
+    {
+      "id": "ageru",
+      "kana": "あげる",
+      "kanji": "上げる",
+      "romaji": "ageru",
+      "en": ["to give"],
+      "pos": ["v1", "vt"],
+      "sentences": [170915, 113352],
+      "sourceId": "9661cbac61"
+    },
+    {
+      "id": "asa",
+      "kana": "あさ",
+      "kanji": "朝",
+      "romaji": "asa",
+      "en": ["morning"],
+      "pos": ["n", "adv"],
+      "sentences": [126237, 215640],
+      "sourceId": "d46ae79a26"
+    },
+    {
+      "id": "asagohan",
+      "kana": "あさごはん",
+      "kanji": "朝ごはん",
+      "romaji": "asagohan",
+      "en": ["breakfast"],
+      "pos": ["n"],
+      "sentences": [126248, 126246],
+      "sourceId": "98bc6f72ae"
+    },
+    {
+      "id": "asatte",
+      "kana": "あさって",
+      "romaji": "asatte",
+      "en": ["day after tomorrow"],
+      "pos": ["n", "adv"],
+      "sentences": [234491, 234494],
+      "sourceId": "b3b4041c52"
+    },
+    {
+      "id": "ashi",
+      "kana": "あし",
+      "kanji": "足",
+      "romaji": "ashi",
+      "en": ["foot", "leg"],
+      "pos": ["n"],
+      "sentences": [195414, 196726],
+      "sourceId": "27df3d5802"
+    },
+    {
+      "id": "ashita",
+      "kana": "あした",
+      "kanji": "明日",
+      "romaji": "ashita",
+      "en": ["tomorrow"],
+      "pos": ["n", "adv"],
+      "sentences": [234469, 80466],
+      "sourceId": "115ec83476"
+    },
+    {
+      "id": "asoko",
+      "kana": "あそこ",
+      "romaji": "asoko",
+      "en": ["over there"],
+      "pos": ["pn"],
+      "sentences": [2733322, 234395],
+      "sourceId": "bee501faf0"
+    },
+    {
+      "id": "asobu",
+      "kana": "あそぶ",
+      "kanji": "遊ぶ",
+      "romaji": "asobu",
+      "en": ["to play", "to make a visit"],
+      "pos": ["v5b", "vi"],
+      "sentences": [197343, 225249],
+      "sourceId": "2d55571300"
+    },
+    {
+      "id": "atatakai",
+      "kana": "あたたかい",
+      "kanji": "暖かい",
+      "romaji": "atatakai",
+      "en": ["warm"],
+      "pos": ["adj-i"],
+      "sentences": [203062, 122194],
+      "sourceId": "f665c2128a"
+    },
+    {
+      "id": "atama",
+      "kana": "あたま",
+      "kanji": "頭",
+      "romaji": "atama",
+      "en": ["head"],
+      "pos": ["n"],
+      "sentences": [229971, 215196],
+      "sourceId": "b62cb9ce4c"
+    },
+    {
+      "id": "atarashii",
+      "kana": "あたらしい",
+      "kanji": "新しい",
+      "romaji": "atarashii",
+      "en": ["new"],
+      "pos": ["adj-i"],
+      "sentences": [141560, 145459],
+      "sourceId": "8ae27e3b51"
+    },
+    {
+      "id": "achira",
+      "kana": "あちら",
+      "romaji": "achira",
+      "en": ["there"],
+      "pos": ["pn"],
+      "sentences": [217779, 234350],
+      "sourceId": "34e6f7d220"
+    },
+    {
+      "id": "atsui-thick",
+      "kana": "あつい",
+      "kanji": "厚い",
+      "romaji": "atsui",
+      "en": ["thick"],
+      "pos": ["adj-i"],
+      "sentences": [205578, 85389],
+      "sourceId": "9949d87445"
+    },
+    {
+      "id": "atsui-hot",
+      "kana": "あつい",
+      "kanji": "暑い",
+      "romaji": "atsui",
+      "en": ["hot"],
+      "pos": ["adj-i"],
+      "sentences": [201579, 147452],
+      "sourceId": "7b4aecdf7b"
+    },
+    {
+      "id": "atsui-hot-touch",
+      "kana": "あつい",
+      "kanji": "熱い",
+      "romaji": "atsui",
+      "en": ["hot to the touch"],
+      "pos": ["adj-i"],
+      "sentences": [147486, 236207],
+      "sourceId": "a379d413fd"
+    },
+    {
+      "id": "atchi",
+      "kana": "あっち",
+      "romaji": "atchi",
+      "en": ["over there"],
+      "pos": ["pn"],
+      "sentences": [217779, 4892691],
+      "sourceId": "60dd63379e"
+    },
+    {
+      "id": "ato",
+      "kana": "あと",
+      "kanji": "後",
+      "romaji": "ato",
+      "en": ["afterwards"],
+      "pos": ["n", "adj-no"],
+      "sentences": [189518, 229928],
+      "sourceId": "4f134c9b38"
+    },
+    {
+      "id": "anata",
+      "kana": "あなた",
+      "romaji": "anata",
+      "en": ["you"],
+      "pos": ["pn"],
+      "sentences": [198640, 200726],
+      "sourceId": "afdf384f68"
+    },
+    {
+      "id": "ani",
+      "kana": "あに",
+      "kanji": "兄",
+      "romaji": "ani",
+      "en": ["(humble) older brother"],
+      "pos": ["n"],
+      "sentences": [74148, 176617],
+      "sourceId": "4aab699864"
+    },
+    {
+      "id": "ane",
+      "kana": "あね",
+      "kanji": "姉",
+      "romaji": "ane",
+      "en": ["(humble) older sister"],
+      "pos": ["n"],
+      "sentences": [141894, 168901],
+      "sourceId": "8bfeb208b4"
+    },
+    {
+      "id": "ano",
+      "kana": "あの",
+      "romaji": "ano",
+      "en": ["that over there"],
+      "pos": ["adj-pn"],
+      "sentences": [231361, 219724],
+      "sourceId": "ac4706068b"
+    },
+    {
+      "id": "apaato",
+      "kana": "アパート",
+      "romaji": "apaato",
+      "en": ["apartment"],
+      "pos": ["n"],
+      "sentences": [176617, 229463],
+      "sourceId": "0cf05b3a0d"
+    },
+    {
+      "id": "abiru",
+      "kana": "あびる",
+      "romaji": "abiru",
+      "en": ["to bathe", "to shower"],
+      "pos": ["v1", "vt"],
+      "sentences": [209749, 215743],
+      "sourceId": "a5aceb6426"
+    },
+    {
+      "id": "abunai",
+      "kana": "あぶない",
+      "kanji": "危ない",
+      "romaji": "abunai",
+      "en": ["dangerous"],
+      "pos": ["adj-i"],
+      "sentences": [183713, 183596],
+      "sourceId": "0509cb3b27"
+    },
+    {
+      "id": "amai",
+      "kana": "あまい",
+      "kanji": "甘い",
+      "romaji": "amai",
+      "en": ["sweet"],
+      "pos": ["adj-i"],
+      "sentences": [194851, 223560],
+      "sourceId": "4afffe5811"
+    },
+    {
+      "id": "amari",
+      "kana": "あまり",
+      "romaji": "amari",
+      "en": ["not very"],
+      "pos": ["adv"],
+      "sentences": [221356, 196985],
+      "sourceId": "eac90e8e98"
+    },
+    {
+      "id": "ame-candy",
+      "kana": "あめ",
+      "kanji": "飴",
+      "romaji": "ame",
+      "en": ["candy"],
+      "pos": ["n"],
+      "sentences": [229358, 139909],
+      "sourceId": "5d72771a3c"
+    },
+    {
+      "id": "ame-rain",
+      "kana": "あめ",
+      "kanji": "雨",
+      "romaji": "ame",
+      "en": ["rain"],
+      "pos": ["n"],
+      "sentences": [80133, 172827],
+      "sourceId": "277a58c9df"
+    },
+    {
+      "id": "arau",
+      "kana": "あらう",
+      "kanji": "洗う",
+      "romaji": "arau",
+      "en": ["to wash"],
+      "pos": ["v5u", "vt"],
+      "sentences": [228970, 148947],
+      "sourceId": "f8fa96946f"
+    },
+    {
+      "id": "arigatou",
+      "kana": "ありがとう",
+      "romaji": "arigatou",
+      "en": ["Thank you"],
+      "pos": ["int"],
+      "sentences": [197814, 213900],
+      "sourceId": "93461820fe"
+    },
+    {
+      "id": "aru",
+      "kana": "ある",
+      "romaji": "aru",
+      "en": ["to be", "to have (used for inanimate objects)"],
+      "pos": ["v5r-i", "vi"],
+      "sentences": [77204, 80097],
+      "sourceId": "ac08788418"
+    },
+    {
+      "id": "aruku",
+      "kana": "あるく",
+      "kanji": "歩く",
+      "romaji": "aruku",
+      "en": ["to walk"],
+      "pos": ["v5k", "vi"],
+      "sentences": [231584, 83212],
+      "sourceId": "55f3080ce4"
+    },
+    {
+      "id": "are",
+      "kana": "あれ",
+      "romaji": "are",
+      "en": ["that"],
+      "pos": ["pn"],
+      "sourceId": "d727a76b22"
+    },
+    {
+      "id": "anna",
+      "kana": "あんな",
+      "romaji": "anna",
+      "en": ["that kind of", "like that"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1000590"
+    },
+    {
+      "id": "ii",
+      "kana": "いい",
+      "romaji": "ii",
+      "en": ["good"],
+      "pos": ["adj-ix"],
+      "sentences": [194533, 203075],
+      "sourceId": "e37a087c0f"
+    },
+    {
+      "id": "iie",
+      "kana": "いいえ",
+      "romaji": "iie",
+      "en": ["no"],
+      "pos": ["int"],
+      "sourceId": "6d4596ae46"
+    },
+    {
+      "id": "iu",
+      "kana": "いう",
+      "kanji": "言う",
+      "romaji": "iu",
+      "en": ["to say"],
+      "pos": ["v5u", "vt"],
+      "sentences": [236431, 216629],
+      "sourceId": "ae0cc00f94"
+    },
+    {
+      "id": "ie",
+      "kana": "いえ",
+      "kanji": "家",
+      "romaji": "ie",
+      "en": ["house"],
+      "pos": ["n"],
+      "sentences": [80048, 83093],
+      "sourceId": "9f074820b1"
+    },
+    {
+      "id": "ikaga",
+      "kana": "いかが",
+      "romaji": "ikaga",
+      "en": ["how"],
+      "pos": ["adv"],
+      "sentences": [74894, 196854],
+      "sourceId": "a3f296ad9a"
+    },
+    {
+      "id": "iku",
+      "kana": "いく",
+      "kanji": "行く",
+      "romaji": "iku",
+      "en": ["to go"],
+      "pos": ["v5k-s", "vi"],
+      "sentences": [226648, 84793],
+      "sourceId": "66e4692df7"
+    },
+    {
+      "id": "ikutsu",
+      "kana": "いくつ",
+      "romaji": "ikutsu",
+      "en": ["how many?", "how old?"],
+      "pos": ["adv"],
+      "sentences": [233594, 228303],
+      "sourceId": "026ae57b50"
+    },
+    {
+      "id": "ikura",
+      "kana": "いくら",
+      "romaji": "ikura",
+      "en": ["how much?"],
+      "pos": ["n", "adv"],
+      "sentences": [223306, 197388],
+      "sourceId": "4fc98c6938"
+    },
+    {
+      "id": "ike",
+      "kana": "いけ",
+      "kanji": "池",
+      "romaji": "ike",
+      "en": ["pond"],
+      "pos": ["n"],
+      "sentences": [207858, 220757],
+      "sourceId": "43c874a6c8"
+    },
+    {
+      "id": "isha",
+      "kana": "いしゃ",
+      "kanji": "医者",
+      "romaji": "isha",
+      "en": ["medical doctor"],
+      "pos": ["n"],
+      "sentences": [190904, 122341],
+      "sourceId": "ca76162587"
+    },
+    {
+      "id": "isu",
+      "kana": "いす",
+      "romaji": "isu",
+      "en": ["chair"],
+      "pos": ["n"],
+      "sentences": [202860, 229123],
+      "sourceId": "d305fa14a8"
+    },
+    {
+      "id": "isogashii",
+      "kana": "いそがしい",
+      "kanji": "忙しい",
+      "romaji": "isogashii",
+      "en": ["busy"],
+      "pos": ["adj-i"],
+      "sentences": [82529, 223466],
+      "sourceId": "cd1bcc2b1b"
+    },
+    {
+      "id": "itai",
+      "kana": "いたい",
+      "kanji": "痛い",
+      "romaji": "itai",
+      "en": ["painful"],
+      "pos": ["adj-i"],
+      "sentences": [196436, 125689],
+      "sourceId": "4dae367794"
+    },
+    {
+      "id": "itadakimasu",
+      "kana": "いただきます",
+      "romaji": "itadakimasu",
+      "en": ["expression of gratitude before meals"],
+      "pos": ["exp"],
+      "sentences": [234953, 192061],
+      "sourceId": "eac7a22620"
+    },
+    {
+      "id": "ichi",
+      "kana": "いち",
+      "kanji": "一",
+      "romaji": "ichi",
+      "en": ["one"],
+      "pos": ["num", "pref"],
+      "sentences": [218179, 223472],
+      "sourceId": "9d8f862791"
+    },
+    {
+      "id": "ichinichi",
+      "kana": "いちにち",
+      "kanji": "一日",
+      "romaji": "ichinichi",
+      "en": ["one day", "all day"],
+      "pos": ["n"],
+      "sentences": [190280, 190284],
+      "sourceId": "1cfccd0cdd"
+    },
+    {
+      "id": "ichiban",
+      "kana": "いちばん",
+      "romaji": "ichiban",
+      "en": ["best", "first"],
+      "pos": ["n", "adv", "adj-no"],
+      "sentences": [223023, 234637],
+      "sourceId": "cb96f363df"
+    },
+    {
+      "id": "itsu",
+      "kana": "いつ",
+      "romaji": "itsu",
+      "en": ["when"],
+      "pos": ["pn"],
+      "sentences": [228596, 198453],
+      "sourceId": "fac6fc0838"
+    },
+    {
+      "id": "itsuka",
+      "kana": "いつか",
+      "kanji": "五日",
+      "romaji": "itsuka",
+      "en": ["five days", "fifth day"],
+      "pos": ["n"],
+      "sentences": [235804, 235115],
+      "sourceId": "2a7c4baf86"
+    },
+    {
+      "id": "issho",
+      "kana": "いっしょ",
+      "kanji": "一緒",
+      "romaji": "issho",
+      "en": ["together"],
+      "pos": ["n"],
+      "sentences": [217215, 2304921],
+      "sourceId": "2dc7289c82"
+    },
+    {
+      "id": "itsutsu",
+      "kana": "いつつ",
+      "kanji": "五つ",
+      "romaji": "itsutsu",
+      "en": ["five"],
+      "pos": ["num"],
+      "sentences": [220200, 192345],
+      "sourceId": "9ac35c3990"
+    },
+    {
+      "id": "itsumo",
+      "kana": "いつも",
+      "romaji": "itsumo",
+      "en": ["always"],
+      "pos": ["adv"],
+      "sentences": [230970, 230973],
+      "sourceId": "dea2a1df8b"
+    },
+    {
+      "id": "inu",
+      "kana": "いぬ",
+      "kanji": "犬",
+      "romaji": "inu",
+      "en": ["dog"],
+      "pos": ["n"],
+      "sentences": [211003, 222102],
+      "sourceId": "0df89f5010"
+    },
+    {
+      "id": "ima",
+      "kana": "いま",
+      "kanji": "今",
+      "romaji": "ima",
+      "en": ["now"],
+      "pos": ["n", "adj-no", "adv"],
+      "sentences": [172752, 199786],
+      "sourceId": "ce75c75644"
+    },
+    {
+      "id": "imi",
+      "kana": "いみ",
+      "kanji": "意味",
+      "romaji": "imi",
+      "en": ["meaning"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [210824, 227633],
+      "sourceId": "cb29ccdd2a"
+    },
+    {
+      "id": "imouto",
+      "kana": "いもうと",
+      "kanji": "妹",
+      "romaji": "imouto",
+      "en": ["(humble) younger sister"],
+      "pos": ["n"],
+      "sentences": [127233, 234651],
+      "sourceId": "12047d019b"
+    },
+    {
+      "id": "iya",
+      "kana": "いや",
+      "kanji": "嫌",
+      "romaji": "iya",
+      "en": ["unpleasant"],
+      "pos": ["adj-na"],
+      "sentences": [81316, 199479],
+      "sourceId": "eda751e069"
+    },
+    {
+      "id": "iriguchi",
+      "kana": "いりぐち",
+      "kanji": "入口",
+      "romaji": "iriguchi",
+      "en": ["entrance"],
+      "pos": ["n"],
+      "sentences": [235719, 143523],
+      "sourceId": "1ff0529d03"
+    },
+    {
+      "id": "iru-be",
+      "kana": "いる",
+      "romaji": "iru",
+      "en": ["to be", "to have (used for people and animals)"],
+      "pos": ["aux-v", "v1"],
+      "sentences": [214668, 75577],
+      "sourceId": "9438889173"
+    },
+    {
+      "id": "iru-need",
+      "kana": "いる",
+      "kanji": "要る",
+      "romaji": "iru",
+      "en": ["to need"],
+      "pos": ["v5r", "vi"],
+      "sentences": [172740, 198027],
+      "sourceId": "7a84208708"
+    },
+    {
+      "id": "ireru",
+      "kana": "いれる",
+      "kanji": "入れる",
+      "romaji": "ireru",
+      "en": ["to put in"],
+      "pos": ["v1", "vt"],
+      "sentences": [205330, 81634],
+      "sourceId": "6d824d5110"
+    },
+    {
+      "id": "iro",
+      "kana": "いろ",
+      "kanji": "色",
+      "romaji": "iro",
+      "en": ["colour"],
+      "pos": ["n"],
+      "sentences": [226206, 221060],
+      "sourceId": "523266ea6f"
+    },
+    {
+      "id": "iroiro",
+      "kana": "いろいろ",
+      "romaji": "iroiro",
+      "en": ["various"],
+      "pos": ["adj-na", "adj-no"],
+      "sentences": [141760, 224928],
+      "sourceId": "f74dd1ee9a"
+    },
+    {
+      "id": "ue",
+      "kana": "うえ",
+      "kanji": "上",
+      "romaji": "ue",
+      "en": ["on top of"],
+      "pos": ["n"],
+      "sentences": [202398, 202408],
+      "sourceId": "08a3ed212d"
+    },
+    {
+      "id": "ushiro",
+      "kana": "うしろ",
+      "kanji": "後ろ",
+      "romaji": "ushiro",
+      "en": ["behind"],
+      "pos": ["n", "adj-no"],
+      "sentences": [173570, 233318],
+      "sourceId": "93bdc81dd9"
+    },
+    {
+      "id": "usui",
+      "kana": "うすい",
+      "kanji": "薄い",
+      "romaji": "usui",
+      "en": ["thin", "weak"],
+      "pos": ["adj-i"],
+      "sentences": [224899, 122981],
+      "sourceId": "d2b2316e45"
+    },
+    {
+      "id": "uta",
+      "kana": "うた",
+      "kanji": "歌",
+      "romaji": "uta",
+      "en": ["song"],
+      "pos": ["n"],
+      "sentences": [186791, 222789],
+      "sourceId": "036f4180a2"
+    },
+    {
+      "id": "utau",
+      "kana": "うたう",
+      "kanji": "歌う",
+      "romaji": "utau",
+      "en": ["to sing"],
+      "pos": ["v5u", "vt", "vi"],
+      "sentences": [215403, 196771],
+      "sourceId": "3464318c23"
+    },
+    {
+      "id": "umareru",
+      "kana": "うまれる",
+      "kanji": "生まれる",
+      "romaji": "umareru",
+      "en": ["to be born"],
+      "pos": ["v1", "vi"],
+      "sentences": [199613, 224704],
+      "sourceId": "63bc7722fa"
+    },
+    {
+      "id": "umi",
+      "kana": "うみ",
+      "kanji": "海",
+      "romaji": "umi",
+      "en": ["sea"],
+      "pos": ["n"],
+      "sentences": [187770, 185086],
+      "sourceId": "06ac21dc7d"
+    },
+    {
+      "id": "uru",
+      "kana": "うる",
+      "kanji": "売る",
+      "romaji": "uru",
+      "en": ["to sell"],
+      "pos": ["v5r", "vt"],
+      "sentences": [2312116, 198017],
+      "sourceId": "f7e1da43df"
+    },
+    {
+      "id": "urusai",
+      "kana": "うるさい",
+      "kanji": "煩い",
+      "romaji": "urusai",
+      "en": ["noisy", "annoying"],
+      "pos": ["adj-i"],
+      "sentences": [230966, 75438],
+      "sourceId": "7ecfe0d248"
+    },
+    {
+      "id": "uwagi",
+      "kana": "うわぎ",
+      "kanji": "上着",
+      "romaji": "uwagi",
+      "en": ["jacket"],
+      "pos": ["n"],
+      "sentences": [201867, 208973],
+      "sourceId": "1ef8a05bf3"
+    },
+    {
+      "id": "e",
+      "kana": "え",
+      "kanji": "絵",
+      "romaji": "e",
+      "en": ["picture"],
+      "pos": ["n"],
+      "sentences": [184950, 199249],
+      "sourceId": "5bb390da0b"
+    },
+    {
+      "id": "eiga",
+      "kana": "えいが",
+      "kanji": "映画",
+      "romaji": "eiga",
+      "en": ["movie"],
+      "pos": ["n"],
+      "sentences": [212237, 189293],
+      "sourceId": "92b1621231"
+    },
+    {
+      "id": "eigakan",
+      "kana": "えいがかん",
+      "kanji": "映画館",
+      "romaji": "eigakan",
+      "en": ["cinema"],
+      "pos": ["n"],
+      "sentences": [212218, 179880],
+      "sourceId": "8a88cfbcb8"
+    },
+    {
+      "id": "eigo",
+      "kana": "えいご",
+      "kanji": "英語",
+      "romaji": "eigo",
+      "en": ["English language"],
+      "pos": ["n"],
+      "sentences": [230259, 141734],
+      "sourceId": "16adc7bd03"
+    },
+    {
+      "id": "ee",
+      "kana": "ええ",
+      "romaji": "ee",
+      "en": ["yes"],
+      "pos": ["int"],
+      "sentences": [202181, 228019],
+      "sourceId": "8ac60a4060"
+    },
+    {
+      "id": "eki",
+      "kana": "えき",
+      "kanji": "駅",
+      "romaji": "eki",
+      "en": ["station"],
+      "pos": ["n"],
+      "sentences": [225536, 224772],
+      "sourceId": "d5f359c20b"
+    },
+    {
+      "id": "erebeetaa",
+      "kana": "エレベーター",
+      "romaji": "erebeetaa",
+      "en": ["elevator"],
+      "pos": ["n"],
+      "sentences": [227886, 161307],
+      "sourceId": "eb1695baf6"
+    },
+    {
+      "id": "enpitsu",
+      "kana": "えんぴつ",
+      "kanji": "鉛筆",
+      "romaji": "enpitsu",
+      "en": ["pencil"],
+      "pos": ["n"],
+      "sentences": [227853, 196645],
+      "sourceId": "381da4d060"
+    },
+    {
+      "id": "oishii",
+      "kana": "おいしい",
+      "romaji": "oishii",
+      "en": ["delicious"],
+      "pos": ["adj-i"],
+      "sentences": [227834, 198944],
+      "sourceId": "7f02ae8fa1"
+    },
+    {
+      "id": "ooi",
+      "kana": "おおい",
+      "kanji": "多い",
+      "romaji": "ooi",
+      "en": ["many"],
+      "pos": ["adj-i"],
+      "sentences": [222596, 213686],
+      "sourceId": "60813fffd1"
+    },
+    {
+      "id": "ookii",
+      "kana": "おおきい",
+      "kanji": "大きい",
+      "romaji": "ookii",
+      "en": ["big"],
+      "pos": ["adj-i"],
+      "sentences": [193236, 225891],
+      "sourceId": "8fa5a63fc7"
+    },
+    {
+      "id": "ookina",
+      "kana": "おおきな",
+      "kanji": "大きな",
+      "romaji": "ookina",
+      "en": ["big"],
+      "pos": ["adj-pn"],
+      "sentences": [204722, 230634],
+      "sourceId": "3a2de0afca"
+    },
+    {
+      "id": "oozei",
+      "kana": "おおぜい",
+      "kanji": "大勢",
+      "romaji": "oozei",
+      "en": ["great number of people"],
+      "pos": ["n", "adj-no"],
+      "sentences": [137691, 213674],
+      "sourceId": "57ed89b240"
+    },
+    {
+      "id": "okaasan",
+      "kana": "おかあさん",
+      "kanji": "お母さん",
+      "romaji": "okaasan",
+      "en": ["(honorable) mother"],
+      "pos": ["n"],
+      "sentences": [226625, 203056],
+      "sourceId": "2007947770"
+    },
+    {
+      "id": "okashi",
+      "kana": "おかし",
+      "kanji": "お菓子",
+      "romaji": "okashi",
+      "en": ["sweets", "candy"],
+      "pos": ["n"],
+      "sentences": [194419, 223955],
+      "sourceId": "669019c625"
+    },
+    {
+      "id": "okane",
+      "kana": "おかね",
+      "kanji": "お金",
+      "romaji": "okane",
+      "en": ["money"],
+      "pos": ["n"],
+      "sentences": [232498, 196392],
+      "sourceId": "3e015d0a8b"
+    },
+    {
+      "id": "okiru",
+      "kana": "おきる",
+      "kanji": "起きる",
+      "romaji": "okiru",
+      "en": ["to get up"],
+      "pos": ["v1", "vi"],
+      "sentences": [227112, 235061],
+      "sourceId": "248a353e09"
+    },
+    {
+      "id": "oku",
+      "kana": "おく",
+      "kanji": "置く",
+      "romaji": "oku",
+      "en": ["to put"],
+      "pos": ["v5k", "vt"],
+      "sentences": [204648, 197972],
+      "sourceId": "96845304fd"
+    },
+    {
+      "id": "okusan",
+      "kana": "おくさん",
+      "kanji": "奥さん",
+      "romaji": "okusan",
+      "en": ["(honorable) wife"],
+      "pos": ["n"],
+      "sentences": [188559, 188560],
+      "sourceId": "6c4661d672"
+    },
+    {
+      "id": "osake",
+      "kana": "おさけ",
+      "kanji": "お酒",
+      "romaji": "osake",
+      "en": ["alcohol", "rice wine"],
+      "pos": ["n"],
+      "sentences": [195774, 227033],
+      "sourceId": "f843b00173"
+    },
+    {
+      "id": "osara",
+      "kana": "おさら",
+      "kanji": "お皿",
+      "romaji": "osara",
+      "en": ["plate", "dish"],
+      "pos": ["n"],
+      "sentences": [215024, 161235],
+      "sourceId": "101d46a061"
+    },
+    {
+      "id": "ojiisan",
+      "kana": "おじいさん",
+      "kanji": "お祖父さん",
+      "romaji": "ojiisan",
+      "en": ["grandfather", "male senior citizen"],
+      "pos": ["n"],
+      "sentences": [227740, 227744],
+      "sourceId": "1b89f0f993"
+    },
+    {
+      "id": "oshieru",
+      "kana": "おしえる",
+      "kanji": "教える",
+      "romaji": "oshieru",
+      "en": ["to teach", "to tell"],
+      "pos": ["v1", "vt"],
+      "sentences": [142700, 231121],
+      "sourceId": "f2fa049fdd"
+    },
+    {
+      "id": "osu",
+      "kana": "おす",
+      "kanji": "押す",
+      "romaji": "osu",
+      "en": ["to push", "to stamp something"],
+      "pos": ["v5s", "vt"],
+      "sentences": [215785, 223170],
+      "sourceId": "ce8facdf69"
+    },
+    {
+      "id": "osoi",
+      "kana": "おそい",
+      "kanji": "遅い",
+      "romaji": "osoi",
+      "en": ["late", "slow"],
+      "pos": ["adj-i"],
+      "sentences": [126737, 213942],
+      "sourceId": "a082687f7a"
+    },
+    {
+      "id": "ocha",
+      "kana": "おちゃ",
+      "kanji": "お茶",
+      "romaji": "ocha",
+      "en": ["green tea"],
+      "pos": ["n"],
+      "sentences": [235316, 226878],
+      "sourceId": "edca336b1f"
+    },
+    {
+      "id": "otearai",
+      "kana": "おてあらい",
+      "kanji": "お手洗い",
+      "romaji": "otearai",
+      "en": ["bathroom"],
+      "pos": ["n"],
+      "sentences": [227063, 227064],
+      "sourceId": "75a36b034c"
+    },
+    {
+      "id": "otousan",
+      "kana": "おとうさん",
+      "kanji": "お父さん",
+      "romaji": "otousan",
+      "en": ["(honorable) father"],
+      "pos": ["n"],
+      "sentences": [226757, 161219],
+      "sourceId": "89807c7c22"
+    },
+    {
+      "id": "otouto",
+      "kana": "おとうと",
+      "kanji": "弟",
+      "romaji": "otouto",
+      "en": ["younger brother"],
+      "pos": ["n"],
+      "sentences": [125460, 195735],
+      "sourceId": "db32745bbc"
+    },
+    {
+      "id": "otoko",
+      "kana": "おとこ",
+      "kanji": "男",
+      "romaji": "otoko",
+      "en": ["man"],
+      "pos": ["n", "n-pref"],
+      "sentences": [208173, 227512],
+      "sourceId": "2fd7d45c8d"
+    },
+    {
+      "id": "otokonoko",
+      "kana": "おとこのこ",
+      "kanji": "男の子",
+      "romaji": "otokonoko",
+      "en": ["boy"],
+      "pos": ["exp", "n"],
+      "sentences": [231277, 127249],
+      "sourceId": "6f664d3ded"
+    },
+    {
+      "id": "ototoi",
+      "kana": "おととい",
+      "kanji": "一昨日",
+      "romaji": "ototoi",
+      "en": ["day before yesterday"],
+      "pos": ["n", "adv"],
+      "sentences": [190607, 190604],
+      "sourceId": "f0f3826045"
+    },
+    {
+      "id": "ototoshi",
+      "kana": "おととし",
+      "kanji": "一昨年",
+      "romaji": "ototoshi",
+      "en": ["year before last"],
+      "pos": ["n", "adv"],
+      "sentences": [93768],
+      "sourceId": "b75778f0ce"
+    },
+    {
+      "id": "otona",
+      "kana": "おとな",
+      "kanji": "大人",
+      "romaji": "otona",
+      "en": ["adult"],
+      "pos": ["n", "adj-no", "adj-na"],
+      "sentences": [137483, 219579],
+      "sourceId": "6f5049e2d4"
+    },
+    {
+      "id": "onaka",
+      "kana": "おなか",
+      "romaji": "onaka",
+      "en": ["stomach"],
+      "pos": ["n"],
+      "sentences": [188135, 228315],
+      "sourceId": "3707072a6b"
+    },
+    {
+      "id": "onaji",
+      "kana": "おなじ",
+      "kanji": "同じ",
+      "romaji": "onaji",
+      "en": ["same"],
+      "pos": ["adj-f", "adj-na"],
+      "sentences": [219452, 195787],
+      "sourceId": "7c134ec812"
+    },
+    {
+      "id": "oniisan",
+      "kana": "おにいさん",
+      "kanji": "お兄さん",
+      "romaji": "oniisan",
+      "en": ["(honorable) older brother"],
+      "pos": ["n"],
+      "sentences": [161718, 231433],
+      "sourceId": "c6f43a8cc3"
+    },
+    {
+      "id": "oneesan",
+      "kana": "おねえさん",
+      "kanji": "お姉さん",
+      "romaji": "oneesan",
+      "en": ["(honorable) older sister"],
+      "pos": ["n"],
+      "sentences": [233258, 168930],
+      "sourceId": "af378a4c86"
+    },
+    {
+      "id": "onegaishimasu",
+      "kana": "おねがいします",
+      "kanji": "お願いします",
+      "romaji": "onegaishimasu",
+      "en": ["please"],
+      "pos": ["exp"],
+      "sentences": [197242, 202278],
+      "sourceId": "4df6eda2a2"
+    },
+    {
+      "id": "obaasan",
+      "kana": "おばあさん",
+      "romaji": "obaasan",
+      "en": ["grandmother", "female senior-citizen"],
+      "pos": ["n"],
+      "sentences": [200160, 158459],
+      "sourceId": "12d9487797"
+    },
+    {
+      "id": "obasan",
+      "kana": "おばさん",
+      "kanji": "伯母さん",
+      "romaji": "obasan",
+      "en": ["aunt"],
+      "pos": ["n"],
+      "sentences": [227572, 218824],
+      "sourceId": "03d7b15720"
+    },
+    {
+      "id": "ohayou",
+      "kana": "おはよう",
+      "romaji": "ohayou",
+      "en": ["(abbreviation) Good morning"],
+      "pos": ["int"],
+      "sentences": [76824, 193149],
+      "sourceId": "36bff8d879"
+    },
+    {
+      "id": "ofuro",
+      "kana": "おふろ",
+      "kanji": "お風呂",
+      "romaji": "ofuro",
+      "en": ["bath"],
+      "pos": ["n"],
+      "sentences": [158918, 226696],
+      "sourceId": "f347485004"
+    },
+    {
+      "id": "obentou",
+      "kana": "おべんとう",
+      "kanji": "お弁当",
+      "romaji": "obentou",
+      "en": ["boxed lunch"],
+      "pos": ["n"],
+      "sentences": [107100, 226652],
+      "sourceId": "7a073616e5"
+    },
+    {
+      "id": "oboeru",
+      "kana": "おぼえる",
+      "kanji": "覚える",
+      "romaji": "oboeru",
+      "en": ["to remember"],
+      "pos": ["v1", "vt"],
+      "sentences": [122337, 200989],
+      "sourceId": "dad2d16220"
+    },
+    {
+      "id": "omawarisan",
+      "kana": "おまわりさん",
+      "romaji": "omawarisan",
+      "en": ["friendly term for policeman"],
+      "pos": ["n"],
+      "sentences": [214211, 227504],
+      "sourceId": "ae5d1778d1"
+    },
+    {
+      "id": "omoi",
+      "kana": "おもい",
+      "kanji": "重い",
+      "romaji": "omoi",
+      "en": ["heavy"],
+      "pos": ["adj-i"],
+      "sentences": [200082, 219723],
+      "sourceId": "cdfb776826"
+    },
+    {
+      "id": "omoshiroi",
+      "kana": "おもしろい",
+      "romaji": "omoshiroi",
+      "en": ["interesting"],
+      "pos": ["adj-i"],
+      "sentences": [214743, 218571],
+      "sourceId": "2568873ebd"
+    },
+    {
+      "id": "oyogu",
+      "kana": "およぐ",
+      "kanji": "泳ぐ",
+      "romaji": "oyogu",
+      "en": ["to swim"],
+      "pos": ["v5g", "vi"],
+      "sentences": [200074, 197870],
+      "sourceId": "3c5bb8f223"
+    },
+    {
+      "id": "oriru",
+      "kana": "おりる",
+      "kanji": "降りる",
+      "romaji": "oriru",
+      "en": ["to get off", "to descend"],
+      "pos": ["v1", "vi"],
+      "sentences": [224559, 214120],
+      "sourceId": "ae00442122"
+    },
+    {
+      "id": "owaru",
+      "kana": "おわる",
+      "kanji": "終わる",
+      "romaji": "owaru",
+      "en": ["to finish"],
+      "pos": ["v5r", "vi"],
+      "sentences": [213081, 171599],
+      "sourceId": "d7960dc78d"
+    },
+    {
+      "id": "ongaku",
+      "kana": "おんがく",
+      "kanji": "音楽",
+      "romaji": "ongaku",
+      "en": ["music"],
+      "pos": ["n"],
+      "sentences": [222881, 203070],
+      "sourceId": "cdea017272"
+    },
+    {
+      "id": "onna",
+      "kana": "おんな",
+      "kanji": "女",
+      "romaji": "onna",
+      "en": ["woman"],
+      "pos": ["n", "n-pref"],
+      "sentences": [144456, 230895],
+      "sourceId": "980a922ad3"
+    },
+    {
+      "id": "onnanoko",
+      "kana": "おんなのこ",
+      "kanji": "女の子",
+      "romaji": "onnanoko",
+      "en": ["girl"],
+      "pos": ["exp", "n"],
+      "sentences": [147335, 196427],
+      "sourceId": "e6afab391a"
+    },
+    {
+      "id": "gaikoku",
+      "kana": "がいこく",
+      "kanji": "外国",
+      "romaji": "gaikoku",
+      "en": ["foreign country"],
+      "pos": ["n", "adj-no"],
+      "sentences": [232163, 197481],
+      "sourceId": "31a803c7f5"
+    },
+    {
+      "id": "gaikokujin",
+      "kana": "がいこくじん",
+      "kanji": "外国人",
+      "romaji": "gaikokujin",
+      "en": ["foreigner"],
+      "pos": ["n"],
+      "sentences": [211699, 211696],
+      "sourceId": "70f1678111"
+    },
+    {
+      "id": "kaisha",
+      "kana": "かいしゃ",
+      "kanji": "会社",
+      "romaji": "kaisha",
+      "en": ["company"],
+      "pos": ["n"],
+      "sentences": [197326, 185231],
+      "sourceId": "2120ff505c"
+    },
+    {
+      "id": "kaidan",
+      "kana": "かいだん",
+      "kanji": "階段",
+      "romaji": "kaidan",
+      "en": ["stairs"],
+      "pos": ["n"],
+      "sentences": [211701, 141655],
+      "sourceId": "7cb27c411e"
+    },
+    {
+      "id": "kaimono",
+      "kana": "かいもの",
+      "kanji": "買い物",
+      "romaji": "kaimono",
+      "en": ["shopping"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [235706, 216415],
+      "sourceId": "a771d4f949"
+    },
+    {
+      "id": "kau",
+      "kana": "かう",
+      "kanji": "買う",
+      "romaji": "kau",
+      "en": ["to buy"],
+      "pos": ["v5u", "vt"],
+      "sentences": [121489, 184826],
+      "sourceId": "bdb125e5c6"
+    },
+    {
+      "id": "kaesu",
+      "kana": "かえす",
+      "kanji": "返す",
+      "romaji": "kaesu",
+      "en": ["to return something"],
+      "pos": ["v5s", "vt"],
+      "sentences": [149018, 228971],
+      "sourceId": "8ea4b03d7f"
+    },
+    {
+      "id": "kaeru",
+      "kana": "かえる",
+      "kanji": "帰る",
+      "romaji": "kaeru",
+      "en": ["to go back"],
+      "pos": ["v5r", "vi"],
+      "sentences": [75070, 84696],
+      "sourceId": "1d22f1d023"
+    },
+    {
+      "id": "kao",
+      "kana": "かお",
+      "kanji": "顔",
+      "romaji": "kao",
+      "en": ["face", "(facial) expression"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1217730"
+    },
+    {
+      "id": "kakaru",
+      "kana": "かかる",
+      "romaji": "kakaru",
+      "en": ["to take time or money"],
+      "pos": ["v5r", "vi"],
+      "sentences": [201593, 205401],
+      "sourceId": "687082e55c"
+    },
+    {
+      "id": "kagi",
+      "kana": "かぎ",
+      "romaji": "kagi",
+      "en": ["key"],
+      "pos": ["n"],
+      "sentences": [149069, 201870],
+      "sourceId": "e2d6576c76"
+    },
+    {
+      "id": "kaku",
+      "kana": "かく",
+      "kanji": "書く",
+      "romaji": "kaku",
+      "en": ["to write"],
+      "pos": ["v5k", "vt"],
+      "sentences": [214855, 217911],
+      "sourceId": "f7c7f35d9e"
+    },
+    {
+      "id": "gakusei",
+      "kana": "がくせい",
+      "kanji": "学生",
+      "romaji": "gakusei",
+      "en": ["student"],
+      "pos": ["n"],
+      "sentences": [184267, 192389],
+      "sourceId": "452102ad0a"
+    },
+    {
+      "id": "kakeru",
+      "kana": "かける",
+      "romaji": "kakeru",
+      "en": ["to call by phone"],
+      "pos": ["v1", "vt"],
+      "sentences": [236074, 224138],
+      "sourceId": "0ce2b98d3b"
+    },
+    {
+      "id": "kasa",
+      "kana": "かさ",
+      "kanji": "傘",
+      "romaji": "kasa",
+      "en": ["umbrella"],
+      "pos": ["n"],
+      "sentences": [203724, 169468],
+      "sourceId": "6f54881e59"
+    },
+    {
+      "id": "kasu",
+      "kana": "かす",
+      "kanji": "貸す",
+      "romaji": "kasu",
+      "en": ["to lend"],
+      "pos": ["v5s", "vt"],
+      "sentences": [196239, 196870],
+      "sourceId": "1122cac409"
+    },
+    {
+      "id": "kaze-wind",
+      "kana": "かぜ",
+      "kanji": "風",
+      "romaji": "kaze",
+      "en": ["wind"],
+      "pos": ["n"],
+      "sentences": [226491, 203636],
+      "sourceId": "c1a28465a2"
+    },
+    {
+      "id": "kaze-cold",
+      "kana": "かぜ",
+      "kanji": "風邪",
+      "romaji": "kaze",
+      "en": ["a cold"],
+      "pos": ["n"],
+      "sentences": [203635, 226396],
+      "sourceId": "c9b5da4d10"
+    },
+    {
+      "id": "kazoku",
+      "kana": "かぞく",
+      "kanji": "家族",
+      "romaji": "kazoku",
+      "en": ["family"],
+      "pos": ["n"],
+      "sentences": [233420, 186951],
+      "sourceId": "1c9db63bdc"
+    },
+    {
+      "id": "kata",
+      "kana": "かた",
+      "kanji": "方",
+      "romaji": "kata",
+      "en": ["person", "way of doing"],
+      "pos": ["n"],
+      "sentences": [224157, 226508],
+      "sourceId": "e34295f3e1"
+    },
+    {
+      "id": "gakkou",
+      "kana": "がっこう",
+      "kanji": "学校",
+      "romaji": "gakkou",
+      "en": ["school"],
+      "pos": ["n"],
+      "sentences": [222600, 184354],
+      "sourceId": "dd8ac16bd2"
+    },
+    {
+      "id": "kappu",
+      "kana": "カップ",
+      "romaji": "kappu",
+      "en": ["cup"],
+      "pos": ["n"],
+      "sentences": [202407, 223900],
+      "sourceId": "613c41bd1d"
+    },
+    {
+      "id": "katei",
+      "kana": "かてい",
+      "kanji": "家庭",
+      "romaji": "katei",
+      "en": ["household"],
+      "pos": ["n"],
+      "sentences": [145834, 233419],
+      "sourceId": "66eeeb818b"
+    },
+    {
+      "id": "kado",
+      "kana": "かど",
+      "kanji": "角",
+      "romaji": "kado",
+      "en": ["a corner"],
+      "pos": ["n"],
+      "sentences": [184544, 231123],
+      "sourceId": "4092bfd9bb"
+    },
+    {
+      "id": "kaban",
+      "kana": "かばん",
+      "romaji": "kaban",
+      "en": ["bag"],
+      "pos": ["n"],
+      "sentences": [218609, 223898],
+      "sourceId": "6e6a06687d"
+    },
+    {
+      "id": "kabin",
+      "kana": "かびん",
+      "kanji": "花瓶",
+      "romaji": "kabin",
+      "en": ["a vase"],
+      "pos": ["n"],
+      "sentences": [186606, 202394],
+      "sourceId": "749f78c9d1"
+    },
+    {
+      "id": "kami",
+      "kana": "かみ",
+      "kanji": "紙",
+      "romaji": "kami",
+      "en": ["paper"],
+      "pos": ["n"],
+      "sentences": [151205, 151214],
+      "sourceId": "cd08f9cdc2"
+    },
+    {
+      "id": "kamera",
+      "kana": "カメラ",
+      "romaji": "kamera",
+      "en": ["camera"],
+      "pos": ["n"],
+      "sentences": [227734, 223885],
+      "sourceId": "9d648d38ad"
+    },
+    {
+      "id": "kayoubi",
+      "kana": "かようび",
+      "kanji": "火曜日",
+      "romaji": "kayoubi",
+      "en": ["Tuesday"],
+      "pos": ["n", "adv"],
+      "sentences": [186646, 186639],
+      "sourceId": "0dbf9ef8ca"
+    },
+    {
+      "id": "karai",
+      "kana": "からい",
+      "kanji": "辛い",
+      "romaji": "karai",
+      "en": ["spicy"],
+      "pos": ["adj-i"],
+      "sentences": [223874, 202330],
+      "sourceId": "d2546ac97b"
+    },
+    {
+      "id": "karada",
+      "kana": "からだ",
+      "kanji": "体",
+      "romaji": "karada",
+      "en": ["body"],
+      "pos": ["n"],
+      "sentences": [199696, 223641],
+      "sourceId": "a556e5edce"
+    },
+    {
+      "id": "kariru",
+      "kana": "かりる",
+      "kanji": "借りる",
+      "romaji": "kariru",
+      "en": ["to borrow"],
+      "pos": ["v1", "vt"],
+      "sentences": [219525, 148892],
+      "sourceId": "8cd440a181"
+    },
+    {
+      "id": "karui",
+      "kana": "かるい",
+      "kanji": "軽い",
+      "romaji": "karui",
+      "en": ["light"],
+      "pos": ["adj-i"],
+      "sentences": [176051, 153039],
+      "sourceId": "a8b9eb425d"
+    },
+    {
+      "id": "karee",
+      "kana": "カレー",
+      "romaji": "karee",
+      "en": ["curry"],
+      "pos": ["n"],
+      "sentences": [223009, 76792],
+      "sourceId": "9decc44f4e"
+    },
+    {
+      "id": "karendaa",
+      "kana": "カレンダー",
+      "romaji": "karendaa",
+      "en": ["calendar"],
+      "pos": ["n"],
+      "sentences": [223871, 114085],
+      "sourceId": "6382448bd3"
+    },
+    {
+      "id": "kawa",
+      "kana": "かわ",
+      "kanji": "川",
+      "romaji": "kawa",
+      "en": ["river"],
+      "pos": ["n"],
+      "sentences": [208510, 220796],
+      "sourceId": "bcf12e002d"
+    },
+    {
+      "id": "kawaii",
+      "kana": "かわいい",
+      "romaji": "kawaii",
+      "en": ["cute"],
+      "pos": ["adj-i"],
+      "sentences": [192411, 199013],
+      "sourceId": "bad3423a93"
+    },
+    {
+      "id": "kanji",
+      "kana": "かんじ",
+      "kanji": "漢字",
+      "romaji": "kanji",
+      "en": ["Chinese character"],
+      "pos": ["n"],
+      "sentences": [222576, 177847],
+      "sourceId": "fdc787af58"
+    },
+    {
+      "id": "ki",
+      "kana": "き",
+      "kanji": "木",
+      "romaji": "ki",
+      "en": ["tree", "wood"],
+      "pos": ["n"],
+      "sentences": [206562, 80097],
+      "sourceId": "22836046e2"
+    },
+    {
+      "id": "kiiro",
+      "kana": "きいろ",
+      "kanji": "黄色",
+      "romaji": "kiiro",
+      "en": ["yellow"],
+      "pos": ["n", "adj-no", "adj-na"],
+      "sentences": [80105, 222733],
+      "sourceId": "5d679a1af2"
+    },
+    {
+      "id": "kiiroi",
+      "kana": "きいろい",
+      "kanji": "黄色い",
+      "romaji": "kiiroi",
+      "en": ["yellow"],
+      "pos": ["adj-i"],
+      "sentences": [212174, 229724],
+      "sourceId": "0b36c8d6c6"
+    },
+    {
+      "id": "kieru",
+      "kana": "きえる",
+      "kanji": "消える",
+      "romaji": "kieru",
+      "en": ["to disappear"],
+      "pos": ["v1", "vi"],
+      "sentences": [186758, 192296],
+      "sourceId": "6030b50276"
+    },
+    {
+      "id": "kiku",
+      "kana": "きく",
+      "kanji": "聞く",
+      "romaji": "kiku",
+      "en": ["to hear", "to listen to", "to ask"],
+      "pos": ["v5k", "vt"],
+      "sentences": [76494, 201031],
+      "sourceId": "dc19a213cd"
+    },
+    {
+      "id": "kita",
+      "kana": "きた",
+      "kanji": "北",
+      "romaji": "kita",
+      "en": ["north"],
+      "pos": ["n"],
+      "sentences": [207801, 141143],
+      "sourceId": "fa320a51ea"
+    },
+    {
+      "id": "gitaa",
+      "kana": "ギター",
+      "romaji": "gitaa",
+      "en": ["guitar"],
+      "pos": ["n"],
+      "sentences": [200823, 226059],
+      "sourceId": "4fb1c0d758"
+    },
+    {
+      "id": "kitanai",
+      "kana": "きたない",
+      "kanji": "汚い",
+      "romaji": "kitanai",
+      "en": ["dirty"],
+      "pos": ["adj-i"],
+      "sentences": [215815, 195841],
+      "sourceId": "7d1cf1538b"
+    },
+    {
+      "id": "kissaten",
+      "kana": "きっさてん",
+      "kanji": "喫茶店",
+      "romaji": "kissaten",
+      "en": ["coffee lounge"],
+      "pos": ["n"],
+      "sentences": [165940, 222392],
+      "sourceId": "5620a00afc"
+    },
+    {
+      "id": "kitte",
+      "kana": "きって",
+      "kanji": "切手",
+      "romaji": "kitte",
+      "en": ["postage stamp"],
+      "pos": ["n"],
+      "sentences": [142111, 220864],
+      "sourceId": "e101e41f54"
+    },
+    {
+      "id": "kippu",
+      "kana": "きっぷ",
+      "kanji": "切符",
+      "romaji": "kippu",
+      "en": ["ticket"],
+      "pos": ["n"],
+      "sentences": [220860, 223868],
+      "sourceId": "4fee5be397"
+    },
+    {
+      "id": "kinou",
+      "kana": "きのう",
+      "kanji": "昨日",
+      "romaji": "kinou",
+      "en": ["yesterday"],
+      "pos": ["n", "adv"],
+      "sentences": [225950, 169994],
+      "sourceId": "a94a4be08f"
+    },
+    {
+      "id": "kyuu",
+      "kana": "きゅう",
+      "kanji": "九",
+      "romaji": "kyuu",
+      "en": ["nine"],
+      "pos": ["num"],
+      "sentences": [108121, 179548],
+      "sourceId": "8f81565ad7"
+    },
+    {
+      "id": "gyuuniku",
+      "kana": "ぎゅうにく",
+      "kanji": "牛肉",
+      "romaji": "gyuuniku",
+      "en": ["beef"],
+      "pos": ["n"],
+      "sentences": [122271, 222379],
+      "sourceId": "b4faf372f3"
+    },
+    {
+      "id": "gyuunyuu",
+      "kana": "ぎゅうにゅう",
+      "kanji": "牛乳",
+      "romaji": "gyuunyuu",
+      "en": ["milk"],
+      "pos": ["n"],
+      "sentences": [182280, 182266],
+      "sourceId": "797ae8d562"
+    },
+    {
+      "id": "kyou",
+      "kana": "きょう",
+      "kanji": "今日",
+      "romaji": "kyou",
+      "en": ["today"],
+      "pos": ["n", "adv"],
+      "sentences": [232046, 171508],
+      "sourceId": "0400a204bd"
+    },
+    {
+      "id": "kyoushitsu",
+      "kana": "きょうしつ",
+      "kanji": "教室",
+      "romaji": "kyoushitsu",
+      "en": ["classroom"],
+      "pos": ["n"],
+      "sentences": [234825, 228037],
+      "sourceId": "85eb994887"
+    },
+    {
+      "id": "kyoudai",
+      "kana": "きょうだい",
+      "kanji": "兄弟",
+      "romaji": "kyoudai",
+      "en": ["(humble) siblings"],
+      "pos": ["n"],
+      "sentences": [232196, 230736],
+      "sourceId": "976c4f7174"
+    },
+    {
+      "id": "kyonen",
+      "kana": "きょねん",
+      "kanji": "去年",
+      "romaji": "kyonen",
+      "en": ["last year"],
+      "pos": ["n", "adv"],
+      "sentences": [197333, 191813],
+      "sourceId": "ec4e1dfc87"
+    },
+    {
+      "id": "kirai",
+      "kana": "きらい",
+      "kanji": "嫌い",
+      "romaji": "kirai",
+      "en": ["hate"],
+      "pos": ["adj-na", "n"],
+      "sentences": [76676, 229384],
+      "sourceId": "d106dac023"
+    },
+    {
+      "id": "kiru-cut",
+      "kana": "きる",
+      "kanji": "切る",
+      "romaji": "kiru",
+      "en": ["to cut"],
+      "pos": ["v5r", "vt"],
+      "sentences": [199708, 228042],
+      "sourceId": "cf23f5fba1"
+    },
+    {
+      "id": "kiru-put-on",
+      "kana": "きる",
+      "kanji": "着る",
+      "romaji": "kiru",
+      "en": ["to put on from the shoulders down"],
+      "pos": ["v1", "vt"],
+      "sentences": [223601, 198497],
+      "sourceId": "45fbcb8670"
+    },
+    {
+      "id": "kirei",
+      "kana": "きれい",
+      "romaji": "kirei",
+      "en": ["pretty", "clean"],
+      "pos": ["adj-na"],
+      "sentences": [205929, 208510],
+      "sourceId": "43cd9825f0"
+    },
+    {
+      "id": "kiro",
+      "kana": "キロ",
+      "romaji": "kiro",
+      "en": ["kilometre", "kilogram"],
+      "pos": ["n"],
+      "sentences": [196669, 221393],
+      "sourceId": "36016e0c51"
+    },
+    {
+      "id": "ginkou",
+      "kana": "ぎんこう",
+      "kanji": "銀行",
+      "romaji": "ginkou",
+      "en": ["bank"],
+      "pos": ["n"],
+      "sentences": [179588, 179595],
+      "sourceId": "a59efa3057"
+    },
+    {
+      "id": "kinyoubi",
+      "kana": "きんようび",
+      "kanji": "金曜日",
+      "romaji": "kin'youbi",
+      "en": ["Friday"],
+      "pos": ["n", "adv"],
+      "sentences": [232112, 179621],
+      "sourceId": "b00c4af0a2"
+    },
+    {
+      "id": "kusuri",
+      "kana": "くすり",
+      "kanji": "薬",
+      "romaji": "kusuri",
+      "en": ["medicine"],
+      "pos": ["n"],
+      "sentences": [235200, 79501],
+      "sourceId": "95ccaa32f5"
+    },
+    {
+      "id": "kudasai",
+      "kana": "ください",
+      "romaji": "kudasai",
+      "en": ["please"],
+      "pos": ["exp"],
+      "sentences": [76494, 77204],
+      "sourceId": "a36841ba49"
+    },
+    {
+      "id": "kudamono",
+      "kana": "くだもの",
+      "kanji": "果物",
+      "romaji": "kudamono",
+      "en": ["fruit"],
+      "pos": ["n"],
+      "sentences": [84708, 84755],
+      "sourceId": "6b454b895e"
+    },
+    {
+      "id": "kuchi",
+      "kana": "くち",
+      "kanji": "口",
+      "romaji": "kuchi",
+      "en": ["mouth", "opening"],
+      "pos": ["n"],
+      "sentences": [173943, 199296],
+      "sourceId": "a123a147d7"
+    },
+    {
+      "id": "kutsu",
+      "kana": "くつ",
+      "kanji": "靴",
+      "romaji": "kutsu",
+      "en": ["shoes"],
+      "pos": ["n"],
+      "sentences": [179254, 179255],
+      "sourceId": "9dd0572f05"
+    },
+    {
+      "id": "kutsushita",
+      "kana": "くつした",
+      "kanji": "靴下",
+      "romaji": "kutsushita",
+      "en": ["socks"],
+      "pos": ["n"],
+      "sentences": [237401, 222242],
+      "sourceId": "20a1278928"
+    },
+    {
+      "id": "kuni",
+      "kana": "くに",
+      "kanji": "国",
+      "romaji": "kuni",
+      "en": ["country"],
+      "pos": ["n"],
+      "sentences": [233291, 221927],
+      "sourceId": "b55dd305d1"
+    },
+    {
+      "id": "kumori",
+      "kana": "くもり",
+      "kanji": "曇り",
+      "romaji": "kumori",
+      "en": ["cloudy weather"],
+      "pos": ["n"],
+      "sentences": [123255, 171526],
+      "sourceId": "eec0f93991"
+    },
+    {
+      "id": "kumoru",
+      "kana": "くもる",
+      "kanji": "曇る",
+      "romaji": "kumoru",
+      "en": ["to become cloudy", "to become dim"],
+      "pos": ["v5r", "vi"],
+      "sentences": [171528, 146006],
+      "sourceId": "c34fdb6092"
+    },
+    {
+      "id": "kurai",
+      "kana": "くらい",
+      "kanji": "暗い",
+      "romaji": "kurai",
+      "en": ["gloomy"],
+      "pos": ["adj-i"],
+      "sentences": [234367, 191267],
+      "sourceId": "01a0587b49"
+    },
+    {
+      "id": "kurasu",
+      "kana": "クラス",
+      "romaji": "kurasu",
+      "en": ["class"],
+      "pos": ["n"],
+      "sentences": [234637, 223857],
+      "sourceId": "72c04ce067"
+    },
+    {
+      "id": "guramu",
+      "kana": "グラム",
+      "romaji": "guramu",
+      "en": ["gram"],
+      "pos": ["n"],
+      "sentences": [196880, 10704636],
+      "sourceId": "5538df2bce"
+    },
+    {
+      "id": "kuru",
+      "kana": "くる",
+      "kanji": "来る",
+      "romaji": "kuru",
+      "en": ["to come"],
+      "pos": ["vk", "vi"],
+      "sentences": [236043, 78725],
+      "sourceId": "2e2abd26ca"
+    },
+    {
+      "id": "kuruma",
+      "kana": "くるま",
+      "kanji": "車",
+      "romaji": "kuruma",
+      "en": ["car", "vehicle"],
+      "pos": ["n"],
+      "sentences": [149061, 199672],
+      "sourceId": "d6b85573f3"
+    },
+    {
+      "id": "kuro",
+      "kana": "くろ",
+      "kanji": "黒",
+      "romaji": "kuro",
+      "en": ["black"],
+      "pos": ["n", "adj-no"],
+      "sentences": [172985, 142223],
+      "sourceId": "3c32cfb08a"
+    },
+    {
+      "id": "kuroi",
+      "kana": "くろい",
+      "kanji": "黒い",
+      "romaji": "kuroi",
+      "en": ["black"],
+      "pos": ["adj-i"],
+      "sentences": [198990, 231019],
+      "sourceId": "5e5300cf62"
+    },
+    {
+      "id": "keikan",
+      "kana": "けいかん",
+      "kanji": "警官",
+      "romaji": "keikan",
+      "en": ["policeman"],
+      "pos": ["n"],
+      "sentences": [123109, 176362],
+      "sourceId": "e1634cb3e9"
+    },
+    {
+      "id": "kesa",
+      "kana": "けさ",
+      "kanji": "今朝",
+      "romaji": "kesa",
+      "en": ["this morning"],
+      "pos": ["n", "adv"],
+      "sentences": [172291, 172293],
+      "sourceId": "9c1d724a61"
+    },
+    {
+      "id": "kesu",
+      "kana": "けす",
+      "kanji": "消す",
+      "romaji": "kesu",
+      "en": ["to erase", "to turn off power"],
+      "pos": ["v5s", "vt"],
+      "sentences": [145648, 192284],
+      "sourceId": "19f270c68f"
+    },
+    {
+      "id": "kekkou",
+      "kana": "けっこう",
+      "kanji": "結構",
+      "romaji": "kekkou",
+      "en": ["splendid", "enough"],
+      "pos": ["adj-na"],
+      "sentences": [228472, 200732],
+      "sourceId": "dd34250740"
+    },
+    {
+      "id": "kekkon",
+      "kana": "けっこん",
+      "kanji": "結婚",
+      "romaji": "kekkon",
+      "en": ["marriage"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [215406, 228877],
+      "sourceId": "2eb252da72"
+    },
+    {
+      "id": "getsuyoubi",
+      "kana": "げつようび",
+      "kanji": "月曜日",
+      "romaji": "getsuyoubi",
+      "en": ["Monday"],
+      "pos": ["n", "adv"],
+      "sentences": [175591, 175588],
+      "sourceId": "04e80a2ba1"
+    },
+    {
+      "id": "genkan",
+      "kana": "げんかん",
+      "kanji": "玄関",
+      "romaji": "genkan",
+      "en": ["entry hall"],
+      "pos": ["n"],
+      "sentences": [174948, 224964],
+      "sourceId": "2e1642b248"
+    },
+    {
+      "id": "genki",
+      "kana": "げんき",
+      "kanji": "元気",
+      "romaji": "genki",
+      "en": ["health", "vitality"],
+      "pos": ["adj-na", "n"],
+      "sentences": [217292, 141667],
+      "sourceId": "442c4aa1ca"
+    },
+    {
+      "id": "go",
+      "kana": "ご",
+      "kanji": "五",
+      "romaji": "go",
+      "en": ["five"],
+      "pos": ["num"],
+      "sentences": [201024, 218159],
+      "sourceId": "47c1fdbe2f"
+    },
+    {
+      "id": "kouen",
+      "kana": "こうえん",
+      "kanji": "公園",
+      "romaji": "kouen",
+      "en": ["park"],
+      "pos": ["n"],
+      "sentences": [222003, 123167],
+      "sourceId": "05cf590971"
+    },
+    {
+      "id": "kousaten",
+      "kana": "こうさてん",
+      "kanji": "交差点",
+      "romaji": "kousaten",
+      "en": ["intersection"],
+      "pos": ["n"],
+      "sentences": [231036, 222010],
+      "sourceId": "8699b8bec2"
+    },
+    {
+      "id": "koucha",
+      "kana": "こうちゃ",
+      "kanji": "紅茶",
+      "romaji": "koucha",
+      "en": ["black tea"],
+      "pos": ["n"],
+      "sentences": [173507, 218548],
+      "sourceId": "1288e600be"
+    },
+    {
+      "id": "kouban",
+      "kana": "こうばん",
+      "kanji": "交番",
+      "romaji": "kouban",
+      "en": ["police box"],
+      "pos": ["n"],
+      "sentences": [173841, 174098],
+      "sourceId": "402eb0d21f"
+    },
+    {
+      "id": "koe",
+      "kana": "こえ",
+      "kanji": "声",
+      "romaji": "koe",
+      "en": ["voice"],
+      "pos": ["n"],
+      "sentences": [1142225, 193232],
+      "sourceId": "d890e45616"
+    },
+    {
+      "id": "kooto",
+      "kana": "コート",
+      "romaji": "kooto",
+      "en": ["coat", "tennis court"],
+      "pos": ["n"],
+      "sentences": [1171687],
+      "sourceId": "c552e79d34"
+    },
+    {
+      "id": "koohii",
+      "kana": "コーヒー",
+      "romaji": "koohii",
+      "en": ["coffee"],
+      "pos": ["n"],
+      "sentences": [213210, 224880],
+      "sourceId": "67126059f1"
+    },
+    {
+      "id": "koko",
+      "kana": "ここ",
+      "romaji": "koko",
+      "en": ["here"],
+      "pos": ["pn"],
+      "sourceId": "05123676c2"
+    },
+    {
+      "id": "gogo",
+      "kana": "ごご",
+      "kanji": "午後",
+      "romaji": "gogo",
+      "en": ["afternoon"],
+      "pos": ["n", "adv"],
+      "sentences": [174382, 174404],
+      "sourceId": "9a7c962266"
+    },
+    {
+      "id": "kokonoka",
+      "kana": "ここのか",
+      "kanji": "九日",
+      "romaji": "kokonoka",
+      "en": ["nine days", "ninth day"],
+      "pos": ["n"],
+      "sentences": [214544, 137653],
+      "sourceId": "f114f6f499"
+    },
+    {
+      "id": "kokonotsu",
+      "kana": "ここのつ",
+      "kanji": "九つ",
+      "romaji": "kokonotsu",
+      "en": ["nine"],
+      "pos": ["num"],
+      "sentences": [167043, 118095],
+      "sourceId": "cff3c57405"
+    },
+    {
+      "id": "gozen",
+      "kana": "ごぜん",
+      "kanji": "午前",
+      "romaji": "gozen",
+      "en": ["morning"],
+      "pos": ["n", "adv"],
+      "sentences": [207576, 174378],
+      "sourceId": "c92dbe626a"
+    },
+    {
+      "id": "kotaeru",
+      "kana": "こたえる",
+      "kanji": "答える",
+      "romaji": "kotaeru",
+      "en": ["to answer"],
+      "pos": ["v1", "vi"],
+      "sentences": [236468, 187740],
+      "sourceId": "d5d8c608aa"
+    },
+    {
+      "id": "gochisousama",
+      "kana": "ごちそうさま",
+      "romaji": "gochisousama",
+      "en": ["feast"],
+      "pos": ["int"],
+      "sentences": [10156656, 11264757],
+      "sourceId": "a9191729e3"
+    },
+    {
+      "id": "kochira",
+      "kana": "こちら",
+      "romaji": "kochira",
+      "en": ["this person or way"],
+      "pos": ["pn"],
+      "sentences": [172739, 3281203],
+      "sourceId": "e9e492c68a"
+    },
+    {
+      "id": "kotchi",
+      "kana": "こっち",
+      "romaji": "kotchi",
+      "en": ["this person or way"],
+      "pos": ["pn"],
+      "sentences": [224125, 224124],
+      "sourceId": "be9b8bcb5e"
+    },
+    {
+      "id": "koppu",
+      "kana": "コップ",
+      "romaji": "koppu",
+      "en": ["a glass"],
+      "pos": ["n"],
+      "sourceId": "2da7034c1e"
+    },
+    {
+      "id": "kotoshi",
+      "kana": "ことし",
+      "kanji": "今年",
+      "romaji": "kotoshi",
+      "en": ["this year"],
+      "pos": ["n", "adv"],
+      "sentences": [171289, 171353],
+      "sourceId": "0020b9ee4e"
+    },
+    {
+      "id": "kotoba",
+      "kana": "ことば",
+      "kanji": "言葉",
+      "romaji": "kotoba",
+      "en": ["word", "language"],
+      "pos": ["n"],
+      "sentences": [174713, 210904],
+      "sourceId": "491cfa69be"
+    },
+    {
+      "id": "kodomo",
+      "kana": "こども",
+      "kanji": "子供",
+      "romaji": "kodomo",
+      "en": ["child"],
+      "pos": ["n"],
+      "sentences": [233758, 168864],
+      "sourceId": "1f4bb6e503"
+    },
+    {
+      "id": "kono",
+      "kana": "この",
+      "romaji": "kono",
+      "en": ["this"],
+      "pos": ["adj-pn"],
+      "sentences": [223794, 219456],
+      "sourceId": "bd3a2ad2ad"
+    },
+    {
+      "id": "gohan",
+      "kana": "ごはん",
+      "kanji": "御飯",
+      "romaji": "gohan",
+      "en": ["cooked rice", "meal"],
+      "pos": ["n"],
+      "sentences": [217034, 79311],
+      "sourceId": "a2694d259e"
+    },
+    {
+      "id": "kopiisuru",
+      "kana": "コピーする",
+      "romaji": "kopiisuru",
+      "en": ["to copy"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [219109, 126291],
+      "sourceId": "f586d7d023"
+    },
+    {
+      "id": "komaru",
+      "kana": "こまる",
+      "kanji": "困る",
+      "romaji": "komaru",
+      "en": ["to be worried"],
+      "pos": ["v5r", "vi"],
+      "sentences": [150625, 149067],
+      "sourceId": "61994485cb"
+    },
+    {
+      "id": "gomennasai",
+      "kana": "ごめんなさい",
+      "romaji": "gomennasai",
+      "en": ["I beg your pardon", "excuse me"],
+      "pos": ["exp"],
+      "sentences": [226510, 219061],
+      "sourceId": "4a11eb5fb4"
+    },
+    {
+      "id": "kore",
+      "kana": "これ",
+      "romaji": "kore",
+      "en": ["this"],
+      "pos": ["pn"],
+      "sentences": [74148, 143331],
+      "sourceId": "6313cc9cb5"
+    },
+    {
+      "id": "kongetsu",
+      "kana": "こんげつ",
+      "kanji": "今月",
+      "romaji": "kongetsu",
+      "en": ["this month"],
+      "pos": ["n", "adv"],
+      "sentences": [172460, 172471],
+      "sourceId": "3793173687"
+    },
+    {
+      "id": "konshuu",
+      "kana": "こんしゅう",
+      "kanji": "今週",
+      "romaji": "konshuu",
+      "en": ["this week"],
+      "pos": ["n", "adv"],
+      "sentences": [172375, 172390],
+      "sourceId": "7a27eadef1"
+    },
+    {
+      "id": "konna",
+      "kana": "こんな",
+      "romaji": "konna",
+      "en": ["such"],
+      "pos": ["adj-pn"],
+      "sentences": [217309, 217322],
+      "sourceId": "e1978f90df"
+    },
+    {
+      "id": "konnichiwa",
+      "kana": "こんにちは",
+      "romaji": "konnichiwa",
+      "en": ["hello", "good day (daytime greeting, id)"],
+      "pos": ["int"],
+      "sentences": [217287, 217298],
+      "sourceId": "0a65b39cf7"
+    },
+    {
+      "id": "konban",
+      "kana": "こんばん",
+      "kanji": "今晩",
+      "romaji": "konban",
+      "en": ["this evening"],
+      "pos": ["n", "adv"],
+      "sentences": [171245, 171264],
+      "sourceId": "eb1c9a5df9"
+    },
+    {
+      "id": "konbanwa",
+      "kana": "こんばんは",
+      "romaji": "konbanwa",
+      "en": ["good evening"],
+      "pos": ["int"],
+      "sentences": [347753, 426900],
+      "sourceId": "6c0551dd8a"
+    },
+    {
+      "id": "saa",
+      "kana": "さあ",
+      "romaji": "saa",
+      "en": ["well…"],
+      "pos": ["int"],
+      "sentences": [216960, 195024],
+      "sourceId": "7ba7ba2434"
+    },
+    {
+      "id": "saifu",
+      "kana": "さいふ",
+      "kanji": "財布",
+      "romaji": "saifu",
+      "en": ["wallet"],
+      "pos": ["n"],
+      "sentences": [216852, 170210],
+      "sourceId": "a96e3a2b33"
+    },
+    {
+      "id": "sakana",
+      "kana": "さかな",
+      "kanji": "魚",
+      "romaji": "sakana",
+      "en": ["fish"],
+      "pos": ["n"],
+      "sentences": [122254, 182097],
+      "sourceId": "dbd7cd319c"
+    },
+    {
+      "id": "saki",
+      "kana": "さき",
+      "kanji": "先",
+      "romaji": "saki",
+      "en": ["the future", "previous"],
+      "pos": ["n", "adj-no"],
+      "sentences": [205916, 194388],
+      "sourceId": "20fcc4f54f"
+    },
+    {
+      "id": "saku",
+      "kana": "さく",
+      "kanji": "咲く",
+      "romaji": "saku",
+      "en": ["to bloom"],
+      "pos": ["v5k", "vi"],
+      "sentences": [202946, 217953],
+      "sourceId": "4c39babf5f"
+    },
+    {
+      "id": "sakubun",
+      "kana": "さくぶん",
+      "kanji": "作文",
+      "romaji": "sakubun",
+      "en": ["composition", "writing"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [170165, 236141],
+      "sourceId": "c10cb3070d"
+    },
+    {
+      "id": "sasu",
+      "kana": "さす",
+      "kanji": "差す",
+      "romaji": "sasu",
+      "en": ["to stretch out hands", "to raise an umbrella"],
+      "pos": ["v5s", "vt"],
+      "sentences": [109822, 92769],
+      "sourceId": "4e2aefb855"
+    },
+    {
+      "id": "zasshi",
+      "kana": "ざっし",
+      "kanji": "雑誌",
+      "romaji": "zasshi",
+      "en": ["magazine"],
+      "pos": ["n"],
+      "sentences": [210481, 204129],
+      "sourceId": "a371cc6a54"
+    },
+    {
+      "id": "satou",
+      "kana": "さとう",
+      "kanji": "砂糖",
+      "romaji": "satou",
+      "en": ["sugar"],
+      "pos": ["n"],
+      "sentences": [196232, 170890],
+      "sourceId": "8af5030b7a"
+    },
+    {
+      "id": "samui",
+      "kana": "さむい",
+      "kanji": "寒い",
+      "romaji": "samui",
+      "en": ["cold"],
+      "pos": ["adj-i"],
+      "sentences": [184049, 125110],
+      "sourceId": "688bc67044"
+    },
+    {
+      "id": "sayounara",
+      "kana": "さようなら",
+      "romaji": "sayounara",
+      "en": ["good-bye"],
+      "pos": ["int"],
+      "sentences": [202137, 216704],
+      "sourceId": "0a1f511640"
+    },
+    {
+      "id": "sarainen",
+      "kana": "さらいねん",
+      "kanji": "再来年",
+      "romaji": "sarainen",
+      "en": ["year after next"],
+      "pos": ["n", "adv"],
+      "sentences": [140720],
+      "sourceId": "45c705d5b2"
+    },
+    {
+      "id": "san",
+      "kana": "さん",
+      "kanji": "三",
+      "romaji": "san",
+      "en": ["three"],
+      "pos": ["num"],
+      "sentences": [123182, 219631],
+      "sourceId": "5cb07674a3"
+    },
+    {
+      "id": "sanpo",
+      "kana": "さんぽ",
+      "kanji": "散歩",
+      "romaji": "sanpo",
+      "en": ["to stroll"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [169336, 76557],
+      "sourceId": "e2695084c9"
+    },
+    {
+      "id": "shi",
+      "kana": "し",
+      "kanji": "四",
+      "romaji": "shi",
+      "en": ["four"],
+      "pos": ["num"],
+      "sentences": [77561, 175658],
+      "sourceId": "da4b805e0b"
+    },
+    {
+      "id": "shio",
+      "kana": "しお",
+      "kanji": "塩",
+      "romaji": "shio",
+      "en": ["salt"],
+      "pos": ["n"],
+      "sentences": [223651, 188597],
+      "sourceId": "b366a3d677"
+    },
+    {
+      "id": "shikashi",
+      "kana": "しかし",
+      "romaji": "shikashi",
+      "en": ["however"],
+      "pos": ["conj"],
+      "sentences": [216279, 216307],
+      "sourceId": "2c41aedcba"
+    },
+    {
+      "id": "jikan",
+      "kana": "じかん",
+      "kanji": "時間",
+      "romaji": "jikan",
+      "en": ["time"],
+      "pos": ["n"],
+      "sentences": [228889, 150629],
+      "sourceId": "d5c916ca85"
+    },
+    {
+      "id": "shigoto",
+      "kana": "しごと",
+      "kanji": "仕事",
+      "romaji": "shigoto",
+      "en": ["job"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [76109, 200317],
+      "sourceId": "573bc15b1d"
+    },
+    {
+      "id": "jisho",
+      "kana": "じしょ",
+      "kanji": "辞書",
+      "romaji": "jisho",
+      "en": ["dictionary"],
+      "pos": ["n"],
+      "sentences": [205423, 218820],
+      "sourceId": "8ec35978bd"
+    },
+    {
+      "id": "shizuka",
+      "kana": "しずか",
+      "kanji": "静か",
+      "romaji": "shizuka",
+      "en": ["quiet"],
+      "pos": ["adj-na"],
+      "sentences": [225839, 142511],
+      "sourceId": "178469ba7a"
+    },
+    {
+      "id": "shita",
+      "kana": "した",
+      "kanji": "下",
+      "romaji": "shita",
+      "en": ["below"],
+      "pos": ["n"],
+      "sentences": [225669, 80128],
+      "sourceId": "dd36cae3a9"
+    },
+    {
+      "id": "shichi",
+      "kana": "しち",
+      "kanji": "七",
+      "romaji": "shichi",
+      "en": ["seven"],
+      "pos": ["num"],
+      "sentences": [201696, 202909],
+      "sourceId": "988db98632"
+    },
+    {
+      "id": "shitsumon",
+      "kana": "しつもん",
+      "kanji": "質問",
+      "romaji": "shitsumon",
+      "en": ["question"],
+      "pos": ["n", "vs", "vt", "vi", "adj-no"],
+      "sentences": [230657, 149514],
+      "sourceId": "2c5c99977c"
+    },
+    {
+      "id": "jitensha",
+      "kana": "じてんしゃ",
+      "kanji": "自転車",
+      "romaji": "jitensha",
+      "en": ["bicycle"],
+      "pos": ["n"],
+      "sentences": [196377, 195201],
+      "sourceId": "ebf194a316"
+    },
+    {
+      "id": "jidousha",
+      "kana": "じどうしゃ",
+      "kanji": "自動車",
+      "romaji": "jidousha",
+      "en": ["automobile"],
+      "pos": ["n"],
+      "sentences": [150044, 196376],
+      "sourceId": "78fd1a0e8a"
+    },
+    {
+      "id": "shinu",
+      "kana": "しぬ",
+      "kanji": "死ぬ",
+      "romaji": "shinu",
+      "en": ["to die"],
+      "pos": ["v5n", "vi"],
+      "sentences": [209091, 142836],
+      "sourceId": "ec6fd2f845"
+    },
+    {
+      "id": "jibiki",
+      "kana": "じびき",
+      "kanji": "字引",
+      "romaji": "jibiki",
+      "en": ["dictionary"],
+      "pos": ["n"],
+      "sentences": [215504, 166907],
+      "sourceId": "6156bfb418"
+    },
+    {
+      "id": "jibun",
+      "kana": "じぶん",
+      "kanji": "自分",
+      "romaji": "jibun",
+      "en": ["oneself"],
+      "pos": ["pn"],
+      "sentences": [149971, 149918],
+      "sourceId": "995a632b12"
+    },
+    {
+      "id": "shimaru",
+      "kana": "しまる",
+      "kanji": "閉まる",
+      "romaji": "shimaru",
+      "en": ["to close", "to be closed"],
+      "pos": ["v5r", "vi"],
+      "sentences": [234558, 201896],
+      "sourceId": "01420cdf0f"
+    },
+    {
+      "id": "shimeru-tie",
+      "kana": "しめる",
+      "kanji": "締める",
+      "romaji": "shimeru",
+      "en": ["to tie"],
+      "pos": ["v1", "vt"],
+      "sentences": [228764, 216597],
+      "sourceId": "8e6c15bef9"
+    },
+    {
+      "id": "shimeru-close",
+      "kana": "しめる",
+      "kanji": "閉める",
+      "romaji": "shimeru",
+      "en": ["to close something"],
+      "pos": ["v1", "vt"],
+      "sentences": [201657, 223505],
+      "sourceId": "95827b08e3"
+    },
+    {
+      "id": "ja",
+      "kana": "じゃ",
+      "romaji": "ja",
+      "en": ["well then…"],
+      "pos": ["conj"],
+      "sentences": [215913, 215754],
+      "sourceId": "091c8c0e07"
+    },
+    {
+      "id": "shashin",
+      "kana": "しゃしん",
+      "kanji": "写真",
+      "romaji": "shashin",
+      "en": ["photograph"],
+      "pos": ["n"],
+      "sentences": [198939, 224510],
+      "sourceId": "5101640e7e"
+    },
+    {
+      "id": "shatsu",
+      "kana": "シャツ",
+      "romaji": "shatsu",
+      "en": ["shirt"],
+      "pos": ["n"],
+      "sentences": [215784, 223699],
+      "sourceId": "f71424e3ff"
+    },
+    {
+      "id": "shawaa",
+      "kana": "シャワー",
+      "romaji": "shawaa",
+      "en": ["shower"],
+      "pos": ["n"],
+      "sentences": [215745, 215746],
+      "sourceId": "d9c88143a2"
+    },
+    {
+      "id": "juu",
+      "kana": "じゅう",
+      "kanji": "十",
+      "romaji": "juu",
+      "en": ["ten"],
+      "pos": ["num"],
+      "sentences": [211902, 122693],
+      "sourceId": "db9f5d4422"
+    },
+    {
+      "id": "jugyou",
+      "kana": "じゅぎょう",
+      "kanji": "授業",
+      "romaji": "jugyou",
+      "en": ["lesson", "class work"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [205089, 204268],
+      "sourceId": "5bae559507"
+    },
+    {
+      "id": "shukudai",
+      "kana": "しゅくだい",
+      "kanji": "宿題",
+      "romaji": "shukudai",
+      "en": ["homework"],
+      "pos": ["n"],
+      "sentences": [147882, 193016],
+      "sourceId": "4daa103d7d"
+    },
+    {
+      "id": "jouzu",
+      "kana": "じょうず",
+      "kanji": "上手",
+      "romaji": "jouzu",
+      "en": ["skillful"],
+      "pos": ["adj-na", "n"],
+      "sentences": [231837, 195731],
+      "sourceId": "1763fc412a"
+    },
+    {
+      "id": "joubu",
+      "kana": "じょうぶ",
+      "kanji": "丈夫",
+      "romaji": "joubu",
+      "en": ["strong", "durable"],
+      "pos": ["adj-na"],
+      "sentences": [222994, 103983],
+      "sourceId": "50525927ee"
+    },
+    {
+      "id": "shouyu",
+      "kana": "しょうゆ",
+      "romaji": "shouyu",
+      "en": ["soy sauce"],
+      "pos": ["n"],
+      "sentences": [123656],
+      "sourceId": "9476d7966d"
+    },
+    {
+      "id": "shokudou",
+      "kana": "しょくどう",
+      "kanji": "食堂",
+      "romaji": "shokudou",
+      "en": ["dining hall"],
+      "pos": ["n"],
+      "sentences": [145792, 145790],
+      "sourceId": "dcc87a37fb"
+    },
+    {
+      "id": "shiru",
+      "kana": "しる",
+      "kanji": "知る",
+      "romaji": "shiru",
+      "en": ["to know"],
+      "pos": ["v5r", "vt"],
+      "sentences": [196304, 197075],
+      "sourceId": "1fcb2fece8"
+    },
+    {
+      "id": "shiro",
+      "kana": "しろ",
+      "kanji": "白",
+      "romaji": "shiro",
+      "en": ["white"],
+      "pos": ["n", "adj-no"],
+      "sentences": [172985, 142119],
+      "sourceId": "98eace7008"
+    },
+    {
+      "id": "shiroi",
+      "kana": "しろい",
+      "kanji": "白い",
+      "romaji": "shiroi",
+      "en": ["white"],
+      "pos": ["adj-i"],
+      "sentences": [121433, 205517],
+      "sourceId": "8997f64f52"
+    },
+    {
+      "id": "shinbun",
+      "kana": "しんぶん",
+      "kanji": "新聞",
+      "romaji": "shinbun",
+      "en": ["newspaper"],
+      "pos": ["n"],
+      "sentences": [215457, 145135],
+      "sourceId": "b8317395af"
+    },
+    {
+      "id": "suiyoubi",
+      "kana": "すいようび",
+      "kanji": "水曜日",
+      "romaji": "suiyoubi",
+      "en": ["Wednesday"],
+      "pos": ["n", "adv"],
+      "sentences": [172151, 88253],
+      "sourceId": "44d9d70862"
+    },
+    {
+      "id": "suu",
+      "kana": "すう",
+      "kanji": "吸う",
+      "romaji": "suu",
+      "en": ["to smoke", "to suck"],
+      "pos": ["v5u", "vt"],
+      "sentences": [221731, 137481],
+      "sourceId": "e82727193e"
+    },
+    {
+      "id": "sukaato",
+      "kana": "スカート",
+      "romaji": "sukaato",
+      "en": ["skirt"],
+      "pos": ["n"],
+      "sentences": [215022, 223642],
+      "sourceId": "f0f5f6b29b"
+    },
+    {
+      "id": "suki",
+      "kana": "すき",
+      "kanji": "好き",
+      "romaji": "suki",
+      "en": ["likeable"],
+      "pos": ["adj-na", "n"],
+      "sentences": [161709, 232388],
+      "sourceId": "20cbecd474"
+    },
+    {
+      "id": "sugu",
+      "kana": "すぐ",
+      "romaji": "sugu",
+      "en": ["immediately", "soon", "easily", "right (near)", "honest", "upright"],
+      "pos": ["adv", "n"],
+      "sentences": [214924, 236397],
+      "sourceId": "ce75057c4c"
+    },
+    {
+      "id": "sukunai",
+      "kana": "すくない",
+      "kanji": "少ない",
+      "romaji": "sukunai",
+      "en": ["a few"],
+      "pos": ["adj-i"],
+      "sentences": [123386, 203555],
+      "sourceId": "0d38b01113"
+    },
+    {
+      "id": "suguni",
+      "kana": "すぐに",
+      "romaji": "suguni",
+      "en": ["instantly"],
+      "pos": ["adv"],
+      "sentences": [214855, 214879],
+      "sourceId": "a8722990f1"
+    },
+    {
+      "id": "sukoshi",
+      "kana": "すこし",
+      "kanji": "少し",
+      "romaji": "sukoshi",
+      "en": ["few"],
+      "pos": ["adv"],
+      "sentences": [146856, 223642],
+      "sourceId": "c373555102"
+    },
+    {
+      "id": "suzushii",
+      "kana": "すずしい",
+      "kanji": "涼しい",
+      "romaji": "suzushii",
+      "en": ["refreshing"],
+      "pos": ["adj-i"],
+      "sentences": [122850, 203059],
+      "sourceId": "67f5908e10"
+    },
+    {
+      "id": "sutoobu",
+      "kana": "ストーブ",
+      "romaji": "sutoobu",
+      "en": ["heater"],
+      "pos": ["n"],
+      "sentences": [157236, 113365],
+      "sourceId": "8149d77689"
+    },
+    {
+      "id": "supuun",
+      "kana": "スプーン",
+      "romaji": "supuun",
+      "en": ["spoon"],
+      "pos": ["n"],
+      "sentences": [214525, 214526],
+      "sourceId": "938a169f6c"
+    },
+    {
+      "id": "supootsu",
+      "kana": "スポーツ",
+      "romaji": "supootsu",
+      "en": ["sport"],
+      "pos": ["n"],
+      "sentences": [197412, 200376],
+      "sourceId": "0a33903ccf"
+    },
+    {
+      "id": "zubon",
+      "kana": "ズボン",
+      "romaji": "zubon",
+      "en": ["trousers"],
+      "pos": ["n"],
+      "sentences": [202838, 223621],
+      "sourceId": "10fe0704ca"
+    },
+    {
+      "id": "sumimasen",
+      "kana": "すみません",
+      "romaji": "sumimasen",
+      "en": ["sorry", "excuse me"],
+      "pos": ["exp", "int"],
+      "sentences": [214207, 214132],
+      "sourceId": "feae64eac4"
+    },
+    {
+      "id": "sumu",
+      "kana": "すむ",
+      "kanji": "住む",
+      "romaji": "sumu",
+      "en": ["to live in"],
+      "pos": ["v5m", "vi"],
+      "sentences": [201568, 224491],
+      "sourceId": "d671097071"
+    },
+    {
+      "id": "surippa",
+      "kana": "スリッパ",
+      "romaji": "surippa",
+      "en": ["slippers"],
+      "pos": ["n"],
+      "sentences": [214119, 214120],
+      "sourceId": "508131fe89"
+    },
+    {
+      "id": "suru",
+      "kana": "する",
+      "romaji": "suru",
+      "en": ["to do"],
+      "pos": ["vs-i"],
+      "sentences": [4858, 84880],
+      "sourceId": "c4cdc162d7"
+    },
+    {
+      "id": "suwaru",
+      "kana": "すわる",
+      "kanji": "座る",
+      "romaji": "suwaru",
+      "en": ["to sit"],
+      "pos": ["v5r", "vi"],
+      "sentences": [84829, 231252],
+      "sourceId": "c9a15e8777"
+    },
+    {
+      "id": "se",
+      "kana": "せ",
+      "kanji": "背",
+      "romaji": "se",
+      "en": ["height", "stature"],
+      "pos": ["n"],
+      "sentences": [200083, 114666],
+      "sourceId": "898b067287"
+    },
+    {
+      "id": "seito",
+      "kana": "せいと",
+      "kanji": "生徒",
+      "romaji": "seito",
+      "en": ["pupil"],
+      "pos": ["n"],
+      "sentences": [222600, 231798],
+      "sourceId": "af7459ef1e"
+    },
+    {
+      "id": "seetaa",
+      "kana": "セーター",
+      "romaji": "seetaa",
+      "en": ["sweater", "jumper"],
+      "pos": ["n"],
+      "sentences": [223610, 83138],
+      "sourceId": "4b0b49a42d"
+    },
+    {
+      "id": "sekken",
+      "kana": "せっけん",
+      "romaji": "sekken",
+      "en": ["soap"],
+      "pos": ["n"],
+      "sentences": [214032, 10899704],
+      "sourceId": "b48d0c99d4"
+    },
+    {
+      "id": "sebiro",
+      "kana": "せびろ",
+      "kanji": "背広",
+      "romaji": "sebiro",
+      "en": ["business suit"],
+      "pos": ["n"],
+      "sentences": [155725, 74070],
+      "sourceId": "9d432ac114"
+    },
+    {
+      "id": "semai",
+      "kana": "せまい",
+      "kanji": "狭い",
+      "romaji": "semai",
+      "en": ["narrow"],
+      "pos": ["adj-i"],
+      "sentences": [227474, 207729],
+      "sourceId": "d12ee2e932"
+    },
+    {
+      "id": "zero",
+      "kana": "ゼロ",
+      "romaji": "zero",
+      "en": ["zero"],
+      "pos": ["n"],
+      "sentences": [165629, 213989],
+      "sourceId": "434707d737"
+    },
+    {
+      "id": "sen",
+      "kana": "せん",
+      "kanji": "千",
+      "romaji": "sen",
+      "en": ["thousand"],
+      "pos": ["num"],
+      "sentences": [223188, 141432],
+      "sourceId": "1729d60f09"
+    },
+    {
+      "id": "sengetsu",
+      "kana": "せんげつ",
+      "kanji": "先月",
+      "romaji": "sengetsu",
+      "en": ["last month"],
+      "pos": ["n", "adv"],
+      "sentences": [141880, 141890],
+      "sourceId": "0eaa93c144"
+    },
+    {
+      "id": "senshuu",
+      "kana": "せんしゅう",
+      "kanji": "先週",
+      "romaji": "senshuu",
+      "en": ["last week"],
+      "pos": ["n", "adv"],
+      "sentences": [230710, 231791],
+      "sourceId": "b8c4cd80db"
+    },
+    {
+      "id": "sensei",
+      "kana": "せんせい",
+      "kanji": "先生",
+      "romaji": "sensei",
+      "en": ["teacher", "doctor"],
+      "pos": ["n", "n-suf"],
+      "sentences": [173570, 230655],
+      "sourceId": "814bdc2cec"
+    },
+    {
+      "id": "sentaku",
+      "kana": "せんたく",
+      "kanji": "洗濯",
+      "romaji": "sentaku",
+      "en": ["washing"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [141216, 141217],
+      "sourceId": "4d0ca7b320"
+    },
+    {
+      "id": "zenbu",
+      "kana": "ぜんぶ",
+      "kanji": "全部",
+      "romaji": "zenbu",
+      "en": ["all"],
+      "pos": ["n", "adj-no", "adv"],
+      "sentences": [200680, 205017],
+      "sourceId": "acba6e07ba"
+    },
+    {
+      "id": "souji",
+      "kana": "そうじ",
+      "kanji": "掃除",
+      "romaji": "souji",
+      "en": ["to clean", "to sweep"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [84738, 233037],
+      "sourceId": "501df34d31"
+    },
+    {
+      "id": "soushite",
+      "kana": "そうして",
+      "romaji": "soushite",
+      "en": ["and"],
+      "pos": ["conj"],
+      "sentences": [213883, 213882],
+      "sourceId": "e75777d218"
+    },
+    {
+      "id": "soko",
+      "kana": "そこ",
+      "romaji": "soko",
+      "en": ["that place"],
+      "pos": ["pn"],
+      "sentences": [198206, 183289],
+      "sourceId": "5ef867ff81"
+    },
+    {
+      "id": "sochira",
+      "kana": "そちら",
+      "romaji": "sochira",
+      "en": ["over there"],
+      "pos": ["pn"],
+      "sentences": [218744, 213468],
+      "sourceId": "105df79571"
+    },
+    {
+      "id": "sotchi",
+      "kana": "そっち",
+      "romaji": "sotchi",
+      "en": ["over there"],
+      "pos": ["pn"],
+      "sentences": [213467, 10499829],
+      "sourceId": "80981fa136"
+    },
+    {
+      "id": "soto",
+      "kana": "そと",
+      "kanji": "外",
+      "romaji": "soto",
+      "en": ["outside"],
+      "pos": ["n"],
+      "sentences": [184892, 201917],
+      "sourceId": "68ad5f4363"
+    },
+    {
+      "id": "sono",
+      "kana": "その",
+      "romaji": "sono",
+      "en": ["that"],
+      "pos": ["adj-pn"],
+      "sourceId": "cb1c02a574"
+    },
+    {
+      "id": "soba",
+      "kana": "そば",
+      "romaji": "soba",
+      "en": ["near", "beside"],
+      "pos": ["n"],
+      "sentences": [226153, 191672],
+      "sourceId": "38c854e97f"
+    },
+    {
+      "id": "sora",
+      "kana": "そら",
+      "kanji": "空",
+      "romaji": "sora",
+      "en": ["sky"],
+      "pos": ["n"],
+      "sentences": [179433, 191980],
+      "sourceId": "6ff51bace3"
+    },
+    {
+      "id": "sore",
+      "kana": "それ",
+      "romaji": "sore",
+      "en": ["that"],
+      "pos": ["pn"],
+      "sentences": [191835, 204628],
+      "sourceId": "79d922e359"
+    },
+    {
+      "id": "sorekara",
+      "kana": "それから",
+      "romaji": "sorekara",
+      "en": ["after that"],
+      "pos": ["exp"],
+      "sentences": [205929, 205916],
+      "sourceId": "799b7cabe0"
+    },
+    {
+      "id": "soredewa",
+      "kana": "それでは",
+      "romaji": "soredewa",
+      "en": ["in that situation"],
+      "pos": ["exp"],
+      "sentences": [205771, 205760],
+      "sourceId": "46c1721526"
+    },
+    {
+      "id": "sonna",
+      "kana": "そんな",
+      "romaji": "sonna",
+      "en": ["such", "that kind of"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1007130"
+    },
+    {
+      "id": "daigaku",
+      "kana": "だいがく",
+      "kanji": "大学",
+      "romaji": "daigaku",
+      "en": ["university"],
+      "pos": ["n"],
+      "sentences": [137646, 137648],
+      "sourceId": "5b303264b9"
+    },
+    {
+      "id": "taishikan",
+      "kana": "たいしかん",
+      "kanji": "大使館",
+      "romaji": "taishikan",
+      "en": ["embassy"],
+      "pos": ["n"],
+      "sentences": [122209, 114807],
+      "sourceId": "992fc07339"
+    },
+    {
+      "id": "daijoubu",
+      "kana": "だいじょうぶ",
+      "kanji": "大丈夫",
+      "romaji": "daijoubu",
+      "en": ["all right"],
+      "pos": ["adj-na"],
+      "sentences": [228498, 90036],
+      "sourceId": "2f62b9db5e"
+    },
+    {
+      "id": "daisuki",
+      "kana": "だいすき",
+      "kanji": "大好き",
+      "romaji": "daisuki",
+      "en": ["to be very likeable"],
+      "pos": ["adj-na"],
+      "sentences": [192202, 144314],
+      "sourceId": "9ee7cd3382"
+    },
+    {
+      "id": "taisetsu",
+      "kana": "たいせつ",
+      "kanji": "大切",
+      "romaji": "taisetsu",
+      "en": ["important"],
+      "pos": ["adj-na"],
+      "sentences": [81616, 143754],
+      "sourceId": "b3a8593e53"
+    },
+    {
+      "id": "daidokoro",
+      "kana": "だいどころ",
+      "kanji": "台所",
+      "romaji": "daidokoro",
+      "en": ["kitchen"],
+      "pos": ["n"],
+      "sentences": [192405, 212931],
+      "sourceId": "1c0b0f77b6"
+    },
+    {
+      "id": "taihen",
+      "kana": "たいへん",
+      "romaji": "taihen",
+      "en": ["very"],
+      "pos": ["adv"],
+      "sentences": [237333, 219705],
+      "sourceId": "e04372c490"
+    },
+    {
+      "id": "takai",
+      "kana": "たかい",
+      "kanji": "高い",
+      "romaji": "takai",
+      "en": ["tall", "expensive"],
+      "pos": ["adj-i"],
+      "sentences": [123179, 218541],
+      "sourceId": "c74892f565"
+    },
+    {
+      "id": "takusan",
+      "kana": "たくさん",
+      "romaji": "takusan",
+      "en": ["many"],
+      "pos": ["adj-no", "adj-na", "n", "adv"],
+      "sentences": [199298, 204301],
+      "sourceId": "a7c72d9bb1"
+    },
+    {
+      "id": "takushii",
+      "kana": "タクシー",
+      "romaji": "takushii",
+      "en": ["taxi"],
+      "pos": ["n"],
+      "sentences": [212991, 224661],
+      "sourceId": "2d5a93eb11"
+    },
+    {
+      "id": "dasu",
+      "kana": "だす",
+      "kanji": "出す",
+      "romaji": "dasu",
+      "en": ["to put out"],
+      "pos": ["v5s", "vt"],
+      "sentences": [224634, 222164],
+      "sourceId": "6298cfc5d6"
+    },
+    {
+      "id": "tatsu",
+      "kana": "たつ",
+      "kanji": "立つ",
+      "romaji": "tatsu",
+      "en": ["to stand"],
+      "pos": ["v5t", "vi"],
+      "sentences": [78277, 199215],
+      "sourceId": "932afda20b"
+    },
+    {
+      "id": "tate",
+      "kana": "たて",
+      "romaji": "tate",
+      "en": ["length", "height"],
+      "pos": ["n"],
+      "sentences": [202374, 184932],
+      "sourceId": "e7ca1b2fd5"
+    },
+    {
+      "id": "tatemono",
+      "kana": "たてもの",
+      "kanji": "建物",
+      "romaji": "tatemono",
+      "en": ["building"],
+      "pos": ["n"],
+      "sentences": [175391, 192428],
+      "sourceId": "372b08211e"
+    },
+    {
+      "id": "tanoshii",
+      "kana": "たのしい",
+      "kanji": "楽しい",
+      "romaji": "tanoshii",
+      "en": ["enjoyable"],
+      "pos": ["adj-i"],
+      "sentences": [233856, 197488],
+      "sourceId": "9b2d455dfe"
+    },
+    {
+      "id": "tanomu",
+      "kana": "たのむ",
+      "kanji": "頼む",
+      "romaji": "tanomu",
+      "en": ["to ask"],
+      "pos": ["v5m", "vt"],
+      "sentences": [233649, 223523],
+      "sourceId": "7e9d38afeb"
+    },
+    {
+      "id": "tabako",
+      "kana": "たばこ",
+      "romaji": "tabako",
+      "en": ["tobacco", "cigarettes"],
+      "pos": ["n"],
+      "sentences": [127211, 203430],
+      "sourceId": "80beed00bf"
+    },
+    {
+      "id": "tabun",
+      "kana": "たぶん",
+      "romaji": "tabun",
+      "en": ["probably"],
+      "pos": ["adv"],
+      "sentences": [178680, 203356],
+      "sourceId": "d9eba03b7b"
+    },
+    {
+      "id": "tabemono",
+      "kana": "たべもの",
+      "kanji": "食べ物",
+      "romaji": "tabemono",
+      "en": ["food"],
+      "pos": ["n"],
+      "sentences": [145899, 145896],
+      "sourceId": "5c89b3094a"
+    },
+    {
+      "id": "taberu",
+      "kana": "たべる",
+      "kanji": "食べる",
+      "romaji": "taberu",
+      "en": ["to eat"],
+      "pos": ["v1", "vt"],
+      "sentences": [202896, 145934],
+      "sourceId": "86f67e2dc3"
+    },
+    {
+      "id": "tamago",
+      "kana": "たまご",
+      "kanji": "卵",
+      "romaji": "tamago",
+      "en": ["egg"],
+      "pos": ["n"],
+      "sentences": [78480, 78471],
+      "sourceId": "4d66739694"
+    },
+    {
+      "id": "dare",
+      "kana": "だれ",
+      "kanji": "誰",
+      "romaji": "dare",
+      "en": ["who"],
+      "pos": ["pn"],
+      "sentences": [137017, 137043],
+      "sourceId": "3d2ca62c5f"
+    },
+    {
+      "id": "tanjoubi",
+      "kana": "たんじょうび",
+      "kanji": "誕生日",
+      "romaji": "tanjoubi",
+      "en": ["birthday"],
+      "pos": ["n"],
+      "sentences": [127349, 217561],
+      "sourceId": "2e610178ae"
+    },
+    {
+      "id": "dandan",
+      "kana": "だんだん",
+      "romaji": "dandan",
+      "en": ["gradually"],
+      "pos": ["adv", "adv-to"],
+      "sentences": [122958, 205465],
+      "sourceId": "55dbb815ba"
+    },
+    {
+      "id": "chiisai",
+      "kana": "ちいさい",
+      "kanji": "小さい",
+      "romaji": "chiisai",
+      "en": ["little"],
+      "pos": ["adj-i"],
+      "sentences": [193270, 218012],
+      "sourceId": "d4779ac36c"
+    },
+    {
+      "id": "chiisana",
+      "kana": "ちいさな",
+      "kanji": "小さな",
+      "romaji": "chiisana",
+      "en": ["little"],
+      "pos": ["adj-pn"],
+      "sentences": [147022, 229481],
+      "sourceId": "38a8411ec3"
+    },
+    {
+      "id": "chikai",
+      "kana": "ちかい",
+      "kanji": "近い",
+      "romaji": "chikai",
+      "en": ["near"],
+      "pos": ["adj-i"],
+      "sentences": [225480, 201736],
+      "sourceId": "a21ba677f2"
+    },
+    {
+      "id": "chigau",
+      "kana": "ちがう",
+      "kanji": "違う",
+      "romaji": "chigau",
+      "en": ["to differ"],
+      "pos": ["v5u", "vi"],
+      "sentences": [192689, 213899],
+      "sourceId": "35e9881c22"
+    },
+    {
+      "id": "chikaku",
+      "kana": "ちかく",
+      "kanji": "近く",
+      "romaji": "chikaku",
+      "en": ["near"],
+      "pos": ["n", "adj-no", "adv"],
+      "sentences": [234967, 214296],
+      "sourceId": "6d7293f7cf"
+    },
+    {
+      "id": "chikatetsu",
+      "kana": "ちかてつ",
+      "kanji": "地下鉄",
+      "romaji": "chikatetsu",
+      "en": ["underground train"],
+      "pos": ["n"],
+      "sentences": [127016, 127017],
+      "sourceId": "3134199c25"
+    },
+    {
+      "id": "chizu",
+      "kana": "ちず",
+      "kanji": "地図",
+      "romaji": "chizu",
+      "en": ["map"],
+      "pos": ["n"],
+      "sentences": [220672, 202836],
+      "sourceId": "ffa3dda331"
+    },
+    {
+      "id": "chichi",
+      "kana": "ちち",
+      "kanji": "父",
+      "romaji": "chichi",
+      "en": ["(humble) father"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1497610"
+    },
+    {
+      "id": "chairo",
+      "kana": "ちゃいろ",
+      "kanji": "茶色",
+      "romaji": "chairo",
+      "en": ["brown"],
+      "pos": ["n", "adj-no"],
+      "sentences": [210959, 220566],
+      "sourceId": "f9b377e253"
+    },
+    {
+      "id": "chawan",
+      "kana": "ちゃわん",
+      "romaji": "chawan",
+      "en": ["rice bowl"],
+      "pos": ["n"],
+      "sentences": [220567, 202391],
+      "sourceId": "3d12036023"
+    },
+    {
+      "id": "choudo",
+      "kana": "ちょうど",
+      "romaji": "choudo",
+      "en": ["exactly"],
+      "pos": ["adv"],
+      "sentences": [202896, 202931],
+      "sourceId": "9b08365493"
+    },
+    {
+      "id": "chotto",
+      "kana": "ちょっと",
+      "romaji": "chotto",
+      "en": ["somewhat"],
+      "pos": ["adv"],
+      "sentences": [74695, 194363],
+      "sourceId": "602fdffbf2"
+    },
+    {
+      "id": "tsukau",
+      "kana": "つかう",
+      "kanji": "使う",
+      "romaji": "tsukau",
+      "en": ["to use"],
+      "pos": ["v5u", "vt"],
+      "sentences": [197026, 201311],
+      "sourceId": "c88e0ba104"
+    },
+    {
+      "id": "tsukareru",
+      "kana": "つかれる",
+      "kanji": "疲れる",
+      "romaji": "tsukareru",
+      "en": ["to get tired"],
+      "pos": ["v1", "vi"],
+      "sentences": [177623, 231609],
+      "sourceId": "156f17113e"
+    },
+    {
+      "id": "tsugi",
+      "kana": "つぎ",
+      "kanji": "次",
+      "romaji": "tsugi",
+      "en": ["next"],
+      "pos": ["n", "adj-no"],
+      "sentences": [150216, 150204],
+      "sourceId": "d00ef0a9d5"
+    },
+    {
+      "id": "tsuku",
+      "kana": "つく",
+      "kanji": "着く",
+      "romaji": "tsuku",
+      "en": ["to arrive at"],
+      "pos": ["v5k", "vi"],
+      "sentences": [216366, 192138],
+      "sourceId": "9d4a68ce12"
+    },
+    {
+      "id": "tsukue",
+      "kana": "つくえ",
+      "kanji": "机",
+      "romaji": "tsukue",
+      "en": ["desk"],
+      "pos": ["n"],
+      "sentences": [183446, 183454],
+      "sourceId": "672321bac9"
+    },
+    {
+      "id": "tsukuru",
+      "kana": "つくる",
+      "kanji": "作る",
+      "romaji": "tsukuru",
+      "en": ["to make"],
+      "pos": ["v5r", "vt"],
+      "sentences": [203324, 223530],
+      "sourceId": "6e922a750e"
+    },
+    {
+      "id": "tsukeru",
+      "kana": "つける",
+      "romaji": "tsukeru",
+      "en": ["to turn on"],
+      "pos": ["v1", "vt"],
+      "sentences": [201970, 192597],
+      "sourceId": "edc22b8d98"
+    },
+    {
+      "id": "tsutomeru",
+      "kana": "つとめる",
+      "kanji": "勤める",
+      "romaji": "tsutomeru",
+      "en": ["to work for someone"],
+      "pos": ["v1", "vt", "vi"],
+      "sentences": [84602, 110635],
+      "sourceId": "ba6c46f68c"
+    },
+    {
+      "id": "tsumaranai",
+      "kana": "つまらない",
+      "romaji": "tsumaranai",
+      "en": ["boring"],
+      "pos": ["adj-i"],
+      "sentences": [223276, 230825],
+      "sourceId": "3a94b5e981"
+    },
+    {
+      "id": "tsumetai",
+      "kana": "つめたい",
+      "kanji": "冷たい",
+      "romaji": "tsumetai",
+      "en": ["cold to the touch"],
+      "pos": ["adj-i"],
+      "sentences": [194174, 187197],
+      "sourceId": "a23d308800"
+    },
+    {
+      "id": "tsuyoi",
+      "kana": "つよい",
+      "kanji": "強い",
+      "romaji": "tsuyoi",
+      "en": ["powerful"],
+      "pos": ["adj-i"],
+      "sentences": [199736, 230859],
+      "sourceId": "d99745fbb6"
+    },
+    {
+      "id": "te",
+      "kana": "て",
+      "kanji": "手",
+      "romaji": "te",
+      "en": ["hand"],
+      "pos": ["n"],
+      "sentences": [224417, 229349],
+      "sourceId": "5b9670420a"
+    },
+    {
+      "id": "teepu",
+      "kana": "テープ",
+      "romaji": "teepu",
+      "en": ["tape"],
+      "pos": ["n"],
+      "sentences": [177769, 212956],
+      "sourceId": "0cf2b43e9c"
+    },
+    {
+      "id": "teeburu",
+      "kana": "テーブル",
+      "romaji": "teeburu",
+      "en": ["table"],
+      "pos": ["n"],
+      "sentences": [223523, 202398],
+      "sourceId": "ff161262dd"
+    },
+    {
+      "id": "teepurekoodaa",
+      "kana": "テープレコーダー",
+      "romaji": "teepurekoodaa",
+      "en": ["tape recorder"],
+      "pos": ["n"],
+      "sentences": [223518, 223521],
+      "sourceId": "dc0ae29019"
+    },
+    {
+      "id": "dekakeru",
+      "kana": "でかける",
+      "kanji": "出かける",
+      "romaji": "dekakeru",
+      "en": ["to go out"],
+      "pos": ["v1", "vi"],
+      "sentences": [147811, 189654],
+      "sourceId": "375cfbefdd"
+    },
+    {
+      "id": "tegami",
+      "kana": "てがみ",
+      "kanji": "手紙",
+      "romaji": "tegami",
+      "en": ["letter"],
+      "pos": ["n"],
+      "sentences": [147430, 196892],
+      "sourceId": "218ea67735"
+    },
+    {
+      "id": "dekiru",
+      "kana": "できる",
+      "romaji": "dekiru",
+      "en": ["to be able to"],
+      "pos": ["v1", "vi"],
+      "sentences": [230516, 201738],
+      "sourceId": "69d0d632fa"
+    },
+    {
+      "id": "deguchi",
+      "kana": "でぐち",
+      "kanji": "出口",
+      "romaji": "deguchi",
+      "en": ["exit"],
+      "pos": ["n"],
+      "sentences": [234867, 147749],
+      "sourceId": "151fd72164"
+    },
+    {
+      "id": "tesuto",
+      "kana": "テスト",
+      "romaji": "tesuto",
+      "en": ["test"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [212948, 202236],
+      "sourceId": "90e9410bff"
+    },
+    {
+      "id": "dewa",
+      "kana": "では",
+      "romaji": "dewa",
+      "en": ["with that..."],
+      "pos": ["exp"],
+      "sentences": [202137, 187507],
+      "sourceId": "d33540fe8e"
+    },
+    {
+      "id": "depaato",
+      "kana": "デパート",
+      "romaji": "depaato",
+      "en": ["department store"],
+      "pos": ["n"],
+      "sentences": [155750, 212947],
+      "sourceId": "0144505953"
+    },
+    {
+      "id": "demo",
+      "kana": "でも",
+      "romaji": "demo",
+      "en": ["but"],
+      "pos": ["conj"],
+      "sentences": [199395, 199480],
+      "sourceId": "3f71089c32"
+    },
+    {
+      "id": "deru",
+      "kana": "でる",
+      "kanji": "出る",
+      "romaji": "deru",
+      "en": ["to appear", "to leave"],
+      "pos": ["v1", "vi"],
+      "sentences": [449040, 124855],
+      "sourceId": "5ef4f7dde9"
+    },
+    {
+      "id": "terebi",
+      "kana": "テレビ",
+      "romaji": "terebi",
+      "en": ["television"],
+      "pos": ["n"],
+      "sentences": [232489, 201993],
+      "sourceId": "c7e14d8454"
+    },
+    {
+      "id": "tenki",
+      "kana": "てんき",
+      "kanji": "天気",
+      "romaji": "tenki",
+      "en": ["weather"],
+      "pos": ["n"],
+      "sentences": [171537, 190284],
+      "sourceId": "679e34031e"
+    },
+    {
+      "id": "denki",
+      "kana": "でんき",
+      "kanji": "電気",
+      "romaji": "denki",
+      "en": ["electricity", "electric light"],
+      "pos": ["n"],
+      "sentences": [124855, 124844],
+      "sourceId": "a7c36fdb70"
+    },
+    {
+      "id": "densha",
+      "kana": "でんしゃ",
+      "kanji": "電車",
+      "romaji": "densha",
+      "en": ["electric train"],
+      "pos": ["n"],
+      "sentences": [124800, 124816],
+      "sourceId": "62b5c13164"
+    },
+    {
+      "id": "denwa",
+      "kana": "でんわ",
+      "kanji": "電話",
+      "romaji": "denwa",
+      "en": ["telephone"],
+      "pos": ["n", "vs", "vt", "vi"],
+      "sentences": [197096, 124718],
+      "sourceId": "3c039918ba"
+    },
+    {
+      "id": "to",
+      "kana": "と",
+      "kanji": "戸",
+      "romaji": "to",
+      "en": ["Japanese style door"],
+      "pos": ["n"],
+      "sentences": [137092, 175163],
+      "sourceId": "6f4691297f"
+    },
+    {
+      "id": "doa",
+      "kana": "ドア",
+      "romaji": "doa",
+      "en": ["Western style door"],
+      "pos": ["n"],
+      "sentences": [122091, 201824],
+      "sourceId": "677d3c5fac"
+    },
+    {
+      "id": "toire",
+      "kana": "トイレ",
+      "romaji": "toire",
+      "en": ["toilet"],
+      "pos": ["n"],
+      "sentences": [201731, 201725],
+      "sourceId": "e1e7c2d290"
+    },
+    {
+      "id": "dou",
+      "kana": "どう",
+      "romaji": "dou",
+      "en": ["how", "in what way"],
+      "pos": ["adv"],
+      "sourceId": "d0fb41651f"
+    },
+    {
+      "id": "doushite",
+      "kana": "どうして",
+      "romaji": "doushite",
+      "en": ["for what reason"],
+      "pos": ["adv"],
+      "sentences": [201572, 201551],
+      "sourceId": "a891b73f8b"
+    },
+    {
+      "id": "douzo",
+      "kana": "どうぞ",
+      "romaji": "douzo",
+      "en": ["please"],
+      "pos": ["adv"],
+      "sentences": [149251, 201333],
+      "sourceId": "a71cbc3ce4"
+    },
+    {
+      "id": "douzoyoroshiku",
+      "kana": "どうぞよろしく",
+      "romaji": "douzoyoroshiku",
+      "en": ["pleased to meet you"],
+      "pos": ["exp"],
+      "sentences": [201303, 217197],
+      "sourceId": "93b9cec3d4"
+    },
+    {
+      "id": "doubutsu",
+      "kana": "どうぶつ",
+      "kanji": "動物",
+      "romaji": "doubutsu",
+      "en": ["animal"],
+      "pos": ["n"],
+      "sentences": [159921, 144525],
+      "sourceId": "03d03cf25d"
+    },
+    {
+      "id": "doumo",
+      "kana": "どうも",
+      "romaji": "doumo",
+      "en": ["thanks"],
+      "pos": ["int"],
+      "sentences": [230516, 141797],
+      "sourceId": "d2cb14f88a"
+    },
+    {
+      "id": "tooi",
+      "kana": "とおい",
+      "kanji": "遠い",
+      "romaji": "tooi",
+      "en": ["far"],
+      "pos": ["adj-i"],
+      "sentences": [205405, 224795],
+      "sourceId": "f840779b9e"
+    },
+    {
+      "id": "tooka",
+      "kana": "とおか",
+      "kanji": "十日",
+      "romaji": "tooka",
+      "en": ["ten days", "the tenth day"],
+      "pos": ["n"],
+      "sentences": [215846, 202538],
+      "sourceId": "e8579084ba"
+    },
+    {
+      "id": "tokidoki",
+      "kana": "ときどき",
+      "kanji": "時々",
+      "romaji": "tokidoki",
+      "en": ["sometimes"],
+      "pos": ["adv", "adj-no"],
+      "sentences": [216490, 214732],
+      "sourceId": "978a2cefa5"
+    },
+    {
+      "id": "tokei",
+      "kana": "とけい",
+      "kanji": "時計",
+      "romaji": "tokei",
+      "en": ["watch", "clock"],
+      "pos": ["n"],
+      "sentences": [233246, 221611],
+      "sourceId": "e3ad76810f"
+    },
+    {
+      "id": "doko",
+      "kana": "どこ",
+      "romaji": "doko",
+      "en": ["where"],
+      "pos": ["pn"],
+      "sentences": [232489, 182700],
+      "sourceId": "ad884a3b70"
+    },
+    {
+      "id": "tokoro",
+      "kana": "ところ",
+      "kanji": "所",
+      "romaji": "tokoro",
+      "en": ["place"],
+      "pos": ["n", "adv", "suf"],
+      "sentences": [199406, 201701],
+      "sourceId": "ca332ac7b4"
+    },
+    {
+      "id": "toshi",
+      "kana": "とし",
+      "kanji": "年",
+      "romaji": "toshi",
+      "en": ["year"],
+      "pos": ["n"],
+      "sentences": [226785, 171289],
+      "sourceId": "358fc382cb"
+    },
+    {
+      "id": "toshokan",
+      "kana": "としょかん",
+      "kanji": "図書館",
+      "romaji": "toshokan",
+      "en": ["library"],
+      "pos": ["n"],
+      "sentences": [143872, 143878],
+      "sourceId": "de5a452667"
+    },
+    {
+      "id": "dochira",
+      "kana": "どちら",
+      "romaji": "dochira",
+      "en": ["which of two"],
+      "pos": ["pn"],
+      "sentences": [123179, 200726],
+      "sourceId": "5480c153dc"
+    },
+    {
+      "id": "dotchi",
+      "kana": "どっち",
+      "romaji": "dotchi",
+      "en": ["which"],
+      "pos": ["pn"],
+      "sentences": [219777, 10472406],
+      "sourceId": "e8a4843059"
+    },
+    {
+      "id": "totemo",
+      "kana": "とても",
+      "romaji": "totemo",
+      "en": ["very"],
+      "pos": ["adv"],
+      "sentences": [222938, 204722],
+      "sourceId": "a3679ee665"
+    },
+    {
+      "id": "donata",
+      "kana": "どなた",
+      "romaji": "donata",
+      "en": ["who"],
+      "pos": ["pn"],
+      "sentences": [4914, 233903],
+      "sourceId": "10fb2e55c0"
+    },
+    {
+      "id": "tonari",
+      "kana": "となり",
+      "kanji": "隣",
+      "romaji": "tonari",
+      "en": ["next door to"],
+      "pos": ["n", "adj-no"],
+      "sentences": [231268, 229394],
+      "sourceId": "c597c353cb"
+    },
+    {
+      "id": "dono",
+      "kana": "どの",
+      "romaji": "dono",
+      "en": ["which"],
+      "pos": ["adj-pn"],
+      "sentences": [218528, 232473],
+      "sourceId": "cd4b8c6381"
+    },
+    {
+      "id": "tobu",
+      "kana": "とぶ",
+      "kanji": "飛ぶ",
+      "romaji": "tobu",
+      "en": ["to fly", "to hop"],
+      "pos": ["v5b", "vi"],
+      "sentences": [197450, 115795],
+      "sourceId": "397b682fa7"
+    },
+    {
+      "id": "tomaru",
+      "kana": "とまる",
+      "kanji": "止まる",
+      "romaji": "tomaru",
+      "en": ["to come to a halt"],
+      "pos": ["v5r", "vi"],
+      "sentences": [202936, 224650],
+      "sourceId": "9d1aa046d6"
+    },
+    {
+      "id": "tomodachi",
+      "kana": "ともだち",
+      "kanji": "友達",
+      "romaji": "tomodachi",
+      "en": ["friend"],
+      "pos": ["n"],
+      "sentences": [192885, 79333],
+      "sourceId": "72c525f37a"
+    },
+    {
+      "id": "doyoubi",
+      "kana": "どようび",
+      "kanji": "土曜日",
+      "romaji": "doyoubi",
+      "en": ["Saturday"],
+      "pos": ["n", "adv"],
+      "sentences": [154894, 207297],
+      "sourceId": "86e7fb81c6"
+    },
+    {
+      "id": "tori",
+      "kana": "とり",
+      "kanji": "鳥",
+      "romaji": "tori",
+      "en": ["bird"],
+      "pos": ["n"],
+      "sentences": [198937, 80121],
+      "sourceId": "7e4fccba7f"
+    },
+    {
+      "id": "toriniku",
+      "kana": "とりにく",
+      "kanji": "鶏肉",
+      "romaji": "toriniku",
+      "en": ["chicken meat"],
+      "pos": ["n"],
+      "sentences": [125767, 222186],
+      "sourceId": "3669c65744"
+    },
+    {
+      "id": "toru-take-photo",
+      "kana": "とる",
+      "kanji": "撮る",
+      "romaji": "toru",
+      "en": ["to take a photo or record a film"],
+      "pos": ["v5r", "vt"],
+      "sentences": [184902, 156161],
+      "sourceId": "4cc27797ba"
+    },
+    {
+      "id": "toru-take",
+      "kana": "とる",
+      "kanji": "取る",
+      "romaji": "toru",
+      "en": ["to take something"],
+      "pos": ["v5r", "vt"],
+      "sentences": [213310, 143632],
+      "sourceId": "1313ed47fb"
+    },
+    {
+      "id": "dore",
+      "kana": "どれ",
+      "romaji": "dore",
+      "en": ["which (of three or more)"],
+      "pos": ["pn"],
+      "sourceId": "b21477c7db"
+    },
+    {
+      "id": "donna",
+      "kana": "どんな",
+      "romaji": "donna",
+      "en": ["what kind of"],
+      "pos": ["adj-pn"],
+      "sourceId": "jmdict:1009330"
+    },
+    {
+      "id": "naifu",
+      "kana": "ナイフ",
+      "romaji": "naifu",
+      "en": ["knife"],
+      "pos": ["n"],
+      "sentences": [205569, 214129],
+      "sourceId": "3ae88c29c4"
+    },
+    {
+      "id": "naka",
+      "kana": "なか",
+      "kanji": "中",
+      "romaji": "naka",
+      "en": ["middle"],
+      "pos": ["n"],
+      "sentences": [201917, 226423],
+      "sourceId": "5d32281da9"
+    },
+    {
+      "id": "nagai",
+      "kana": "ながい",
+      "kanji": "長い",
+      "romaji": "nagai",
+      "en": ["long"],
+      "pos": ["adj-i"],
+      "sentences": [203060, 125914],
+      "sourceId": "fcea29f192"
+    },
+    {
+      "id": "naku",
+      "kana": "なく",
+      "kanji": "鳴く",
+      "romaji": "naku",
+      "en": ["to make a sound (of an animal)", "to cry", "to chirp", "to sing (of birds)"],
+      "pos": ["v5k", "vi"],
+      "sentences": [226439, 231343],
+      "sourceId": "07a4101167"
+    },
+    {
+      "id": "nakusu",
+      "kana": "なくす",
+      "kanji": "無くす",
+      "romaji": "nakusu",
+      "en": ["to lose something"],
+      "pos": ["v5s", "vt"],
+      "sentences": [155413, 158950],
+      "sourceId": "04015c3825"
+    },
+    {
+      "id": "naze",
+      "kana": "なぜ",
+      "romaji": "naze",
+      "en": ["why"],
+      "pos": ["adv"],
+      "sentences": [232436, 199245],
+      "sourceId": "ef9536b1ee"
+    },
+    {
+      "id": "natsu",
+      "kana": "なつ",
+      "kanji": "夏",
+      "romaji": "natsu",
+      "en": ["summer"],
+      "pos": ["n", "adv"],
+      "sentences": [229963, 201234],
+      "sourceId": "641ddbf693"
+    },
+    {
+      "id": "natsuyasumi",
+      "kana": "なつやすみ",
+      "kanji": "夏休み",
+      "romaji": "natsuyasumi",
+      "en": ["summer holiday"],
+      "pos": ["n"],
+      "sentences": [222855, 184362],
+      "sourceId": "e09167a3d4"
+    },
+    {
+      "id": "nado",
+      "kana": "など",
+      "romaji": "nado",
+      "en": ["et cetera"],
+      "pos": ["prt"],
+      "sentences": [198659, 222937],
+      "sourceId": "cf58476318"
+    },
+    {
+      "id": "nanatsu",
+      "kana": "ななつ",
+      "kanji": "七つ",
+      "romaji": "nanatsu",
+      "en": ["seven"],
+      "pos": ["num"],
+      "sentences": [235014, 126933],
+      "sourceId": "e65bf7ad23"
+    },
+    {
+      "id": "nanoka",
+      "kana": "なのか",
+      "kanji": "七日",
+      "romaji": "nanoka",
+      "en": ["seven days", "the seventh day"],
+      "pos": ["n"],
+      "sentences": [190567, 172942],
+      "sourceId": "75ed3c3b2b"
+    },
+    {
+      "id": "namae",
+      "kana": "なまえ",
+      "kanji": "名前",
+      "romaji": "namae",
+      "en": ["name"],
+      "pos": ["n"],
+      "sentences": [232988, 224507],
+      "sourceId": "a812b1ac7f"
+    },
+    {
+      "id": "narau",
+      "kana": "ならう",
+      "kanji": "習う",
+      "romaji": "narau",
+      "en": ["to learn"],
+      "pos": ["v5u", "vt"],
+      "sentences": [149053, 172864],
+      "sourceId": "a95b0a87ad"
+    },
+    {
+      "id": "narabu",
+      "kana": "ならぶ",
+      "kanji": "並ぶ",
+      "romaji": "narabu",
+      "en": ["to line up", "to stand in a line"],
+      "pos": ["v5b", "vi"],
+      "sentences": [229608, 147326],
+      "sourceId": "1227b20370"
+    },
+    {
+      "id": "naraberu",
+      "kana": "ならべる",
+      "kanji": "並べる",
+      "romaji": "naraberu",
+      "en": ["to line up", "to set up"],
+      "pos": ["v1", "vt"],
+      "sentences": [194690, 79117],
+      "sourceId": "1635de1a94"
+    },
+    {
+      "id": "naru",
+      "kana": "なる",
+      "romaji": "naru",
+      "en": ["to become"],
+      "pos": ["v5r", "vi"],
+      "sentences": [202981, 122958],
+      "sourceId": "e05de4981d"
+    },
+    {
+      "id": "nan",
+      "kana": "なん",
+      "kanji": "何",
+      "romaji": "nan",
+      "en": ["what"],
+      "pos": ["pn"],
+      "sentences": [184431, 236417],
+      "sourceId": "558866ef86"
+    },
+    {
+      "id": "ni",
+      "kana": "に",
+      "kanji": "二",
+      "romaji": "ni",
+      "en": ["two"],
+      "pos": ["num"],
+      "sentences": [223188, 123182],
+      "sourceId": "34108268e1"
+    },
+    {
+      "id": "nigiyaka",
+      "kana": "にぎやか",
+      "kanji": "賑やか",
+      "romaji": "nigiyaka",
+      "en": ["bustling", "busy"],
+      "pos": ["adj-na"],
+      "sentences": [220474, 198795],
+      "sourceId": "c17f97fafc"
+    },
+    {
+      "id": "niku",
+      "kana": "にく",
+      "kanji": "肉",
+      "romaji": "niku",
+      "en": ["meat"],
+      "pos": ["n"],
+      "sentences": [122996, 226787],
+      "sourceId": "efac1fc502"
+    },
+    {
+      "id": "nishi",
+      "kana": "にし",
+      "kanji": "西",
+      "romaji": "nishi",
+      "en": ["west"],
+      "pos": ["n"],
+      "sentences": [77480, 188893],
+      "sourceId": "436f1c3c65"
+    },
+    {
+      "id": "nichiyoubi",
+      "kana": "にちようび",
+      "kanji": "日曜日",
+      "romaji": "nichiyoubi",
+      "en": ["Sunday"],
+      "pos": ["n", "adv"],
+      "sentences": [202889, 122163],
+      "sourceId": "d8c3a3f0d0"
+    },
+    {
+      "id": "nihon",
+      "kana": "にほん",
+      "kanji": "日本",
+      "romaji": "nihon",
+      "en": ["Japan"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1582710"
+    },
+    {
+      "id": "nihongo",
+      "kana": "にほんご",
+      "kanji": "日本語",
+      "romaji": "nihongo",
+      "en": ["Japanese (language)"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1464530"
+    },
+    {
+      "id": "nihonjin",
+      "kana": "にほんじん",
+      "kanji": "日本人",
+      "romaji": "nihonjin",
+      "en": ["Japanese person"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1464700"
+    },
+    {
+      "id": "nimotsu",
+      "kana": "にもつ",
+      "kanji": "荷物",
+      "romaji": "nimotsu",
+      "en": ["luggage"],
+      "pos": ["n"],
+      "sentences": [217565, 186542],
+      "sourceId": "2e6c7d2d9d"
+    },
+    {
+      "id": "nyuusu",
+      "kana": "ニュース",
+      "romaji": "nyuusu",
+      "en": ["news"],
+      "pos": ["n"],
+      "sentences": [212803, 231300],
+      "sourceId": "b824bec2c5"
+    },
+    {
+      "id": "niwa",
+      "kana": "にわ",
+      "kanji": "庭",
+      "romaji": "niwa",
+      "en": ["garden"],
+      "pos": ["n"],
+      "sentences": [207712, 228283],
+      "sourceId": "9ef6c9d703"
+    },
+    {
+      "id": "nugu",
+      "kana": "ぬぐ",
+      "kanji": "脱ぐ",
+      "romaji": "nugu",
+      "en": ["to take off clothes"],
+      "pos": ["v5g", "vt"],
+      "sentences": [224569, 224957],
+      "sourceId": "3af80b5b2a"
+    },
+    {
+      "id": "nurui",
+      "kana": "ぬるい",
+      "romaji": "nurui",
+      "en": ["lukewarm"],
+      "pos": ["adj-i"],
+      "sentences": [223801, 196881],
+      "sourceId": "2f01adebd7"
+    },
+    {
+      "id": "nekutai",
+      "kana": "ネクタイ",
+      "romaji": "nekutai",
+      "en": ["tie", "necktie"],
+      "pos": ["n"],
+      "sentences": [223401, 178510],
+      "sourceId": "18046e46a1"
+    },
+    {
+      "id": "neko",
+      "kana": "ねこ",
+      "kanji": "猫",
+      "romaji": "neko",
+      "en": ["cat"],
+      "pos": ["n"],
+      "sentences": [121967, 122010],
+      "sourceId": "cbbfc8cad6"
+    },
+    {
+      "id": "neru",
+      "kana": "ねる",
+      "kanji": "寝る",
+      "romaji": "neru",
+      "en": ["to go to bed", "to sleep"],
+      "pos": ["v1", "vi"],
+      "sentences": [81604, 232828],
+      "sourceId": "0c6e923ef9"
+    },
+    {
+      "id": "nooto",
+      "kana": "ノート",
+      "romaji": "nooto",
+      "en": ["notebook", "exercise book"],
+      "pos": ["n"],
+      "sentences": [217911, 233500],
+      "sourceId": "278c1e0e04"
+    },
+    {
+      "id": "noboru",
+      "kana": "のぼる",
+      "kanji": "登る",
+      "romaji": "noboru",
+      "en": ["to climb"],
+      "pos": ["v5r", "vi"],
+      "sentences": [80091, 200059],
+      "sourceId": "7817fc9d64"
+    },
+    {
+      "id": "nomimono",
+      "kana": "のみもの",
+      "kanji": "飲み物",
+      "romaji": "nomimono",
+      "en": ["a drink"],
+      "pos": ["n"],
+      "sentences": [188051, 199117],
+      "sourceId": "5e8fc8669c"
+    },
+    {
+      "id": "nomu",
+      "kana": "のむ",
+      "kanji": "飲む",
+      "romaji": "nomu",
+      "en": ["to drink"],
+      "pos": ["v5m", "vt"],
+      "sentences": [224842, 172829],
+      "sourceId": "e0bcec9bd9"
+    },
+    {
+      "id": "noru",
+      "kana": "のる",
+      "kanji": "乗る",
+      "romaji": "noru",
+      "en": ["to get on", "to ride"],
+      "pos": ["v5r", "vi"],
+      "sentences": [195969, 149076],
+      "sourceId": "822c5e11a6"
+    },
+    {
+      "id": "ha",
+      "kana": "は",
+      "kanji": "歯",
+      "romaji": "ha",
+      "en": ["tooth"],
+      "pos": ["n"],
+      "sentences": [208598, 150960],
+      "sourceId": "390ac6443d"
+    },
+    {
+      "id": "paatii",
+      "kana": "パーティー",
+      "romaji": "paatii",
+      "en": ["party"],
+      "pos": ["n"],
+      "sentences": [198449, 198453],
+      "sourceId": "28111455cd"
+    },
+    {
+      "id": "hai",
+      "kana": "はい",
+      "romaji": "hai",
+      "en": ["yes"],
+      "pos": ["int"],
+      "sentences": [236422, 198381],
+      "sourceId": "542f39c93d"
+    },
+    {
+      "id": "haizara",
+      "kana": "はいざら",
+      "kanji": "灰皿",
+      "romaji": "haizara",
+      "en": ["ashtray"],
+      "pos": ["n"],
+      "sentences": [185012, 211587],
+      "sourceId": "5cc1dad1e8"
+    },
+    {
+      "id": "hairu",
+      "kana": "はいる",
+      "kanji": "入る",
+      "romaji": "hairu",
+      "en": ["to enter", "to contain"],
+      "pos": ["v5r", "vi"],
+      "sentences": [122091, 173570],
+      "sourceId": "c428d02d43"
+    },
+    {
+      "id": "hagaki",
+      "kana": "はがき",
+      "kanji": "葉書",
+      "romaji": "hagaki",
+      "en": ["postcard"],
+      "pos": ["n"],
+      "sentences": [220432, 78830],
+      "sourceId": "645e1e3b4d"
+    },
+    {
+      "id": "haku",
+      "kana": "はく",
+      "romaji": "haku",
+      "en": ["to wear", "to put on trousers"],
+      "pos": ["v5k", "vt"],
+      "sentences": [222263, 201604],
+      "sourceId": "4729cc56f4"
+    },
+    {
+      "id": "hako",
+      "kana": "はこ",
+      "kanji": "箱",
+      "romaji": "hako",
+      "en": ["box"],
+      "pos": ["n"],
+      "sentences": [207213, 207226],
+      "sourceId": "658b912df8"
+    },
+    {
+      "id": "hashi-chopsticks",
+      "kana": "はし",
+      "romaji": "hashi",
+      "en": ["chopsticks"],
+      "pos": ["n"],
+      "sentences": [198541, 192400],
+      "sourceId": "7ce7f7d305"
+    },
+    {
+      "id": "hashi-bridge",
+      "kana": "はし",
+      "kanji": "橋",
+      "romaji": "hashi",
+      "en": ["bridge"],
+      "pos": ["n"],
+      "sentences": [211389, 211383],
+      "sourceId": "8f663254b0"
+    },
+    {
+      "id": "hajimaru",
+      "kana": "はじまる",
+      "kanji": "始まる",
+      "romaji": "hajimaru",
+      "en": ["to begin"],
+      "pos": ["v5r", "vi"],
+      "sentences": [172848, 184419],
+      "sourceId": "8fea1e3f3c"
+    },
+    {
+      "id": "hajime",
+      "kana": "はじめ",
+      "kanji": "初め",
+      "romaji": "hajime",
+      "en": ["beginning"],
+      "pos": ["n", "adv"],
+      "sentences": [162444, 147521],
+      "sourceId": "e5b36d7b24"
+    },
+    {
+      "id": "hajimete",
+      "kana": "はじめて",
+      "kanji": "初めて",
+      "romaji": "hajimete",
+      "en": ["for the first time"],
+      "pos": ["adv", "adj-no"],
+      "sentences": [147562, 147558],
+      "sourceId": "3f18999e09"
+    },
+    {
+      "id": "hajimemashite",
+      "kana": "はじめまして",
+      "romaji": "hajimemashite",
+      "en": ["How do you do?", "I am glad to meet you"],
+      "pos": ["exp"],
+      "sentences": [147522, 198254],
+      "sourceId": "a2c1e54c17"
+    },
+    {
+      "id": "hashiru",
+      "kana": "はしる",
+      "kanji": "走る",
+      "romaji": "hashiru",
+      "en": ["to run"],
+      "pos": ["v5r", "vi"],
+      "sentences": [230641, 214986],
+      "sourceId": "244e138920"
+    },
+    {
+      "id": "basu",
+      "kana": "バス",
+      "romaji": "basu",
+      "en": ["bus"],
+      "pos": ["n"],
+      "sentences": [77225],
+      "sourceId": "bd7df6c7a2"
+    },
+    {
+      "id": "bataa",
+      "kana": "バター",
+      "romaji": "bataa",
+      "en": ["butter"],
+      "pos": ["n"],
+      "sentences": [198015, 223336],
+      "sourceId": "4385616659"
+    },
+    {
+      "id": "hatachi",
+      "kana": "はたち",
+      "kanji": "二十歳",
+      "romaji": "hatachi",
+      "en": ["20 years old", "20th year"],
+      "pos": ["n"],
+      "sentences": [4707, 161998],
+      "sourceId": "c65a346458"
+    },
+    {
+      "id": "hataraku",
+      "kana": "はたらく",
+      "kanji": "働く",
+      "romaji": "hataraku",
+      "en": ["to work"],
+      "pos": ["v5k", "vi"],
+      "sentences": [215137, 141700],
+      "sourceId": "9ea671262d"
+    },
+    {
+      "id": "hachi",
+      "kana": "はち",
+      "kanji": "八",
+      "romaji": "hachi",
+      "en": ["eight"],
+      "pos": ["num"],
+      "sentences": [212749, 204945],
+      "sourceId": "6eeff514e0"
+    },
+    {
+      "id": "hatsuka",
+      "kana": "はつか",
+      "kanji": "二十日",
+      "romaji": "hatsuka",
+      "en": ["twenty days", "twentieth"],
+      "pos": ["n"],
+      "sentences": [154765, 139663],
+      "sourceId": "153de06669"
+    },
+    {
+      "id": "hana-flower",
+      "kana": "はな",
+      "kanji": "花",
+      "romaji": "hana",
+      "en": ["flower"],
+      "pos": ["n"],
+      "sentences": [202395, 222739],
+      "sourceId": "6485c3c2a7"
+    },
+    {
+      "id": "hana-nose",
+      "kana": "はな",
+      "kanji": "鼻",
+      "romaji": "hana",
+      "en": ["nose"],
+      "pos": ["n"],
+      "sentences": [85518, 85515],
+      "sourceId": "8b5843f7fb"
+    },
+    {
+      "id": "hanashi",
+      "kana": "はなし",
+      "kanji": "話",
+      "romaji": "hanashi",
+      "en": ["talk", "story"],
+      "pos": ["n"],
+      "sentences": [77142, 77204],
+      "sourceId": "1ed0362cc3"
+    },
+    {
+      "id": "hanasu",
+      "kana": "はなす",
+      "kanji": "話す",
+      "romaji": "hanasu",
+      "en": ["to speak"],
+      "pos": ["v5s", "vt"],
+      "sentences": [189149, 215417],
+      "sourceId": "9d5bde24ec"
+    },
+    {
+      "id": "haha",
+      "kana": "はは",
+      "kanji": "母",
+      "romaji": "haha",
+      "en": ["(humble) mother"],
+      "pos": ["n"],
+      "sourceId": "jmdict:1514990"
+    },
+    {
+      "id": "hayai-early",
+      "kana": "はやい",
+      "kanji": "早い",
+      "romaji": "hayai",
+      "en": ["early"],
+      "pos": ["adj-i"],
+      "sentences": [150671, 171315],
+      "sourceId": "4db42e0181"
+    },
+    {
+      "id": "hayai-quick",
+      "kana": "はやい",
+      "kanji": "速い",
+      "romaji": "hayai",
+      "en": ["quick"],
+      "pos": ["adj-i"],
+      "sentences": [215557, 150673],
+      "sourceId": "406d15f6e9"
+    },
+    {
+      "id": "haru-spring",
+      "kana": "はる",
+      "kanji": "春",
+      "romaji": "haru",
+      "en": ["spring"],
+      "pos": ["n", "adv"],
+      "sentences": [226353, 147635],
+      "sourceId": "f16244c585"
+    },
+    {
+      "id": "haru-stick",
+      "kana": "はる",
+      "kanji": "貼る",
+      "romaji": "haru",
+      "en": ["to stick"],
+      "pos": ["v5r", "vt"],
+      "sentences": [209617, 233000],
+      "sourceId": "f47c4aee42"
+    },
+    {
+      "id": "hare",
+      "kana": "はれ",
+      "kanji": "晴れ",
+      "romaji": "hare",
+      "en": ["clear weather"],
+      "pos": ["n", "adj-no"],
+      "sentences": [192149, 143007],
+      "sourceId": "9edf8548bb"
+    },
+    {
+      "id": "hareru",
+      "kana": "はれる",
+      "kanji": "晴れる",
+      "romaji": "hareru",
+      "en": ["to be sunny"],
+      "pos": ["v1", "vi"],
+      "sentences": [234462, 183770],
+      "sourceId": "3be88666ba"
+    },
+    {
+      "id": "han",
+      "kana": "はん",
+      "kanji": "半",
+      "romaji": "han",
+      "en": ["half"],
+      "pos": ["n-pref", "n"],
+      "sentences": [121264, 185085],
+      "sourceId": "9cd7c780c3"
+    },
+    {
+      "id": "ban",
+      "kana": "ばん",
+      "kanji": "晩",
+      "romaji": "ban",
+      "en": ["evening"],
+      "pos": ["n", "adv"],
+      "sentences": [121181, 207157],
+      "sourceId": "532c73de5d"
+    },
+    {
+      "id": "pan",
+      "kana": "パン",
+      "romaji": "pan",
+      "en": ["bread"],
+      "pos": ["n"],
+      "sourceId": "098e9e7e67"
+    },
+    {
+      "id": "hankachi",
+      "kana": "ハンカチ",
+      "romaji": "hankachi",
+      "en": ["handkerchief"],
+      "pos": ["n"],
+      "sentences": [223306, 161866],
+      "sourceId": "ee3206bb3f"
+    },
+    {
+      "id": "bangou",
+      "kana": "ばんごう",
+      "kanji": "番号",
+      "romaji": "bangou",
+      "en": ["number"],
+      "pos": ["n"],
+      "sentences": [121170, 226580],
+      "sourceId": "67775e3b25"
+    },
+    {
+      "id": "bangohan",
+      "kana": "ばんごはん",
+      "kanji": "晩御飯",
+      "romaji": "bangohan",
+      "en": ["evening meal"],
+      "pos": ["n"],
+      "sentences": [121185, 227833],
+      "sourceId": "246b5ae84d"
+    },
+    {
+      "id": "hanbun",
+      "kana": "はんぶん",
+      "kanji": "半分",
+      "romaji": "hanbun",
+      "en": ["half"],
+      "pos": ["adv", "n"],
+      "sentences": [225320, 204534],
+      "sourceId": "a1cda8cb11"
+    },
+    {
+      "id": "higashi",
+      "kana": "ひがし",
+      "kanji": "東",
+      "romaji": "higashi",
+      "en": ["east"],
+      "pos": ["n"],
+      "sentences": [210091, 124292],
+      "sourceId": "0a38c65004"
+    },
+    {
+      "id": "hiku-pull",
+      "kana": "ひく",
+      "kanji": "引く",
+      "romaji": "hiku",
+      "en": ["to pull"],
+      "pos": ["v5k", "vt"],
+      "sentences": [226492, 76875],
+      "sourceId": "5b84039234"
+    },
+    {
+      "id": "hiku-play-instrument",
+      "kana": "ひく",
+      "kanji": "弾く",
+      "romaji": "hiku",
+      "en": ["to play an instrument with strings", "including piano"],
+      "pos": ["v5k", "vt"],
+      "sentences": [226059, 229616],
+      "sourceId": "23911a0718"
+    },
+    {
+      "id": "hikui",
+      "kana": "ひくい",
+      "kanji": "低い",
+      "romaji": "hikui",
+      "en": ["short", "low"],
+      "pos": ["adj-i"],
+      "sentences": [192612, 223992],
+      "sourceId": "e25cf6ed2f"
+    },
+    {
+      "id": "hikouki",
+      "kana": "ひこうき",
+      "kanji": "飛行機",
+      "romaji": "hikouki",
+      "en": ["aeroplane"],
+      "pos": ["n"],
+      "sentences": [231608, 85661],
+      "sourceId": "a81612169c"
+    },
+    {
+      "id": "hidari",
+      "kana": "ひだり",
+      "kanji": "左",
+      "romaji": "hidari",
+      "en": ["left hand side"],
+      "pos": ["n", "adj-no"],
+      "sentences": [230059, 122093],
+      "sourceId": "ec5bd86b72"
+    },
+    {
+      "id": "hito",
+      "kana": "ひと",
+      "kanji": "人",
+      "romaji": "hito",
+      "en": ["person"],
+      "pos": ["n"],
+      "sentences": [199395, 226941],
+      "sourceId": "d91ee7a9ed"
+    },
+    {
+      "id": "hitotsu",
+      "kana": "ひとつ",
+      "kanji": "一つ",
+      "romaji": "hitotsu",
+      "en": ["one"],
+      "pos": ["num"],
+      "sentences": [149093, 215075],
+      "sourceId": "537f8af3d6"
+    },
+    {
+      "id": "hitotsuki",
+      "kana": "ひとつき",
+      "kanji": "一月",
+      "romaji": "hitotsuki",
+      "en": ["one month"],
+      "pos": ["n"],
+      "sentences": [179773, 232929],
+      "sourceId": "3554fb81b8"
+    },
+    {
+      "id": "hitori",
+      "kana": "ひとり",
+      "kanji": "一人",
+      "romaji": "hitori",
+      "en": ["one person"],
+      "pos": ["n"],
+      "sentences": [201572, 158458],
+      "sourceId": "3fb1b70809"
+    },
+    {
+      "id": "hima",
+      "kana": "ひま",
+      "kanji": "暇",
+      "romaji": "hima",
+      "en": ["free time"],
+      "pos": ["n"],
+      "sentences": [215363, 234469],
+      "sourceId": "7a9ce8e2df"
+    },
+    {
+      "id": "hyaku",
+      "kana": "ひゃく",
+      "kanji": "百",
+      "romaji": "hyaku",
+      "en": ["hundred"],
+      "pos": ["num"],
+      "sentences": [85413, 85416],
+      "sourceId": "13696bc9b5"
+    },
+    {
+      "id": "byouin",
+      "kana": "びょういん",
+      "kanji": "病院",
+      "romaji": "byouin",
+      "en": ["hospital"],
+      "pos": ["n"],
+      "sentences": [222301, 85328],
+      "sourceId": "734d275fd9"
+    },
+    {
+      "id": "byouki",
+      "kana": "びょうき",
+      "kanji": "病気",
+      "romaji": "byouki",
+      "en": ["illness"],
+      "pos": ["n"],
+      "sentences": [196062, 197091],
+      "sourceId": "c551bc3f7c"
+    },
+    {
+      "id": "hiru",
+      "kana": "ひる",
+      "kanji": "昼",
+      "romaji": "hiru",
+      "en": ["noon", "daytime"],
+      "pos": ["n"],
+      "sentences": [155091, 225117],
+      "sourceId": "5d7a8d133b"
+    },
+    {
+      "id": "hirugohan",
+      "kana": "ひるごはん",
+      "kanji": "昼御飯",
+      "romaji": "hirugohan",
+      "en": ["midday meal"],
+      "pos": ["n"],
+      "sentences": [126420, 172658],
+      "sourceId": "0b492c3209"
+    },
+    {
+      "id": "hiroi",
+      "kana": "ひろい",
+      "kanji": "広い",
+      "romaji": "hiroi",
+      "en": ["spacious", "wide"],
+      "pos": ["adj-i"],
+      "sentences": [220476, 200414],
+      "sourceId": "230d5c7343"
+    },
+    {
+      "id": "firumu",
+      "kana": "フィルム",
+      "romaji": "firumu",
+      "en": ["roll of film"],
+      "pos": ["n"],
+      "sentences": [226201, 197224],
+      "sourceId": "ef9babb012"
+    },
+    {
+      "id": "fuutou",
+      "kana": "ふうとう",
+      "kanji": "封筒",
+      "romaji": "fuutou",
+      "en": ["envelope"],
+      "pos": ["n"],
+      "sentences": [203217, 84069],
+      "sourceId": "d156402900"
+    },
+    {
+      "id": "puuru",
+      "kana": "プール",
+      "romaji": "puuru",
+      "en": ["swimming pool"],
+      "pos": ["n"],
+      "sentences": [2301777, 205516],
+      "sourceId": "55c1439239"
+    },
+    {
+      "id": "fooku",
+      "kana": "フォーク",
+      "romaji": "fooku",
+      "en": ["fork"],
+      "pos": ["n"],
+      "sourceId": "71e2aefb9d"
+    },
+    {
+      "id": "fuku-blow",
+      "kana": "ふく",
+      "kanji": "吹く",
+      "romaji": "fuku",
+      "en": ["to blow"],
+      "pos": ["v5k", "vi"],
+      "sentences": [230511, 202226],
+      "sourceId": "15f4136421"
+    },
+    {
+      "id": "fuku-clothes",
+      "kana": "ふく",
+      "kanji": "服",
+      "romaji": "fuku",
+      "en": ["clothes"],
+      "pos": ["n", "n-suf"],
+      "sentences": [219956, 215109],
+      "sourceId": "68571540e1"
+    },
+    {
+      "id": "futatsu",
+      "kana": "ふたつ",
+      "kanji": "二つ",
+      "romaji": "futatsu",
+      "en": ["two"],
+      "pos": ["num"],
+      "sentences": [123179, 216654],
+      "sourceId": "0c1dbd4838"
+    },
+    {
+      "id": "butaniku",
+      "kana": "ぶたにく",
+      "kanji": "豚肉",
+      "romaji": "butaniku",
+      "en": ["pork"],
+      "pos": ["n"],
+      "sentences": [220250, 220249],
+      "sourceId": "c518fb9116"
+    },
+    {
+      "id": "futari",
+      "kana": "ふたり",
+      "kanji": "二人",
+      "romaji": "futari",
+      "en": ["two people"],
+      "pos": ["n"],
+      "sentences": [123073, 123125],
+      "sourceId": "94c2076821"
+    },
+    {
+      "id": "futsuka",
+      "kana": "ふつか",
+      "kanji": "二日",
+      "romaji": "futsuka",
+      "en": ["two days", "second day of the month"],
+      "pos": ["n"],
+      "sentences": [205590, 223124],
+      "sourceId": "750786cc55"
+    },
+    {
+      "id": "futoi",
+      "kana": "ふとい",
+      "kanji": "太い",
+      "romaji": "futoi",
+      "en": ["fat"],
+      "pos": ["adj-i"],
+      "sentences": [102554, 162597],
+      "sourceId": "4162724f9a"
+    },
+    {
+      "id": "fuyu",
+      "kana": "ふゆ",
+      "kanji": "冬",
+      "romaji": "fuyu",
+      "en": ["winter"],
+      "pos": ["n", "adv"],
+      "sentences": [195261, 124383],
+      "sourceId": "eb9acca7ba"
+    },
+    {
+      "id": "furu",
+      "kana": "ふる",
+      "kanji": "降る",
+      "romaji": "furu",
+      "en": ["to fall (e.g. rain or snow)"],
+      "pos": ["v5r", "vi"],
+      "sentences": [216365, 77239],
+      "sourceId": "5791e248f1"
+    },
+    {
+      "id": "furui",
+      "kana": "ふるい",
+      "kanji": "古い",
+      "romaji": "furui",
+      "en": ["old (not used for people)"],
+      "pos": ["adj-i"],
+      "sentences": [150654, 217719],
+      "sourceId": "aa60dd4a11"
+    },
+    {
+      "id": "furo",
+      "kana": "ふろ",
+      "kanji": "風呂",
+      "romaji": "furo",
+      "en": ["bath"],
+      "pos": ["n"],
+      "sentences": [158438, 111040],
+      "sourceId": "34784ed6ca"
+    },
+    {
+      "id": "bunshou",
+      "kana": "ぶんしょう",
+      "kanji": "文章",
+      "romaji": "bunshou",
+      "en": ["sentence", "text"],
+      "pos": ["n"],
+      "sentences": [74604, 150227],
+      "sourceId": "79ddbb2b98"
+    },
+    {
+      "id": "peeji",
+      "kana": "ページ",
+      "romaji": "peeji",
+      "en": ["page"],
+      "pos": ["n", "ctr"],
+      "sentences": [194523, 76749],
+      "sourceId": "f8fc73bd75"
+    },
+    {
+      "id": "heta",
+      "kana": "へた",
+      "kanji": "下手",
+      "romaji": "heta",
+      "en": ["unskillful"],
+      "pos": ["adj-na", "n"],
+      "sentences": [229378, 114691],
+      "sourceId": "619dae70e9"
+    },
+    {
+      "id": "beddo",
+      "kana": "ベッド",
+      "romaji": "beddo",
+      "en": ["bed"],
+      "pos": ["n"],
+      "sentences": [199480, 194366],
+      "sourceId": "91cf4ea2fd"
+    },
+    {
+      "id": "petto",
+      "kana": "ペット",
+      "romaji": "petto",
+      "en": ["pet"],
+      "pos": ["n"],
+      "sentences": [232403, 172937],
+      "sourceId": "db38ebd955"
+    },
+    {
+      "id": "heya",
+      "kana": "へや",
+      "kanji": "部屋",
+      "romaji": "heya",
+      "en": ["room"],
+      "pos": ["n"],
+      "sentences": [195194, 84128],
+      "sourceId": "e78074927c"
+    },
+    {
+      "id": "hen",
+      "kana": "へん",
+      "kanji": "辺",
+      "romaji": "hen",
+      "en": ["area"],
+      "pos": ["n"],
+      "sentences": [223208, 223204],
+      "sourceId": "71c372d7b2"
+    },
+    {
+      "id": "pen",
+      "kana": "ペン",
+      "romaji": "pen",
+      "en": ["pen"],
+      "pos": ["n"],
+      "sentences": [192465, 196625],
+      "sourceId": "dd1183b005"
+    },
+    {
+      "id": "benkyou",
+      "kana": "べんきょう",
+      "kanji": "勉強",
+      "romaji": "benkyou",
+      "en": ["to study"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [232202, 199272],
+      "sourceId": "65783b95dd"
+    },
+    {
+      "id": "benri",
+      "kana": "べんり",
+      "kanji": "便利",
+      "romaji": "benri",
+      "en": ["useful", "convenient"],
+      "pos": ["adj-na"],
+      "sentences": [124682, 205969],
+      "sourceId": "84887dde48"
+    },
+    {
+      "id": "boushi",
+      "kana": "ぼうし",
+      "kanji": "帽子",
+      "romaji": "boushi",
+      "en": ["hat"],
+      "pos": ["n"],
+      "sentences": [219814, 206735],
+      "sourceId": "cfc75623ae"
+    },
+    {
+      "id": "poorando",
+      "kana": "ポーランド",
+      "romaji": "poorando",
+      "en": ["Poland"],
+      "pos": ["n"],
+      "sourceId": "course:poland"
+    },
+    {
+      "id": "poorandogo",
+      "kana": "ポーランドご",
+      "kanji": "ポーランド語",
+      "romaji": "poorandogo",
+      "en": ["Polish (language)"],
+      "pos": ["n"],
+      "sourceId": "course:polish-language"
+    },
+    {
+      "id": "poorandojin",
+      "kana": "ポーランドじん",
+      "kanji": "ポーランド人",
+      "romaji": "poorandojin",
+      "en": ["Polish person"],
+      "pos": ["n"],
+      "sourceId": "course:polish-person"
+    },
+    {
+      "id": "boorupen",
+      "kana": "ボールペン",
+      "romaji": "boorupen",
+      "en": ["ball-point pen"],
+      "pos": ["n"],
+      "sentences": [196456, 196458],
+      "sourceId": "785a997045"
+    },
+    {
+      "id": "hoka",
+      "kana": "ほか",
+      "romaji": "hoka",
+      "en": ["other", "the rest"],
+      "pos": ["n", "adj-no"],
+      "sentences": [196427, 218528],
+      "sourceId": "f71c69492e"
+    },
+    {
+      "id": "poketto",
+      "kana": "ポケット",
+      "romaji": "poketto",
+      "en": ["pocket"],
+      "pos": ["n"],
+      "sentences": [232398, 223814],
+      "sourceId": "ab9f2792c4"
+    },
+    {
+      "id": "hoshii",
+      "kana": "ほしい",
+      "kanji": "欲しい",
+      "romaji": "hoshii",
+      "en": ["want"],
+      "pos": ["adj-i", "aux-adj"],
+      "sentences": [79360, 193337],
+      "sourceId": "418493d941"
+    },
+    {
+      "id": "posuto",
+      "kana": "ポスト",
+      "romaji": "posuto",
+      "en": ["postbox", "mailbox"],
+      "pos": ["n"],
+      "sentences": [196278, 219866],
+      "sourceId": "2dbe65ee1d"
+    },
+    {
+      "id": "hosoi",
+      "kana": "ほそい",
+      "kanji": "細い",
+      "romaji": "hosoi",
+      "en": ["thin"],
+      "pos": ["adj-i"],
+      "sentences": [102553, 237482],
+      "sourceId": "785adc4f9d"
+    },
+    {
+      "id": "botan",
+      "kana": "ボタン",
+      "romaji": "botan",
+      "en": ["button"],
+      "pos": ["n"],
+      "sentences": [192366, 196251],
+      "sourceId": "04ab635f4b"
+    },
+    {
+      "id": "hoteru",
+      "kana": "ホテル",
+      "romaji": "hoteru",
+      "en": ["hotel"],
+      "pos": ["n"],
+      "sentences": [232725, 197388],
+      "sourceId": "23ec5a0b3d"
+    },
+    {
+      "id": "hon",
+      "kana": "ほん",
+      "kanji": "本",
+      "romaji": "hon",
+      "en": ["book"],
+      "pos": ["n"],
+      "sentences": [228339, 81634],
+      "sourceId": "0e8f798dbf"
+    },
+    {
+      "id": "hondana",
+      "kana": "ほんだな",
+      "kanji": "本棚",
+      "romaji": "hondana",
+      "en": ["bookshelves"],
+      "pos": ["n"],
+      "sentences": [152787, 215222],
+      "sourceId": "3839786bac"
+    },
+    {
+      "id": "hontou",
+      "kana": "ほんとう",
+      "romaji": "hontou",
+      "en": ["truth"],
+      "pos": ["n", "adj-no", "adj-na"],
+      "sentences": [81497, 193838],
+      "sourceId": "849baaf2c3"
+    },
+    {
+      "id": "maiasa",
+      "kana": "まいあさ",
+      "kanji": "毎朝",
+      "romaji": "maiasa",
+      "en": ["every morning"],
+      "pos": ["n", "adv"],
+      "sentences": [81346, 152747],
+      "sourceId": "a59ba12bc5"
+    },
+    {
+      "id": "maigetsu",
+      "kana": "まいげつ",
+      "kanji": "毎月",
+      "romaji": "maigetsu",
+      "en": ["every month"],
+      "pos": ["adv", "n"],
+      "sentences": [81361, 152788],
+      "sourceId": "771fbe6b4d"
+    },
+    {
+      "id": "maishuu",
+      "kana": "まいしゅう",
+      "kanji": "毎週",
+      "romaji": "maishuu",
+      "en": ["every week"],
+      "pos": ["n", "adv"],
+      "sentences": [84362, 84360],
+      "sourceId": "fd1c93832f"
+    },
+    {
+      "id": "mainichi",
+      "kana": "まいにち",
+      "kanji": "毎日",
+      "romaji": "mainichi",
+      "en": ["every day"],
+      "pos": ["n", "adv"],
+      "sentences": [81316, 231557],
+      "sourceId": "039a696225"
+    },
+    {
+      "id": "mainen",
+      "kana": "まいねん",
+      "kanji": "毎年",
+      "romaji": "mainen",
+      "en": ["every year"],
+      "pos": ["adv", "n"],
+      "sentences": [81248, 81243],
+      "sourceId": "83700909d4"
+    },
+    {
+      "id": "maiban",
+      "kana": "まいばん",
+      "kanji": "毎晩",
+      "romaji": "maiban",
+      "en": ["every night"],
+      "pos": ["n", "adv"],
+      "sentences": [152681, 195755],
+      "sourceId": "2584943533"
+    },
+    {
+      "id": "mae",
+      "kana": "まえ",
+      "kanji": "前",
+      "romaji": "mae",
+      "en": ["before"],
+      "pos": ["n"],
+      "sentences": [184856],
+      "sourceId": "319e218950"
+    },
+    {
+      "id": "magaru",
+      "kana": "まがる",
+      "kanji": "曲がる",
+      "romaji": "magaru",
+      "en": ["to turn", "to bend"],
+      "pos": ["v5r", "vi"],
+      "sentences": [235525, 220472],
+      "sourceId": "ae3e0a705f"
+    },
+    {
+      "id": "mazui",
+      "kana": "まずい",
+      "romaji": "mazui",
+      "en": ["unpleasant"],
+      "pos": ["adj-i"],
+      "sentences": [234772, 197452],
+      "sourceId": "b19034ded1"
+    },
+    {
+      "id": "mata",
+      "kana": "また",
+      "romaji": "mata",
+      "en": ["again", "and"],
+      "pos": ["adv"],
+      "sentences": [215924, 230730],
+      "sourceId": "162e00c6ef"
+    },
+    {
+      "id": "mada",
+      "kana": "まだ",
+      "romaji": "mada",
+      "en": ["yet", "still"],
+      "pos": ["adv"],
+      "sentences": [199298, 195488],
+      "sourceId": "6a7163f5f7"
+    },
+    {
+      "id": "machi",
+      "kana": "まち",
+      "kanji": "町",
+      "romaji": "machi",
+      "en": ["town", "city"],
+      "pos": ["n"],
+      "sentences": [207801, 220531],
+      "sourceId": "4d76d06d84"
+    },
+    {
+      "id": "matsu",
+      "kana": "まつ",
+      "kanji": "待つ",
+      "romaji": "matsu",
+      "en": ["to wait"],
+      "pos": ["v5t", "vt", "vi"],
+      "sentences": [202739, 214707],
+      "sourceId": "6a39701228"
+    },
+    {
+      "id": "massugu",
+      "kana": "まっすぐ",
+      "romaji": "massugu",
+      "en": ["straight ahead", "direct"],
+      "pos": ["adj-na", "adv", "n"],
+      "sentences": [195363, 216856],
+      "sourceId": "ede9ab2f7f"
+    },
+    {
+      "id": "matchi",
+      "kana": "マッチ",
+      "romaji": "matchi",
+      "en": ["match"],
+      "pos": ["n"],
+      "sentences": [195351, 195348],
+      "sourceId": "27f9d40392"
+    },
+    {
+      "id": "mado",
+      "kana": "まど",
+      "kanji": "窓",
+      "romaji": "mado",
+      "en": ["window"],
+      "pos": ["n"],
+      "sentences": [231771, 198657],
+      "sourceId": "7734194821"
+    },
+    {
+      "id": "marui",
+      "kana": "まるい",
+      "kanji": "丸い",
+      "romaji": "marui",
+      "en": ["round", "circular"],
+      "pos": ["adj-i"],
+      "sentences": [196476, 165954],
+      "sourceId": "ab36109960"
+    },
+    {
+      "id": "man",
+      "kana": "まん",
+      "kanji": "万",
+      "romaji": "man",
+      "en": ["ten thousand"],
+      "pos": ["num"],
+      "sentences": [223521, 190376],
+      "sourceId": "a0ff0f67c8"
+    },
+    {
+      "id": "mannenhitsu",
+      "kana": "まんねんひつ",
+      "kanji": "万年筆",
+      "romaji": "mannenhitsu",
+      "en": ["fountain pen"],
+      "pos": ["n"],
+      "sentences": [155723, 167932],
+      "sourceId": "6318b0423a"
+    },
+    {
+      "id": "migaku",
+      "kana": "みがく",
+      "kanji": "磨く",
+      "romaji": "migaku",
+      "en": ["to brush teeth", "to polish"],
+      "pos": ["v5k", "vt"],
+      "sentences": [212854, 184229],
+      "sourceId": "7309a238e8"
+    },
+    {
+      "id": "migi",
+      "kana": "みぎ",
+      "kanji": "右",
+      "romaji": "migi",
+      "en": ["right side"],
+      "pos": ["n", "adj-no"],
+      "sentences": [230059, 122093],
+      "sourceId": "f1046f3190"
+    },
+    {
+      "id": "mijikai",
+      "kana": "みじかい",
+      "kanji": "短い",
+      "romaji": "mijikai",
+      "en": ["short"],
+      "pos": ["adj-i"],
+      "sentences": [122959, 231055],
+      "sourceId": "8568eded6e"
+    },
+    {
+      "id": "mizu",
+      "kana": "みず",
+      "kanji": "水",
+      "romaji": "mizu",
+      "en": ["water"],
+      "pos": ["n"],
+      "sentences": [197613, 198284],
+      "sourceId": "69a792520f"
+    },
+    {
+      "id": "mise",
+      "kana": "みせ",
+      "kanji": "店",
+      "romaji": "mise",
+      "en": ["shop"],
+      "pos": ["n"],
+      "sentences": [124989, 124997],
+      "sourceId": "0c8a588e53"
+    },
+    {
+      "id": "miseru",
+      "kana": "みせる",
+      "kanji": "見せる",
+      "romaji": "miseru",
+      "en": ["to show"],
+      "pos": ["v1", "vt"],
+      "sentences": [198083, 226458],
+      "sourceId": "db35a99e28"
+    },
+    {
+      "id": "michi",
+      "kana": "みち",
+      "kanji": "道",
+      "romaji": "michi",
+      "en": ["street"],
+      "pos": ["n"],
+      "sentences": [75827, 84728],
+      "sourceId": "dc29195f18"
+    },
+    {
+      "id": "mikka",
+      "kana": "みっか",
+      "kanji": "三日",
+      "romaji": "mikka",
+      "en": ["three days", "third day of the month"],
+      "pos": ["n"],
+      "sentences": [236068, 168024],
+      "sourceId": "1713d0bbe8"
+    },
+    {
+      "id": "mittsu",
+      "kana": "みっつ",
+      "kanji": "三つ",
+      "romaji": "mittsu",
+      "en": ["three"],
+      "pos": ["num"],
+      "sentences": [224844, 196583],
+      "sourceId": "b36b221d33"
+    },
+    {
+      "id": "midori",
+      "kana": "みどり",
+      "kanji": "緑",
+      "romaji": "midori",
+      "en": ["green"],
+      "pos": ["n", "adj-no"],
+      "sentences": [74154, 206210],
+      "sourceId": "85e4ba2f28"
+    },
+    {
+      "id": "minasan",
+      "kana": "みなさん",
+      "kanji": "皆さん",
+      "romaji": "minasan",
+      "en": ["everyone"],
+      "pos": ["n"],
+      "sentences": [195074, 75145],
+      "sourceId": "d2b9c47656"
+    },
+    {
+      "id": "minami",
+      "kana": "みなみ",
+      "kanji": "南",
+      "romaji": "minami",
+      "en": ["south"],
+      "pos": ["n"],
+      "sentences": [196997, 195304],
+      "sourceId": "84e465b526"
+    },
+    {
+      "id": "mimi",
+      "kana": "みみ",
+      "kanji": "耳",
+      "romaji": "mimi",
+      "en": ["ear"],
+      "pos": ["n"],
+      "sentences": [199295, 150168],
+      "sourceId": "e8cdf8b85a"
+    },
+    {
+      "id": "miru",
+      "kana": "みる",
+      "kanji": "見る",
+      "romaji": "miru",
+      "en": ["to see", "to watch"],
+      "pos": ["v1", "vt"],
+      "sentences": [191835, 201993],
+      "sourceId": "85b37b6884"
+    },
+    {
+      "id": "minna",
+      "kana": "みんな",
+      "romaji": "minna",
+      "en": ["everyone"],
+      "pos": ["n", "pn", "adv"],
+      "sentences": [147335, 216907],
+      "sourceId": "2676514561"
+    },
+    {
+      "id": "muika",
+      "kana": "むいか",
+      "kanji": "六日",
+      "romaji": "muika",
+      "en": ["six days", "sixth day of the month"],
+      "pos": ["n"],
+      "sentences": [235224, 235021],
+      "sourceId": "bf44ddad08"
+    },
+    {
+      "id": "mukou",
+      "kana": "むこう",
+      "kanji": "向こう",
+      "romaji": "mukou",
+      "en": ["over there"],
+      "pos": ["n"],
+      "sentences": [208147, 173839],
+      "sourceId": "8e862f05f0"
+    },
+    {
+      "id": "muzukashii",
+      "kana": "むずかしい",
+      "kanji": "難しい",
+      "romaji": "muzukashii",
+      "en": ["difficult"],
+      "pos": ["adj-i"],
+      "sentences": [184760, 196964],
+      "sourceId": "0a3894175f"
+    },
+    {
+      "id": "muttsu",
+      "kana": "むっつ",
+      "kanji": "六つ",
+      "romaji": "muttsu",
+      "en": ["six"],
+      "pos": ["num"],
+      "sentences": [93506, 92613],
+      "sourceId": "7ecc2c4bfc"
+    },
+    {
+      "id": "mura",
+      "kana": "むら",
+      "kanji": "村",
+      "romaji": "mura",
+      "en": ["village"],
+      "pos": ["n"],
+      "sentences": [126109, 208294],
+      "sourceId": "5028971b39"
+    },
+    {
+      "id": "me",
+      "kana": "め",
+      "kanji": "目",
+      "romaji": "me",
+      "en": ["eye"],
+      "pos": ["n"],
+      "sentences": [92969, 235310],
+      "sourceId": "ae534d4ca8"
+    },
+    {
+      "id": "meetoru",
+      "kana": "メートル",
+      "romaji": "meetoru",
+      "en": ["metre"],
+      "pos": ["n"],
+      "sentences": [140982],
+      "sourceId": "eb5450490b"
+    },
+    {
+      "id": "megane",
+      "kana": "めがね",
+      "kanji": "眼鏡",
+      "romaji": "megane",
+      "en": ["glasses"],
+      "pos": ["n"],
+      "sentences": [158805, 83033],
+      "sourceId": "72eb77e07a"
+    },
+    {
+      "id": "mou",
+      "kana": "もう",
+      "romaji": "mou",
+      "en": ["already"],
+      "pos": ["adv"],
+      "sentences": [74910, 194403],
+      "sourceId": "c5b7ad76fd"
+    },
+    {
+      "id": "mouichido",
+      "kana": "もういちど",
+      "kanji": "もう一度",
+      "romaji": "mouichido",
+      "en": ["again"],
+      "pos": ["exp", "adv"],
+      "sentences": [194309, 194328],
+      "sourceId": "3ae16ad93a"
+    },
+    {
+      "id": "mokuyoubi",
+      "kana": "もくようび",
+      "kanji": "木曜日",
+      "romaji": "mokuyoubi",
+      "en": ["Thursday"],
+      "pos": ["n", "adv"],
+      "sentences": [193147, 80049],
+      "sourceId": "d10bb92f3e"
+    },
+    {
+      "id": "motsu",
+      "kana": "もつ",
+      "kanji": "持つ",
+      "romaji": "motsu",
+      "en": ["to hold"],
+      "pos": ["v5t", "vt"],
+      "sentences": [224958, 167740],
+      "sourceId": "16fda19d79"
+    },
+    {
+      "id": "motto",
+      "kana": "もっと",
+      "romaji": "motto",
+      "en": ["more"],
+      "pos": ["adv"],
+      "sentences": [84880, 193236],
+      "sourceId": "a8f5f4c59e"
+    },
+    {
+      "id": "mono",
+      "kana": "もの",
+      "kanji": "物",
+      "romaji": "mono",
+      "en": ["thing"],
+      "pos": ["n"],
+      "sentences": [200773, 219684],
+      "sourceId": "782272bfda"
+    },
+    {
+      "id": "mon",
+      "kana": "もん",
+      "kanji": "門",
+      "romaji": "mon",
+      "en": ["gate"],
+      "pos": ["n"],
+      "sentences": [215219, 79781],
+      "sourceId": "5b92758003"
+    },
+    {
+      "id": "mondai",
+      "kana": "もんだい",
+      "kanji": "問題",
+      "romaji": "mondai",
+      "en": ["problem"],
+      "pos": ["n"],
+      "sentences": [79848, 213123],
+      "sourceId": "4f0f6b6ae7"
+    },
+    {
+      "id": "yaoya",
+      "kana": "やおや",
+      "kanji": "八百屋",
+      "romaji": "yaoya",
+      "en": ["greengrocer"],
+      "pos": ["n"],
+      "sentences": [207193, 154612],
+      "sourceId": "8d29f60b23"
+    },
+    {
+      "id": "yasai",
+      "kana": "やさい",
+      "kanji": "野菜",
+      "romaji": "yasai",
+      "en": ["vegetable"],
+      "pos": ["n"],
+      "sentences": [207603, 79599],
+      "sourceId": "936289666e"
+    },
+    {
+      "id": "yasashii",
+      "kana": "やさしい",
+      "kanji": "易しい",
+      "romaji": "yasashii",
+      "en": ["easy", "simple"],
+      "pos": ["adj-i"],
+      "sentences": [193198, 219533],
+      "sourceId": "ead1ae2736"
+    },
+    {
+      "id": "yasui",
+      "kana": "やすい",
+      "kanji": "安い",
+      "romaji": "yasui",
+      "en": ["cheap"],
+      "pos": ["adj-i"],
+      "sentences": [193311, 193312],
+      "sourceId": "33b86212ca"
+    },
+    {
+      "id": "yasumi",
+      "kana": "やすみ",
+      "kanji": "休み",
+      "romaji": "yasumi",
+      "en": ["rest", "holiday"],
+      "pos": ["n"],
+      "sentences": [184412, 202088],
+      "sourceId": "d4a1d27d3b"
+    },
+    {
+      "id": "yasumu",
+      "kana": "やすむ",
+      "kanji": "休む",
+      "romaji": "yasumu",
+      "en": ["to rest"],
+      "pos": ["v5m", "vi"],
+      "sentences": [84662, 113559],
+      "sourceId": "3e3efcb45f"
+    },
+    {
+      "id": "yattsu",
+      "kana": "やっつ",
+      "kanji": "八つ",
+      "romaji": "yattsu",
+      "en": ["eight"],
+      "pos": ["num"],
+      "sentences": [519714, 83078],
+      "sourceId": "62c4216674"
+    },
+    {
+      "id": "yama",
+      "kana": "やま",
+      "kanji": "山",
+      "romaji": "yama",
+      "en": ["mountain"],
+      "pos": ["n", "ctr"],
+      "sentences": [210451, 221853],
+      "sourceId": "e8a5cbdf0a"
+    },
+    {
+      "id": "yaru",
+      "kana": "やる",
+      "romaji": "yaru",
+      "en": ["to do"],
+      "pos": ["v5r", "vt"],
+      "sentences": [235161, 430482],
+      "sourceId": "f81d503d6f"
+    },
+    {
+      "id": "yuugata",
+      "kana": "ゆうがた",
+      "kanji": "夕方",
+      "romaji": "yuugata",
+      "en": ["evening"],
+      "pos": ["n", "adv"],
+      "sentences": [197417, 229774],
+      "sourceId": "285b008622"
+    },
+    {
+      "id": "yuuhan",
+      "kana": "ゆうはん",
+      "kanji": "夕飯",
+      "romaji": "yuuhan",
+      "en": ["dinner"],
+      "pos": ["n"],
+      "sentences": [79059, 79058],
+      "sourceId": "ae2b9f6d7e"
+    },
+    {
+      "id": "yuubinkyoku",
+      "kana": "ゆうびんきょく",
+      "kanji": "郵便局",
+      "romaji": "yuubinkyoku",
+      "en": ["post office"],
+      "pos": ["n"],
+      "sentences": [231383, 224027],
+      "sourceId": "8b86921749"
+    },
+    {
+      "id": "yuube",
+      "kana": "ゆうべ",
+      "kanji": "昨夜",
+      "romaji": "yuube",
+      "en": ["last night"],
+      "pos": ["n", "adv"],
+      "sentences": [169654, 169693],
+      "sourceId": "39fff8fc4b"
+    },
+    {
+      "id": "yuumei",
+      "kana": "ゆうめい",
+      "kanji": "有名",
+      "romaji": "yuumei",
+      "en": ["famous"],
+      "pos": ["adj-na"],
+      "sentences": [212598, 201079],
+      "sourceId": "50b217ed0b"
+    },
+    {
+      "id": "yuki",
+      "kana": "ゆき",
+      "kanji": "雪",
+      "romaji": "yuki",
+      "en": ["snow"],
+      "pos": ["n"],
+      "sentences": [197547, 142003],
+      "sourceId": "78c044b951"
+    },
+    {
+      "id": "yukkurito",
+      "kana": "ゆっくりと",
+      "romaji": "yukkurito",
+      "en": ["slowly"],
+      "pos": ["adv", "adv-to", "vs"],
+      "sentences": [227740, 194720],
+      "sourceId": "d980cb1531"
+    },
+    {
+      "id": "youka",
+      "kana": "ようか",
+      "kanji": "八日",
+      "romaji": "youka",
+      "en": ["eight days", "eighth day of the month"],
+      "pos": ["n"],
+      "sentences": [184424, 162088],
+      "sourceId": "4f8e83945d"
+    },
+    {
+      "id": "youfuku",
+      "kana": "ようふく",
+      "kanji": "洋服",
+      "romaji": "youfuku",
+      "en": ["western-style clothes"],
+      "pos": ["n"],
+      "sentences": [226963, 236922],
+      "sourceId": "1907b6fc38"
+    },
+    {
+      "id": "yoku",
+      "kana": "よく",
+      "romaji": "yoku",
+      "en": ["often", "well"],
+      "pos": ["adv"],
+      "sentences": [215788, 192833],
+      "sourceId": "19db29fbbb"
+    },
+    {
+      "id": "yoko",
+      "kana": "よこ",
+      "kanji": "横",
+      "romaji": "yoko",
+      "en": ["beside", "side", "width"],
+      "pos": ["n"],
+      "sentences": [82787, 123621],
+      "sourceId": "4cb7c969c4"
+    },
+    {
+      "id": "yokka",
+      "kana": "よっか",
+      "kanji": "四日",
+      "romaji": "yokka",
+      "en": ["four days", "fourth day of the month"],
+      "pos": ["n"],
+      "sentences": [125908, 162081],
+      "sourceId": "222ae96df7"
+    },
+    {
+      "id": "yottsu",
+      "kana": "よっつ",
+      "kanji": "四つ",
+      "romaji": "yottsu",
+      "en": ["four"],
+      "pos": ["num"],
+      "sentences": [210071, 143446],
+      "sourceId": "1000ee441a"
+    },
+    {
+      "id": "yobu",
+      "kana": "よぶ",
+      "kanji": "呼ぶ",
+      "romaji": "yobu",
+      "en": ["to call out", "to invite"],
+      "pos": ["v5b", "vt"],
+      "sentences": [231456, 234086],
+      "sourceId": "76f05a0739"
+    },
+    {
+      "id": "yomu",
+      "kana": "よむ",
+      "kanji": "読む",
+      "romaji": "yomu",
+      "en": ["to read"],
+      "pos": ["v5m", "vt"],
+      "sentences": [152798, 157196],
+      "sourceId": "eb7e675902"
+    },
+    {
+      "id": "yori",
+      "kana": "より",
+      "romaji": "yori",
+      "en": ["than", "(used for comparison)"],
+      "pos": ["prt"],
+      "sentences": [194478, 199480],
+      "sourceId": "6c214111ea"
+    },
+    {
+      "id": "yoru",
+      "kana": "よる",
+      "kanji": "夜",
+      "romaji": "yoru",
+      "en": ["evening", "night"],
+      "pos": ["n", "adv"],
+      "sentences": [231522, 79751],
+      "sourceId": "1a0aec6793"
+    },
+    {
+      "id": "yowai",
+      "kana": "よわい",
+      "kanji": "弱い",
+      "romaji": "yowai",
+      "en": ["weak"],
+      "pos": ["adj-i"],
+      "sentences": [204593, 212696],
+      "sourceId": "83da293775"
+    },
+    {
+      "id": "raigetsu",
+      "kana": "らいげつ",
+      "kanji": "来月",
+      "romaji": "raigetsu",
+      "en": ["next month"],
+      "pos": ["n", "adv"],
+      "sentences": [78688, 227704],
+      "sourceId": "61fd50f12e"
+    },
+    {
+      "id": "raishuu",
+      "kana": "らいしゅう",
+      "kanji": "来週",
+      "romaji": "raishuu",
+      "en": ["next week"],
+      "pos": ["n", "adv"],
+      "sentences": [191765, 78640],
+      "sourceId": "7a4ef637be"
+    },
+    {
+      "id": "rainen",
+      "kana": "らいねん",
+      "kanji": "来年",
+      "romaji": "rainen",
+      "en": ["next year"],
+      "pos": ["n", "adv"],
+      "sentences": [231498, 152393],
+      "sourceId": "c68f2caa2f"
+    },
+    {
+      "id": "rajio",
+      "kana": "ラジオ",
+      "romaji": "rajio",
+      "en": ["radio"],
+      "pos": ["n"],
+      "sentences": [212803, 192597],
+      "sourceId": "670f2dd0dc"
+    },
+    {
+      "id": "rajikase",
+      "kana": "ラジカセ",
+      "romaji": "rajikase",
+      "en": ["radio cassette player"],
+      "pos": ["n"],
+      "sentences": [1174918],
+      "sourceId": "924572e50c"
+    },
+    {
+      "id": "rippa",
+      "kana": "りっぱ",
+      "kanji": "立派",
+      "romaji": "rippa",
+      "en": ["splendid"],
+      "pos": ["adj-na"],
+      "sentences": [201196, 102449],
+      "sourceId": "a45af4ed89"
+    },
+    {
+      "id": "ryuugakusei",
+      "kana": "りゅうがくせい",
+      "kanji": "留学生",
+      "romaji": "ryuugakusei",
+      "en": ["overseas student"],
+      "pos": ["n"],
+      "sentences": [237462, 235285],
+      "sourceId": "dc7d39c7af"
+    },
+    {
+      "id": "ryoushin",
+      "kana": "りょうしん",
+      "kanji": "両親",
+      "romaji": "ryoushin",
+      "en": ["both parents"],
+      "pos": ["n"],
+      "sentences": [77996, 78052],
+      "sourceId": "0139a208fe"
+    },
+    {
+      "id": "ryouri",
+      "kana": "りょうり",
+      "kanji": "料理",
+      "romaji": "ryouri",
+      "en": ["cuisine"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [217962, 198943],
+      "sourceId": "ee85169acd"
+    },
+    {
+      "id": "ryokou",
+      "kana": "りょこう",
+      "kanji": "旅行",
+      "romaji": "ryokou",
+      "en": ["travel"],
+      "pos": ["n", "vs", "vi"],
+      "sentences": [228596, 76816],
+      "sourceId": "2ba96bef9a"
+    },
+    {
+      "id": "rei",
+      "kana": "れい",
+      "kanji": "零",
+      "romaji": "rei",
+      "en": ["zero"],
+      "pos": ["n"],
+      "sourceId": "92b3bb727e"
+    },
+    {
+      "id": "reizouko",
+      "kana": "れいぞうこ",
+      "kanji": "冷蔵庫",
+      "romaji": "reizouko",
+      "en": ["refrigerator"],
+      "pos": ["n"],
+      "sentences": [77638, 77648],
+      "sourceId": "f7a15687a1"
+    },
+    {
+      "id": "rekoodo",
+      "kana": "レコード",
+      "romaji": "rekoodo",
+      "en": ["record"],
+      "pos": ["n"],
+      "sentences": [214601, 234862],
+      "sourceId": "0455201fe6"
+    },
+    {
+      "id": "resutoran",
+      "kana": "レストラン",
+      "romaji": "resutoran",
+      "en": ["restaurant"],
+      "pos": ["n"],
+      "sentences": [231226, 223009],
+      "sourceId": "31893e4378"
+    },
+    {
+      "id": "renshuu",
+      "kana": "れんしゅう",
+      "kanji": "練習",
+      "romaji": "renshuu",
+      "en": ["to practice"],
+      "pos": ["n", "vs", "vt"],
+      "sentences": [232827, 174352],
+      "sourceId": "d23f06249a"
+    },
+    {
+      "id": "rouka",
+      "kana": "ろうか",
+      "kanji": "廊下",
+      "romaji": "rouka",
+      "en": ["corridor"],
+      "pos": ["n"],
+      "sentences": [77345, 173664],
+      "sourceId": "5fc0f979e6"
+    },
+    {
+      "id": "roku",
+      "kana": "ろく",
+      "kanji": "六",
+      "romaji": "roku",
+      "en": ["six"],
+      "pos": ["num"],
+      "sentences": [152733, 519112],
+      "sourceId": "f9ccc7bfdf"
+    },
+    {
+      "id": "waishatsu",
+      "kana": "ワイシャツ",
+      "romaji": "waishatsu",
+      "en": ["business shirt"],
+      "pos": ["n"],
+      "sentences": [192073, 83028],
+      "sourceId": "38249a2dd2"
+    },
+    {
+      "id": "wakai",
+      "kana": "わかい",
+      "kanji": "若い",
+      "romaji": "wakai",
+      "en": ["young"],
+      "pos": ["adj-i"],
+      "sentences": [236166, 156108],
+      "sourceId": "640761cb8b"
+    },
+    {
+      "id": "wakaru",
+      "kana": "わかる",
+      "kanji": "分かる",
+      "romaji": "wakaru",
+      "en": ["to be understood"],
+      "pos": ["v5r", "vi"],
+      "sentences": [196088, 200695],
+      "sourceId": "ecee43eb04"
+    },
+    {
+      "id": "wasureru",
+      "kana": "わすれる",
+      "kanji": "忘れる",
+      "romaji": "wasureru",
+      "en": ["to forget"],
+      "pos": ["v1", "vt"],
+      "sentences": [124723, 80772],
+      "sourceId": "0ca0de9dea"
+    },
+    {
+      "id": "watakushi",
+      "kana": "わたくし",
+      "kanji": "私",
+      "romaji": "watakushi",
+      "en": ["(humble) I", "myself"],
+      "pos": ["pn"],
+      "sentences": [159334, 89373],
+      "sourceId": "d5c2e69813"
+    },
+    {
+      "id": "watashi",
+      "kana": "わたし",
+      "kanji": "私",
+      "romaji": "watashi",
+      "en": ["I", "me"],
+      "pos": ["pn"],
+      "sourceId": "jmdict:1311110"
+    },
+    {
+      "id": "watasu",
+      "kana": "わたす",
+      "kanji": "渡す",
+      "romaji": "watasu",
+      "en": ["to hand over"],
+      "pos": ["v5s", "vt"],
+      "sentences": [191763, 192496],
+      "sourceId": "b1d440d4e1"
+    },
+    {
+      "id": "wataru",
+      "kana": "わたる",
+      "kanji": "渡る",
+      "romaji": "wataru",
+      "en": ["to go across"],
+      "pos": ["v5r", "vi"],
+      "sentences": [190628, 224241],
+      "sourceId": "78255b9860"
+    },
+    {
+      "id": "warui",
+      "kana": "わるい",
+      "kanji": "悪い",
+      "romaji": "warui",
+      "en": ["bad"],
+      "pos": ["adj-i"],
+      "sentences": [74724, 215129],
+      "sourceId": "13b6dbec03"
+    }
+  ]
+}

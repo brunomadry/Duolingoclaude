@@ -24,6 +24,10 @@ const report = validateContent({
   glosses: load('glosses.pl.json'),
   sentences: load('sentences.json'),
   grammar: load('grammar.json'),
+  strokes: load('strokes.json'),
+  kanji: load('kanji.json'),
+  kanjiGlosses: load('kanji.pl.json'),
+  examples: load('examples.json'),
 });
 
 for (const w of report.warnings) console.warn(`warn  ${w}`);

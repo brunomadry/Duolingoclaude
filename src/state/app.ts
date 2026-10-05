@@ -270,6 +270,15 @@ export async function reportProblem(input: {
 }
 
 /** Called by repositories of later phases after writing cards or lessons. */
+/** AI practice material through the Worker proxy (online only; callers handle ApiError). */
+export function aiExercise(lesson: number) {
+  return api.aiExercise(lesson);
+}
+
+export function aiChat(lesson: number, history: Parameters<typeof api.aiChat>[1]) {
+  return api.aiChat(lesson, history);
+}
+
 export function notifyLocalChange(): void {
   appState.set((s) => ({ dataVersion: s.dataVersion + 1 }));
   scheduleSync();

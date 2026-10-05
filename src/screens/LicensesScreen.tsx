@@ -11,7 +11,7 @@ export function LicensesScreen() {
       </p>
       {sources.sources.map((s) => (
         <article key={s.id} class="card source">
-          <h3 style={{ fontSize: 'var(--fs-md)' }}>{s.name}</h3>
+          <h2 style={{ fontSize: 'var(--fs-md)' }}>{s.name}</h2>
           <a class="source__license" href={s.licenseUrl} target="_blank" rel="noreferrer noopener">
             {s.license}
           </a>

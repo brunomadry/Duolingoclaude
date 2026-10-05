@@ -8,13 +8,15 @@ import type { Env } from './env.ts';
 export type AppEnv = { Bindings: Env };
 export type AppContext = Context<AppEnv>;
 
-const STATUS: Record<ApiErrorCode, 400 | 401 | 404 | 410 | 413 | 429 | 500> = {
+const STATUS: Record<ApiErrorCode, 400 | 401 | 404 | 410 | 413 | 429 | 500 | 503> = {
   bad_request: 400,
   locked: 401,
   not_found: 404,
   gone: 410,
   too_large: 413,
+  clock_skew: 400,
   rate_limited: 429,
+  ai_unavailable: 503,
   server_error: 500,
 };
 
@@ -55,5 +57,5 @@ export function clientIp(c: AppContext): string {
 /** Rejects client timestamps from the far future so a broken clock cannot win forever. */
 export const MAX_CLOCK_SKEW_MS = 24 * 60 * 60_000;
 export function assertSaneTimestamp(ts: number, now: number): void {
-  if (ts > now + MAX_CLOCK_SKEW_MS) fail('bad_request', 'timestamp too far in the future');
+  if (ts > now + MAX_CLOCK_SKEW_MS) fail('clock_skew', 'timestamp too far in the future');
 }

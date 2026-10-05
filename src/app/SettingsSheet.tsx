@@ -25,6 +25,8 @@ import {
   UploadIcon,
 } from '../ui/icons.tsx';
 import { ReportDialog } from './ReportDialog.tsx';
+import { useSpeechStatus } from '../ui/SpeakButton.tsx';
+import { JAPANESE_VOICE_HELP } from '../lib/speech.ts';
 
 interface SettingsSheetProps {
   open: boolean;
@@ -39,6 +41,9 @@ function syncLabel(s: ReturnType<typeof appState.get>['sync'], online: boolean):
       : 'Offline. Wszystko zapisane na telefonie.';
   }
   if (s.status === 'syncing') return 'Synchronizuję…';
+  if (s.status === 'clock') {
+    return 'Zegar w telefonie wyprzedza prawdziwy czas. Włącz automatyczną datę i godzinę, a zmiany wyślą się same.';
+  }
   if (s.status === 'error') return 'Nie udało się zsynchronizować. Spróbuję ponownie.';
   if (s.pending) return `Czeka na wysłanie: ${s.pending}.`;
   if (s.lastSyncedAt) {
@@ -56,6 +61,7 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
   const [reporting, setReporting] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const s = profile.settings;
+  const speech = useSpeechStatus();
 
   const set = (patch: Partial<ProfileSettings>) =>
     void updateProfile(profile.id, { settings: patch });
@@ -94,7 +100,12 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
             </p>
             <button
               class="btn btn--ghost"
-              style={{ padding: 0, minHeight: 32 }}
+              style={{
+                padding: 0,
+                minHeight: 'var(--tap)',
+                justifyContent: 'flex-start',
+                textAlign: 'left',
+              }}
               onClick={() => void syncNow()}
             >
               <span
@@ -179,6 +190,11 @@ export function SettingsSheet({ open, onClose, profile }: SettingsSheetProps) {
               onChange={(e) => set({ sound: e.currentTarget.checked })}
             />
           </label>
+          {(speech === 'no-voice' || speech === 'unsupported') && (
+            <p class="setting" role="note">
+              <span class="setting__hint">{JAPANESE_VOICE_HELP}</span>
+            </p>
+          )}
         </div>
 
         <h3 class="section-label">Dane i pomoc</h3>

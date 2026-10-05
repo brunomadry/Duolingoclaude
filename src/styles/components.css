@@ -272,7 +272,7 @@ dialog.dialog {
 .segmented label {
   display: grid;
   place-items: center;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 var(--space-2);
   border-radius: var(--radius-pill);
   color: var(--text-muted);
