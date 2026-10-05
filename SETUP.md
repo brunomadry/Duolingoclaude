@@ -83,7 +83,7 @@ The content in `content/` is generated once and committed; the app never fetches
 npx wrangler d1 execute aka-nihongo --remote --command "SELECT created_at, context, sentence, note FROM reports ORDER BY created_at DESC LIMIT 20"
 ```
 
-After editing content run `npm run validate:content` (it checks every sentence against the words and grammar its lesson has taught).
+After editing content run `npm run validate:content` (it checks every sentence against the words and grammar its lesson has taught). `docs/curriculum-words.md` lists the words and kanji of every lesson; after moving words between lessons, regenerate it with `node scripts/curriculum-report.ts`.
 
 ## 7. Good to know
 
