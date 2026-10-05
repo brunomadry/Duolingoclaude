@@ -2,6 +2,8 @@
 
 Private PWA for learning Japanese (JLPT N5) for two Polish speakers on iPhones. Read `docs/DECISIONS.md` before changing architecture, and `docs/japonski-research.md` for the curriculum background. The original brief wins over the research report.
 
+**Start of a new session: read `docs/HANDOFF.md`** (who you work with, deployment status, traps, open items). Keep it current when the state changes.
+
 ## Language
 
 - UI strings are **Polish** (use correct diacritics: ą ć ę ł ń ó ś ź ż) and gender-neutral phrasing ("Ukończono", not "Ukończyłeś").
