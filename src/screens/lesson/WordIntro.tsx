@@ -12,7 +12,7 @@ interface WordIntroProps {
 /** "Nowe słówka": one card per new word, then on to practice. */
 export function WordIntro({ words, display, onDone }: WordIntroProps) {
   const [page, setPage] = useState(0);
-  const headingRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const word = words[page];
 
   // Each new page starts at its heading for VoiceOver.
@@ -27,9 +27,9 @@ export function WordIntro({ words, display, onDone }: WordIntroProps) {
 
   return (
     <div class="intro">
-      <p ref={headingRef} class="exercise__prompt" tabIndex={-1}>
+      <h2 ref={headingRef} class="exercise__prompt" tabIndex={-1}>
         Słówko {page + 1} z {words.length}
-      </p>
+      </h2>
       {word && (
         <div class="card card--elevated intro__word">
           <WordCard key={word.id} word={word} display={display} />

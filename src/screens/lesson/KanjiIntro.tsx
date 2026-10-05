@@ -12,7 +12,7 @@ interface KanjiIntroProps {
 /** "Kanji": one card per new kanji, with the known words written with it. */
 export function KanjiIntro({ items, words, onDone }: KanjiIntroProps) {
   const [page, setPage] = useState(0);
-  const headingRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const item = items[page];
 
   useEffect(() => {
@@ -26,9 +26,9 @@ export function KanjiIntro({ items, words, onDone }: KanjiIntroProps) {
 
   return (
     <div class="intro">
-      <p ref={headingRef} class="exercise__prompt" tabIndex={-1}>
+      <h2 ref={headingRef} class="exercise__prompt" tabIndex={-1}>
         Kanji {page + 1} z {items.length}
-      </p>
+      </h2>
       {item && (
         <div class="card card--elevated intro__word">
           <KanjiCard key={item.char} kanji={item} words={words.get(item.char) ?? []} />

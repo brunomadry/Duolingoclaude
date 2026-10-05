@@ -274,7 +274,7 @@ export function VocabScreen({ profile }: { profile: ProfileRecord }) {
         ) : (
           sectionsOf(shown, view).map((s) => (
             <section key={s.key} aria-label={view === 'all' ? `Słówka na ${s.title}` : s.title}>
-              <h3 class={`section-label${view === 'all' ? ' jp' : ''}`}>{s.title}</h3>
+              <h2 class={`section-label${view === 'all' ? ' jp' : ''}`}>{s.title}</h2>
               <div class="list">
                 {s.words.map((w) => (
                   <WordRow key={w.id} word={w} view={view} onOpen={setSelected} />

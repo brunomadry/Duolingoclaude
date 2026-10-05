@@ -20,7 +20,7 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
   const pages = notes.length ? 1 + items.length : items.length;
   const [page, setPage] = useState(0);
   const [strokes, setStrokes] = useState(false);
-  const headingRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   // Each new page starts at its heading for VoiceOver.
   useEffect(() => {
@@ -40,9 +40,9 @@ export function KanaIntro({ items, groupIds, onDone }: KanaIntroProps) {
 
   return (
     <div class="intro">
-      <p ref={headingRef} class="exercise__prompt" tabIndex={-1}>
+      <h2 ref={headingRef} class="exercise__prompt" tabIndex={-1}>
         {showNotes ? 'Zanim zaczniemy' : `Znak ${notes.length ? page : page + 1} z ${items.length}`}
-      </p>
+      </h2>
 
       {showNotes ? (
         <div class="card stack intro__note">
