@@ -12,7 +12,7 @@ import type { GrammarNoteItem } from './grammar.ts';
 import { kanjiCardId, type KanjiItem } from './kanji.ts';
 import { makeSentenceExercise, sentenceKinds, type SentenceContext } from './sentence-exercises.ts';
 import type { SentenceItem } from './sentences.ts';
-import { foldPolish, vocabCardId, type WordItem } from './vocab.ts';
+import { foldPolish, senseKeys, vocabCardId, type WordItem } from './vocab.ts';
 
 export interface KanaItem {
   char: string;
@@ -59,6 +59,8 @@ export interface KanaExercise extends ExerciseBase {
 export interface WordExercise extends ExerciseBase {
   kind: WordExerciseKind;
   word: WordItem;
+  /** type-word: other taught words with the shown meaning as one of their senses, also right. */
+  alsoAccepted?: { kana: string; romaji: string }[];
 }
 
 export interface SentenceExercise extends ExerciseBase {
@@ -250,11 +252,25 @@ function uniqueById(words: readonly WordItem[]): WordItem[] {
   return words.filter((w) => (seen.has(w.id) ? false : (seen.add(w.id), true)));
 }
 
-/** True when either word could be a correct answer for the other (same kana or a shared sense). */
+/**
+ * True when either word could be a correct answer for the other: same kana, or a shared core
+ * meaning (ちち "ojciec (własny)" and おとうさん "ojciec (czyjś)" are both "ojciec").
+ */
 function confusable(a: WordItem, b: WordItem): boolean {
   if (a.id === b.id || a.kana === b.kana) return true;
-  const senses = new Set(a.pl.map(foldPolish));
-  return b.pl.some((s) => senses.has(foldPolish(s)));
+  const keys = keysOf(a);
+  return [...keysOf(b)].some((k) => keys.has(k));
+}
+
+const senseCache = new WeakMap<WordItem, Set<string>>();
+/** senseKeys per word, computed once (distractors compare a word with the whole pool). */
+function keysOf(w: WordItem): Set<string> {
+  let keys = senseCache.get(w);
+  if (!keys) {
+    keys = senseKeys(w.pl);
+    senseCache.set(w, keys);
+  }
+  return keys;
 }
 
 /**
@@ -293,7 +309,19 @@ function makeWordExercise(
   id: string,
 ): WordExercise {
   const base = { id, kind, cardId: vocabCardId(word.id), word };
-  const typed: WordExercise = { ...base, kind: 'type-word', options: [], answer: word.kana };
+  // The prompt shows the first sense only: a taught word with exactly that sense is right too
+  // (いしゃ "lekarz, lekarka" is also せんせい).
+  const shown = foldPolish(word.pl[0] ?? '');
+  const alsoAccepted = pool
+    .filter((w) => w.kana !== word.kana && w.pl.some((s) => foldPolish(s) === shown))
+    .map((w) => ({ kana: w.kana, romaji: w.romaji }));
+  const typed: WordExercise = {
+    ...base,
+    kind: 'type-word',
+    options: [],
+    answer: word.kana,
+    ...(alsoAccepted.length ? { alsoAccepted } : {}),
+  };
   if (kind === 'type-word') return typed;
   const field = kind === 'word-to-meaning' ? 'meaning' : 'kana';
   const options = buildWordOptions(word, pool, spare, field, rng);
@@ -339,9 +367,9 @@ function makeKanjiExercise(
     }
   }
   const answer = k.pl[0] ?? k.char;
-  const senses = new Set(k.pl.map(foldPolish));
+  const senses = senseKeys(k.pl);
   const others = shuffle(
-    pool.filter((o) => o.char !== k.char && !o.pl.some((p) => senses.has(foldPolish(p)))),
+    pool.filter((o) => o.char !== k.char && ![...senseKeys(o.pl)].some((p) => senses.has(p))),
     rng,
   )
     .map((o) => o.pl[0] ?? o.char)

@@ -72,10 +72,34 @@ export function interchangeable(a: string, b: string): boolean {
 
 const isTile = (t: Token) => t.kind !== 'punct' && t.surface.trim() !== '';
 
+/**
+ * Which vocabulary word a reading token stands for when several share the kana (きます is
+ * 着る or 来る, かぜ is 風 or 風邪): the one the written sentence uses, then one taught by the
+ * sentence's lesson, then the first candidate.
+ */
+export function wordPicker(
+  written: readonly Token[],
+  lessonOf: (wordId: string) => number | null,
+  lesson: number,
+): (t: Token) => string | undefined {
+  const writtenIds = new Set(written.flatMap((t) => t.wordIds));
+  return (t) => {
+    const inWritten = t.wordIds.filter((id) => writtenIds.has(id));
+    const ids = inWritten.length ? inWritten : t.wordIds;
+    return (
+      ids.find((id) => {
+        const at = lessonOf(id);
+        return at !== null && at <= lesson;
+      }) ?? ids[0]
+    );
+  };
+}
+
 export function analyseSentence(
   source: SentenceSource,
   readingTokens: readonly Token[],
   isVerb: (wordId: string) => boolean,
+  pickWord: (t: Token) => string | undefined = (t) => t.wordIds[0],
 ): SentenceItem {
   const grammar = grammarOfTokens(readingTokens, isVerb);
   const words = new Set<string>();
@@ -85,7 +109,8 @@ export function analyseSentence(
     if (!isTile(t)) continue;
     if (t.kind === 'grammar' && t.grammar && t.grammar in GAP_PARTICLES)
       gaps.push({ index: tiles.length, key: t.grammar });
-    if (t.kind === 'word' && t.wordIds[0]) words.add(t.wordIds[0]);
+    const word = t.kind === 'word' ? pickWord(t) : undefined;
+    if (word) words.add(word);
     tiles.push(t.surface);
   }
   return {

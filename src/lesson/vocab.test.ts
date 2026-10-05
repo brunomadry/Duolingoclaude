@@ -6,6 +6,7 @@ import {
   isWordAnswerCorrect,
   posLabel,
   searchWords,
+  senseKeys,
   shortMeaning,
   vocabCardId,
   wordIdFromCardId,
@@ -128,6 +129,16 @@ describe('helpers', () => {
     expect(posLabel(['n', 'adj-no'])).toBe('rzeczownik');
     expect(posLabel([])).toBeNull();
     expect(shortMeaning({ pl: ['ojciec (własny)'] })).toBe('ojciec');
+  });
+
+  it('reduces senses to their core meanings', () => {
+    expect([...senseKeys(['ojciec (własny)', 'Student, studentka; uczeń'])]).toEqual([
+      'ojciec',
+      'student',
+      'studentka',
+      'uczen',
+    ]);
+    expect([...senseKeys(['i pół (np. 3:30, 2,5 godziny)'])]).toEqual(['i pol']);
   });
 
   it('tells katakana words apart', () => {

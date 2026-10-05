@@ -5,7 +5,12 @@
  */
 import type { Token } from '../shared/jp-words.ts';
 import { sentenceRomaji } from './sentence-romaji.ts';
-import { analyseSentence, type SentenceItem, type SentenceSource } from './sentences.ts';
+import {
+  analyseSentence,
+  wordPicker,
+  type SentenceItem,
+  type SentenceSource,
+} from './sentences.ts';
 
 export interface GrammarNoteItem {
   id: string;
@@ -46,7 +51,8 @@ export interface RawExampleSentences {
 export interface SentenceTools {
   tokenize: (text: string) => Token[];
   isVerb: (wordId: string) => boolean;
-  word: (id: string) => { kana: string; romaji: string } | undefined;
+  /** A vocabulary entry; `lesson` (where it is taught) tells homophones apart. */
+  word: (id: string) => { kana: string; romaji: string; lesson?: number | null } | undefined;
 }
 
 /** Analyses one sentence (romaji generated from the reading when missing). */
@@ -54,7 +60,12 @@ export function sentenceItem(source: SentenceSource, tools: SentenceTools): Sent
   const reading = source.kana ?? source.ja;
   const tokens = tools.tokenize(reading);
   const romaji = source.romaji ?? sentenceRomaji(tokens, tools.word);
-  return analyseSentence({ ...source, romaji }, tokens, tools.isVerb);
+  // The written sentence tells homophones in the reading apart (きます: 来ます, not 着ます).
+  // Only about one sentence in seven has one, so the written form is tokenized only then.
+  const ambiguous = tokens.some((t) => t.kind === 'word' && t.wordIds.length > 1);
+  const written = ambiguous && reading !== source.ja ? tools.tokenize(source.ja) : tokens;
+  const pick = wordPicker(written, (id) => tools.word(id)?.lesson ?? null, source.lesson);
+  return analyseSentence({ ...source, romaji }, tokens, tools.isVerb, pick);
 }
 
 export interface GrammarIndex {

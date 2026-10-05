@@ -277,6 +277,39 @@ describe('buildLessonPlan: words', () => {
     }
   });
 
+  it('keeps words with a shared core meaning apart and accepts a typed synonym', () => {
+    const chichi = W('chichi', 'ちち', ['ojciec (własny)', 'tata (własny)']);
+    const otousan = W('otousan', 'おとうさん', ['tata', 'ojciec (czyjś, grzecznie)']);
+    const isha = W('isha', 'いしゃ', ['lekarz, lekarka']);
+    const sensei = W('sensei', 'せんせい', ['nauczyciel, nauczycielka', 'lekarz, lekarka']);
+    let typedIsha = 0;
+    for (let seed = 0; seed < 40; seed++) {
+      const plan = buildLessonPlan(
+        input({
+          lessonItems: [],
+          lessonWords: [chichi, isha],
+          knownWords: [otousan, sensei, ...WORDS],
+          seed,
+        }),
+      );
+      for (const e of exercisesOf(plan)) {
+        if (!isWordExercise(e)) continue;
+        if (e.word.id === 'chichi' && e.kind !== 'type-word') {
+          expect(e.options).not.toContain('おとうさん');
+          expect(e.options).not.toContain('tata');
+        }
+        if (e.word.id === 'chichi' && e.kind === 'type-word')
+          expect(e.alsoAccepted).toBeUndefined();
+        if (e.word.id === 'isha' && e.kind === 'type-word') {
+          typedIsha++;
+          // The prompt shows "lekarz, lekarka", which is also a sense of せんせい.
+          expect(e.alsoAccepted).toEqual([{ kana: 'せんせい', romaji: 'sensei' }]);
+        }
+      }
+    }
+    expect(typedIsha).toBeGreaterThan(0);
+  });
+
   it('words-only lessons skip the kana steps; quizzes mix both when there are both', () => {
     const wordsOnly = withWords({ lessonItems: [] });
     expect(wordsOnly.steps.map((s) => s.kind)).toEqual(['words', 'practice', 'summary']);

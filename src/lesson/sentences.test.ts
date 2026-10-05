@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { createLexicon, tokenize, type LexEntry } from '../shared/jp-words.ts';
-import { analyseSentence, interchangeable, tilesMatch } from './sentences.ts';
+import { analyseSentence, interchangeable, tilesMatch, wordPicker } from './sentences.ts';
 
 const vocab = (
   JSON.parse(readFileSync(new URL('../../content/vocab.json', import.meta.url), 'utf8')) as {
@@ -30,6 +30,25 @@ describe('analyseSentence', () => {
     expect(s.grammar.sort()).toEqual(['masen-mashita', 'ni-he']);
     // A verb in its dictionary form needs the plain-form lesson.
     expect(analyse('ほんを よむ。').grammar.sort()).toEqual(['masu-wo', 'plain-dictionary']);
+  });
+
+  it('tells homophones apart by the written sentence, then by the lesson', () => {
+    const lessonOf = (id: string) =>
+      ({ 'kiru-put-on': 51, kuru: 31, 'kaze-cold': 60, 'kaze-wind': 87 })[id] ?? null;
+    const words = (ja: string, kana: string, lesson: number) =>
+      analyseSentence(
+        { id: 'ex:z', ja, kana, pl: 'x', lesson },
+        tokenize(kana, lexicon),
+        isVerb,
+        wordPicker(tokenize(ja, lexicon), lessonOf, lesson),
+      ).words;
+    // きます alone could be 着ます; the sentence writes 来ます.
+    expect(words('友達は日本から来ます。', 'ともだちは にほんから きます。', 60)).toContain('kuru');
+    expect(words('友達は日本から来ます。', 'ともだちは にほんから きます。', 60)).not.toContain(
+      'kiru-put-on',
+    );
+    // In kana only, the lesson decides: 風 (wind) comes at L87, 風邪 (a cold) at L60.
+    expect(words('かぜです。', 'かぜです。', 70)).toEqual(['kaze-cold']);
   });
 
   it('falls back to ja when there is no separate reading', () => {

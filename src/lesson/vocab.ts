@@ -148,6 +148,22 @@ export function foldPolish(text: string): string {
   return text.toLowerCase().replace(/ł/g, 'l').normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
+/**
+ * The core meanings behind a list of senses, folded: notes in parentheses dropped and
+ * variants split ("ojciec (własny)" and "student, studentka" give ojciec, student, studentka).
+ * Two words sharing one could both be right for the same Polish prompt.
+ */
+export function senseKeys(senses: readonly string[]): Set<string> {
+  return new Set(
+    senses.flatMap((s) =>
+      foldPolish(s.replace(/\([^)]*\)/g, ''))
+        .split(/[,;]/)
+        .map((k) => k.trim())
+        .filter(Boolean),
+    ),
+  );
+}
+
 const toHiragana = (text: string) =>
   text.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
 

@@ -126,7 +126,10 @@ export function ExerciseView({
     finish(
       isKanaExercise(exercise)
         ? isTypedAnswerCorrect(exercise, typed)
-        : !isKanjiExercise(exercise) && isWordAnswerCorrect(exercise.word, typed),
+        : !isKanjiExercise(exercise) &&
+            [exercise.word, ...(exercise.alsoAccepted ?? [])].some((w) =>
+              isWordAnswerCorrect(w, typed),
+            ),
     );
   };
 
