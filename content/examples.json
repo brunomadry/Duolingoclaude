@@ -75,12 +75,12 @@
     {
       "wordId": "anata",
       "lesson": 18,
-      "ja": "あなたは学生ですね。",
-      "kana": "あなたは がくせいですね。",
-      "pl": "Studiujesz, prawda?",
+      "ja": "私は学生です。あなたは？",
+      "kana": "わたしは がくせいです。あなたは？",
+      "pl": "Studiuję. A ty?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Anata wa gakusei desu ne."
+      "romaji": "Watashi wa gakusei desu. anata wa?"
     },
     {
       "wordId": "tomodachi",
@@ -855,12 +855,12 @@
     {
       "wordId": "kuru",
       "lesson": 31,
-      "ja": "友達は日本から来ます。",
-      "kana": "ともだちは にほんから きます。",
-      "pl": "Kolega przyjeżdża z Japonii.",
+      "ja": "友達は来週、ポーランドから来ます。",
+      "kana": "ともだちは らいしゅう、ポーランドから きます。",
+      "pl": "Kolega przyjeżdża z Polski w przyszłym tygodniu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Tomodachi wa nihon kara kimasu."
+      "romaji": "Tomodachi wa raishuu, poorando kara kimasu."
     },
     {
       "wordId": "kaeru",
@@ -1005,12 +1005,12 @@
     {
       "wordId": "hikouki",
       "lesson": 33,
-      "ja": "飛行機で日本へ行きます。",
-      "kana": "ひこうきで にほんへ いきます。",
-      "pl": "Lecę do Japonii samolotem.",
+      "ja": "飛行機でポーランドへ帰ります。",
+      "kana": "ひこうきで ポーランドへ かえります。",
+      "pl": "Wracam do Polski samolotem.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Hikouki de nihon e ikimasu."
+      "romaji": "Hikouki de poorando e kaerimasu."
     },
     {
       "wordId": "kuruma",
@@ -1145,12 +1145,12 @@
     {
       "wordId": "sengetsu",
       "lesson": 36,
-      "ja": "姉は先月日本へ行きました。",
-      "kana": "あねは せんげつ にほんへ いきました。",
+      "ja": "姉は先月、日本へ行きました。",
+      "kana": "あねは せんげつ、にほんへ いきました。",
       "pl": "W zeszłym miesiącu siostra pojechała do Japonii.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ane wa sengetsu nihon e ikimashita."
+      "romaji": "Ane wa sengetsu, nihon e ikimashita."
     },
     {
       "wordId": "kyonen",
@@ -1185,12 +1185,12 @@
     {
       "wordId": "wakaru",
       "lesson": 36,
-      "ja": "すみません、分かりません。",
-      "kana": "すみません、わかりません。",
-      "pl": "Przepraszam, nie rozumiem.",
+      "ja": "はい、分かりました。",
+      "kana": "はい、わかりました。",
+      "pl": "Dobrze, rozumiem.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Sumimasen, wakarimasen."
+      "romaji": "Hai, wakarimashita."
     },
     {
       "wordId": "ashita",
@@ -1427,12 +1427,12 @@
     {
       "wordId": "jouzu",
       "lesson": 40,
-      "ja": "兄は日本語が上手です。",
-      "kana": "あには にほんごが じょうずです。",
-      "pl": "Brat dobrze mówi po japońsku.",
+      "ja": "日本語が上手ですね。",
+      "kana": "にほんごが じょうずですね。",
+      "pl": "Dobrze mówisz po japońsku!",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ani wa nihongo ga jouzu desu."
+      "romaji": "Nihongo ga jouzu desu ne."
     },
     {
       "wordId": "heta",
@@ -1509,7 +1509,7 @@
       "lesson": 41,
       "ja": "明日は暇ですか。",
       "kana": "あしたは ひまですか。",
-      "pl": "Masz jutro wolne?",
+      "pl": "Masz jutro czas?",
       "source": "original",
       "reviewed": false,
       "romaji": "Ashita wa hima desu ka."
@@ -1567,22 +1567,22 @@
     {
       "wordId": "ue",
       "lesson": 43,
-      "ja": "机の上に本があります。",
-      "kana": "つくえの うえに ほんが あります。",
-      "pl": "Na biurku leży książka.",
+      "ja": "机の上に眼鏡があります。",
+      "kana": "つくえの うえに めがねが あります。",
+      "pl": "Na biurku leżą okulary.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Tsukue no ue ni hon ga arimasu."
+      "romaji": "Tsukue no ue ni megane ga arimasu."
     },
     {
       "wordId": "shita",
       "lesson": 43,
-      "ja": "いすの下に猫がいます。",
-      "kana": "いすの したに ねこが います。",
-      "pl": "Pod krzesłem jest kot.",
+      "ja": "テーブルの下に犬がいます。",
+      "kana": "テーブルの したに いぬが います。",
+      "pl": "Pod stołem jest pies.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Isu no shita ni neko ga imasu."
+      "romaji": "Teeburu no shita ni inu ga imasu."
     },
     {
       "wordId": "naka",
@@ -2141,12 +2141,12 @@
     {
       "wordId": "kasu",
       "lesson": 52,
-      "ja": "ペンを貸してください。",
-      "kana": "ペンを かして ください。",
-      "pl": "Pożycz mi, proszę, długopis.",
+      "ja": "傘を貸してください。",
+      "kana": "かさを かして ください。",
+      "pl": "Pożycz mi, proszę, parasol.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Pen o kashite kudasai."
+      "romaji": "Kasa o kashite kudasai."
     },
     {
       "wordId": "mouichido",
@@ -2433,19 +2433,19 @@
     {
       "wordId": "osoi",
       "lesson": 57,
-      "ja": "父は毎日遅く帰ります。",
-      "kana": "ちちは まいにち おそく かえります。",
-      "pl": "Tata codziennie późno wraca do domu.",
+      "ja": "父は母より遅く起きます。",
+      "kana": "ちちは ははより おそく おきます。",
+      "pl": "Tata wstaje później niż mama.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Chichi wa mainichi osoku kaerimasu."
+      "romaji": "Chichi wa haha yori osoku okimasu."
     },
     {
       "wordId": "chikai",
       "lesson": 57,
       "ja": "駅はここから近いですか。",
       "kana": "えきは ここから ちかいですか。",
-      "pl": "Czy dworzec jest blisko stąd?",
+      "pl": "Czy dworzec jest stąd blisko?",
       "source": "original",
       "reviewed": false,
       "romaji": "Eki wa koko kara chikai desu ka."
@@ -2593,12 +2593,12 @@
     {
       "wordId": "jikan",
       "lesson": 59,
-      "ja": "時間がありませんから、タクシーで行きます。",
-      "kana": "じかんが ありませんから、タクシーで いきます。",
-      "pl": "Nie mam czasu, więc pojadę taksówką.",
+      "ja": "映画を見たいです。でも、時間がありません。",
+      "kana": "えいがを みたいです。でも、じかんが ありません。",
+      "pl": "Chcę obejrzeć film, ale nie mam czasu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Jikan ga arimasen kara, takushii de ikimasu."
+      "romaji": "Eiga o mitai desu. demo, jikan ga arimasen."
     },
     {
       "wordId": "byouki",
@@ -2663,12 +2663,12 @@
     {
       "wordId": "yasumu",
       "lesson": 60,
-      "ja": "日曜日は家で休みます。",
-      "kana": "にちようびは いえで やすみます。",
-      "pl": "W niedzielę odpoczywam w domu.",
+      "ja": "ちょっと休みませんか。",
+      "kana": "ちょっと やすみませんか。",
+      "pl": "Może chwilę odpoczniemy?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Nichiyoubi wa ie de yasumimasu."
+      "romaji": "Chotto yasumimasen ka."
     },
     {
       "wordId": "hontou",
@@ -2705,7 +2705,7 @@
       "lesson": 61,
       "ja": "今日の授業は漢字だ。",
       "kana": "きょうの じゅぎょうは かんじだ。",
-      "pl": "Dzisiaj na zajęciach są kanji.",
+      "pl": "Dziś na zajęciach będą kanji.",
       "source": "original",
       "reviewed": false,
       "romaji": "Kyou no jugyou wa kanji da."
@@ -2713,12 +2713,12 @@
     {
       "wordId": "kanji",
       "lesson": 61,
-      "ja": "漢字は難しいですが、おもしろいです。",
-      "kana": "かんじは むずかしいですが、おもしろいです。",
-      "pl": "Kanji są trudne, ale ciekawe.",
+      "ja": "漢字は少し分かります。",
+      "kana": "かんじは すこし わかります。",
+      "pl": "Trochę znam kanji.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kanji wa muzukashii desu ga, omoshiroi desu."
+      "romaji": "Kanji wa sukoshi wakarimasu."
     },
     {
       "wordId": "kotoba",
@@ -2823,12 +2823,12 @@
     {
       "wordId": "hiku-play-instrument",
       "lesson": 64,
-      "ja": "兄はギターを弾くことができる。",
-      "kana": "あには ギターを ひく ことが できる。",
-      "pl": "Starszy brat umie grać na gitarze.",
+      "ja": "兄は毎日ギターを弾く。",
+      "kana": "あには まいにち ギターを ひく。",
+      "pl": "Starszy brat codziennie gra na gitarze.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ani wa gitaa o hiku koto ga dekiru."
+      "romaji": "Ani wa mainichi gitaa o hiku."
     },
     {
       "wordId": "gitaa",
@@ -2896,7 +2896,7 @@
       "lesson": 65,
       "ja": "今日は漢字を五つ覚える。",
       "kana": "きょうは かんじを いつつ おぼえる。",
-      "pl": "Dziś zapamiętam pięć kanji.",
+      "pl": "Dziś nauczę się pięciu kanji.",
       "source": "original",
       "reviewed": false,
       "romaji": "Kyou wa kanji o itsutsu oboeru."
@@ -2954,19 +2954,19 @@
     {
       "wordId": "wasureru",
       "lesson": 66,
-      "ja": "宿題を忘れないでください。",
-      "kana": "しゅくだいを わすれないで ください。",
-      "pl": "Proszę nie zapomnieć o pracy domowej.",
+      "ja": "弟はよく宿題を忘れる。",
+      "kana": "おとうとは よく しゅくだいを わすれる。",
+      "pl": "Młodszy brat często zapomina o pracy domowej.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Shukudai o wasurenaide kudasai."
+      "romaji": "Otouto wa yoku shukudai o wasureru."
     },
     {
       "wordId": "abunai",
       "lesson": 66,
       "ja": "危ないですから、ここで遊ばないでください。",
       "kana": "あぶないですから、ここで あそばないで ください。",
-      "pl": "Tu jest niebezpiecznie, proszę się tu nie bawić.",
+      "pl": "Proszę się tu nie bawić, to niebezpieczne.",
       "source": "original",
       "reviewed": false,
       "romaji": "Abunai desu kara, koko de asobanaide kudasai."
@@ -3036,7 +3036,7 @@
       "lesson": 67,
       "ja": "だれかこのドアを開けてください。",
       "kana": "だれか この ドアを あけて ください。",
-      "pl": "Niech ktoś otworzy te drzwi, proszę.",
+      "pl": "Proszę, niech ktoś otworzy te drzwi.",
       "source": "tatoeba",
       "tatoebaId": 203221,
       "reviewed": false,
@@ -3118,7 +3118,7 @@
       "lesson": 68,
       "ja": "父は昨夜遅く帰った。",
       "kana": "ちちは ゆうべ おそく かえった。",
-      "pl": "Tata wrócił wczoraj późno wieczorem.",
+      "pl": "Wczoraj wieczorem tata wrócił późno.",
       "source": "original",
       "reviewed": false,
       "romaji": "Chichi wa yuube osoku kaetta."
@@ -3126,12 +3126,12 @@
     {
       "wordId": "ototoi",
       "lesson": 68,
-      "ja": "一昨日は雨だった。",
-      "kana": "おとといは あめだった。",
-      "pl": "Przedwczoraj padał deszcz.",
+      "ja": "一昨日は母の誕生日だった。",
+      "kana": "おとといは ははの たんじょうびだった。",
+      "pl": "Przedwczoraj były urodziny mamy.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ototoi wa ame datta."
+      "romaji": "Ototoi wa haha no tanjoubi datta."
     },
     {
       "wordId": "hiku-pull",
@@ -3321,7 +3321,7 @@
       "lesson": 72,
       "ja": "この町の地図はありますか。",
       "kana": "この まちの ちずは ありますか。",
-      "pl": "Czy jest mapa tego miasta?",
+      "pl": "Czy mają państwo mapę tego miasta?",
       "source": "original",
       "reviewed": false,
       "romaji": "Kono machi no chizu wa arimasu ka."
@@ -3341,7 +3341,7 @@
       "lesson": 72,
       "ja": "その辞書を取ってください。",
       "kana": "その じしょを とって ください。",
-      "pl": "Proszę podać mi ten słownik.",
+      "pl": "Proszę mi podać ten słownik.",
       "source": "original",
       "reviewed": false,
       "romaji": "Sono jisho o totte kudasai."
@@ -3420,19 +3420,19 @@
     {
       "wordId": "tsukareru",
       "lesson": 73,
-      "ja": "父は仕事で疲れている。",
-      "kana": "ちちは しごとで つかれて いる。",
-      "pl": "Tata jest zmęczony po pracy.",
+      "ja": "兄は疲れているから、今日は家で休む。",
+      "kana": "あには つかれて いるから、きょうは いえで やすむ。",
+      "pl": "Starszy brat jest zmęczony, więc dziś odpoczywa w domu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Chichi wa shigoto de tsukarete iru."
+      "romaji": "Ani wa tsukarete iru kara, kyou wa ie de yasumu."
     },
     {
       "wordId": "denwa",
       "lesson": 73,
       "ja": "すみませんが電話に出てください。",
       "kana": "すみませんが でんわに でて ください。",
-      "pl": "Przepraszam, możesz odebrać telefon?",
+      "pl": "Przepraszam, proszę odebrać telefon.",
       "source": "tatoeba",
       "tatoebaId": 214132,
       "reviewed": false,
@@ -3482,12 +3482,12 @@
     {
       "wordId": "supootsu",
       "lesson": 74,
-      "ja": "どんなスポーツが好きですか。",
-      "kana": "どんな スポーツが すきですか。",
-      "pl": "Jaki sport lubisz?",
+      "ja": "姉は毎日スポーツをしている。",
+      "kana": "あねは まいにち スポーツを して いる。",
+      "pl": "Starsza siostra codziennie uprawia sport.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Donna supootsu ga suki desu ka."
+      "romaji": "Ane wa mainichi supootsu o shite iru."
     },
     {
       "wordId": "niwa",
@@ -3684,12 +3684,12 @@
     {
       "wordId": "gomennasai",
       "lesson": 78,
-      "ja": "ごめんなさい、明日は時間がないんだ。",
-      "kana": "ごめんなさい、あしたは じかんが ないんだ。",
-      "pl": "Przepraszam, jutro nie mam czasu.",
+      "ja": "ごめんなさい、私が悪かった。",
+      "kana": "ごめんなさい、わたしが わるかった。",
+      "pl": "Przepraszam, to moja wina.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Gomennasai, ashita wa jikan ga nai n da."
+      "romaji": "Gomennasai, watashi ga warukatta."
     },
     {
       "wordId": "minna",
@@ -3704,22 +3704,22 @@
     {
       "wordId": "yasashii",
       "lesson": 78,
-      "ja": "今日のテストは易しかったね。",
-      "kana": "きょうの テストは やさしかったね。",
-      "pl": "Dzisiejszy test był łatwy, prawda?",
+      "ja": "英語は易しいけど、日本語は難しい。",
+      "kana": "えいごは やさしいけど、にほんごは むずかしい。",
+      "pl": "Angielski jest łatwy, ale japoński trudny.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kyou no tesuto wa yasashikatta ne."
+      "romaji": "Eigo wa yasashii kedo, nihongo wa muzukashii."
     },
     {
       "wordId": "tanoshii",
       "lesson": 78,
-      "ja": "昨日のパーティーは楽しかったね。",
-      "kana": "きのうの パーティーは たのしかったね。",
-      "pl": "Fajnie było wczoraj na imprezie, prawda?",
+      "ja": "先週の旅行はとても楽しかった。",
+      "kana": "せんしゅうの りょこうは とても たのしかった。",
+      "pl": "Wycieczka w zeszłym tygodniu była bardzo udana.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kinou no paatii wa tanoshikatta ne."
+      "romaji": "Senshuu no ryokou wa totemo tanoshikatta."
     },
     {
       "wordId": "urusai",
@@ -3806,12 +3806,12 @@
     {
       "wordId": "hoshii",
       "lesson": 80,
-      "ja": "誕生日に何がほしいですか。",
-      "kana": "たんじょうびに なにが ほしいですか。",
-      "pl": "Co chcesz dostać na urodziny?",
+      "ja": "新しいカメラがほしいです。",
+      "kana": "あたらしい カメラが ほしいです。",
+      "pl": "Chcę mieć nowy aparat.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Tanjoubi ni nani ga hoshii desu ka."
+      "romaji": "Atarashii kamera ga hoshii desu."
     },
     {
       "wordId": "omoi",
@@ -3826,12 +3826,12 @@
     {
       "wordId": "karui",
       "lesson": 80,
-      "ja": "軽い自転車がほしいです。",
-      "kana": "かるい じてんしゃが ほしいです。",
-      "pl": "Chcę mieć lekki rower.",
+      "ja": "この自転車は軽くて、速い。",
+      "kana": "この じてんしゃは かるくて、はやい。",
+      "pl": "Ten rower jest lekki i szybki.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Karui jitensha ga hoshii desu."
+      "romaji": "Kono jitensha wa karukute, hayai."
     },
     {
       "wordId": "hiroi",
@@ -3846,12 +3846,12 @@
     {
       "wordId": "semai",
       "lesson": 80,
-      "ja": "私の部屋は狭いです。",
-      "kana": "わたしの へやは せまいです。",
-      "pl": "Mój pokój jest ciasny.",
+      "ja": "私の部屋は狭いけど、好きだ。",
+      "kana": "わたしの へやは せまいけど、すきだ。",
+      "pl": "Mój pokój jest ciasny, ale go lubię.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Watashi no heya wa semai desu."
+      "romaji": "Watashi no heya wa semai kedo, suki da."
     },
     {
       "wordId": "daidokoro",
@@ -3876,12 +3876,12 @@
     {
       "wordId": "tabemono",
       "lesson": 81,
-      "ja": "好きな食べ物は何ですか。",
-      "kana": "すきな たべものは なんですか。",
-      "pl": "Jakie jest twoje ulubione jedzenie?",
+      "ja": "この店の食べ物は安くて、おいしい。",
+      "kana": "この みせの たべものは やすくて、おいしい。",
+      "pl": "Jedzenie w tym lokalu jest tanie i smaczne.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Suki na tabemono wa nan desu ka."
+      "romaji": "Kono mise no tabemono wa yasukute, oishii."
     },
     {
       "wordId": "nomimono",
@@ -3918,12 +3918,12 @@
     {
       "wordId": "koucha",
       "lesson": 81,
-      "ja": "コーヒーと紅茶とどちらがいいですか。",
-      "kana": "コーヒーと こうちゃと どちらが いいですか。",
-      "pl": "Wolisz kawę czy herbatę?",
+      "ja": "紅茶は好きですが、コーヒーはあまり飲みません。",
+      "kana": "こうちゃは すきですが、コーヒーは あまり のみません。",
+      "pl": "Lubię herbatę, ale kawę piję rzadko.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Koohii to koucha to dochira ga ii desu ka."
+      "romaji": "Koucha wa suki desu ga, koohii wa amari nomimasen."
     },
     {
       "wordId": "osake",
@@ -3948,12 +3948,12 @@
     {
       "wordId": "ato",
       "lesson": 82,
-      "ja": "授業の後で、図書館に行きます。",
-      "kana": "じゅぎょうの あとで、としょかんに いきます。",
-      "pl": "Po zajęciach idę do biblioteki.",
+      "ja": "ご飯の後で、少し散歩しませんか。",
+      "kana": "ごはんの あとで、すこし さんぽしませんか。",
+      "pl": "Może po jedzeniu pójdziemy na krótki spacer?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Jugyou no ato de, toshokan ni ikimasu."
+      "romaji": "Gohan no ato de, sukoshi sanposhimasen ka."
     },
     {
       "wordId": "hayai-early",
@@ -3979,12 +3979,13 @@
     {
       "wordId": "maiban",
       "lesson": 82,
-      "ja": "毎晩寝る前に本を読む。",
-      "kana": "まいばん ねる まえに ほんを よむ。",
-      "pl": "Co wieczór przed snem czytam książkę.",
-      "source": "original",
+      "ja": "私は毎晩家にいます。",
+      "kana": "わたしは まいばん いえに います。",
+      "pl": "Co wieczór jestem w domu.",
+      "source": "tatoeba",
+      "tatoebaId": 152681,
       "reviewed": false,
-      "romaji": "Maiban neru mae ni hon o yomu."
+      "romaji": "Watashi wa maiban ie ni imasu."
     },
     {
       "wordId": "hiru",
@@ -4029,12 +4030,12 @@
     {
       "wordId": "uta",
       "lesson": 83,
-      "ja": "この歌を知っていますか。",
-      "kana": "この うたを しって いますか。",
-      "pl": "Znasz tę piosenkę?",
+      "ja": "日本の歌をよく聞きます。",
+      "kana": "にほんの うたを よく ききます。",
+      "pl": "Często słucham japońskich piosenek.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kono uta o shitte imasu ka."
+      "romaji": "Nihon no uta o yoku kikimasu."
     },
     {
       "wordId": "toru-take-photo",
@@ -4059,12 +4060,12 @@
     {
       "wordId": "puuru",
       "lesson": 83,
-      "ja": "夏はよくプールで泳ぐ。",
-      "kana": "なつは よく プールで およぐ。",
-      "pl": "Latem często pływam na basenie.",
+      "ja": "プールに入る前に、シャワーをあびてください。",
+      "kana": "プールに はいる まえに、シャワーを あびて ください。",
+      "pl": "Przed wejściem do basenu proszę wziąć prysznic.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Natsu wa yoku puuru de oyogu."
+      "romaji": "Puuru ni hairu mae ni, shawaa o abite kudasai."
     },
     {
       "wordId": "ichinichi",
@@ -4111,7 +4112,7 @@
       "lesson": 85,
       "ja": "この道をまっすぐ行ってください。",
       "kana": "この みちを まっすぐ いって ください。",
-      "pl": "Proszę iść tą ulicą prosto.",
+      "pl": "Proszę iść prosto tą ulicą.",
       "source": "original",
       "reviewed": false,
       "romaji": "Kono michi o massugu itte kudasai."
@@ -4230,12 +4231,12 @@
     {
       "wordId": "tabun",
       "lesson": 87,
-      "ja": "明日はたぶん雨でしょう。",
-      "kana": "あしたは たぶん あめでしょう。",
-      "pl": "Jutro chyba będzie padać.",
+      "ja": "父はたぶん家にいるでしょう。",
+      "kana": "ちちは たぶん いえに いるでしょう。",
+      "pl": "Tata jest pewnie w domu.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ashita wa tabun ame deshou."
+      "romaji": "Chichi wa tabun ie ni iru deshou."
     },
     {
       "wordId": "kumori",
@@ -4250,12 +4251,12 @@
     {
       "wordId": "hare",
       "lesson": 87,
-      "ja": "午後は晴れでしょう。",
-      "kana": "ごごは はれでしょう。",
-      "pl": "Po południu będzie słonecznie.",
+      "ja": "日曜日は晴れでしょう。",
+      "kana": "にちようびは はれでしょう。",
+      "pl": "W niedzielę będzie słonecznie.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Gogo wa hare deshou."
+      "romaji": "Nichiyoubi wa hare deshou."
     },
     {
       "wordId": "kaze-wind",
@@ -4355,7 +4356,7 @@
       "lesson": 88,
       "ja": "電話番号を教えてください。",
       "kana": "でんわばんごうを おしえて ください。",
-      "pl": "Proszę podać mi swój numer telefonu.",
+      "pl": "Proszę mi podać swój numer telefonu.",
       "source": "original",
       "reviewed": false,
       "romaji": "Denwa bangou o oshiete kudasai."
@@ -4404,12 +4405,12 @@
     {
       "wordId": "aku",
       "lesson": 89,
-      "ja": "店はまだ開いていない。",
-      "kana": "みせは まだ あいて いない。",
-      "pl": "Sklep jeszcze nie jest otwarty.",
+      "ja": "あの店はもう開いていますか。",
+      "kana": "あの みせは もう あいて いますか。",
+      "pl": "Czy tamten sklep jest już otwarty?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Mise wa mada aite inai."
+      "romaji": "Ano mise wa mou aite imasu ka."
     },
     {
       "wordId": "shimaru",
@@ -4516,12 +4517,12 @@
     {
       "wordId": "naru",
       "lesson": 92,
-      "ja": "兄は医者になった。",
-      "kana": "あには いしゃに なった。",
-      "pl": "Starszy brat został lekarzem.",
+      "ja": "夜、雨が雪になった。",
+      "kana": "よる、あめが ゆきに なった。",
+      "pl": "W nocy deszcz zamienił się w śnieg.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ani wa isha ni natta."
+      "romaji": "Yoru, ame ga yuki ni natta."
     },
     {
       "wordId": "dandan",
@@ -4567,12 +4568,12 @@
     {
       "wordId": "kurai",
       "lesson": 92,
-      "ja": "外はもう暗くなった。",
-      "kana": "そとは もう くらく なった。",
-      "pl": "Na dworze już się ściemniło.",
+      "ja": "冬は早く暗くなる。",
+      "kana": "ふゆは はやく くらく なる。",
+      "pl": "Zimą wcześnie robi się ciemno.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Soto wa mou kuraku natta."
+      "romaji": "Fuyu wa hayaku kuraku naru."
     },
     {
       "wordId": "ooi",
@@ -4668,19 +4669,19 @@
     {
       "wordId": "nishi",
       "lesson": 94,
-      "ja": "ポーランドは日本の西にあります。",
-      "kana": "ポーランドは にほんの にしに あります。",
-      "pl": "Polska leży na zachód od Japonii.",
+      "ja": "西の空が赤いですね。",
+      "kana": "にしの そらが あかいですね。",
+      "pl": "Niebo na zachodzie jest czerwone, prawda?",
       "source": "original",
       "reviewed": false,
-      "romaji": "Poorando wa nihon no nishi ni arimasu."
+      "romaji": "Nishi no sora ga akai desu ne."
     },
     {
       "wordId": "minami",
       "lesson": 94,
       "ja": "冬は南の国へ行きたい。",
       "kana": "ふゆは みなみの くにへ いきたい。",
-      "pl": "Zimą chcę pojechać do jakiegoś kraju na południu.",
+      "pl": "Zimą chcę wyjechać gdzieś na południe.",
       "source": "original",
       "reviewed": false,
       "romaji": "Fuyu wa minami no kuni e ikitai."
@@ -4699,12 +4700,12 @@
       "wordId": "kawa",
       "lesson": 94,
       "ja": "その川はあまりきれいではなかった。",
-      "kana": "その かわは あまり きれいでは なかった。",
+      "kana": "その かわは あまり きれいではなかった。",
       "pl": "Ta rzeka nie była zbyt czysta.",
       "source": "tatoeba",
       "tatoebaId": 208510,
       "reviewed": false,
-      "romaji": "Sono kawa wa amari kirei de wa nakatta."
+      "romaji": "Sono kawa wa amari kirei dewa nakatta."
     },
     {
       "wordId": "ki",
@@ -4780,12 +4781,12 @@
     {
       "wordId": "otoko",
       "lesson": 96,
-      "ja": "あの男の人は誰ですか。",
-      "kana": "あの おとこの ひとは だれですか。",
-      "pl": "Kim jest tamten mężczyzna?",
+      "ja": "店の人は若い男の人だった。",
+      "kana": "みせの ひとは わかい おとこの ひとだった。",
+      "pl": "Sprzedawcą był młody mężczyzna.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Ano otoko no hito wa dare desu ka."
+      "romaji": "Mise no hito wa wakai otoko no hito datta."
     },
     {
       "wordId": "onna",
@@ -4852,12 +4853,12 @@
     {
       "wordId": "kokonoka",
       "lesson": 97,
-      "ja": "九日までに宿題を出してください。",
-      "kana": "ここのかまでに しゅくだいを だして ください。",
-      "pl": "Proszę oddać pracę domową do dziewiątego.",
+      "ja": "九日の朝、日本に着きます。",
+      "kana": "ここのかの あさ、にほんに つきます。",
+      "pl": "Dziewiątego rano przylatuję do Japonii.",
       "source": "original",
       "reviewed": false,
-      "romaji": "Kokonoka made ni shukudai o dashite kudasai."
+      "romaji": "Kokonoka no asa, nihon ni tsukimasu."
     },
     {
       "wordId": "tooka",

@@ -22,8 +22,8 @@
     {
       "wordId": "sengetsu",
       "lesson": 36,
-      "ja": "姉は先月日本へ行きました。",
-      "kana": "あねは せんげつ にほんへ いきました。",
+      "ja": "姉は先月、日本へ行きました。",
+      "kana": "あねは せんげつ、にほんへ いきました。",
       "pl": "W zeszłym miesiącu siostra pojechała do Japonii.",
       "source": "original",
       "reviewed": false
@@ -58,9 +58,9 @@
     {
       "wordId": "wakaru",
       "lesson": 36,
-      "ja": "すみません、分かりません。",
-      "kana": "すみません、わかりません。",
-      "pl": "Przepraszam, nie rozumiem.",
+      "ja": "はい、分かりました。",
+      "kana": "はい、わかりました。",
+      "pl": "Dobrze, rozumiem.",
       "source": "original",
       "reviewed": false
     },
@@ -276,9 +276,9 @@
     {
       "wordId": "jouzu",
       "lesson": 40,
-      "ja": "兄は日本語が上手です。",
-      "kana": "あには にほんごが じょうずです。",
-      "pl": "Brat dobrze mówi po japońsku.",
+      "ja": "日本語が上手ですね。",
+      "kana": "にほんごが じょうずですね。",
+      "pl": "Dobrze mówisz po japońsku!",
       "source": "original",
       "reviewed": false
     },
@@ -350,7 +350,7 @@
       "lesson": 41,
       "ja": "明日は暇ですか。",
       "kana": "あしたは ひまですか。",
-      "pl": "Masz jutro wolne?",
+      "pl": "Masz jutro czas?",
       "source": "original",
       "reviewed": false
     },
@@ -402,18 +402,18 @@
     {
       "wordId": "ue",
       "lesson": 43,
-      "ja": "机の上に本があります。",
-      "kana": "つくえの うえに ほんが あります。",
-      "pl": "Na biurku leży książka.",
+      "ja": "机の上に眼鏡があります。",
+      "kana": "つくえの うえに めがねが あります。",
+      "pl": "Na biurku leżą okulary.",
       "source": "original",
       "reviewed": false
     },
     {
       "wordId": "shita",
       "lesson": 43,
-      "ja": "いすの下に猫がいます。",
-      "kana": "いすの したに ねこが います。",
-      "pl": "Pod krzesłem jest kot.",
+      "ja": "テーブルの下に犬がいます。",
+      "kana": "テーブルの したに いぬが います。",
+      "pl": "Pod stołem jest pies.",
       "source": "original",
       "reviewed": false
     },
@@ -919,9 +919,9 @@
     {
       "wordId": "kasu",
       "lesson": 52,
-      "ja": "ペンを貸してください。",
-      "kana": "ペンを かして ください。",
-      "pl": "Pożycz mi, proszę, długopis.",
+      "ja": "傘を貸してください。",
+      "kana": "かさを かして ください。",
+      "pl": "Pożycz mi, proszę, parasol.",
       "source": "original",
       "reviewed": false
     },

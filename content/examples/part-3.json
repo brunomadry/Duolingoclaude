@@ -41,9 +41,9 @@
     {
       "wordId": "osoi",
       "lesson": 57,
-      "ja": "父は毎日遅く帰ります。",
-      "kana": "ちちは まいにち おそく かえります。",
-      "pl": "Tata codziennie późno wraca do domu.",
+      "ja": "父は母より遅く起きます。",
+      "kana": "ちちは ははより おそく おきます。",
+      "pl": "Tata wstaje później niż mama.",
       "source": "original",
       "reviewed": false
     },
@@ -52,7 +52,7 @@
       "lesson": 57,
       "ja": "駅はここから近いですか。",
       "kana": "えきは ここから ちかいですか。",
-      "pl": "Czy dworzec jest blisko stąd?",
+      "pl": "Czy dworzec jest stąd blisko?",
       "source": "original",
       "reviewed": false
     },
@@ -185,9 +185,9 @@
     {
       "wordId": "jikan",
       "lesson": 59,
-      "ja": "時間がありませんから、タクシーで行きます。",
-      "kana": "じかんが ありませんから、タクシーで いきます。",
-      "pl": "Nie mam czasu, więc pojadę taksówką.",
+      "ja": "映画を見たいです。でも、時間がありません。",
+      "kana": "えいがを みたいです。でも、じかんが ありません。",
+      "pl": "Chcę obejrzeć film, ale nie mam czasu.",
       "source": "original",
       "reviewed": false
     },
@@ -248,9 +248,9 @@
     {
       "wordId": "yasumu",
       "lesson": 60,
-      "ja": "日曜日は家で休みます。",
-      "kana": "にちようびは いえで やすみます。",
-      "pl": "W niedzielę odpoczywam w domu.",
+      "ja": "ちょっと休みませんか。",
+      "kana": "ちょっと やすみませんか。",
+      "pl": "Może chwilę odpoczniemy?",
       "source": "original",
       "reviewed": false
     },
@@ -286,16 +286,16 @@
       "lesson": 61,
       "ja": "今日の授業は漢字だ。",
       "kana": "きょうの じゅぎょうは かんじだ。",
-      "pl": "Dzisiaj na zajęciach są kanji.",
+      "pl": "Dziś na zajęciach będą kanji.",
       "source": "original",
       "reviewed": false
     },
     {
       "wordId": "kanji",
       "lesson": 61,
-      "ja": "漢字は難しいですが、おもしろいです。",
-      "kana": "かんじは むずかしいですが、おもしろいです。",
-      "pl": "Kanji są trudne, ale ciekawe.",
+      "ja": "漢字は少し分かります。",
+      "kana": "かんじは すこし わかります。",
+      "pl": "Trochę znam kanji.",
       "source": "original",
       "reviewed": false
     },
@@ -392,9 +392,9 @@
     {
       "wordId": "hiku-play-instrument",
       "lesson": 64,
-      "ja": "兄はギターを弾くことができる。",
-      "kana": "あには ギターを ひく ことが できる。",
-      "pl": "Starszy brat umie grać na gitarze.",
+      "ja": "兄は毎日ギターを弾く。",
+      "kana": "あには まいにち ギターを ひく。",
+      "pl": "Starszy brat codziennie gra na gitarze.",
       "source": "original",
       "reviewed": false
     },
@@ -458,7 +458,7 @@
       "lesson": 65,
       "ja": "今日は漢字を五つ覚える。",
       "kana": "きょうは かんじを いつつ おぼえる。",
-      "pl": "Dziś zapamiętam pięć kanji.",
+      "pl": "Dziś nauczę się pięciu kanji.",
       "source": "original",
       "reviewed": false
     },
@@ -510,9 +510,9 @@
     {
       "wordId": "wasureru",
       "lesson": 66,
-      "ja": "宿題を忘れないでください。",
-      "kana": "しゅくだいを わすれないで ください。",
-      "pl": "Proszę nie zapomnieć o pracy domowej.",
+      "ja": "弟はよく宿題を忘れる。",
+      "kana": "おとうとは よく しゅくだいを わすれる。",
+      "pl": "Młodszy brat często zapomina o pracy domowej.",
       "source": "original",
       "reviewed": false
     },
@@ -521,7 +521,7 @@
       "lesson": 66,
       "ja": "危ないですから、ここで遊ばないでください。",
       "kana": "あぶないですから、ここで あそばないで ください。",
-      "pl": "Tu jest niebezpiecznie, proszę się tu nie bawić.",
+      "pl": "Proszę się tu nie bawić, to niebezpieczne.",
       "source": "original",
       "reviewed": false
     },
@@ -584,7 +584,7 @@
       "lesson": 67,
       "ja": "だれかこのドアを開けてください。",
       "kana": "だれか この ドアを あけて ください。",
-      "pl": "Niech ktoś otworzy te drzwi, proszę.",
+      "pl": "Proszę, niech ktoś otworzy te drzwi.",
       "source": "tatoeba",
       "tatoebaId": 203221,
       "reviewed": false
@@ -658,16 +658,16 @@
       "lesson": 68,
       "ja": "父は昨夜遅く帰った。",
       "kana": "ちちは ゆうべ おそく かえった。",
-      "pl": "Tata wrócił wczoraj późno wieczorem.",
+      "pl": "Wczoraj wieczorem tata wrócił późno.",
       "source": "original",
       "reviewed": false
     },
     {
       "wordId": "ototoi",
       "lesson": 68,
-      "ja": "一昨日は雨だった。",
-      "kana": "おとといは あめだった。",
-      "pl": "Przedwczoraj padał deszcz.",
+      "ja": "一昨日は母の誕生日だった。",
+      "kana": "おとといは ははの たんじょうびだった。",
+      "pl": "Przedwczoraj były urodziny mamy.",
       "source": "original",
       "reviewed": false
     },
@@ -841,7 +841,7 @@
       "lesson": 72,
       "ja": "この町の地図はありますか。",
       "kana": "この まちの ちずは ありますか。",
-      "pl": "Czy jest mapa tego miasta?",
+      "pl": "Czy mają państwo mapę tego miasta?",
       "source": "original",
       "reviewed": false
     },
@@ -859,7 +859,7 @@
       "lesson": 72,
       "ja": "その辞書を取ってください。",
       "kana": "その じしょを とって ください。",
-      "pl": "Proszę podać mi ten słownik.",
+      "pl": "Proszę mi podać ten słownik.",
       "source": "original",
       "reviewed": false
     },
@@ -930,9 +930,9 @@
     {
       "wordId": "tsukareru",
       "lesson": 73,
-      "ja": "父は仕事で疲れている。",
-      "kana": "ちちは しごとで つかれて いる。",
-      "pl": "Tata jest zmęczony po pracy.",
+      "ja": "兄は疲れているから、今日は家で休む。",
+      "kana": "あには つかれて いるから、きょうは いえで やすむ。",
+      "pl": "Starszy brat jest zmęczony, więc dziś odpoczywa w domu.",
       "source": "original",
       "reviewed": false
     },
@@ -941,7 +941,7 @@
       "lesson": 73,
       "ja": "すみませんが電話に出てください。",
       "kana": "すみませんが でんわに でて ください。",
-      "pl": "Przepraszam, możesz odebrać telefon?",
+      "pl": "Przepraszam, proszę odebrać telefon.",
       "source": "tatoeba",
       "tatoebaId": 214132,
       "reviewed": false
@@ -986,9 +986,9 @@
     {
       "wordId": "supootsu",
       "lesson": 74,
-      "ja": "どんなスポーツが好きですか。",
-      "kana": "どんな スポーツが すきですか。",
-      "pl": "Jaki sport lubisz?",
+      "ja": "姉は毎日スポーツをしている。",
+      "kana": "あねは まいにち スポーツを して いる。",
+      "pl": "Starsza siostra codziennie uprawia sport.",
       "source": "original",
       "reviewed": false
     },

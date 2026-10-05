@@ -22,9 +22,9 @@
     {
       "wordId": "gomennasai",
       "lesson": 78,
-      "ja": "ごめんなさい、明日は時間がないんだ。",
-      "kana": "ごめんなさい、あしたは じかんが ないんだ。",
-      "pl": "Przepraszam, jutro nie mam czasu.",
+      "ja": "ごめんなさい、私が悪かった。",
+      "kana": "ごめんなさい、わたしが わるかった。",
+      "pl": "Przepraszam, to moja wina.",
       "source": "original",
       "reviewed": false
     },
@@ -40,18 +40,18 @@
     {
       "wordId": "yasashii",
       "lesson": 78,
-      "ja": "今日のテストは易しかったね。",
-      "kana": "きょうの テストは やさしかったね。",
-      "pl": "Dzisiejszy test był łatwy, prawda?",
+      "ja": "英語は易しいけど、日本語は難しい。",
+      "kana": "えいごは やさしいけど、にほんごは むずかしい。",
+      "pl": "Angielski jest łatwy, ale japoński trudny.",
       "source": "original",
       "reviewed": false
     },
     {
       "wordId": "tanoshii",
       "lesson": 78,
-      "ja": "昨日のパーティーは楽しかったね。",
-      "kana": "きのうの パーティーは たのしかったね。",
-      "pl": "Fajnie było wczoraj na imprezie, prawda?",
+      "ja": "先週の旅行はとても楽しかった。",
+      "kana": "せんしゅうの りょこうは とても たのしかった。",
+      "pl": "Wycieczka w zeszłym tygodniu była bardzo udana.",
       "source": "original",
       "reviewed": false
     },
@@ -132,9 +132,9 @@
     {
       "wordId": "hoshii",
       "lesson": 80,
-      "ja": "誕生日に何がほしいですか。",
-      "kana": "たんじょうびに なにが ほしいですか。",
-      "pl": "Co chcesz dostać na urodziny?",
+      "ja": "新しいカメラがほしいです。",
+      "kana": "あたらしい カメラが ほしいです。",
+      "pl": "Chcę mieć nowy aparat.",
       "source": "original",
       "reviewed": false
     },
@@ -150,9 +150,9 @@
     {
       "wordId": "karui",
       "lesson": 80,
-      "ja": "軽い自転車がほしいです。",
-      "kana": "かるい じてんしゃが ほしいです。",
-      "pl": "Chcę mieć lekki rower.",
+      "ja": "この自転車は軽くて、速い。",
+      "kana": "この じてんしゃは かるくて、はやい。",
+      "pl": "Ten rower jest lekki i szybki.",
       "source": "original",
       "reviewed": false
     },
@@ -168,9 +168,9 @@
     {
       "wordId": "semai",
       "lesson": 80,
-      "ja": "私の部屋は狭いです。",
-      "kana": "わたしの へやは せまいです。",
-      "pl": "Mój pokój jest ciasny.",
+      "ja": "私の部屋は狭いけど、好きだ。",
+      "kana": "わたしの へやは せまいけど、すきだ。",
+      "pl": "Mój pokój jest ciasny, ale go lubię.",
       "source": "original",
       "reviewed": false
     },
@@ -195,9 +195,9 @@
     {
       "wordId": "tabemono",
       "lesson": 81,
-      "ja": "好きな食べ物は何ですか。",
-      "kana": "すきな たべものは なんですか。",
-      "pl": "Jakie jest twoje ulubione jedzenie?",
+      "ja": "この店の食べ物は安くて、おいしい。",
+      "kana": "この みせの たべものは やすくて、おいしい。",
+      "pl": "Jedzenie w tym lokalu jest tanie i smaczne.",
       "source": "original",
       "reviewed": false
     },
@@ -233,9 +233,9 @@
     {
       "wordId": "koucha",
       "lesson": 81,
-      "ja": "コーヒーと紅茶とどちらがいいですか。",
-      "kana": "コーヒーと こうちゃと どちらが いいですか。",
-      "pl": "Wolisz kawę czy herbatę?",
+      "ja": "紅茶は好きですが、コーヒーはあまり飲みません。",
+      "kana": "こうちゃは すきですが、コーヒーは あまり のみません。",
+      "pl": "Lubię herbatę, ale kawę piję rzadko.",
       "source": "original",
       "reviewed": false
     },
@@ -260,9 +260,9 @@
     {
       "wordId": "ato",
       "lesson": 82,
-      "ja": "授業の後で、図書館に行きます。",
-      "kana": "じゅぎょうの あとで、としょかんに いきます。",
-      "pl": "Po zajęciach idę do biblioteki.",
+      "ja": "ご飯の後で、少し散歩しませんか。",
+      "kana": "ごはんの あとで、すこし さんぽしませんか。",
+      "pl": "Może po jedzeniu pójdziemy na krótki spacer?",
       "source": "original",
       "reviewed": false
     },
@@ -288,10 +288,11 @@
     {
       "wordId": "maiban",
       "lesson": 82,
-      "ja": "毎晩寝る前に本を読む。",
-      "kana": "まいばん ねる まえに ほんを よむ。",
-      "pl": "Co wieczór przed snem czytam książkę.",
-      "source": "original",
+      "ja": "私は毎晩家にいます。",
+      "kana": "わたしは まいばん いえに います。",
+      "pl": "Co wieczór jestem w domu.",
+      "source": "tatoeba",
+      "tatoebaId": 152681,
       "reviewed": false
     },
     {
@@ -333,9 +334,9 @@
     {
       "wordId": "uta",
       "lesson": 83,
-      "ja": "この歌を知っていますか。",
-      "kana": "この うたを しって いますか。",
-      "pl": "Znasz tę piosenkę?",
+      "ja": "日本の歌をよく聞きます。",
+      "kana": "にほんの うたを よく ききます。",
+      "pl": "Często słucham japońskich piosenek.",
       "source": "original",
       "reviewed": false
     },
@@ -360,9 +361,9 @@
     {
       "wordId": "puuru",
       "lesson": 83,
-      "ja": "夏はよくプールで泳ぐ。",
-      "kana": "なつは よく プールで およぐ。",
-      "pl": "Latem często pływam na basenie.",
+      "ja": "プールに入る前に、シャワーをあびてください。",
+      "kana": "プールに はいる まえに、シャワーを あびて ください。",
+      "pl": "Przed wejściem do basenu proszę wziąć prysznic.",
       "source": "original",
       "reviewed": false
     },
@@ -407,7 +408,7 @@
       "lesson": 85,
       "ja": "この道をまっすぐ行ってください。",
       "kana": "この みちを まっすぐ いって ください。",
-      "pl": "Proszę iść tą ulicą prosto.",
+      "pl": "Proszę iść prosto tą ulicą.",
       "source": "original",
       "reviewed": false
     },
@@ -514,9 +515,9 @@
     {
       "wordId": "tabun",
       "lesson": 87,
-      "ja": "明日はたぶん雨でしょう。",
-      "kana": "あしたは たぶん あめでしょう。",
-      "pl": "Jutro chyba będzie padać.",
+      "ja": "父はたぶん家にいるでしょう。",
+      "kana": "ちちは たぶん いえに いるでしょう。",
+      "pl": "Tata jest pewnie w domu.",
       "source": "original",
       "reviewed": false
     },
@@ -532,9 +533,9 @@
     {
       "wordId": "hare",
       "lesson": 87,
-      "ja": "午後は晴れでしょう。",
-      "kana": "ごごは はれでしょう。",
-      "pl": "Po południu będzie słonecznie.",
+      "ja": "日曜日は晴れでしょう。",
+      "kana": "にちようびは はれでしょう。",
+      "pl": "W niedzielę będzie słonecznie.",
       "source": "original",
       "reviewed": false
     },
@@ -627,7 +628,7 @@
       "lesson": 88,
       "ja": "電話番号を教えてください。",
       "kana": "でんわばんごうを おしえて ください。",
-      "pl": "Proszę podać mi swój numer telefonu.",
+      "pl": "Proszę mi podać swój numer telefonu.",
       "source": "original",
       "reviewed": false
     },
@@ -671,9 +672,9 @@
     {
       "wordId": "aku",
       "lesson": 89,
-      "ja": "店はまだ開いていない。",
-      "kana": "みせは まだ あいて いない。",
-      "pl": "Sklep jeszcze nie jest otwarty.",
+      "ja": "あの店はもう開いていますか。",
+      "kana": "あの みせは もう あいて いますか。",
+      "pl": "Czy tamten sklep jest już otwarty?",
       "source": "original",
       "reviewed": false
     },
@@ -772,9 +773,9 @@
     {
       "wordId": "naru",
       "lesson": 92,
-      "ja": "兄は医者になった。",
-      "kana": "あには いしゃに なった。",
-      "pl": "Starszy brat został lekarzem.",
+      "ja": "夜、雨が雪になった。",
+      "kana": "よる、あめが ゆきに なった。",
+      "pl": "W nocy deszcz zamienił się w śnieg.",
       "source": "original",
       "reviewed": false
     },
@@ -818,9 +819,9 @@
     {
       "wordId": "kurai",
       "lesson": 92,
-      "ja": "外はもう暗くなった。",
-      "kana": "そとは もう くらく なった。",
-      "pl": "Na dworze już się ściemniło.",
+      "ja": "冬は早く暗くなる。",
+      "kana": "ふゆは はやく くらく なる。",
+      "pl": "Zimą wcześnie robi się ciemno.",
       "source": "original",
       "reviewed": false
     },
@@ -909,9 +910,9 @@
     {
       "wordId": "nishi",
       "lesson": 94,
-      "ja": "ポーランドは日本の西にあります。",
-      "kana": "ポーランドは にほんの にしに あります。",
-      "pl": "Polska leży na zachód od Japonii.",
+      "ja": "西の空が赤いですね。",
+      "kana": "にしの そらが あかいですね。",
+      "pl": "Niebo na zachodzie jest czerwone, prawda?",
       "source": "original",
       "reviewed": false
     },
@@ -920,7 +921,7 @@
       "lesson": 94,
       "ja": "冬は南の国へ行きたい。",
       "kana": "ふゆは みなみの くにへ いきたい。",
-      "pl": "Zimą chcę pojechać do jakiegoś kraju na południu.",
+      "pl": "Zimą chcę wyjechać gdzieś na południe.",
       "source": "original",
       "reviewed": false
     },
@@ -937,7 +938,7 @@
       "wordId": "kawa",
       "lesson": 94,
       "ja": "その川はあまりきれいではなかった。",
-      "kana": "その かわは あまり きれいでは なかった。",
+      "kana": "その かわは あまり きれいではなかった。",
       "pl": "Ta rzeka nie była zbyt czysta.",
       "source": "tatoeba",
       "tatoebaId": 208510,
@@ -1010,9 +1011,9 @@
     {
       "wordId": "otoko",
       "lesson": 96,
-      "ja": "あの男の人は誰ですか。",
-      "kana": "あの おとこの ひとは だれですか。",
-      "pl": "Kim jest tamten mężczyzna?",
+      "ja": "店の人は若い男の人だった。",
+      "kana": "みせの ひとは わかい おとこの ひとだった。",
+      "pl": "Sprzedawcą był młody mężczyzna.",
       "source": "original",
       "reviewed": false
     },
@@ -1075,9 +1076,9 @@
     {
       "wordId": "kokonoka",
       "lesson": 97,
-      "ja": "九日までに宿題を出してください。",
-      "kana": "ここのかまでに しゅくだいを だして ください。",
-      "pl": "Proszę oddać pracę domową do dziewiątego.",
+      "ja": "九日の朝、日本に着きます。",
+      "kana": "ここのかの あさ、にほんに つきます。",
+      "pl": "Dziewiątego rano przylatuję do Japonii.",
       "source": "original",
       "reviewed": false
     },

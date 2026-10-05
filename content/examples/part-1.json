@@ -69,9 +69,9 @@
     {
       "wordId": "anata",
       "lesson": 18,
-      "ja": "あなたは学生ですね。",
-      "kana": "あなたは がくせいですね。",
-      "pl": "Studiujesz, prawda?",
+      "ja": "私は学生です。あなたは？",
+      "kana": "わたしは がくせいです。あなたは？",
+      "pl": "Studiuję. A ty?",
       "source": "original",
       "reviewed": false
     },
@@ -782,9 +782,9 @@
     {
       "wordId": "kuru",
       "lesson": 31,
-      "ja": "友達は日本から来ます。",
-      "kana": "ともだちは にほんから きます。",
-      "pl": "Kolega przyjeżdża z Japonii.",
+      "ja": "友達は来週、ポーランドから来ます。",
+      "kana": "ともだちは らいしゅう、ポーランドから きます。",
+      "pl": "Kolega przyjeżdża z Polski w przyszłym tygodniu.",
       "source": "original",
       "reviewed": false
     },
@@ -919,9 +919,9 @@
     {
       "wordId": "hikouki",
       "lesson": 33,
-      "ja": "飛行機で日本へ行きます。",
-      "kana": "ひこうきで にほんへ いきます。",
-      "pl": "Lecę do Japonii samolotem.",
+      "ja": "飛行機でポーランドへ帰ります。",
+      "kana": "ひこうきで ポーランドへ かえります。",
+      "pl": "Wracam do Polski samolotem.",
       "source": "original",
       "reviewed": false
     },
